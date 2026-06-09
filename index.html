@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2A211B">
 <title>Roteiro Roma 2025 - Viagem em Família</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,192 +12,146 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
 :root{
-  --bg:#FAF6EF;
-  --surface:#FFFFFF;
-  --surface-warm:#F4ECE0;
-  --ink:#2A211B;
-  --ink-soft:#6B5D4F;
-  --terracotta:#C2562E;
-  --terracotta-deep:#9E3F1E;
-  --olive:#6B7A3B;
-  --olive2:#5E6B3B;
-  --gold:#C9A24B;
+  --bg:#FAF6EF; --surface:#FFFFFF; --surface-warm:#F4ECE0;
+  --ink:#2A211B; --ink-soft:#6B5D4F;
+  --terracotta:#C2562E; --terracotta-deep:#9E3F1E;
+  --olive:#6B7A3B; --olive2:#5E6B3B; --gold:#C9A24B;
   --border:#E6DBC9;
   --shadow-sm:0 1px 3px rgba(42,33,27,.08);
   --shadow-md:0 8px 28px rgba(42,33,27,.14);
   --shadow-lg:0 24px 64px rgba(42,33,27,.22);
-  --radius:14px;
-  --radius-lg:22px;
-  --maxw:1120px;
+  --radius:14px; --radius-lg:22px; --maxw:1120px;
+  --done:#5E6B3B;
+}
+html[data-theme="dark"]{
+  --bg:#15110D; --surface:#1F1813; --surface-warm:#2A2018;
+  --ink:#F3EBDD; --ink-soft:#B8A892;
+  --terracotta:#E0743F; --terracotta-deep:#F0915E;
+  --gold:#D9B45E; --border:#352A20;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.4);
+  --shadow-md:0 8px 28px rgba(0,0,0,.5);
+  --shadow-lg:0 24px 64px rgba(0,0,0,.6);
+  --done:#7C8A4A;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+svg.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;vertical-align:-.12em}
 
-/* ===== HERO ===== */
-.hero{
-  position:relative;
-  overflow:hidden;
-  padding:72px 0 56px;
-  background:
-    radial-gradient(ellipse 80% 60% at 80% -10%, rgba(201,162,75,.28), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 0% 110%, rgba(194,86,46,.22), transparent 55%),
-    linear-gradient(160deg,#2A211B 0%,#3A2A1E 55%,#4A2B17 100%);
-  color:#FAF6EF;
-}
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:64px 0 52px;
+  background:radial-gradient(ellipse 80% 60% at 80% -10%, rgba(201,162,75,.28), transparent 60%),radial-gradient(ellipse 70% 50% at 0% 110%, rgba(194,86,46,.22), transparent 55%),linear-gradient(160deg,#2A211B 0%,#3A2A1E 55%,#4A2B17 100%);color:#FAF6EF}
 .hero .wrap{position:relative;z-index:2}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:600;color:var(--gold);
-  border:1px solid rgba(201,162,75,.4);
-  padding:6px 14px;border-radius:999px;margin-bottom:22px;
-  background:rgba(201,162,75,.08);
-}
-.hero h1{
-  font-family:'Fraunces',serif;font-weight:900;
-  font-size:clamp(40px,8vw,82px);line-height:.98;letter-spacing:-.02em;
-}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold);border:1px solid rgba(201,162,75,.4);padding:6px 14px;border-radius:999px;background:rgba(201,162,75,.08)}
+.theme-toggle{flex:0 0 auto;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#FAF6EF;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:.2s}
+.theme-toggle:hover{background:rgba(255,255,255,.16)}
+.hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px,8vw,82px);line-height:.98;letter-spacing:-.02em}
 .hero h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{
-  margin-top:18px;font-size:clamp(16px,2.4vw,20px);
-  color:rgba(250,246,239,.82);max-width:560px;
-}
-.hero-meta{
-  margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;
-}
-.meta-pill{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.12);
-  padding:12px 18px;border-radius:14px;backdrop-filter:blur(6px);
-}
-.meta-pill .ic{font-size:20px;line-height:1}
+.hero-sub{margin-top:18px;font-size:clamp(16px,2.4vw,20px);color:rgba(250,246,239,.82);max-width:560px}
+.hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
+.meta-pill{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:12px 18px;border-radius:14px}
+.meta-pill .ic-w{font-size:20px;color:var(--gold)}
 .meta-pill .tx b{display:block;font-size:14px;font-weight:600;color:#fff}
 .meta-pill .tx span{font-size:12px;color:rgba(250,246,239,.6)}
+.weather{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+.wx{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:9px 14px;font-size:13px;color:rgba(250,246,239,.85)}
+.wx b{color:#fff}
 
-/* ===== STICKY DAY NAV ===== */
-.daynav{
-  position:sticky;top:0;z-index:50;
-  background:rgba(250,246,239,.86);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-}
+/* DAY NAV */
+.daynav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .daynav-inner{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;max-width:var(--maxw);margin:0 auto;scrollbar-width:none}
 .daynav-inner::-webkit-scrollbar{display:none}
-.daynav a{
-  flex:0 0 auto;text-decoration:none;color:var(--ink-soft);
-  font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;
-  border:1px solid var(--border);white-space:nowrap;transition:.18s;background:var(--surface)
-}
+.daynav a{flex:0 0 auto;text-decoration:none;color:var(--ink-soft);font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;border:1px solid var(--border);white-space:nowrap;transition:.18s;background:var(--surface)}
 .daynav a:hover{color:var(--terracotta);border-color:var(--terracotta)}
 .daynav a.active{background:var(--terracotta);color:#fff;border-color:var(--terracotta)}
 .daynav a small{display:block;font-size:10px;font-weight:500;opacity:.7;letter-spacing:.04em}
 
-/* ===== SECTIONS ===== */
-section.day{padding:56px 0 12px;scroll-margin-top:70px}
-.day-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:8px;flex-wrap:wrap}
-.day-badge{
-  font-family:'Fraunces',serif;font-weight:900;font-size:46px;line-height:1;
-  color:var(--terracotta);
-}
-.day-head .dh-tx h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,34px);letter-spacing:-.01em;line-height:1.05}
-.day-head .dh-tx .dh-date{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
-.day-note{
-  margin:18px 0 26px;padding:14px 18px;border-radius:var(--radius);
-  background:var(--surface-warm);border-left:4px solid var(--gold);
-  font-size:14px;color:var(--ink-soft)
-}
+/* SECTIONS */
+section.day{padding:40px 0 8px;scroll-margin-top:70px}
+.day-head{display:flex;align-items:flex-end;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+.day-badge{font-family:'Fraunces',serif;font-weight:900;font-size:38px;line-height:1;color:var(--terracotta)}
+.day-head .dh-tx h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(22px,4vw,30px);letter-spacing:-.01em;line-height:1.05}
+.day-head .dh-tx .dh-date{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px}
+.day-route-btn{margin-left:auto;display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--terracotta);color:var(--terracotta);font-weight:600;font-size:12px;padding:8px 14px;border-radius:11px;text-decoration:none;transition:.18s;cursor:pointer}
+.day-route-btn:hover{background:var(--terracotta);color:#fff}
+.day-note{margin:14px 0 16px;padding:11px 15px;border-radius:12px;background:var(--surface-warm);border-left:4px solid var(--gold);font-size:13px;color:var(--ink-soft)}
 .day-note strong{color:var(--ink)}
 
-/* ===== TIMELINE / CARDS ===== */
-.timeline{display:grid;gap:16px}
-@media(min-width:760px){.timeline{grid-template-columns:1fr 1fr}}
-.card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:20px;cursor:pointer;
-  transition:transform .2s,box-shadow .2s,border-color .2s;
-  box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
-}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--terracotta)}
+/* TIMELINE / CARDS */
+.timeline{display:grid;gap:10px}
+@media(min-width:760px){.timeline{grid-template-columns:1fr 1fr;gap:12px}}
+.stop{position:relative}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:13px 15px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s,opacity .2s;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--terracotta)}
 .card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.card.done{opacity:.6}
+.card.done::before{content:"";position:absolute;inset:0;background:var(--done);opacity:.06;pointer-events:none}
+.card.done .card-check{opacity:1;transform:scale(1)}
 .card.full{grid-column:1/-1}
-.card-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.card-time{
-  font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:var(--terracotta-deep);
-  background:var(--surface-warm);padding:4px 12px;border-radius:10px;flex:0 0 auto
-}
-.card-cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive2);margin-left:auto}
-.card h3{font-family:'Fraunces',serif;font-weight:600;font-size:19px;line-height:1.2;margin-bottom:4px}
-.card .card-addr{font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:6px}
-.card .card-tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-warm);color:var(--ink-soft)}
-.tag.book{background:#FBE8E0;color:var(--terracotta-deep)}
-.tag.free{background:#E8F0E0;color:var(--olive2)}
-.tag.food{background:#F6EAD2;color:#8A6A1E}
-.tag.kid{background:#E6EEF8;color:#3B5C8A}
-.card-hint{position:absolute;right:16px;bottom:14px;font-size:12px;color:var(--terracotta);font-weight:600;opacity:0;transition:.2s}
-.card:hover .card-hint{opacity:1}
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.card-time{font-family:'Fraunces',serif;font-weight:700;font-size:14px;color:var(--terracotta-deep);background:var(--surface-warm);padding:2px 9px;border-radius:8px;flex:0 0 auto;line-height:1.5}
+.card-cat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--olive2);margin-left:auto;display:inline-flex;align-items:center;gap:4px;opacity:.75}
+html[data-theme="dark"] .card-cat{color:var(--gold)}
+.card-cat .ic{width:.85em;height:.85em}
+.card-check{position:absolute;top:11px;right:13px;width:20px;height:20px;border-radius:50%;background:var(--done);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;opacity:0;transform:scale(.4);transition:.2s}
+.card h3{font-family:'Fraunces',serif;font-weight:600;font-size:16px;line-height:1.18;margin-bottom:3px;padding-right:22px}
+.card .card-addr{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px}
+.card .card-addr .ic{width:.9em;height:.9em;opacity:.7;flex:0 0 auto}
+.card .card-addr span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .card-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.tag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:999px;background:var(--surface-warm);color:var(--ink-soft);display:inline-flex;align-items:center;gap:4px}
+.tag .ic{width:.85em;height:.85em}
+.tag.book{background:#FBE8E0;color:#9E3F1E} html[data-theme="dark"] .tag.book{background:#3A241B;color:#F0915E}
+.tag.free{background:#E8F0E0;color:#5E6B3B} html[data-theme="dark"] .tag.free{background:#26301C;color:#A9BE6F}
+.tag.food{background:#F6EAD2;color:#8A6A1E} html[data-theme="dark"] .tag.food{background:#352B15;color:#D9B45E}
+.tag.kid{background:#E6EEF8;color:#3B5C8A}  html[data-theme="dark"] .tag.kid{background:#1B2738;color:#8FB2E0}
+.lp-hint{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--done);width:0;transition:none;border-radius:0 0 16px 16px}
+.walk{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--ink-soft);padding:0;grid-column:1/-1;opacity:.8}
+.walk svg{color:var(--terracotta);width:.95em;height:.95em}
+.walk .ln{flex:0 0 22px;height:1px;background:var(--border)}
 
-/* ===== MODAL ===== */
-.modal-overlay{
-  position:fixed;inset:0;z-index:200;background:rgba(42,33,27,.55);
-  backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;
-}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(20,15,11,.6);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center}
 .modal-overlay.open{display:flex}
 @media(min-width:640px){.modal-overlay{align-items:center}}
-.modal{
-  background:var(--surface);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;
-  border-radius:24px 24px 0 0;box-shadow:var(--shadow-lg);
-  transform:translateY(24px);opacity:0;transition:.28s cubic-bezier(.16,1,.3,1)
-}
+.modal{background:var(--surface);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;border-radius:24px 24px 0 0;box-shadow:var(--shadow-lg);transform:translateY(24px);opacity:0;transition:.28s cubic-bezier(.16,1,.3,1)}
 @media(min-width:640px){.modal{border-radius:24px}}
 .modal-overlay.open .modal{transform:translateY(0);opacity:1}
-.modal-map{width:100%;height:240px;background:var(--surface-warm);position:relative}
+.modal-map{width:100%;height:230px;background:var(--surface-warm);position:relative}
 .modal-map .leaflet-container{height:100%;width:100%;border-radius:24px 24px 0 0}
-@media(min-width:640px){.modal-map .leaflet-container{border-radius:24px 24px 0 0}}
-.modal-close{
-  position:absolute;top:14px;right:14px;z-index:1000;width:38px;height:38px;border-radius:50%;
-  border:none;background:rgba(255,255,255,.92);color:var(--ink);font-size:20px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)
-}
+.modal-close{position:absolute;top:14px;right:14px;z-index:1000;width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:#2A211B;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)}
 .modal-body{padding:22px}
 .modal-time-cat{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .modal-time{font-family:'Fraunces',serif;font-weight:700;color:var(--terracotta-deep);font-size:16px}
 .modal-cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive2)}
-.modal h2{font-family:'Fraunces',serif;font-weight:700;font-size:26px;line-height:1.1;margin-bottom:6px}
+html[data-theme="dark"] .modal-cat{color:var(--gold)}
+.modal h2{font-family:'Fraunces',serif;font-weight:700;font-size:25px;line-height:1.1;margin-bottom:6px}
 .modal-addr{font-size:14px;color:var(--ink-soft);display:flex;align-items:flex-start;gap:7px;margin-bottom:16px}
 .modal-desc{font-size:15px;color:var(--ink);line-height:1.6;margin-bottom:16px}
-.modal-info{display:grid;gap:10px;margin-bottom:18px}
+.modal-info{display:grid;gap:10px;margin-bottom:16px}
 .info-row{display:flex;gap:10px;align-items:flex-start;font-size:14px;padding:10px 14px;background:var(--surface-warm);border-radius:12px}
 .info-row .il{font-weight:700;color:var(--ink);flex:0 0 auto}
-.info-row.warn{background:#FBE8E0;color:var(--terracotta-deep)}
-.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
-.modal-actions{display:grid;gap:10px}
+.info-row.warn{background:#FBE8E0;color:#9E3F1E} html[data-theme="dark"] .info-row.warn{background:#3A241B;color:#F0915E}
+.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.modal-actions{display:grid;gap:10px;margin-bottom:10px}
 @media(min-width:420px){.modal-actions{grid-template-columns:1fr 1fr}}
-.btn{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  padding:14px 18px;border-radius:14px;font-weight:600;font-size:14px;
-  text-decoration:none;cursor:pointer;border:none;transition:.18s;font-family:inherit
-}
-.btn-primary{background:var(--terracotta);color:#fff}
-.btn-primary:hover{background:var(--terracotta-deep)}
-.btn-ghost{background:var(--surface-warm);color:var(--ink);border:1px solid var(--border)}
-.btn-ghost:hover{border-color:var(--terracotta);color:var(--terracotta)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:14px;font-weight:600;font-size:14px;text-decoration:none;cursor:pointer;border:none;transition:.18s;font-family:inherit}
+.btn-primary{background:var(--terracotta);color:#fff} .btn-primary:hover{background:var(--terracotta-deep)}
+html[data-theme="dark"] .btn-primary{color:#15110D}
+.btn-ghost{background:var(--surface-warm);color:var(--ink);border:1px solid var(--border)} .btn-ghost:hover{border-color:var(--terracotta);color:var(--terracotta)}
+.btn-done{width:100%;background:transparent;border:1px dashed var(--border);color:var(--ink-soft);padding:12px}
+.btn-done.is-done{background:var(--done);color:#fff;border-style:solid;border-color:var(--done)}
 
-/* ===== RESERVAS PANEL ===== */
-.resv{padding:56px 0}
+/* RESERVAS */
+.resv{padding:52px 0}
 .resv-grid{display:grid;gap:16px}
 @media(min-width:760px){.resv-grid{grid-template-columns:repeat(3,1fr)}}
 .resv-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
 .resv-card h4{font-family:'Fraunces',serif;font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+.dot.r{background:#C2562E}.dot.y{background:#C9A24B}.dot.g{background:#5E6B3B}
 .resv-card.urgent{border-top:4px solid var(--terracotta)}
 .resv-card.soon{border-top:4px solid var(--gold)}
 .resv-card.later{border-top:4px solid var(--olive2)}
@@ -208,60 +163,95 @@ section.day{padding:56px 0 12px;scroll-margin-top:70px}
 .resv-item label{cursor:pointer}
 .resv-item.done label{text-decoration:line-through;opacity:.5}
 
-/* ===== SECTION TITLE ===== */
 .sec-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:-.01em;margin-bottom:8px}
-.sec-lead{color:var(--ink-soft);font-size:16px;max-width:620px;margin-bottom:32px}
+.sec-lead{color:var(--ink-soft);font-size:16px;max-width:620px;margin-bottom:30px}
 
-/* ===== IMPROVEMENTS / EXTRA ===== */
-.extra{background:var(--surface-warm);padding:56px 0;margin-top:40px}
+/* RESERVA HOTEL CARD */
+.bk{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:28px}
+.bk-head{display:flex;align-items:center;gap:14px;padding:18px 22px;background:linear-gradient(135deg,var(--terracotta),var(--terracotta-deep));color:#fff}
+html[data-theme="dark"] .bk-head{color:#15110D}
+.bk-head .bk-ic{font-size:24px}
+.bk-head .bk-t b{font-family:'Fraunces',serif;font-size:18px;display:block}
+.bk-head .bk-t span{font-size:12px;opacity:.85;letter-spacing:.06em}
+.bk-ref{margin-left:auto;font-family:'Inter';font-weight:700;font-size:13px;background:rgba(255,255,255,.2);padding:6px 12px;border-radius:8px;letter-spacing:.05em}
+.bk-body{padding:20px 22px;display:grid;gap:14px}
+@media(min-width:640px){.bk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+.bk-row{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.bk-row .bk-l{font-weight:700;color:var(--ink);min-width:96px;flex:0 0 auto}
+.bk-row .bk-v{color:var(--ink-soft)}
+.bk-row a{color:var(--terracotta-deep);font-weight:600;text-decoration:none}
+.bk-pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.bk-chip{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.bk-chip.ok{background:#E8F0E0;color:#5E6B3B} html[data-theme="dark"] .bk-chip.ok{background:#26301C;color:#A9BE6F}
+.bk-chip.due{background:#F6EAD2;color:#8A6A1E} html[data-theme="dark"] .bk-chip.due{background:#352B15;color:#D9B45E}
+.bk-alerts{border-top:1px solid var(--border);padding:16px 22px;background:var(--surface-warm)}
+.bk-alerts h5{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta-deep);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.bk-alert{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--ink-soft);padding:5px 0}
+.bk-alert svg{color:var(--terracotta);margin-top:2px}
+.bk-actions{display:flex;gap:10px;flex-wrap:wrap;padding:0 22px 20px}
+.bk-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:10px 16px;border-radius:12px;text-decoration:none;border:1px solid var(--border);color:var(--ink);background:var(--surface);transition:.18s}
+.bk-btn:hover{border-color:var(--terracotta);color:var(--terracotta)}
+.bk-btn.prim{background:var(--terracotta);color:#fff;border-color:var(--terracotta)}
+html[data-theme="dark"] .bk-btn.prim{color:#15110D}
+
+/* PROGRESS SUMMARY */
+.progress-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:28px;display:flex;align-items:center;gap:18px;box-shadow:var(--shadow-sm)}
+.progress-card .pc-tx{flex:1}
+.progress-card .pc-tx b{font-family:'Fraunces',serif;font-size:18px}
+.progress-card .pc-tx p{font-size:13px;color:var(--ink-soft)}
+.pbar{flex:0 0 120px;height:8px;background:var(--surface-warm);border-radius:999px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--done);width:0;transition:width .4s}
+.pc-reset{flex:0 0 auto;background:none;border:1px solid var(--border);color:var(--ink-soft);font-size:12px;padding:7px 12px;border-radius:10px;cursor:pointer;font-family:inherit}
+.pc-reset:hover{border-color:var(--terracotta);color:var(--terracotta)}
+
+/* EXTRAS */
+.extra{background:var(--surface-warm);padding:52px 0;margin-top:36px}
 .extra-grid{display:grid;gap:16px}
 @media(min-width:640px){.extra-grid{grid-template-columns:1fr 1fr}}
 .extra-card{background:var(--surface);border-radius:var(--radius-lg);padding:22px;border:1px solid var(--border)}
-.extra-card .ec-ic{font-size:26px;margin-bottom:10px;display:block}
+.extra-card .ec-ic{font-size:24px;margin-bottom:10px;display:block;color:var(--terracotta)}
 .extra-card h4{font-family:'Fraunces',serif;font-size:18px;margin-bottom:6px}
 .extra-card p{font-size:14px;color:var(--ink-soft)}
 
-/* ===== WEATHER STRIP ===== */
-.weather{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.wx{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-size:13px;color:rgba(250,246,239,.85)}
-.wx b{color:#fff}
-
-/* ===== FOOTER ===== */
-footer{background:#2A211B;color:rgba(250,246,239,.7);padding:40px 0;text-align:center;font-size:14px}
+footer{background:#15110D;color:rgba(250,246,239,.7);padding:40px 0;text-align:center;font-size:14px}
 footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
 footer b{color:var(--gold);font-family:'Fraunces',serif}
 
-/* progress bar */
-.progress{position:fixed;top:0;left:0;height:3px;background:var(--terracotta);z-index:100;width:0;transition:width .1s}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;z-index:300;opacity:0;transition:.3s;box-shadow:var(--shadow-md);pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+.progressbar{position:fixed;top:0;left:0;height:3px;background:var(--terracotta);z-index:100;width:0;transition:width .1s}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<div class="progress" id="progress"></div>
+<div class="progressbar" id="progressbar"></div>
 
-<!-- HERO -->
 <header class="hero">
   <div class="wrap">
-    <span class="hero-eyebrow">● Viagem em Família · Maju 3 anos</span>
+    <div class="hero-top">
+      <span class="hero-eyebrow"><svg class="ic" viewBox="0 0 24 24"><path d="M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0"/></svg> Viagem em família · Maju 3 anos</span>
+      <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
+    </div>
     <h1>Roma <em>2025</em></h1>
-    <p class="hero-sub">Seis dias entre fontes, basílicas e gelatos. Um roteiro pensado no ritmo de uma família com criança pequena — com madrugadas mágicas e pausas estratégicas.</p>
+    <p class="hero-sub">Seis dias entre fontes, basílicas e gelatos. Um roteiro pensado no ritmo de uma família com criança pequena, com madrugadas mágicas e pausas estratégicas.</p>
     <div class="hero-meta">
-      <div class="meta-pill"><span class="ic">📅</span><span class="tx"><b>29 ago — 03 set</b><span>6 dias · 5 noites</span></span></div>
-      <div class="meta-pill"><span class="ic">🏨</span><span class="tx"><b>Mercure Roma Corso Trieste</b><span>Via Gradisca, 31</span></span></div>
-      <div class="meta-pill"><span class="ic">📍</span><span class="tx"><b>33 paradas mapeadas</b><span>Toque para ver rota</span></span></div>
+      <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><b>29 ago — 03 set</b><span>6 dias · 5 noites</span></span></div>
+      <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01"/></svg></span><span class="tx"><b>Mercure Roma Corso Trieste</b><span>Via Gradisca, 31</span></span></div>
+      <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="tx"><b id="heroCount">paradas mapeadas</b><span>Toque para ver rota</span></span></div>
     </div>
     <div class="weather">
-      <span class="wx">☀️ Agosto em Roma: <b>30–35°C</b></span>
-      <span class="wx">💧 Leve água sempre</span>
-      <span class="wx">🧴 Protetor + chapéu para a Maju</span>
+      <span class="wx"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg> Agosto em Roma: <b>30–35°C</b></span>
+      <span class="wx"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z"/></svg> Leve água sempre</span>
+      <span class="wx"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Protetor + chapéu para a Maju</span>
     </div>
   </div>
 </header>
 
-<!-- DAY NAV -->
 <nav class="daynav" id="daynav">
   <div class="daynav-inner">
-    <a href="#reservas">📋 Reservas</a>
+    <a href="#reserva"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01"/></svg> Hotel</a>
+    <a href="#reservas"><svg class="ic" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Reservas</a>
     <a href="#d1" class="active">29/08 <small>Chegada</small></a>
     <a href="#d2">30/08 <small>Vaticano</small></a>
     <a href="#d3">31/08 <small>Dia da Maju</small></a>
@@ -273,32 +263,47 @@ footer b{color:var(--gold);font-family:'Fraunces',serif}
 
 <main id="app"></main>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal" id="modal">
-    <div class="modal-map" id="modalMap">
-      <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
-    </div>
+    <div class="modal-map" id="modalMap"><button class="modal-close" id="modalClose" aria-label="Fechar">✕</button></div>
     <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
 
-<footer>
-  <div class="wrap">
-    <b>Roteiro Roma 2025</b>
-    <span>Personalizado para a família · Buon viaggio!</span>
-  </div>
-</footer>
+<div class="toast" id="toast"></div>
 
-<script>
-// Roteiro Roma 2025 - dados estruturados
+<footer><div class="wrap"><b>Roteiro Roma 2025</b><span>Personalizado para a família · Buon viaggio!</span></div></footer>
+
+<script>// Roteiro Roma 2025 - dados estruturados
 // lat/lng reais de cada ponto. cat: tipo. tags. info: linhas extras. warn: alerta.
 const HOTEL = {name:"Hotel Mercure Roma Corso Trieste", lat:41.9215, lng:12.5145};
+
+const RESERVA = {
+  ref:"QKVDKDVT",
+  hotel:"Mercure Roma Corso Trieste",
+  addr:"Via Gradisca 31, 00198 Roma",
+  tel:"+39 06 852021",
+  email:"h3320@accor.com",
+  lat:41.9215, lng:12.5145,
+  estadia:"29/08 a 03/09/2026 · 5 noites",
+  quarto:"Quarto Duplo Classic · 2 adultos",
+  checkin:"a partir das 14h00",
+  checkout:"até 12h00",
+  pago:"91,40 EUR + 34.000 pontos Reward",
+  restante:"75,00 EUR (taxas, a pagar no hotel)",
+  total:"846,40 EUR",
+  alertas:[
+    "Reserva consta como 2 adultos. Adicionar a Maju no app ALL ou por telefone (criança até 12 anos gratis no quarto dos pais, mas precisa estar registrada).",
+    "Levar documento de identidade da Maju. Menores só ficam acompanhados de adulto e com documento proprio.",
+    "Tarifa pre-paga nao reembolsavel. Cartao usado na reserva deve ser apresentado no check-in.",
+    "Cafe da manha gratis para 1 crianca ate 12 anos tomando em familia."
+  ]
+};
 
 const DAYS = [
   {
     id:"d1", date:"29/08 · Sexta", title:"Chegada + Mercado + Centro Histórico",
-    note:"<strong>Antes de sair:</strong> mercado obrigatório para abastecer lanches do Vaticano (água, frutas para a Maju, pão e frios). Saída do hotel às 16h00.",
+    note:"<strong>Check-in a partir das 14h.</strong> Antes de sair: mercado obrigatório para abastecer lanches do Vaticano (água, frutas para a Maju, pão e frios). Saída do hotel às 16h00.",
     stops:[
       {t:"Check-in",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31 — zona Trieste",lat:41.9215,lng:12.5145,
        desc:"Próximo ao metrô (linha B, estação Libia). Deixe as malas, descanse e prepare-se para sair ao fim da tarde.",
@@ -453,7 +458,7 @@ const DAYS = [
   },
   {
     id:"d6", date:"03/09 · Quarta", title:"Check-out e Retorno",
-    note:"<strong>Checklist de partida.</strong> Se o voo for à tarde: guarde as malas na recepção e aproveite o bairro Parioli para um último café.",
+    note:"<strong>Check-out até 12h00.</strong> Provisório: aguardando passagens de chegada e saída para Nápoles. Se houver transfer para Nápoles, este dia muda. Por ora, guarde as malas na recepção e aproveite o bairro Parioli para um último café.",
     stops:[
       {t:"Check-out",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31",lat:41.9215,lng:12.5145,
        desc:"Faça o check-out no horário combinado. Guarde as malas se o voo for à tarde.",
@@ -485,173 +490,347 @@ const RESERVAS = {
     {t:"Trattoria Al Moro — confirmar crianças no jantar!",u:""}
   ]}
 };
-
 </script>
-<script>
-// ===== RENDER ROTEIRO =====
+<script>const ICONS={"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\"/>", "calendar": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "hotel": "<path d=\"M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "route": "<circle cx=\"6\" cy=\"19\" r=\"3\"/><circle cx=\"18\" cy=\"5\" r=\"3\"/><path d=\"M9 19h6a4 4 0 004-4V9\"/>", "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"/><path d=\"M7 21l3-6 2-4M11 11l4 2 2 4M9 9l2 2M10 15l-2 6\"/>", "check": "<path d=\"M20 6L9 17l-5-5\"/>", "navigation": "<path d=\"M3 11l19-9-9 19-2-8-8-2z\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4-4\"/>", "droplet": "<path d=\"M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z\"/>", "shield": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>", "utensils": "<path d=\"M3 2v7a3 3 0 003 3v10M6 2v6M9 2v6M16 2c-1.5 0-3 2-3 5s1.5 4 3 4v9\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M12 8v13M3 12h18M12 8S10 2 7 4s5 4 5 4M12 8s2-6 5-4-5 4-5 4z\"/>", "star": "<path d=\"M12 2l3 7 7 .5-5.5 4.5 1.5 7L12 17l-6.5 4 1.5-7L1.5 9.5 8.5 9z\"/>", "baby": "<path d=\"M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0\"/>", "list": "<path d=\"M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01\"/>", "map": "<path d=\"M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "camera": "<path d=\"M14.5 4l1.5 2h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3l1.5-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "wifi-off": "<path d=\"M2 8.8a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0M12 20h.01M2 2l20 20\"/>", "coffee": "<path d=\"M17 8h1a3 3 0 010 6h-1M3 8h14v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3\"/>", "plane": "<path d=\"M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7l5.1 3.4-2 4-2-1-1 1 3 2 2 3 1-1-1-2 4-2 3.4 5.1a1 1 0 001.7-.9z\"/>", "shopping": "<path d=\"M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0\"/>", "landmark": "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2L3 8h18z\"/>", "church": "<path d=\"M12 2v6M9 5h6M5 22V10l7-4 7 4v12M5 22h14M9 22v-5a3 3 0 016 0v5\"/>", "icecream": "<path d=\"M7 11a5 5 0 0110 0M7 11h10l-5 11-5-11z\"/>", "tree": "<path d=\"M12 2L7 9h3l-4 6h4l-3 5h12l-3-5h4l-4-6h3z\"/><path d=\"M12 20v2\"/>", "building": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "square": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/>", "sandwich": "<path d=\"M3 11h18l-2-4H5l-2 4zM3 11l1 5a2 2 0 002 1.5h12a2 2 0 002-1.5l1-5\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>"};
+const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane"};
+const TAG_ICON={"Reservar": "calendar", "Gratuito": "gift", "Comer": "utensils", "Maju \u2764": "baby", "Foto": "camera", "Essencial": "star", "Base": "hotel", "Inclu\u00eddo": "check", "Compras": "shopping", "Passeio": "map", "Transfer": "plane"};
+
+function haversine(a,b){
+  const R=6371000, t=Math.PI/180;
+  const dLat=(b.lat-a.lat)*t, dLng=(b.lng-a.lng)*t;
+  const la1=a.lat*t, la2=b.lat*t;
+  const h=Math.sin(dLat/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin(dLng/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h)); // metros
+}
+function walkInfo(a,b){
+  const m=haversine(a,b);
+  if(m<40) return null;
+  const min=Math.max(1,Math.round(m/80)); // ~4.8km/h
+  const dist = m<1000 ? Math.round(m/10)*10+' m' : (m/1000).toFixed(1)+' km';
+  return {min, dist};
+}
+
+function svgIcon(name,cls){
+  const p = ICONS[name]||ICONS['pin'];
+  return '<svg class="ic '+(cls||'')+'" viewBox="0 0 24 24">'+p+'</svg>';
+}
+
+// ===== STATE / PERSIST (localStorage funciona no GitHub Pages) =====
+const LS_KEY='roma2025_state_v1';
+let STATE = {done:{}, resv:{}, theme:null};
+try{ const s=JSON.parse(localStorage.getItem(LS_KEY)); if(s) STATE=Object.assign(STATE,s);}catch(e){}
+function save(){ try{localStorage.setItem(LS_KEY, JSON.stringify(STATE));}catch(e){} }
+function stopKey(d,i){return d+'_'+i;}
+
+// total de paradas (corrige "33" fixo)
+const TOTAL_STOPS = DAYS.reduce((n,d)=>n+d.stops.length,0);
+
+// ===== THEME =====
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  const btn=document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = svgIcon(t==='dark'?'sun':'moon');
+}
+(function initTheme(){
+  let t = STATE.theme;
+  if(!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light';
+  applyTheme(t);
+})();
+
 const app = document.getElementById('app');
 
-// Painel de reservas
-function renderReservas(){
-  const blocks = [['urgent','urgent'],['soon','soon'],['later','later']].map(([k,cls])=>{
-    const b = RESERVAS[k];
-    const items = b.items.map((it,i)=>{
-      const link = it.u ? `<a href="${it.u}" target="_blank" rel="noopener">${it.t} ↗</a>` : `<span>${it.t}</span>`;
-      return `<div class="resv-item" data-rk="${k}-${i}">
-        <input type="checkbox" id="rk-${k}-${i}" aria-label="marcar reserva">
-        <label for="rk-${k}-${i}">${link}</label>
-      </div>`;
-    }).join('');
-    return `<div class="resv-card ${cls}"><h4>${b.title}</h4>${items}</div>`;
-  }).join('');
-  return `<section class="resv" id="reservas"><div class="wrap">
-    <h2 class="sec-title">Reservas prioritárias</h2>
-    <p class="sec-lead">Marque conforme confirmar. A ordem reflete a urgência — Vaticano, Roscioli e Explora são os gargalos de agosto.</p>
-    <div class="resv-grid">${blocks}</div>
-  </div></section>`;
+// ----- progress summary -----
+function progressHTML(){
+  const done = Object.values(STATE.done).filter(Boolean).length;
+  const pct = Math.round(done/TOTAL_STOPS*100);
+  return '<div class="progress-card" id="progressCard">'+
+    '<div class="pc-tx"><b>'+done+' de '+TOTAL_STOPS+' paradas</b>'+
+    '<p>Pressione e segure um card para marcar como visitado.</p></div>'+
+    '<div class="pbar"><i id="pbarFill" style="width:'+pct+'%"></i></div>'+
+    '<button class="pc-reset" id="resetBtn">Limpar</button></div>';
 }
 
-// Cards dos dias
+// ----- reserva hotel -----
+function renderReserva(){
+  const r=RESERVA;
+  const rows=[
+    ['Estadia',r.estadia],['Quarto',r.quarto],
+    ['Check-in',r.checkin],['Check-out',r.checkout],
+    ['Endereço',r.addr],
+    ['Contato','<a href="tel:'+r.tel.replace(/\s/g,'')+'">'+r.tel+'</a> · <a href="mailto:'+r.email+'">'+r.email+'</a>']
+  ].map(([l,v])=>'<div class="bk-row"><span class="bk-l">'+l+'</span><span class="bk-v">'+v+'</span></div>').join('');
+  const alerts=r.alertas.map(a=>'<div class="bk-alert">'+svgIcon('shield')+'<span>'+a+'</span></div>').join('');
+  return '<section id="reserva"><div class="wrap" style="padding-top:8px">'+
+    '<div class="bk">'+
+      '<div class="bk-head">'+svgIcon('hotel','bk-ic')+
+        '<div class="bk-t"><b>'+r.hotel+'</b><span>SUA RESERVA CONFIRMADA</span></div>'+
+        '<span class="bk-ref">'+r.ref+'</span></div>'+
+      '<div class="bk-body"><div class="bk-grid">'+rows+'</div>'+
+        '<div class="bk-pay">'+
+          '<span class="bk-chip ok">'+svgIcon('check')+'Pago: '+r.pago+'</span>'+
+          '<span class="bk-chip due">'+svgIcon('clock')+'A pagar no hotel: '+r.restante+'</span>'+
+        '</div></div>'+
+      '<div class="bk-alerts"><h5>'+svgIcon('shield')+'Atenção família</h5>'+alerts+'</div>'+
+      '<div class="bk-actions">'+
+        '<a class="bk-btn prim" href="'+gmRoute(r.lat,r.lng)+'" target="_blank" rel="noopener">'+svgIcon('navigation')+'Rota até o hotel</a>'+
+        '<a class="bk-btn" href="tel:'+r.tel.replace(/\s/g,'')+'">'+svgIcon('hotel')+'Ligar para o hotel</a>'+
+      '</div>'+
+    '</div></div></section>';
+}
+
+// ----- reservas -----
+function renderReservas(){
+  const map={urgent:['r','Urgente — 2 a 3 semanas antes'],soon:['y','1 semana antes'],later:['g','Alguns dias antes']};
+  const blocks = ['urgent','soon','later'].map(k=>{
+    const b=RESERVAS[k]; const [dot,lbl]=map[k];
+    const items=b.items.map((it,i)=>{
+      const id='rk-'+k+'-'+i;
+      const checked = STATE.resv[k+'-'+i] ? 'checked':'';
+      const doneCls = STATE.resv[k+'-'+i] ? ' done':'';
+      const link = it.u? '<a href="'+it.u+'" target="_blank" rel="noopener">'+it.t+' ↗</a>':'<span>'+it.t+'</span>';
+      return '<div class="resv-item'+doneCls+'" data-rk="'+k+'-'+i+'"><input type="checkbox" id="'+id+'" '+checked+' aria-label="marcar reserva"><label for="'+id+'">'+link+'</label></div>';
+    }).join('');
+    return '<div class="resv-card '+k+'"><h4><span class="dot '+dot+'"></span>'+lbl+'</h4>'+items+'</div>';
+  }).join('');
+  return '<section class="resv" id="reservas"><div class="wrap"><h2 class="sec-title">Reservas prioritárias</h2>'+
+    '<p class="sec-lead">Marque conforme confirmar. A ordem reflete a urgência. Vaticano, Roscioli e Explora são os gargalos de agosto.</p>'+
+    '<div class="resv-grid">'+blocks+'</div></div></section>';
+}
+
+// ----- dias -----
+function dayMapsRoute(d){
+  // multi-stop: origin = My Location, waypoints, destination = last
+  const pts = d.stops.map(s=>s.lat+','+s.lng);
+  const dest = pts[pts.length-1];
+  const wp = pts.slice(0,-1).join('|');
+  let url='https://www.google.com/maps/dir/?api=1&origin=My+Location&destination='+dest+'&travelmode=walking';
+  if(wp) url+='&waypoints='+encodeURIComponent(wp);
+  return url;
+}
 function renderDays(){
   return DAYS.map(d=>{
-    const cards = d.stops.map((s,i)=>{
-      const tags = (s.tags||[]).map(([tx,cl])=>`<span class="tag ${cl}">${tx}</span>`).join('');
-      return `<article class="card" tabindex="0" role="button" data-day="${d.id}" data-idx="${i}" aria-label="Abrir ${s.n}">
-        <div class="card-top">
-          <span class="card-time">${s.t}</span>
-          <span class="card-cat">${s.cat}</span>
-        </div>
-        <h3>${s.n}</h3>
-        <div class="card-addr">📍 ${s.addr}</div>
-        <div class="card-tags">${tags}</div>
-        <span class="card-hint">Ver mapa + rota →</span>
-      </article>`;
-    }).join('');
-    return `<section class="day" id="${d.id}"><div class="wrap">
-      <div class="day-head">
-        <span class="day-badge">${d.date.split(' ')[0]}</span>
-        <div class="dh-tx"><h2>${d.title}</h2><div class="dh-date">${d.date}</div></div>
-      </div>
-      <div class="day-note">${d.note}</div>
-      <div class="timeline">${cards}</div>
-    </div></section>`;
+    let cards='';
+    d.stops.forEach((s,i)=>{
+      const k=stopKey(d.id,i);
+      const doneCls = STATE.done[k] ? ' done':'';
+      const tags=(s.tags||[]).map(([tx,cl])=>'<span class="tag '+cl+'">'+svgIcon(TAG_ICON[tx]||'star')+tx+'</span>').join('');
+      const ci = CAT_ICON[s.cat]||'pin';
+      cards += '<div class="stop">'+
+        '<article class="card'+doneCls+'" tabindex="0" role="button" data-day="'+d.id+'" data-idx="'+i+'" aria-label="Abrir '+s.n+'">'+
+        '<span class="card-check">'+svgIcon('check')+'</span>'+
+        '<div class="card-top"><span class="card-time">'+s.t+'</span><span class="card-cat">'+svgIcon(ci)+s.cat+'</span></div>'+
+        '<h3>'+s.n+'</h3>'+
+        '<div class="card-addr">'+svgIcon('pin')+'<span>'+s.addr+'</span></div>'+
+        '<div class="card-tags">'+tags+'</div>'+
+        '<span class="lp-hint" data-lp="'+k+'"></span>'+
+        '</article></div>';
+      // walk segment to next
+      if(i < d.stops.length-1){
+        cards += '<div class="walk" data-a="'+i+'" data-b="'+(i+1)+'" data-day="'+d.id+'"></div>';
+      }
+    });
+    const dd = d.date.split(' ')[0];
+    return '<section class="day" id="'+d.id+'"><div class="wrap">'+
+      '<div class="day-head"><span class="day-badge">'+dd+'</span>'+
+      '<div class="dh-tx"><h2>'+d.title+'</h2><div class="dh-date">'+d.date+'</div></div>'+
+      '<a class="day-route-btn" href="'+dayMapsRoute(d)+'" target="_blank" rel="noopener">'+svgIcon('route')+'Rota do dia inteiro</a>'+
+      '</div>'+
+      '<div class="day-note">'+d.note+'</div>'+
+      '<div class="timeline">'+cards+'</div></div></section>';
   }).join('');
 }
 
-// Extras / melhorias propostas
+// ----- extras -----
 function renderExtras(){
-  const cards = [
-    ['🧭','Rota nativa por ponto','Cada card abre um mapa e um botão que traça a rota da sua localização atual até a atração no Google Maps ou Apple Maps.'],
-    ['🗺️','Mapa do dia inteiro','Botão por dia que abre todas as paradas em sequência no Google Maps como um roteiro multi-parada.'],
-    ['✅','Checklist de reservas','Marque o que já confirmou. O painel separa por urgência para você não perder os gargalos de agosto.'],
-    ['🌡️','Faixa de clima','Lembrete fixo de calor, água e proteção solar — agosto romano passa de 30°C.'],
-    ['📴','Funciona offline','Arquivo único, sem servidor. Salve na tela inicial do celular e acesse mesmo sem internet (o mapa precisa de rede).'],
-    ['👶','Filtro Maju','Tags destacam tudo que é amigável para a criança de 3 anos, dos parques aos museus interativos.']
-  ].map(([ic,t,p])=>`<div class="extra-card"><span class="ec-ic">${ic}</span><h4>${t}</h4><p>${p}</p></div>`).join('');
-  return `<section class="extra"><div class="wrap">
-    <h2 class="sec-title">O que mudou neste roteiro</h2>
-    <p class="sec-lead">Melhorias de UX aplicadas sobre o PDF original, pensadas para uso no celular durante a viagem.</p>
-    <div class="extra-grid">${cards}</div>
-  </div></section>`;
+  const items=[
+    ['route','Rota multiparada por dia','Cada dia tem um botão que abre todas as paradas em sequência no Google Maps, partindo da sua localização atual.'],
+    ['walk','Tempo a pé entre paradas','A distância e o tempo de caminhada aparecem entre os cards, calculados pelas coordenadas reais de cada ponto.'],
+    ['check','Marcar visitado','Pressione e segure qualquer card para marcar como concluído. O progresso fica salvo no seu aparelho.'],
+    ['moon','Modo claro e escuro','Alterna no canto superior. Ideal para os passeios de madrugada e as vistas noturnas.'],
+    ['list','Checklist de reservas','Separado por urgência, com links diretos. O que você marca permanece salvo.'],
+    ['wifi-off','Persistência local','Tudo que você interage é salvo no navegador via localStorage. Reabre no mesmo estado, mesmo offline (o mapa precisa de rede).']
+  ].map(([ic,t,p])=>'<div class="extra-card"><span class="ec-ic">'+svgIcon(ic)+'</span><h4>'+t+'</h4><p>'+p+'</p></div>').join('');
+  return '<section class="extra"><div class="wrap"><h2 class="sec-title">O que este roteiro faz</h2>'+
+    '<p class="sec-lead">Recursos pensados para uso no celular durante a viagem.</p>'+
+    '<div class="extra-grid">'+items+'</div></div></section>';
 }
 
-app.innerHTML = renderReservas() + renderDays() + renderExtras();
+app.innerHTML = '<div class="wrap" style="padding-top:40px">'+progressHTML()+'</div>'+ renderReserva() + renderReservas() + renderDays() + renderExtras();
 
-// ===== MODAL + MAPA =====
-const overlay = document.getElementById('overlay');
-const modalBody = document.getElementById('modalBody');
-const modalMapEl = document.getElementById('modalMap');
-let leafletMap = null;
-let lastFocused = null;
+// fill walk segments
+document.querySelectorAll('.walk').forEach(w=>{
+  const d=DAYS.find(x=>x.id===w.dataset.day);
+  const a=d.stops[+w.dataset.a], b=d.stops[+w.dataset.b];
+  const info=walkInfo(a,b);
+  if(info){
+    w.innerHTML='<span class="ln"></span>'+svgIcon('walk')+'<span>'+info.min+' min a pé · '+info.dist+'</span><span class="ln"></span>';
+  } else { w.style.display='none'; }
+});
 
-function mapsRouteUrl(lat,lng,name){
-  // origin=current location (omitido => "Your location"), destination = coords
-  return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&destination_place_id=&travelmode=walking`;
+function updateProgress(){
+  const done=Object.values(STATE.done).filter(Boolean).length;
+  const card=document.getElementById('progressCard');
+  if(card){
+    card.querySelector('.pc-tx b').textContent = done+' de '+TOTAL_STOPS+' paradas';
+    document.getElementById('pbarFill').style.width=Math.round(done/TOTAL_STOPS*100)+'%';
+  }
 }
-function appleMapsUrl(lat,lng){
-  return `https://maps.apple.com/?daddr=${lat},${lng}&dirflg=w`;
-}
+
+// ===== MODAL + MAP =====
+const overlay=document.getElementById('overlay');
+const modalBody=document.getElementById('modalBody');
+const modalMapEl=document.getElementById('modalMap');
+let leafletMap=null, lastFocused=null, currentKey=null;
+
+function gmRoute(lat,lng){return 'https://www.google.com/maps/dir/?api=1&origin=My+Location&destination='+lat+','+lng+'&travelmode=walking';}
+function gmSearch(lat,lng){return 'https://www.google.com/maps/search/?api=1&query='+lat+','+lng;}
 
 function openModal(day,idx){
-  const d = DAYS.find(x=>x.id===day);
-  const s = d.stops[idx];
-  lastFocused = document.activeElement;
+  const d=DAYS.find(x=>x.id===day); const s=d.stops[idx];
+  currentKey=stopKey(day,idx); lastFocused=document.activeElement;
+  const info=(s.info||[]).map(([l,v])=>'<div class="info-row"><span class="il">'+l+'</span><span>'+v+'</span></div>').join('');
+  const warn=s.warn?'<div class="info-row warn"><span class="il">!</span><span>'+s.warn+'</span></div>':'';
+  const tags=(s.tags||[]).map(([tx,cl])=>'<span class="tag '+cl+'">'+svgIcon(TAG_ICON[tx]||'star')+tx+'</span>').join('');
+  const isDone=!!STATE.done[currentKey];
+  modalBody.innerHTML=
+    '<div class="modal-time-cat"><span class="modal-time">'+s.t+'</span><span class="modal-cat">'+s.cat+'</span></div>'+
+    '<h2 id="modalTitle">'+s.n+'</h2>'+
+    '<div class="modal-addr">'+svgIcon('pin')+'<span>'+s.addr+'</span></div>'+
+    '<p class="modal-desc">'+s.desc+'</p>'+
+    '<div class="modal-info">'+info+warn+'</div>'+
+    '<div class="modal-tags">'+tags+'</div>'+
+    '<div class="modal-actions">'+
+      '<a class="btn btn-primary" href="'+gmRoute(s.lat,s.lng)+'" target="_blank" rel="noopener">'+svgIcon('navigation')+'Traçar rota até aqui</a>'+
+      '<a class="btn btn-ghost" href="'+gmSearch(s.lat,s.lng)+'" target="_blank" rel="noopener">'+svgIcon('search')+'Abrir no Maps</a>'+
+    '</div>'+
+    '<button class="btn btn-done'+(isDone?' is-done':'')+'" id="modalDone">'+svgIcon('check')+(isDone?'Visitado':'Marcar como visitado')+'</button>';
 
-  const info = (s.info||[]).map(([l,v])=>`<div class="info-row"><span class="il">${l}</span><span>${v}</span></div>`).join('');
-  const warn = s.warn ? `<div class="info-row warn"><span class="il">⚠</span><span>${s.warn}</span></div>` : '';
-  const tags = (s.tags||[]).map(([tx,cl])=>`<span class="tag ${cl}">${tx}</span>`).join('');
-
-  modalBody.innerHTML = `
-    <div class="modal-time-cat"><span class="modal-time">${s.t}</span><span class="modal-cat">${s.cat}</span></div>
-    <h2 id="modalTitle">${s.n}</h2>
-    <div class="modal-addr">📍 <span>${s.addr}</span></div>
-    <p class="modal-desc">${s.desc}</p>
-    <div class="modal-info">${info}${warn}</div>
-    <div class="modal-tags">${tags}</div>
-    <div class="modal-actions">
-      <a class="btn btn-primary" href="${mapsRouteUrl(s.lat,s.lng,s.n)}" target="_blank" rel="noopener">🧭 Traçar rota até aqui</a>
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=${s.lat},${s.lng}" target="_blank" rel="noopener">🔎 Abrir no Maps</a>
-    </div>`;
-
-  overlay.classList.add('open');
-  document.body.style.overflow='hidden';
-
-  // mapa
+  overlay.classList.add('open'); document.body.style.overflow='hidden';
   setTimeout(()=>{
     if(leafletMap){leafletMap.remove();leafletMap=null;}
-    leafletMap = L.map(modalMapEl,{zoomControl:true,attributionControl:true}).setView([s.lat,s.lng],16);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-      maxZoom:19, attribution:'© OpenStreetMap'
-    }).addTo(leafletMap);
-    const icon = L.divIcon({className:'',html:`<div style="background:#C2562E;width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)"></div>`,iconSize:[26,26],iconAnchor:[13,26]});
-    L.marker([s.lat,s.lng],{icon}).addTo(leafletMap).bindPopup(`<b>${s.n}</b><br>${s.addr}`);
+    leafletMap=L.map(modalMapEl,{zoomControl:true,attributionControl:true}).setView([s.lat,s.lng],16);
+    const dark=document.documentElement.getAttribute('data-theme')==='dark';
+    const url = dark
+      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+      : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    L.tileLayer(url,{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(leafletMap);
+    const ic=L.divIcon({className:'',html:'<div style="background:#C2562E;width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)"></div>',iconSize:[26,26],iconAnchor:[13,26]});
+    L.marker([s.lat,s.lng],{icon:ic}).addTo(leafletMap).bindPopup('<b>'+s.n+'</b><br>'+s.addr);
     leafletMap.invalidateSize();
   },120);
-
   document.getElementById('modalClose').focus();
-}
 
+  document.getElementById('modalDone').addEventListener('click',()=>{
+    toggleDone(currentKey);
+    const nowDone=!!STATE.done[currentKey];
+    const btn=document.getElementById('modalDone');
+    btn.classList.toggle('is-done',nowDone);
+    btn.innerHTML=svgIcon('check')+(nowDone?'Visitado':'Marcar como visitado');
+  });
+}
 function closeModal(){
-  overlay.classList.remove('open');
-  document.body.style.overflow='';
+  overlay.classList.remove('open'); document.body.style.overflow='';
   if(leafletMap){setTimeout(()=>{leafletMap.remove();leafletMap=null;},300);}
   if(lastFocused) lastFocused.focus();
 }
 
-// eventos cards
-app.addEventListener('click',e=>{
-  const card = e.target.closest('.card');
-  if(card){openModal(card.dataset.day, +card.dataset.idx);}
-  const item = e.target.closest('.resv-item');
-  if(item && e.target.tagName==='INPUT'){
-    item.classList.toggle('done', e.target.checked);
-  }
+function toggleDone(key){
+  STATE.done[key]=!STATE.done[key]; save();
+  const card=document.querySelector('.card[data-day="'+key.split('_')[0]+'"][data-idx="'+key.split('_')[1]+'"]');
+  if(card) card.classList.toggle('done',!!STATE.done[key]);
+  updateProgress();
+  toast(STATE.done[key]?'Marcado como visitado':'Desmarcado');
+}
+
+// ===== LONG PRESS to mark done =====
+let lpTimer=null, lpKey=null, lpEl=null, lpMoved=false;
+const LP_MS=550;
+function startLP(card,e){
+  lpMoved=false;
+  lpKey=stopKey(card.dataset.day,card.dataset.idx);
+  lpEl=card.querySelector('.lp-hint');
+  if(lpEl){lpEl.style.transition='width '+LP_MS+'ms linear';requestAnimationFrame(()=>{if(lpEl)lpEl.style.width='100%';});}
+  lpTimer=setTimeout(()=>{
+    if(navigator.vibrate) navigator.vibrate(15);
+    toggleDone(lpKey);
+    lpFired=true;
+    resetLP();
+  },LP_MS);
+}
+let lpFired=false;
+function resetLP(){
+  if(lpTimer){clearTimeout(lpTimer); lpTimer=null;}
+  if(lpEl){lpEl.style.transition='none';lpEl.style.width='0';lpEl=null;}
+}
+
+app.addEventListener('pointerdown',e=>{
+  const card=e.target.closest('.card');
+  if(card && !e.target.closest('a')){ lpFired=false; startLP(card,e); }
 });
+app.addEventListener('pointermove',e=>{ if(lpTimer){lpMoved=true; resetLP();} });
+app.addEventListener('pointerup',e=>{
+  const card=e.target.closest('.card');
+  resetLP();
+  if(card && !lpFired && !lpMoved && !e.target.closest('a')){
+    openModal(card.dataset.day,+card.dataset.idx);
+  }
+  lpFired=false;
+});
+app.addEventListener('pointercancel',resetLP);
+app.addEventListener('pointerleave',e=>{if(lpTimer)resetLP();});
+
+// keyboard
 app.addEventListener('keydown',e=>{
-  const card = e.target.closest('.card');
+  const card=e.target.closest('.card');
   if(card && (e.key==='Enter'||e.key===' ')){e.preventDefault();openModal(card.dataset.day,+card.dataset.idx);}
 });
+// reservas checkbox
+app.addEventListener('change',e=>{
+  if(e.target.type==='checkbox'){
+    const item=e.target.closest('.resv-item');
+    if(item){item.classList.toggle('done',e.target.checked);STATE.resv[item.dataset.rk]=e.target.checked;save();}
+  }
+});
+// reset
+app.addEventListener('click',e=>{
+  if(e.target.id==='resetBtn'){
+    if(confirm('Limpar todas as marcações de paradas visitadas e reservas?')){
+      STATE.done={};STATE.resv={};save();location.reload();
+    }
+  }
+});
+
 document.getElementById('modalClose').addEventListener('click',closeModal);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();});
 
-// ===== SCROLL: progress + nav ativa =====
-const progress = document.getElementById('progress');
-const navLinks = [...document.querySelectorAll('.daynav a')];
-const sections = ['reservas',...DAYS.map(d=>d.id)].map(id=>document.getElementById(id)).filter(Boolean);
+// theme toggle
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  const next=cur==='dark'?'light':'dark';
+  applyTheme(next); STATE.theme=next; save();
+});
 
+// toast
+let toastTimer=null;
+function toast(msg){
+  let t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1800);
+}
+
+// scroll progress + active nav
+const pbar=document.getElementById('progressbar');
+const navLinks=[...document.querySelectorAll('.daynav a')];
+const sections=['reserva','reservas',...DAYS.map(d=>d.id)].map(id=>document.getElementById(id)).filter(Boolean);
 window.addEventListener('scroll',()=>{
-  const h = document.documentElement;
-  const pct = (h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-  progress.style.width = pct+'%';
-
-  let current = sections[0]?.id;
-  for(const sec of sections){
-    if(sec.getBoundingClientRect().top <= 120) current = sec.id;
-  }
-  navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current));
+  const h=document.documentElement;
+  pbar.style.width=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100+'%';
+  let cur=sections[0]&&sections[0].id;
+  for(const sec of sections){ if(sec.getBoundingClientRect().top<=120) cur=sec.id; }
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
 },{passive:true});
-
 </script>
+<script>document.getElementById('heroCount').textContent=TOTAL_STOPS+' paradas mapeadas';</script>
 </body>
 </html>
