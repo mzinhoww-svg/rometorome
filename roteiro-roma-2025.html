@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roteiro Roma 2025 - Viagem em Família</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+:root{
+  --bg:#FAF6EF;
+  --surface:#FFFFFF;
+  --surface-warm:#F4ECE0;
+  --ink:#2A211B;
+  --ink-soft:#6B5D4F;
+  --terracotta:#C2562E;
+  --terracotta-deep:#9E3F1E;
+  --olive:#6B7A3B;
+  --olive2:#5E6B3B;
+  --gold:#C9A24B;
+  --border:#E6DBC9;
+  --shadow-sm:0 1px 3px rgba(42,33,27,.08);
+  --shadow-md:0 8px 28px rgba(42,33,27,.14);
+  --shadow-lg:0 24px 64px rgba(42,33,27,.22);
+  --radius:14px;
+  --radius-lg:22px;
+  --maxw:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:72px 0 56px;
+  background:
+    radial-gradient(ellipse 80% 60% at 80% -10%, rgba(201,162,75,.28), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 0% 110%, rgba(194,86,46,.22), transparent 55%),
+    linear-gradient(160deg,#2A211B 0%,#3A2A1E 55%,#4A2B17 100%);
+  color:#FAF6EF;
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--gold);
+  border:1px solid rgba(201,162,75,.4);
+  padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  background:rgba(201,162,75,.08);
+}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(40px,8vw,82px);line-height:.98;letter-spacing:-.02em;
+}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{
+  margin-top:18px;font-size:clamp(16px,2.4vw,20px);
+  color:rgba(250,246,239,.82);max-width:560px;
+}
+.hero-meta{
+  margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;
+}
+.meta-pill{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  padding:12px 18px;border-radius:14px;backdrop-filter:blur(6px);
+}
+.meta-pill .ic{font-size:20px;line-height:1}
+.meta-pill .tx b{display:block;font-size:14px;font-weight:600;color:#fff}
+.meta-pill .tx span{font-size:12px;color:rgba(250,246,239,.6)}
+
+/* ===== STICKY DAY NAV ===== */
+.daynav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,246,239,.86);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.daynav-inner{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;max-width:var(--maxw);margin:0 auto;scrollbar-width:none}
+.daynav-inner::-webkit-scrollbar{display:none}
+.daynav a{
+  flex:0 0 auto;text-decoration:none;color:var(--ink-soft);
+  font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;
+  border:1px solid var(--border);white-space:nowrap;transition:.18s;background:var(--surface)
+}
+.daynav a:hover{color:var(--terracotta);border-color:var(--terracotta)}
+.daynav a.active{background:var(--terracotta);color:#fff;border-color:var(--terracotta)}
+.daynav a small{display:block;font-size:10px;font-weight:500;opacity:.7;letter-spacing:.04em}
+
+/* ===== SECTIONS ===== */
+section.day{padding:56px 0 12px;scroll-margin-top:70px}
+.day-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:8px;flex-wrap:wrap}
+.day-badge{
+  font-family:'Fraunces',serif;font-weight:900;font-size:46px;line-height:1;
+  color:var(--terracotta);
+}
+.day-head .dh-tx h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,34px);letter-spacing:-.01em;line-height:1.05}
+.day-head .dh-tx .dh-date{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+.day-note{
+  margin:18px 0 26px;padding:14px 18px;border-radius:var(--radius);
+  background:var(--surface-warm);border-left:4px solid var(--gold);
+  font-size:14px;color:var(--ink-soft)
+}
+.day-note strong{color:var(--ink)}
+
+/* ===== TIMELINE / CARDS ===== */
+.timeline{display:grid;gap:16px}
+@media(min-width:760px){.timeline{grid-template-columns:1fr 1fr}}
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px;cursor:pointer;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+  box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--terracotta)}
+.card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.card.full{grid-column:1/-1}
+.card-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.card-time{
+  font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:var(--terracotta-deep);
+  background:var(--surface-warm);padding:4px 12px;border-radius:10px;flex:0 0 auto
+}
+.card-cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive2);margin-left:auto}
+.card h3{font-family:'Fraunces',serif;font-weight:600;font-size:19px;line-height:1.2;margin-bottom:4px}
+.card .card-addr{font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:6px}
+.card .card-tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-warm);color:var(--ink-soft)}
+.tag.book{background:#FBE8E0;color:var(--terracotta-deep)}
+.tag.free{background:#E8F0E0;color:var(--olive2)}
+.tag.food{background:#F6EAD2;color:#8A6A1E}
+.tag.kid{background:#E6EEF8;color:#3B5C8A}
+.card-hint{position:absolute;right:16px;bottom:14px;font-size:12px;color:var(--terracotta);font-weight:600;opacity:0;transition:.2s}
+.card:hover .card-hint{opacity:1}
+
+/* ===== MODAL ===== */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;background:rgba(42,33,27,.55);
+  backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;
+}
+.modal-overlay.open{display:flex}
+@media(min-width:640px){.modal-overlay{align-items:center}}
+.modal{
+  background:var(--surface);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;
+  border-radius:24px 24px 0 0;box-shadow:var(--shadow-lg);
+  transform:translateY(24px);opacity:0;transition:.28s cubic-bezier(.16,1,.3,1)
+}
+@media(min-width:640px){.modal{border-radius:24px}}
+.modal-overlay.open .modal{transform:translateY(0);opacity:1}
+.modal-map{width:100%;height:240px;background:var(--surface-warm);position:relative}
+.modal-map .leaflet-container{height:100%;width:100%;border-radius:24px 24px 0 0}
+@media(min-width:640px){.modal-map .leaflet-container{border-radius:24px 24px 0 0}}
+.modal-close{
+  position:absolute;top:14px;right:14px;z-index:1000;width:38px;height:38px;border-radius:50%;
+  border:none;background:rgba(255,255,255,.92);color:var(--ink);font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)
+}
+.modal-body{padding:22px}
+.modal-time-cat{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.modal-time{font-family:'Fraunces',serif;font-weight:700;color:var(--terracotta-deep);font-size:16px}
+.modal-cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive2)}
+.modal h2{font-family:'Fraunces',serif;font-weight:700;font-size:26px;line-height:1.1;margin-bottom:6px}
+.modal-addr{font-size:14px;color:var(--ink-soft);display:flex;align-items:flex-start;gap:7px;margin-bottom:16px}
+.modal-desc{font-size:15px;color:var(--ink);line-height:1.6;margin-bottom:16px}
+.modal-info{display:grid;gap:10px;margin-bottom:18px}
+.info-row{display:flex;gap:10px;align-items:flex-start;font-size:14px;padding:10px 14px;background:var(--surface-warm);border-radius:12px}
+.info-row .il{font-weight:700;color:var(--ink);flex:0 0 auto}
+.info-row.warn{background:#FBE8E0;color:var(--terracotta-deep)}
+.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.modal-actions{display:grid;gap:10px}
+@media(min-width:420px){.modal-actions{grid-template-columns:1fr 1fr}}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 18px;border-radius:14px;font-weight:600;font-size:14px;
+  text-decoration:none;cursor:pointer;border:none;transition:.18s;font-family:inherit
+}
+.btn-primary{background:var(--terracotta);color:#fff}
+.btn-primary:hover{background:var(--terracotta-deep)}
+.btn-ghost{background:var(--surface-warm);color:var(--ink);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--terracotta);color:var(--terracotta)}
+
+/* ===== RESERVAS PANEL ===== */
+.resv{padding:56px 0}
+.resv-grid{display:grid;gap:16px}
+@media(min-width:760px){.resv-grid{grid-template-columns:repeat(3,1fr)}}
+.resv-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
+.resv-card h4{font-family:'Fraunces',serif;font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.resv-card.urgent{border-top:4px solid var(--terracotta)}
+.resv-card.soon{border-top:4px solid var(--gold)}
+.resv-card.later{border-top:4px solid var(--olive2)}
+.resv-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+.resv-item:last-child{border-bottom:none}
+.resv-item input{width:18px;height:18px;margin-top:2px;accent-color:var(--terracotta);flex:0 0 auto;cursor:pointer}
+.resv-item a{color:var(--terracotta-deep);text-decoration:none;font-weight:600}
+.resv-item a:hover{text-decoration:underline}
+.resv-item label{cursor:pointer}
+.resv-item.done label{text-decoration:line-through;opacity:.5}
+
+/* ===== SECTION TITLE ===== */
+.sec-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:-.01em;margin-bottom:8px}
+.sec-lead{color:var(--ink-soft);font-size:16px;max-width:620px;margin-bottom:32px}
+
+/* ===== IMPROVEMENTS / EXTRA ===== */
+.extra{background:var(--surface-warm);padding:56px 0;margin-top:40px}
+.extra-grid{display:grid;gap:16px}
+@media(min-width:640px){.extra-grid{grid-template-columns:1fr 1fr}}
+.extra-card{background:var(--surface);border-radius:var(--radius-lg);padding:22px;border:1px solid var(--border)}
+.extra-card .ec-ic{font-size:26px;margin-bottom:10px;display:block}
+.extra-card h4{font-family:'Fraunces',serif;font-size:18px;margin-bottom:6px}
+.extra-card p{font-size:14px;color:var(--ink-soft)}
+
+/* ===== WEATHER STRIP ===== */
+.weather{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.wx{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-size:13px;color:rgba(250,246,239,.85)}
+.wx b{color:#fff}
+
+/* ===== FOOTER ===== */
+footer{background:#2A211B;color:rgba(250,246,239,.7);padding:40px 0;text-align:center;font-size:14px}
+footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
+footer b{color:var(--gold);font-family:'Fraunces',serif}
+
+/* progress bar */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--terracotta);z-index:100;width:0;transition:width .1s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">● Viagem em Família · Maju 3 anos</span>
+    <h1>Roma <em>2025</em></h1>
+    <p class="hero-sub">Seis dias entre fontes, basílicas e gelatos. Um roteiro pensado no ritmo de uma família com criança pequena — com madrugadas mágicas e pausas estratégicas.</p>
+    <div class="hero-meta">
+      <div class="meta-pill"><span class="ic">📅</span><span class="tx"><b>29 ago — 03 set</b><span>6 dias · 5 noites</span></span></div>
+      <div class="meta-pill"><span class="ic">🏨</span><span class="tx"><b>Mercure Roma Corso Trieste</b><span>Via Gradisca, 31</span></span></div>
+      <div class="meta-pill"><span class="ic">📍</span><span class="tx"><b>33 paradas mapeadas</b><span>Toque para ver rota</span></span></div>
+    </div>
+    <div class="weather">
+      <span class="wx">☀️ Agosto em Roma: <b>30–35°C</b></span>
+      <span class="wx">💧 Leve água sempre</span>
+      <span class="wx">🧴 Protetor + chapéu para a Maju</span>
+    </div>
+  </div>
+</header>
+
+<!-- DAY NAV -->
+<nav class="daynav" id="daynav">
+  <div class="daynav-inner">
+    <a href="#reservas">📋 Reservas</a>
+    <a href="#d1" class="active">29/08 <small>Chegada</small></a>
+    <a href="#d2">30/08 <small>Vaticano</small></a>
+    <a href="#d3">31/08 <small>Dia da Maju</small></a>
+    <a href="#d4">01/09 <small>Roma Antiga</small></a>
+    <a href="#d5">02/09 <small>Trevi+Trastevere</small></a>
+    <a href="#d6">03/09 <small>Retorno</small></a>
+  </div>
+</nav>
+
+<main id="app"></main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modal">
+    <div class="modal-map" id="modalMap">
+      <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <b>Roteiro Roma 2025</b>
+    <span>Personalizado para a família · Buon viaggio!</span>
+  </div>
+</footer>
+
+<script>
+// Roteiro Roma 2025 - dados estruturados
+// lat/lng reais de cada ponto. cat: tipo. tags. info: linhas extras. warn: alerta.
+const HOTEL = {name:"Hotel Mercure Roma Corso Trieste", lat:41.9215, lng:12.5145};
+
+const DAYS = [
+  {
+    id:"d1", date:"29/08 · Sexta", title:"Chegada + Mercado + Centro Histórico",
+    note:"<strong>Antes de sair:</strong> mercado obrigatório para abastecer lanches do Vaticano (água, frutas para a Maju, pão e frios). Saída do hotel às 16h00.",
+    stops:[
+      {t:"Check-in",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31 — zona Trieste",lat:41.9215,lng:12.5145,
+       desc:"Próximo ao metrô (linha B, estação Libia). Deixe as malas, descanse e prepare-se para sair ao fim da tarde.",
+       tags:[["Base","free"]]},
+      {t:"Mercado",cat:"Compras",n:"Conad (preferência)",addr:"Corso Trieste, 200",lat:41.9226,lng:12.5165,
+       desc:"Abastecimento para o dia do Vaticano. ~500m a pé. Lista: água (3x 1,5L), frutas fáceis (uva, maçã, banana), barra de cereal, pão e frios, saquinhos plásticos.",
+       info:[["Horário","Seg–Sáb 8h30–20h · Dom 9h–13h30 / 16h–20h"],["Backup","Carrefour Market, Viale XXI Aprile 23 — aberto 24h"]],
+       tags:[["Essencial","book"]]},
+      {t:"17h00",cat:"Monumento",n:"Pantheon",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
+       desc:"Reserve online (€5/pessoa). Chegue cedo — à tarde já está menos cheio. A cúpula com o óculo encanta a Maju.",
+       info:[["Horário","9h–19h"]],
+       tags:[["Reservar","book"],["Maju ❤","kid"]]},
+      {t:"18h00",cat:"Praça",n:"Piazza Navona",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
+       desc:"A 5 min a pé do Pantheon. Praça barroca, gratuita. Artistas de rua e três fontes espetaculares. Ótima para a criança brincar enquanto vocês tomam um gelato.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"18h50",cat:"Doce",n:"Two Sizes — Tiramisù",addr:"Via del Governo Vecchio, 88",lat:41.8979,lng:12.4709,
+       desc:"Um dos melhores tiramisu de Roma. Experimente o de pistache. Fila anda rápido.",
+       info:[["Horário","11h–22h"]],warn:"Fechado às segundas. O dia 29/08 é sexta — ok!",
+       tags:[["Comer","food"]]},
+      {t:"19h15",cat:"Igreja",n:"Chiesa di Sant'Ignazio di Loyola",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
+       desc:"Entrada gratuita. Teto com ilusão de ótica 3D, um dos maiores truques visuais do barroco. Procure o disco dourado no chão para o efeito perfeito.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"19h45",cat:"Gelato",n:"Frigidarium — Gelato",addr:"Via del Governo Vecchio, 112",lat:41.8982,lng:12.4705,
+       desc:"Considerado um dos melhores gelatos de Roma. Peça coberto com chocolate quente — especialidade da casa.",
+       tags:[["Comer","food"]]},
+      {t:"20h00",cat:"Monumento",n:"Fontana di Trevi — Noturna",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
+       desc:"À noite é mágica e menos lotada. Pague €2 para descer e ver de perto. Jogue a moeda com a Maju.",
+       tags:[["Maju ❤","kid"]]},
+      {t:"20h45",cat:"Jantar",n:"Trattoria Al Moro",addr:"Vicolo delle Bollette, 13",lat:41.9006,lng:12.4828,
+       desc:"Clássico romano a 2 min da Trevi.",
+       warn:"Avaliações indicam que NÃO aceitam crianças no jantar. Confirme ao reservar! Fechado aos domingos.",
+       tags:[["Reservar","book"],["Comer","food"]]}
+    ]
+  },
+  {
+    id:"d2", date:"30/08 · Sábado", title:"Vaticano — Dia Inteiro",
+    note:"<strong>Na mochila:</strong> água e lanches do mercado, chapéu, protetor, roupas que cubram ombros e joelhos (exigido na Basílica), passaportes para retirar ingresso.",
+    stops:[
+      {t:"09h00",cat:"Museu",n:"Museus do Vaticano",addr:"00120 Cidade do Vaticano",lat:41.9065,lng:12.4536,
+       desc:"Reserve ONLINE com muita antecedência — agosto é altíssima temporada. Foque na Capela Sistina logo na entrada e no Museu Egípcio (a Maju vai adorar as múmias). Calcule 3 a 4 horas.",
+       info:[["Fechado","Domingos (hoje é sábado — ok)"]],
+       tags:[["Reservar","book"],["Maju ❤","kid"]]},
+      {t:"12h30",cat:"Almoço",n:"Pastasciutta",addr:"Próximo ao Vaticano",lat:41.9070,lng:12.4575,
+       desc:"Restaurante acessível com boa massa italiana. Ótima pausa entre os museus e a Basílica.",
+       tags:[["Comer","food"]]},
+      {t:"14h00",cat:"Basílica",n:"Basílica de São Pedro",addr:"Piazza San Pietro",lat:41.9022,lng:12.4539,
+       desc:"Entrada gratuita. Fila pode ser longa — chegue cedo ou use o corredor vindo dos Museus. A Pietà de Michelangelo e a cúpula de Bernini são inesquecíveis.",
+       info:[["Abertura","A partir das 7h"]],
+       tags:[["Gratuito","free"]]},
+      {t:"16h30",cat:"Monumento",n:"Castel Sant'Angelo",addr:"Lungotevere Castello, 50",lat:41.9031,lng:12.4663,
+       desc:"Reserve online (~€20). A vista do terraço sobre Roma ao entardecer é um dos melhores momentos da cidade. Tem café no alto com vista para São Pedro.",
+       info:[["Horário","9h–19h30"]],warn:"Fechado às segundas. Hoje é sábado — ok!",
+       tags:[["Reservar","book"]]},
+      {t:"20h00",cat:"Jantar",n:"Roscioli Salumeria con Cucina",addr:"Via dei Giubbonari, 21",lat:41.8945,lng:12.4731,
+       desc:"A carbonara aqui é referência em Roma. Ambiente de salumeria italiana autêntica. Movimentado, mas qualidade excepcional.",
+       warn:"RESERVAR COM ANTECEDÊNCIA — é o jantar mais disputado do roteiro!",
+       tags:[["Reservar","book"],["Comer","food"]]}
+    ]
+  },
+  {
+    id:"d3", date:"31/08 · Domingo", title:"Dia da Maju",
+    note:"Dia pensado para a Maju. Tudo concentrado na zona norte, perto do hotel. <strong>Retorne cedo:</strong> amanhã tem saída às 6h15.",
+    stops:[
+      {t:"10h00",cat:"Museu",n:"Explora — Museu das Crianças",addr:"Via Flaminia, 80/86",lat:41.9128,lng:12.4760,
+       desc:"Turnos fechados de 1h45. Tudo interativo em escala infantil — para 3 anos funciona perfeitamente. Escolha o turno das 10h.",
+       info:[["Sessões","10h, 12h, 15h ou 17h"],["Fechado","Segundas (hoje é domingo — ok)"]],
+       tags:[["Reservar","book"],["Maju ❤","kid"]]},
+      {t:"12h45",cat:"Almoço",n:"Dal Bolognese",addr:"Piazza del Popolo, 1",lat:41.9108,lng:12.4763,
+       desc:"Clássico romano com vista para a Piazza del Popolo — um dos endereços mais charmosos de Roma. Peça a tagliatelle al ragù.",
+       info:[["Almoço","12h45–15h"]],
+       tags:[["Reservar","book"],["Comer","food"]]},
+      {t:"14h00",cat:"Parque",n:"Villa Borghese",addr:"Villa Borghese",lat:41.9142,lng:12.4922,
+       desc:"Parque enorme e arborizado — perfeito para crianças. Alugue bicicleta ou carrinho de pedal (locação dentro do parque). A Maju pode correr à vontade.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"16h00",cat:"Praça",n:"Piazza del Popolo",addr:"Piazza del Popolo",lat:41.9107,lng:12.4763,
+       desc:"Praça grandiosa e aberta, com dois obeliscos e fontes. A vista das duas igrejas gêmeas na entrada é clássica.",
+       tags:[["Gratuito","free"]]},
+      {t:"18h00",cat:"Gelato",n:"La Romana",addr:"Centro / zona norte",lat:41.9095,lng:12.4960,
+       desc:"Uma das melhores gelaterias de Roma — gelato de despedida do dia.",
+       tags:[["Comer","food"]]}
+    ]
+  },
+  {
+    id:"d4", date:"01/09 · Segunda", title:"Roma Antiga — Coliseu",
+    note:"<strong>Dia de madrugada:</strong> saída às 06h15. Leve água, chapéu e protetor — não há sombra no Coliseu. Ingressos em colosseo.it (Coliseu + Foro + Palatino).",
+    stops:[
+      {t:"06h45",cat:"Mirante",n:"Giardinetto del Monte Oppio",addr:"Via del Monte Oppio",lat:41.8908,lng:12.4955,
+       desc:"A melhor foto do Coliseu de Roma — jardim elevado com vista lateral, quase deserto às 7h. Luz dourada de manhã cedo é perfeita para fotos em família.",
+       info:[["Abre","7h (verifique no local)"]],
+       tags:[["Foto","free"],["Gratuito","free"]]},
+      {t:"09h00",cat:"Monumento",n:"Coliseu",addr:"Piazza del Colosseo, 1",lat:41.8902,lng:12.4922,
+       desc:"Agosto tem fila enorme às 9h — ingresso reservado online é obrigatório. A Maju vai adorar o tamanho impressionante. Calcule 1h30 a 2h.",
+       info:[["Aberto","8h30–16h30"]],
+       tags:[["Reservar","book"],["Maju ❤","kid"]]},
+      {t:"10h45",cat:"Sítio",n:"Foro Romano + Palatino",addr:"Via della Salara Vecchia",lat:41.8925,lng:12.4853,
+       desc:"Incluso no mesmo ingresso do Coliseu. Use o app gratuito do Colosseo para 'ver' como era. Para criança pequena, 45–60 min já é ótimo. O Palatino tem vista linda sobre o Foro.",
+       tags:[["Incluído","free"]]},
+      {t:"13h00",cat:"Almoço",n:"Supplizio",addr:"Via dei Banchi Vecchi, 143",lat:41.8987,lng:12.4682,
+       desc:"Para experimentar o supplì romano — bolinha de arroz frita com recheio. Peça o Cacio e Pepe e o clássico de tomate.",
+       info:[["Horário","12h–15h30 e 17h–21h30"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
+       tags:[["Comer","food"]]},
+      {t:"15h00",cat:"Sítio",n:"Circo Máximo",addr:"Via dei Cerchi",lat:41.8861,lng:12.4853,
+       desc:"O maior circo de corridas da antiguidade — imagine 250 mil pessoas. Gratuito para passear ao redor. A Maju pode correr na grama.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"19h30",cat:"Jantar",n:"Trattoria Vecchia Roma",addr:"Via Ferruccio, 12",lat:41.8957,lng:12.5072,
+       desc:"Perto do Coliseu — logisticamente perfeito. Os rolos de parmesão e a cacio e pepe são destaques.",
+       info:[["Jantar","19h–23h"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
+       tags:[["Reservar","book"],["Comer","food"]]},
+      {t:"20h30",cat:"Monumento",n:"Coliseu Iluminado — Noturno",addr:"Piazza del Colosseo",lat:41.8902,lng:12.4922,
+       desc:"Volte para ver o Coliseu iluminado à noite — completamente diferente, ainda mais impressionante. Foto obrigatória com as luzes douradas.",
+       tags:[["Foto","free"]]}
+    ]
+  },
+  {
+    id:"d5", date:"02/09 · Terça", title:"Trevi + Compras + Trastevere",
+    note:"<strong>Outro dia de madrugada</strong> — vale muito a pena. Saída às 06h15. A Fontana di Trevi às 7h é uma das experiências mais marcantes da viagem.",
+    stops:[
+      {t:"06h45",cat:"Monumento",n:"Fontana di Trevi — Madrugada",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
+       desc:"A experiência da viagem — a fonte quase vazia às 7h com a luz suave da manhã é absolutamente mágica. Totalmente diferente da versão lotada.",
+       warn:"Às terças o acesso ao nível inferior abre às 9h — confirme o horário exato.",
+       tags:[["Foto","free"]]},
+      {t:"07h15",cat:"Café",n:"Antico Forno Roscioli",addr:"Via dei Chiavari, 34",lat:41.8954,lng:12.4730,
+       desc:"Abre às 7h30. O cornetto de pistache é lendário — vale a fila curta da manhã. Pizza al taglio com burrata também é incrível.",
+       info:[["Abre","7h30"]],
+       tags:[["Comer","food"]]},
+      {t:"08h30",cat:"Monumento",n:"Pantheon — Manhã",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
+       desc:"Segunda visita, agora de manhã cedo, com luz diferente e muito menos gente. Ótimo para fotos internas sem multidão.",
+       tags:[["Foto","free"]]},
+      {t:"09h30",cat:"Praça",n:"Piazza Navona — Manhã",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
+       desc:"De manhã é completamente diferente da versão noturna — quase vazia, com os bares locais abrindo. Ótima para um café sentado.",
+       tags:[["Gratuito","free"]]},
+      {t:"10h30",cat:"Igreja",n:"Igreja de Sant'Ignazio",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
+       desc:"Com luz natural o teto de trompe-l'oeil é ainda mais impressionante. Use o espelho no chão com calma.",
+       tags:[["Gratuito","free"]]},
+      {t:"11h30",cat:"Almoço",n:"All'Antico Vinaio",addr:"Piazza della Maddalena, 3",lat:41.8997,lng:12.4768,
+       desc:"A focaccia recheada mais famosa de Roma. Chegue antes do rush. Porções enormes: um sanduíche serve dois adultos.",
+       tags:[["Comer","food"]]},
+      {t:"13h00",cat:"Compras",n:"Compras no Centro",addr:"Micro Art Shop · Emporio Centrale · Gran Café Marcel",lat:41.8995,lng:12.4760,
+       desc:"Tarde para lembranças e passeio pelo centro.",
+       tags:[["Compras","free"]]},
+      {t:"15h30",cat:"Lanche",n:"La Vita è un Mozzico",addr:"Centro histórico",lat:41.8970,lng:12.4750,
+       desc:"Sanduíche estilo focaccia — ótimo lanche da tarde antes do Trastevere.",
+       tags:[["Comer","food"]]},
+      {t:"17h00",cat:"Bairro",n:"Trastevere",addr:"Rione Trastevere",lat:41.8896,lng:12.4695,
+       desc:"O bairro mais charmoso de Roma — ruas de pedra, hera nas fachadas, gatos nas escadas. Perfeito para passear sem destino. À noite fica animado com música ao vivo.",
+       tags:[["Passeio","free"]]},
+      {t:"19h30",cat:"Jantar",n:"Da Enzo al 29 (Opção 1)",addr:"Via dei Vascellari, 29",lat:41.8879,lng:12.4762,
+       desc:"Tradição romana autêntica no Trastevere. Carbonara e cacio e pepe são destaques. Fechado aos domingos — hoje é terça ✓",
+       warn:"RESERVAR. Alternativa sem reserva: Tonnarello (Via della Paglia, 1) — 4.7 com +100k avaliações, mesas ao ar livre, chegue cedo para a fila.",
+       tags:[["Reservar","book"],["Comer","food"]]}
+    ]
+  },
+  {
+    id:"d6", date:"03/09 · Quarta", title:"Check-out e Retorno",
+    note:"<strong>Checklist de partida.</strong> Se o voo for à tarde: guarde as malas na recepção e aproveite o bairro Parioli para um último café.",
+    stops:[
+      {t:"Check-out",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31",lat:41.9215,lng:12.5145,
+       desc:"Faça o check-out no horário combinado. Guarde as malas se o voo for à tarde.",
+       tags:[["Base","free"]]},
+      {t:"Transfer",cat:"Aeroporto",n:"Aeroporto de Fiumicino (FCO)",addr:"Leonardo da Vinci",lat:41.8003,lng:12.2389,
+       desc:"Metrô linha B (Libia) conecta à linha A (Termini → Fiumicino). Leonardo Express: Termini → Fiumicino em 32 min (~€14/pessoa). Táxi fixo hotel→aeroporto: ~€50–60 (tarifa tabelada).",
+       info:[["Trem","Leonardo Express, ~€14, 32 min"],["Táxi","~€50–60 tarifa fixa"]],
+       tags:[["Transfer","book"]]}
+    ]
+  }
+];
+
+const RESERVAS = {
+  urgent:{title:"🔴 Urgente — 2 a 3 semanas antes",items:[
+    {t:"Museus do Vaticano",u:"https://www.museivaticani.va"},
+    {t:"Roscioli Salumeria con Cucina",u:"https://www.salumeriaroscioli.com"},
+    {t:"Explora — Museu das Crianças (turno 10h, 31/08)",u:"https://www.mdbr.it"}
+  ]},
+  soon:{title:"🟡 1 semana antes",items:[
+    {t:"Coliseu + Foro + Palatino",u:"https://www.colosseo.it"},
+    {t:"Dal Bolognese (almoço sáb 31/08)",u:"https://roma.dalbolognese.it"},
+    {t:"Da Enzo al 29 (jantar ter 02/09)",u:"https://www.daenzoal29.com"},
+    {t:"Galleria Borghese",u:"https://galleriaborghese.cultura.gov.it"}
+  ]},
+  later:{title:"🟢 Alguns dias antes",items:[
+    {t:"Pantheon",u:"https://www.pantheonroma.com"},
+    {t:"Castel Sant'Angelo",u:"https://castelsantangelo.beniculturali.it"},
+    {t:"Trattoria Vecchia Roma (jantar seg 01/09)",u:""},
+    {t:"Trattoria Al Moro — confirmar crianças no jantar!",u:""}
+  ]}
+};
+
+</script>
+<script>
+// ===== RENDER ROTEIRO =====
+const app = document.getElementById('app');
+
+// Painel de reservas
+function renderReservas(){
+  const blocks = [['urgent','urgent'],['soon','soon'],['later','later']].map(([k,cls])=>{
+    const b = RESERVAS[k];
+    const items = b.items.map((it,i)=>{
+      const link = it.u ? `<a href="${it.u}" target="_blank" rel="noopener">${it.t} ↗</a>` : `<span>${it.t}</span>`;
+      return `<div class="resv-item" data-rk="${k}-${i}">
+        <input type="checkbox" id="rk-${k}-${i}" aria-label="marcar reserva">
+        <label for="rk-${k}-${i}">${link}</label>
+      </div>`;
+    }).join('');
+    return `<div class="resv-card ${cls}"><h4>${b.title}</h4>${items}</div>`;
+  }).join('');
+  return `<section class="resv" id="reservas"><div class="wrap">
+    <h2 class="sec-title">Reservas prioritárias</h2>
+    <p class="sec-lead">Marque conforme confirmar. A ordem reflete a urgência — Vaticano, Roscioli e Explora são os gargalos de agosto.</p>
+    <div class="resv-grid">${blocks}</div>
+  </div></section>`;
+}
+
+// Cards dos dias
+function renderDays(){
+  return DAYS.map(d=>{
+    const cards = d.stops.map((s,i)=>{
+      const tags = (s.tags||[]).map(([tx,cl])=>`<span class="tag ${cl}">${tx}</span>`).join('');
+      return `<article class="card" tabindex="0" role="button" data-day="${d.id}" data-idx="${i}" aria-label="Abrir ${s.n}">
+        <div class="card-top">
+          <span class="card-time">${s.t}</span>
+          <span class="card-cat">${s.cat}</span>
+        </div>
+        <h3>${s.n}</h3>
+        <div class="card-addr">📍 ${s.addr}</div>
+        <div class="card-tags">${tags}</div>
+        <span class="card-hint">Ver mapa + rota →</span>
+      </article>`;
+    }).join('');
+    return `<section class="day" id="${d.id}"><div class="wrap">
+      <div class="day-head">
+        <span class="day-badge">${d.date.split(' ')[0]}</span>
+        <div class="dh-tx"><h2>${d.title}</h2><div class="dh-date">${d.date}</div></div>
+      </div>
+      <div class="day-note">${d.note}</div>
+      <div class="timeline">${cards}</div>
+    </div></section>`;
+  }).join('');
+}
+
+// Extras / melhorias propostas
+function renderExtras(){
+  const cards = [
+    ['🧭','Rota nativa por ponto','Cada card abre um mapa e um botão que traça a rota da sua localização atual até a atração no Google Maps ou Apple Maps.'],
+    ['🗺️','Mapa do dia inteiro','Botão por dia que abre todas as paradas em sequência no Google Maps como um roteiro multi-parada.'],
+    ['✅','Checklist de reservas','Marque o que já confirmou. O painel separa por urgência para você não perder os gargalos de agosto.'],
+    ['🌡️','Faixa de clima','Lembrete fixo de calor, água e proteção solar — agosto romano passa de 30°C.'],
+    ['📴','Funciona offline','Arquivo único, sem servidor. Salve na tela inicial do celular e acesse mesmo sem internet (o mapa precisa de rede).'],
+    ['👶','Filtro Maju','Tags destacam tudo que é amigável para a criança de 3 anos, dos parques aos museus interativos.']
+  ].map(([ic,t,p])=>`<div class="extra-card"><span class="ec-ic">${ic}</span><h4>${t}</h4><p>${p}</p></div>`).join('');
+  return `<section class="extra"><div class="wrap">
+    <h2 class="sec-title">O que mudou neste roteiro</h2>
+    <p class="sec-lead">Melhorias de UX aplicadas sobre o PDF original, pensadas para uso no celular durante a viagem.</p>
+    <div class="extra-grid">${cards}</div>
+  </div></section>`;
+}
+
+app.innerHTML = renderReservas() + renderDays() + renderExtras();
+
+// ===== MODAL + MAPA =====
+const overlay = document.getElementById('overlay');
+const modalBody = document.getElementById('modalBody');
+const modalMapEl = document.getElementById('modalMap');
+let leafletMap = null;
+let lastFocused = null;
+
+function mapsRouteUrl(lat,lng,name){
+  // origin=current location (omitido => "Your location"), destination = coords
+  return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&destination_place_id=&travelmode=walking`;
+}
+function appleMapsUrl(lat,lng){
+  return `https://maps.apple.com/?daddr=${lat},${lng}&dirflg=w`;
+}
+
+function openModal(day,idx){
+  const d = DAYS.find(x=>x.id===day);
+  const s = d.stops[idx];
+  lastFocused = document.activeElement;
+
+  const info = (s.info||[]).map(([l,v])=>`<div class="info-row"><span class="il">${l}</span><span>${v}</span></div>`).join('');
+  const warn = s.warn ? `<div class="info-row warn"><span class="il">⚠</span><span>${s.warn}</span></div>` : '';
+  const tags = (s.tags||[]).map(([tx,cl])=>`<span class="tag ${cl}">${tx}</span>`).join('');
+
+  modalBody.innerHTML = `
+    <div class="modal-time-cat"><span class="modal-time">${s.t}</span><span class="modal-cat">${s.cat}</span></div>
+    <h2 id="modalTitle">${s.n}</h2>
+    <div class="modal-addr">📍 <span>${s.addr}</span></div>
+    <p class="modal-desc">${s.desc}</p>
+    <div class="modal-info">${info}${warn}</div>
+    <div class="modal-tags">${tags}</div>
+    <div class="modal-actions">
+      <a class="btn btn-primary" href="${mapsRouteUrl(s.lat,s.lng,s.n)}" target="_blank" rel="noopener">🧭 Traçar rota até aqui</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=${s.lat},${s.lng}" target="_blank" rel="noopener">🔎 Abrir no Maps</a>
+    </div>`;
+
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+
+  // mapa
+  setTimeout(()=>{
+    if(leafletMap){leafletMap.remove();leafletMap=null;}
+    leafletMap = L.map(modalMapEl,{zoomControl:true,attributionControl:true}).setView([s.lat,s.lng],16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      maxZoom:19, attribution:'© OpenStreetMap'
+    }).addTo(leafletMap);
+    const icon = L.divIcon({className:'',html:`<div style="background:#C2562E;width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)"></div>`,iconSize:[26,26],iconAnchor:[13,26]});
+    L.marker([s.lat,s.lng],{icon}).addTo(leafletMap).bindPopup(`<b>${s.n}</b><br>${s.addr}`);
+    leafletMap.invalidateSize();
+  },120);
+
+  document.getElementById('modalClose').focus();
+}
+
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow='';
+  if(leafletMap){setTimeout(()=>{leafletMap.remove();leafletMap=null;},300);}
+  if(lastFocused) lastFocused.focus();
+}
+
+// eventos cards
+app.addEventListener('click',e=>{
+  const card = e.target.closest('.card');
+  if(card){openModal(card.dataset.day, +card.dataset.idx);}
+  const item = e.target.closest('.resv-item');
+  if(item && e.target.tagName==='INPUT'){
+    item.classList.toggle('done', e.target.checked);
+  }
+});
+app.addEventListener('keydown',e=>{
+  const card = e.target.closest('.card');
+  if(card && (e.key==='Enter'||e.key===' ')){e.preventDefault();openModal(card.dataset.day,+card.dataset.idx);}
+});
+document.getElementById('modalClose').addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();});
+
+// ===== SCROLL: progress + nav ativa =====
+const progress = document.getElementById('progress');
+const navLinks = [...document.querySelectorAll('.daynav a')];
+const sections = ['reservas',...DAYS.map(d=>d.id)].map(id=>document.getElementById(id)).filter(Boolean);
+
+window.addEventListener('scroll',()=>{
+  const h = document.documentElement;
+  const pct = (h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  progress.style.width = pct+'%';
+
+  let current = sections[0]?.id;
+  for(const sec of sections){
+    if(sec.getBoundingClientRect().top <= 120) current = sec.id;
+  }
+  navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current));
+},{passive:true});
+
+</script>
+</body>
+</html>
