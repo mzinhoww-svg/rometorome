@@ -320,9 +320,14 @@ const RESERVA = {
 const DAYS = [
   {
     id:"d1", date:"29/08 · Sexta", title:"Chegada + Vaticano à Noite",
-    note:"<strong>Dia reorganizado por causa da reserva confirmada dos Museus do Vaticano às 17h30</strong> (a data que saiu foi 29/08, não 30/08 como no plano original — por isso o Vaticano trocou de dia com a caminhada pelo centro histórico, que agora acontece no dia 2). Check-in a partir das 14h. Antes de sair: mercado obrigatório para abastecer lanches do Vaticano. Leve roupas que cubram ombros e joelhos (exigido dentro dos Museus) e os passaportes para retirar o ingresso.",
+    note:"<strong>Dia reorganizado por causa da reserva confirmada dos Museus do Vaticano às 17h30</strong> (a data que saiu foi 29/08, não 30/08 como no plano original — por isso o Vaticano trocou de dia com a caminhada pelo centro histórico, que agora acontece no dia 2). O voo pousa às 10h10 — dá folga tranquila até o check-in às 14h. Antes de sair: mercado obrigatório para abastecer lanches do Vaticano. Leve roupas que cubram ombros e joelhos (exigido dentro dos Museus) e os passaportes para retirar o ingresso.",
     stops:[
+      {t:"10h10",cat:"Aeroporto",n:"Chegada em Roma — voo LA8120",addr:"Aeroporto Leonardo da Vinci (FCO)",lat:41.8003,lng:12.2389,
+       desc:"RESERVA CONFIRMADA — voo LA8120 (773), Guarulhos → Roma, saída 28/08 17h55, chegada 29/08 10h10 (voo noturno, +1 dia). Depois da imigração e bagagem, siga para o hotel.",
+       info:[["Voo doméstico antes","LA3393, Cuiabá (CGB) → Guarulhos (GRU), 28/08 09h10–12h20"],["Transfer ao hotel","Leonardo Express até Termini (~€14, 32 min) + metrô linha B até Libia"]],
+       tags:[["Confirmado","ok"]]},
       {t:"Check-in",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31 — zona Trieste",lat:41.9215,lng:12.5145,
+       leg:{mode:"transit",min:60,dist:"~30 km"},
        desc:"Próximo ao metrô (linha B, estação Libia). Deixe as malas, descanse e prepare-se para sair ao fim da tarde.",
        tags:[["Base","free"]]},
       {t:"Mercado",cat:"Compras",n:"Conad (preferência)",addr:"Corso Trieste, 200",lat:41.9226,lng:12.5165,
@@ -661,9 +666,9 @@ const DAYS = [
     ]
   },
   {
-    id:"d11", date:"08/09 · Terça", title:"Retorno a Roma + Devolução do Carro",
+    id:"d11", date:"08/09 · Terça", title:"Retorno a Roma + Devolução do Carro + Voo",
     travel:"driving",
-    note:"<strong>Devolução confirmada às 8h30 em Roma Termini</strong> (reserva Drivalia IT26FLX4ahmjr) — não em Fiumicino, e não no dia 07 como no plano provisório anterior. Isso pede saída de madrugada: Salerno → Roma são ~270 km / ~3h, então partam por volta das 5h00 para chegar com folga. Abasteça o tanque antes — a devolução costuma exigir tanque cheio.",
+    note:"<strong>Devolução confirmada às 8h30 em Roma Termini</strong> (reserva Drivalia IT26FLX4ahmjr) e voo de volta confirmado às 13h05 do Fiumicino — a folga entre os dois é justa mas tranquila. Isso pede saída de madrugada: Salerno → Roma são ~270 km / ~3h, então partam por volta das 5h00 para chegar com folga. Abasteça o tanque antes — a devolução costuma exigir tanque cheio.",
     stops:[
       {t:"05h00",cat:"Hotel",n:"Saída de Salerno",addr:"Salerno — hospedagem a confirmar",lat:40.6806,lng:14.7594,
        desc:"Saída de madrugada — confira o tanque cheio antes de pegar a estrada e se não ficou nada na mala do carro.",
@@ -677,14 +682,21 @@ const DAYS = [
       {t:"08h30",cat:"Carro",n:"Devolução do carro — Roma Termini",addr:"Via Giovanni Giolitti — Stazione Termini (Drivalia)",lat:41.9003,lng:12.5045,
        leg:{mode:"car",min:90,dist:"~135 km"},
        desc:"RESERVA CONFIRMADA — devolução às 8h30 no mesmo balcão da retirada (Drivalia, reserva IT26FLX4ahmjr). Fotografe o carro por todos os lados antes de entregar e guarde o comprovante.",
-       info:[["Balcão","Terça: 8h30–19h"],["Depois da devolução","Se o voo sair de Fiumicino, pegue o Leonardo Express ali mesmo na Termini (~€14, 32 min)"]],
-       tags:[["Confirmado","ok"],["Dirigir","car"]]}
+       info:[["Balcão","Terça: 8h30–19h"],["Depois da devolução","Leonardo Express ali mesmo na Termini até o Fiumicino (~€14, 32 min)"]],
+       tags:[["Confirmado","ok"],["Dirigir","car"]]},
+      {t:"13h05",cat:"Aeroporto",n:"Voo de volta — LA8121",addr:"Aeroporto Leonardo da Vinci (FCO)",lat:41.8003,lng:12.2389,
+       leg:{mode:"transit",min:35,dist:"~30 km"},
+       desc:"RESERVA CONFIRMADA — voo LA8121 (773), Roma → Guarulhos, 13h05–20h15 (12h10 de voo). Chegando de Termini às ~9h, dá folga de sobra para o check-in de voo internacional (recomendado 3h antes).",
+       info:[["Conexão em GRU","LA3566, Guarulhos → Cuiabá (CGB), 23h50–01h10 (+1, chegada 09/09)"]],
+       tags:[["Confirmado","ok"]]}
     ]
   }
 ];
 
 const RESERVAS = {
   confirmed:{title:"✅ Já confirmadas",items:[
+    {t:"Voos ida — CGB→GRU (LA3393) e GRU→FCO (LA8120), 28/08, chegada em Roma 29/08 10h10",u:""},
+    {t:"Voos volta — FCO→GRU (LA8121) 08/09 13h05 e GRU→CGB (LA3566) 08/09 23h50, chegada 09/09",u:""},
     {t:"Museus do Vaticano — 29/08 17h30 · 2 ingressos · cód. 2L2NFKIO19XTF24EO2",u:"https://www.museivaticani.va"},
     {t:"Roscioli Salumeria con Cucina — 30/08 14h30 (almoço) · 3 pessoas · ref. BFR2CXL2",u:"https://www.salumeriaroscioli.com"},
     {t:"Trattoria Vecchia Roma — 01/09 19h30 · 3 pessoas · nº TNkRly",u:""},
@@ -820,7 +832,7 @@ function renderReservas(){
     return '<div class="resv-card '+k+'"><h4><span class="dot '+dot+'"></span>'+lbl+'</h4>'+items+'</div>';
   }).join('');
   return '<section class="resv" id="reservas"><div class="wrap"><h2 class="sec-title">Reservas prioritárias</h2>'+
-    '<p class="sec-lead">Vaticano, Roscioli, Trattoria Vecchia Roma, Audiência Geral e o carro Drivalia já estão confirmados. O resto: marque conforme confirmar — a ordem reflete a urgência.</p>'+
+    '<p class="sec-lead">Voos, Vaticano, Roscioli, Trattoria Vecchia Roma, Audiência Geral e o carro Drivalia já estão confirmados. O resto: marque conforme confirmar — a ordem reflete a urgência.</p>'+
     '<div class="resv-grid">'+blocks+'</div></div></section>';
 }
 
