@@ -440,30 +440,26 @@ const DAYS = [
     ]
   },
   {
-    id:"d5", date:"02/09 · Terça", title:"Trevi + Compras + Trastevere",
-    note:"<strong>Outro dia de madrugada</strong> — vale muito a pena. Saída às 06h15. A Fontana di Trevi às 7h é uma das experiências mais marcantes da viagem.",
+    id:"d5", date:"02/09 · Terça", title:"Audiência Geral + Compras + Trastevere",
+    note:"<strong>Reserva confirmada da Audiência Geral com o Papa às 10h</strong> — por isso a segunda visita a Pantheon, Piazza Navona e Sant'Ignazio (que era deste dia) saiu do roteiro: vocês já visitaram os três à noite no dia 2. Saída ainda de madrugada às 06h15 para pegar a Fontana di Trevi vazia antes de seguir para o Vaticano. Leve os passaportes e o e-mail de confirmação.",
     stops:[
       {t:"06h45",cat:"Monumento",n:"Fontana di Trevi — Madrugada",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
-       desc:"A experiência da viagem — a fonte quase vazia às 7h com a luz suave da manhã é absolutamente mágica. Totalmente diferente da versão lotada.",
+       desc:"A fonte quase vazia às 7h com a luz suave da manhã é absolutamente mágica. Visita rápida hoje — a Audiência Geral pede saída logo em seguida para o Vaticano.",
        warn:"Às terças o acesso ao nível inferior abre às 9h — confirme o horário exato.",
        tags:[["Foto","free"]]},
-      {t:"07h15",cat:"Café",n:"Antico Forno Roscioli",addr:"Via dei Chiavari, 34",lat:41.8954,lng:12.4730,
-       desc:"Abre às 7h30. O cornetto de pistache é lendário — vale a fila curta da manhã. Pizza al taglio com burrata também é incrível.",
-       info:[["Abre","7h30"]],
-       tags:[["Comer","food"]]},
-      {t:"08h30",cat:"Monumento",n:"Pantheon — Manhã",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
-       desc:"Segunda visita, agora de manhã cedo, com luz diferente e muito menos gente. Ótimo para fotos internas sem multidão.",
-       tags:[["Foto","free"]]},
-      {t:"09h30",cat:"Praça",n:"Piazza Navona — Manhã",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
-       desc:"De manhã é completamente diferente da versão noturna — quase vazia, com os bares locais abrindo. Ótima para um café sentado.",
-       tags:[["Gratuito","free"]]},
-      {t:"10h30",cat:"Igreja",n:"Igreja de Sant'Ignazio",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
-       desc:"Com luz natural o teto de trompe-l'oeil é ainda mais impressionante. Use o espelho no chão com calma.",
-       tags:[["Gratuito","free"]]},
-      {t:"11h30",cat:"Almoço",n:"All'Antico Vinaio",addr:"Piazza della Maddalena, 3",lat:41.8997,lng:12.4768,
+      {t:"07h45",cat:"Audiência",n:"Fila + retirada dos ingressos",addr:"Portone di Bronzo — Praça São Pedro",lat:41.9024,lng:12.4548,
+       leg:{mode:"transit",min:20,dist:"~3 km"},
+       desc:"Retire os 3 ingressos no Portone di Bronzo (colunata direita da praça, entrando pelo lado do Palácio Apostólico) e entre na fila de segurança. Em agosto a praça enche rápido — quem chega mais cedo consegue lugar melhor.",
+       info:[["Retirada","Mesmo dia a partir das 7h30, ou véspera 8h30–13h / 15h–19h"],["Leve","Passaporte de cada um + o e-mail de confirmação"]],
+       tags:[["Confirmado","ok"]]},
+      {t:"10h00",cat:"Audiência",n:"Audiência Geral com o Papa",addr:"Praça São Pedro",lat:41.9022,lng:12.4539,
+       desc:"RESERVA CONFIRMADA — 3 ingressos, reserva nº 1771_UG_02.09/2026. O Papa passa pela praça, faz a saudação e a catequese em vários idiomas. Emocionante mesmo para quem não é praticante — a Maju vai adorar a multidão e a música.",
+       info:[["Duração","~1h30–2h, com trechos em vários idiomas"]],
+       tags:[["Confirmado","ok"],["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"12h30",cat:"Almoço",n:"All'Antico Vinaio",addr:"Piazza della Maddalena, 3",lat:41.8997,lng:12.4768,
        desc:"A focaccia recheada mais famosa de Roma. Chegue antes do rush. Porções enormes: um sanduíche serve dois adultos.",
        tags:[["Comer","food"]]},
-      {t:"13h00",cat:"Compras",n:"Compras no Centro",addr:"Micro Art Shop · Emporio Centrale · Gran Café Marcel",lat:41.8995,lng:12.4760,
+      {t:"14h00",cat:"Compras",n:"Compras no Centro",addr:"Micro Art Shop · Emporio Centrale · Gran Café Marcel",lat:41.8995,lng:12.4760,
        desc:"Tarde para lembranças e passeio pelo centro.",
        tags:[["Compras","free"]]},
       {t:"15h30",cat:"Lanche",n:"La Vita è un Mozzico",addr:"Centro histórico",lat:41.8970,lng:12.4750,
@@ -694,7 +690,8 @@ const RESERVAS = {
   confirmed:{title:"✅ Já confirmadas",items:[
     {t:"Museus do Vaticano — 29/08 17h30 · 2 ingressos · cód. 2L2NFKIO19XTF24EO2",u:"https://www.museivaticani.va"},
     {t:"Roscioli Salumeria con Cucina — 30/08 14h30 (almoço) · 3 pessoas · ref. BFR2CXL2",u:"https://www.salumeriaroscioli.com"},
-    {t:"Trattoria Vecchia Roma — 01/09 19h30 · 3 pessoas · nº TNkRly",u:""}
+    {t:"Trattoria Vecchia Roma — 01/09 19h30 · 3 pessoas · nº TNkRly",u:""},
+    {t:"Audiência Geral com o Papa — 02/09 10h00 · 3 ingressos · reserva 1771_UG_02.09/2026",u:""}
   ]},
   urgent:{title:"🔴 Urgente — 2 a 3 semanas antes",items:[
     {t:"Explora — Museu das Crianças (turno 10h, 31/08)",u:"https://www.mdbr.it"},
@@ -725,7 +722,7 @@ const RESERVAS = {
 };
 </script>
 <script>const ICONS={"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\"/>", "calendar": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "hotel": "<path d=\"M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "route": "<circle cx=\"6\" cy=\"19\" r=\"3\"/><circle cx=\"18\" cy=\"5\" r=\"3\"/><path d=\"M9 19h6a4 4 0 004-4V9\"/>", "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"/><path d=\"M7 21l3-6 2-4M11 11l4 2 2 4M9 9l2 2M10 15l-2 6\"/>", "check": "<path d=\"M20 6L9 17l-5-5\"/>", "navigation": "<path d=\"M3 11l19-9-9 19-2-8-8-2z\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4-4\"/>", "droplet": "<path d=\"M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z\"/>", "shield": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>", "utensils": "<path d=\"M3 2v7a3 3 0 003 3v10M6 2v6M9 2v6M16 2c-1.5 0-3 2-3 5s1.5 4 3 4v9\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M12 8v13M3 12h18M12 8S10 2 7 4s5 4 5 4M12 8s2-6 5-4-5 4-5 4z\"/>", "star": "<path d=\"M12 2l3 7 7 .5-5.5 4.5 1.5 7L12 17l-6.5 4 1.5-7L1.5 9.5 8.5 9z\"/>", "baby": "<path d=\"M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0\"/>", "list": "<path d=\"M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01\"/>", "map": "<path d=\"M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "camera": "<path d=\"M14.5 4l1.5 2h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3l1.5-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "wifi-off": "<path d=\"M2 8.8a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0M12 20h.01M2 2l20 20\"/>", "coffee": "<path d=\"M17 8h1a3 3 0 010 6h-1M3 8h14v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3\"/>", "plane": "<path d=\"M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7l5.1 3.4-2 4-2-1-1 1 3 2 2 3 1-1-1-2 4-2 3.4 5.1a1 1 0 001.7-.9z\"/>", "shopping": "<path d=\"M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0\"/>", "landmark": "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2L3 8h18z\"/>", "church": "<path d=\"M12 2v6M9 5h6M5 22V10l7-4 7 4v12M5 22h14M9 22v-5a3 3 0 016 0v5\"/>", "icecream": "<path d=\"M7 11a5 5 0 0110 0M7 11h10l-5 11-5-11z\"/>", "tree": "<path d=\"M12 2L7 9h3l-4 6h4l-3 5h12l-3-5h4l-4-6h3z\"/><path d=\"M12 20v2\"/>", "building": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "square": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/>", "sandwich": "<path d=\"M3 11h18l-2-4H5l-2 4zM3 11l1 5a2 2 0 002 1.5h12a2 2 0 002-1.5l1-5\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "car": "<path d=\"M5 18v2M19 18v2M4 13l1.6-4.8A2 2 0 017.5 7h9a2 2 0 011.9 1.2L20 13v5H4v-5zM4 13h16\"/><circle cx=\"7.5\" cy=\"15.5\" r=\"1\"/><circle cx=\"16.5\" cy=\"15.5\" r=\"1\"/>", "boat": "<path d=\"M3 17l2.2-6h13.6L21 17M6 11V6h12v5M12 3v3M3 20c1.5 0 1.5-1.2 3-1.2s1.5 1.2 3 1.2 1.5-1.2 3-1.2 1.5 1.2 3 1.2 1.5-1.2 3-1.2\"/>", "key": "<circle cx=\"8\" cy=\"14\" r=\"4\"/><path d=\"M11 11l9-9 2 2-2 2 2 2-3 3-2-2-2 2z\"/>", "train": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"13\" rx=\"4\"/><path d=\"M5 11h14M8 16l-2.5 4M16 16l2.5 4\"/><circle cx=\"8.5\" cy=\"8\" r=\"1\"/><circle cx=\"15.5\" cy=\"8\" r=\"1\"/>"};
-const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane", "Carro": "car", "Ferry": "boat", "Praia": "droplet", "Vila": "tree", "Gruta": "droplet", "Pizza": "utensils", "Cidade": "map", "Estrada": "car", "Duomo": "church", "Jardim": "tree"};
+const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane", "Carro": "car", "Ferry": "boat", "Praia": "droplet", "Vila": "tree", "Gruta": "droplet", "Pizza": "utensils", "Cidade": "map", "Estrada": "car", "Duomo": "church", "Jardim": "tree", "Audiência": "church"};
 const TAG_ICON={"Reservar": "calendar", "Gratuito": "gift", "Comer": "utensils", "Maju \u2764": "baby", "Foto": "camera", "Essencial": "star", "Base": "hotel", "Inclu\u00eddo": "check", "Compras": "shopping", "Passeio": "map", "Transfer": "plane", "Dirigir": "car", "Barco": "boat", "Ingresso": "calendar", "Sem reserva": "clock", "Aten\u00e7\u00e3o": "shield", "Praia": "droplet", "Confirmado": "check"};
 
 function haversine(a,b){
