@@ -107,6 +107,11 @@ html[data-theme="dark"] .card-cat{color:var(--gold)}
 .tag.free{background:#E8F0E0;color:#5E6B3B} html[data-theme="dark"] .tag.free{background:#26301C;color:#A9BE6F}
 .tag.food{background:#F6EAD2;color:#8A6A1E} html[data-theme="dark"] .tag.food{background:#352B15;color:#D9B45E}
 .tag.kid{background:#E6EEF8;color:#3B5C8A}  html[data-theme="dark"] .tag.kid{background:#1B2738;color:#8FB2E0}
+.tag.car{background:#EAE6F4;color:#524482}  html[data-theme="dark"] .tag.car{background:#241F36;color:#A79AD8}
+.tag.boat{background:#DFEFF2;color:#2F6672} html[data-theme="dark"] .tag.boat{background:#152B30;color:#7FC2CE}
+.tag.shield{background:#FAE3E3;color:#9B3535} html[data-theme="dark"] .tag.shield{background:#381E1E;color:#E58C8C}
+.tag.clock{background:#EFEBE4;color:#6B6255} html[data-theme="dark"] .tag.clock{background:#2B2822;color:#BBB0A0}
+.tag.ok{background:#DFF3E1;color:#2C6E3F} html[data-theme="dark"] .tag.ok{background:#16301C;color:#7ED99B}
 .lp-hint{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--done);width:0;transition:none;border-radius:0 0 16px 16px}
 .walk{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--ink-soft);padding:0;grid-column:1/-1;opacity:.8}
 .walk svg{color:var(--terracotta);width:.95em;height:.95em}
@@ -151,10 +156,11 @@ html[data-theme="dark"] .btn-primary{color:#15110D}
 .resv-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
 .resv-card h4{font-family:'Fraunces',serif;font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
-.dot.r{background:#C2562E}.dot.y{background:#C9A24B}.dot.g{background:#5E6B3B}
+.dot.r{background:#C2562E}.dot.y{background:#C9A24B}.dot.g{background:#5E6B3B}.dot.c{background:#2C7A57}
 .resv-card.urgent{border-top:4px solid var(--terracotta)}
 .resv-card.soon{border-top:4px solid var(--gold)}
 .resv-card.later{border-top:4px solid var(--olive2)}
+.resv-card.confirmed{border-top:4px solid #2C7A57}
 .resv-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
 .resv-item:last-child{border-bottom:none}
 .resv-item input{width:18px;height:18px;margin-top:2px;accent-color:var(--terracotta);flex:0 0 auto;cursor:pointer}
@@ -165,6 +171,12 @@ html[data-theme="dark"] .btn-primary{color:#15110D}
 
 .sec-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:-.01em;margin-bottom:8px}
 .sec-lead{color:var(--ink-soft);font-size:16px;max-width:620px;margin-bottom:30px}
+
+/* DIVISOR DE BLOCO (etapa da viagem) */
+.blockdiv{padding:48px 0 4px}
+.blockdiv .wrap{border-top:2px solid var(--border);padding-top:28px}
+.blockdiv .bd-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent,#b4573f);margin-bottom:6px}
+.blockdiv .sec-lead{margin-bottom:0}
 
 /* RESERVA HOTEL CARD */
 .bk{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:28px}
@@ -234,9 +246,9 @@ footer b{color:var(--gold);font-family:'Fraunces',serif}
       <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
     </div>
     <h1>Roma <em>2025</em></h1>
-    <p class="hero-sub">Seis dias entre fontes, basílicas e gelatos. Um roteiro pensado no ritmo de uma família com criança pequena, com madrugadas mágicas e pausas estratégicas.</p>
+    <p class="hero-sub">Seis dias entre fontes, basílicas e gelatos — e depois carro na Termini, pizza na Da Michele e a Costa Amalfitana com base em Salerno. Um roteiro pensado no ritmo de uma família com criança pequena, com madrugadas mágicas e pausas estratégicas.</p>
     <div class="hero-meta">
-      <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><b>29 ago — 03 set</b><span>6 dias · 5 noites</span></span></div>
+      <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><b>29 ago — 03 set</b><span>6 dias em Roma + Costa Amalfitana</span></span></div>
       <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01"/></svg></span><span class="tx"><b>Mercure Roma Corso Trieste</b><span>Via Gradisca, 31</span></span></div>
       <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="tx"><b id="heroCount">paradas mapeadas</b><span>Toque para ver rota</span></span></div>
     </div>
@@ -257,7 +269,12 @@ footer b{color:var(--gold);font-family:'Fraunces',serif}
     <a href="#d3">31/08 <small>Dia da Maju</small></a>
     <a href="#d4">01/09 <small>Roma Antiga</small></a>
     <a href="#d5">02/09 <small>Trevi+Trastevere</small></a>
-    <a href="#d6">03/09 <small>Retorno</small></a>
+    <a href="#d6">03/09 <small>Check-out Roma</small></a>
+    <a href="#d7">Dia 02 <small>Nápoles</small></a>
+    <a href="#d8">Dia 04 <small>Amalfi+Positano</small></a>
+    <a href="#d9">Dia 05 <small>Furore+Ravello</small></a>
+    <a href="#d10">Dia 06 <small>Capri</small></a>
+    <a href="#d11">Dia 07 <small>Retorno</small></a>
   </div>
 </nav>
 
@@ -302,8 +319,8 @@ const RESERVA = {
 
 const DAYS = [
   {
-    id:"d1", date:"29/08 · Sexta", title:"Chegada + Mercado + Centro Histórico",
-    note:"<strong>Check-in a partir das 14h.</strong> Antes de sair: mercado obrigatório para abastecer lanches do Vaticano (água, frutas para a Maju, pão e frios). Saída do hotel às 16h00.",
+    id:"d1", date:"29/08 · Sexta", title:"Chegada + Vaticano à Noite",
+    note:"<strong>Dia reorganizado por causa da reserva confirmada dos Museus do Vaticano às 17h30</strong> (a data que saiu foi 29/08, não 30/08 como no plano original — por isso o Vaticano trocou de dia com a caminhada pelo centro histórico, que agora acontece no dia 2). Check-in a partir das 14h. Antes de sair: mercado obrigatório para abastecer lanches do Vaticano. Leve roupas que cubram ombros e joelhos (exigido dentro dos Museus) e os passaportes para retirar o ingresso.",
     stops:[
       {t:"Check-in",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31 — zona Trieste",lat:41.9215,lng:12.5145,
        desc:"Próximo ao metrô (linha B, estação Libia). Deixe as malas, descanse e prepare-se para sair ao fim da tarde.",
@@ -312,54 +329,59 @@ const DAYS = [
        desc:"Abastecimento para o dia do Vaticano. ~500m a pé. Lista: água (3x 1,5L), frutas fáceis (uva, maçã, banana), barra de cereal, pão e frios, saquinhos plásticos.",
        info:[["Horário","Seg–Sáb 8h30–20h · Dom 9h–13h30 / 16h–20h"],["Backup","Carrefour Market, Viale XXI Aprile 23 — aberto 24h"]],
        tags:[["Essencial","book"]]},
-      {t:"17h00",cat:"Monumento",n:"Pantheon",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
-       desc:"Reserve online (€5/pessoa). Chegue cedo — à tarde já está menos cheio. A cúpula com o óculo encanta a Maju.",
-       info:[["Horário","9h–19h"]],
-       tags:[["Reservar","book"],["Maju ❤","kid"]]},
-      {t:"18h00",cat:"Praça",n:"Piazza Navona",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
-       desc:"A 5 min a pé do Pantheon. Praça barroca, gratuita. Artistas de rua e três fontes espetaculares. Ótima para a criança brincar enquanto vocês tomam um gelato.",
-       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
-      {t:"18h50",cat:"Doce",n:"Two Sizes — Tiramisù",addr:"Via del Governo Vecchio, 88",lat:41.8979,lng:12.4709,
-       desc:"Um dos melhores tiramisu de Roma. Experimente o de pistache. Fila anda rápido.",
-       info:[["Horário","11h–22h"]],warn:"Fechado às segundas. O dia 29/08 é sexta — ok!",
-       tags:[["Comer","food"]]},
-      {t:"19h15",cat:"Igreja",n:"Chiesa di Sant'Ignazio di Loyola",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
-       desc:"Entrada gratuita. Teto com ilusão de ótica 3D, um dos maiores truques visuais do barroco. Procure o disco dourado no chão para o efeito perfeito.",
-       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
-      {t:"19h45",cat:"Gelato",n:"Frigidarium — Gelato",addr:"Via del Governo Vecchio, 112",lat:41.8982,lng:12.4705,
-       desc:"Considerado um dos melhores gelatos de Roma. Peça coberto com chocolate quente — especialidade da casa.",
-       tags:[["Comer","food"]]},
-      {t:"20h00",cat:"Monumento",n:"Fontana di Trevi — Noturna",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
-       desc:"À noite é mágica e menos lotada. Pague €2 para descer e ver de perto. Jogue a moeda com a Maju.",
-       tags:[["Maju ❤","kid"]]},
-      {t:"20h45",cat:"Jantar",n:"Trattoria Al Moro",addr:"Vicolo delle Bollette, 13",lat:41.9006,lng:12.4828,
-       desc:"Clássico romano a 2 min da Trevi.",
-       warn:"Avaliações indicam que NÃO aceitam crianças no jantar. Confirme ao reservar! Fechado aos domingos.",
+      {t:"17h30",cat:"Museu",n:"Museus do Vaticano",addr:"00120 Cidade do Vaticano",lat:41.9065,lng:12.4536,
+       leg:{mode:"transit",min:35,dist:"~5,5 km"},
+       desc:"RESERVA CONFIRMADA — 2 ingressos adultos + reserva, código 2L2NFKIO19XTF24EO2. Entrada no fim da tarde: foque na Capela Sistina logo no início e no Museu Egípcio (a Maju vai adorar as múmias). Calcule 2h30 a 3h — em agosto os Museus abrem até mais tarde às sextas.",
+       info:[["Chegue","20 min antes, com passaporte e voucher"],["Trajeto do hotel","Metrô B (Libia) + A (Ottaviano), ~35 min, ou táxi ~20 min"],["Saída estimada","~20h00–20h30"]],
+       tags:[["Confirmado","ok"],["Maju ❤","kid"]]},
+      {t:"20h30",cat:"Jantar",n:"Taverna Angelica",addr:"Piazza A. Capponi, 6 — Borgo Pio",lat:41.9036,lng:12.4576,
+       desc:"A 6 min a pé dos Museus. Trattoria clássica do Borgo Pio, boa opção logo depois da visita — cozinha romana contemporânea, ambiente aconchegante e recebe bem crianças.",
+       info:[["Horário","12h30–15h e 19h30–23h"]],
        tags:[["Reservar","book"],["Comer","food"]]}
     ]
   },
   {
-    id:"d2", date:"30/08 · Sábado", title:"Vaticano — Dia Inteiro",
-    note:"<strong>Na mochila:</strong> água e lanches do mercado, chapéu, protetor, roupas que cubram ombros e joelhos (exigido na Basílica), passaportes para retirar ingresso.",
+    id:"d2", date:"30/08 · Sábado", title:"São Pedro + Roscioli + Centro Histórico",
+    note:"<strong>Dia mais corrido do roteiro</strong> — herdou a caminhada pelo centro histórico que era do dia 1, porque o Vaticano entrou ontem à noite. Basílica e Castel Sant'Angelo pela manhã, almoço confirmado na Roscioli às 14h30 e a virada noturna por Pantheon, Navona e Trevi. Leve água e um lanche extra para a Maju — se ela cansar à tarde, dá para pular o gelato e o Sant'Ignazio e ir direto para a Trevi e o jantar.",
     stops:[
-      {t:"09h00",cat:"Museu",n:"Museus do Vaticano",addr:"00120 Cidade do Vaticano",lat:41.9065,lng:12.4536,
-       desc:"Reserve ONLINE com muita antecedência — agosto é altíssima temporada. Foque na Capela Sistina logo na entrada e no Museu Egípcio (a Maju vai adorar as múmias). Calcule 3 a 4 horas.",
-       info:[["Fechado","Domingos (hoje é sábado — ok)"]],
-       tags:[["Reservar","book"],["Maju ❤","kid"]]},
-      {t:"12h30",cat:"Almoço",n:"Pastasciutta",addr:"Próximo ao Vaticano",lat:41.9070,lng:12.4575,
-       desc:"Restaurante acessível com boa massa italiana. Ótima pausa entre os museus e a Basílica.",
-       tags:[["Comer","food"]]},
-      {t:"14h00",cat:"Basílica",n:"Basílica de São Pedro",addr:"Piazza San Pietro",lat:41.9022,lng:12.4539,
-       desc:"Entrada gratuita. Fila pode ser longa — chegue cedo ou use o corredor vindo dos Museus. A Pietà de Michelangelo e a cúpula de Bernini são inesquecíveis.",
+      {t:"08h00",cat:"Basílica",n:"Basílica de São Pedro",addr:"Piazza San Pietro",lat:41.9022,lng:12.4539,
+       desc:"Entrada gratuita. Vá logo na abertura para evitar fila e calor — hoje a Basílica é visitada em dia separado dos Museus (visitados ontem à noite). A Pietà de Michelangelo e a cúpula de Bernini são inesquecíveis.",
        info:[["Abertura","A partir das 7h"]],
        tags:[["Gratuito","free"]]},
-      {t:"16h30",cat:"Monumento",n:"Castel Sant'Angelo",addr:"Lungotevere Castello, 50",lat:41.9031,lng:12.4663,
-       desc:"Reserve online (~€20). A vista do terraço sobre Roma ao entardecer é um dos melhores momentos da cidade. Tem café no alto com vista para São Pedro.",
+      {t:"10h00",cat:"Monumento",n:"Castel Sant'Angelo",addr:"Lungotevere Castello, 50",lat:41.9031,lng:12.4663,
+       desc:"Reserve online (~€20). A vista do terraço sobre Roma é um dos melhores momentos da cidade. Tem café no alto com vista para São Pedro.",
        info:[["Horário","9h–19h30"]],warn:"Fechado às segundas. Hoje é sábado — ok!",
        tags:[["Reservar","book"]]},
-      {t:"20h00",cat:"Jantar",n:"Roscioli Salumeria con Cucina",addr:"Via dei Giubbonari, 21",lat:41.8945,lng:12.4731,
-       desc:"A carbonara aqui é referência em Roma. Ambiente de salumeria italiana autêntica. Movimentado, mas qualidade excepcional.",
-       warn:"RESERVAR COM ANTECEDÊNCIA — é o jantar mais disputado do roteiro!",
+      {t:"12h00",cat:"Praça",n:"Campo de' Fiori",addr:"Campo de' Fiori",lat:41.8958,lng:12.4723,
+       desc:"Caminhada tranquila cruzando o Tibre até o mercado de rua mais movimentado de Roma — boa pausa para a Maju esticar as pernas antes do almoço. A 2 min a pé da Roscioli.",
+       tags:[["Passeio","free"]]},
+      {t:"14h30",cat:"Almoço",n:"Roscioli Salumeria con Cucina",addr:"Via dei Giubbonari, 21",lat:41.8945,lng:12.4731,
+       desc:"RESERVA CONFIRMADA para almoço — 3 pessoas, referência BFR2CXL2. A carbonara aqui é referência em Roma. Ambiente de salumeria italiana autêntica.",
+       info:[["Reserva","14h30 · 3 pessoas · ref. BFR2CXL2"]],
+       tags:[["Confirmado","ok"],["Comer","food"]]},
+      {t:"16h00",cat:"Monumento",n:"Pantheon",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
+       desc:"Reserve online (€5/pessoa). A cúpula com o óculo encanta a Maju.",
+       info:[["Horário","9h–19h"]],
+       tags:[["Reservar","book"],["Maju ❤","kid"]]},
+      {t:"17h00",cat:"Praça",n:"Piazza Navona",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
+       desc:"A 5 min a pé do Pantheon. Praça barroca, gratuita. Artistas de rua e três fontes espetaculares. Ótima para a criança brincar enquanto vocês tomam um gelato.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"17h50",cat:"Doce",n:"Two Sizes — Tiramisù",addr:"Via del Governo Vecchio, 88",lat:41.8979,lng:12.4709,
+       desc:"Um dos melhores tiramisu de Roma. Experimente o de pistache. Fila anda rápido.",
+       info:[["Horário","11h–22h"]],warn:"Fechado às segundas. Hoje é sábado — ok!",
+       tags:[["Comer","food"]]},
+      {t:"18h15",cat:"Igreja",n:"Chiesa di Sant'Ignazio di Loyola",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
+       desc:"Entrada gratuita. Teto com ilusão de ótica 3D, um dos maiores truques visuais do barroco. Procure o disco dourado no chão para o efeito perfeito.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"18h45",cat:"Gelato",n:"Frigidarium — Gelato",addr:"Via del Governo Vecchio, 112",lat:41.8982,lng:12.4705,
+       desc:"Considerado um dos melhores gelatos de Roma. Peça coberto com chocolate quente — especialidade da casa.",
+       tags:[["Comer","food"]]},
+      {t:"19h15",cat:"Monumento",n:"Fontana di Trevi — Noturna",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
+       desc:"À noite é mágica e menos lotada. Pague €2 para descer e ver de perto. Jogue a moeda com a Maju.",
+       tags:[["Maju ❤","kid"]]},
+      {t:"20h00",cat:"Jantar",n:"Trattoria Al Moro",addr:"Vicolo delle Bollette, 13",lat:41.9006,lng:12.4828,
+       desc:"Clássico romano a 2 min da Trevi.",
+       warn:"Avaliações indicam que NÃO aceitam crianças no jantar. Confirme ao reservar! Fechado aos domingos.",
        tags:[["Reservar","book"],["Comer","food"]]}
     ]
   },
@@ -409,9 +431,9 @@ const DAYS = [
        desc:"O maior circo de corridas da antiguidade — imagine 250 mil pessoas. Gratuito para passear ao redor. A Maju pode correr na grama.",
        tags:[["Gratuito","free"],["Maju ❤","kid"]]},
       {t:"19h30",cat:"Jantar",n:"Trattoria Vecchia Roma",addr:"Via Ferruccio, 12",lat:41.8957,lng:12.5072,
-       desc:"Perto do Coliseu — logisticamente perfeito. Os rolos de parmesão e a cacio e pepe são destaques.",
-       info:[["Jantar","19h–23h"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
-       tags:[["Reservar","book"],["Comer","food"]]},
+       desc:"RESERVA CONFIRMADA — 3 pessoas, nº TNkRly. Perto do Coliseu — logisticamente perfeito. Os rolos de parmesão e a cacio e pepe são destaques.",
+       info:[["Reserva","19h30 · 3 pessoas · nº TNkRly"],["Horário","19h–23h"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
+       tags:[["Confirmado","ok"],["Comer","food"]]},
       {t:"20h30",cat:"Monumento",n:"Coliseu Iluminado — Noturno",addr:"Piazza del Colosseo",lat:41.8902,lng:12.4922,
        desc:"Volte para ver o Coliseu iluminado à noite — completamente diferente, ainda mais impressionante. Foto obrigatória com as luzes douradas.",
        tags:[["Foto","free"]]}
@@ -468,32 +490,243 @@ const DAYS = [
        info:[["Trem","Leonardo Express, ~€14, 32 min"],["Táxi","~€50–60 tarifa fixa"]],
        tags:[["Transfer","book"]]}
     ]
+  },
+  {
+    id:"d7", date:"Dia 02 · Nápoles", title:"Roma → Nápoles de carro + Da Michele",
+    travel:"driving",
+    block:"Etapa 2 — Nápoles e Costa Amalfitana",
+    blockNote:"Locação de carro em Roma, descida até Nápoles e base em Salerno para explorar a Costa Amalfitana. <strong>Datas de julho a confirmar</strong> — os dias estão numerados como no plano (02, 04, 05, 06, 07). O <strong>dia 03 segue em aberto</strong>.",
+    note:"<strong>Dia de estrada.</strong> Retirada do carro na Stazione Termini, A1 até Nápoles (~225 km) e almoço às 13h na Da Michele. À tarde, seguir para Salerno (~55 km). Leve o <strong>cartão do condutor, CNH + Permissão Internacional (PID)</strong> e a cadeirinha da Maju (obrigatória por lei na Itália até 12 anos / 150 cm — reserve junto com o carro).",
+    stops:[
+      {t:"09h00",cat:"Carro",n:"Retirada do carro — Roma Termini",addr:"Via Giovanni Giolitti, 34 — Stazione Termini",lat:41.9003,lng:12.5045,
+       desc:"Balcões de locadoras (Avis, Hertz, Europcar, Maggiore, Sixt) ficam no nível da Via Giolitti, lado leste da estação. Reserve online com antecedência e confirme cadeirinha infantil, seguro e política de combustível.",
+       info:[["Documentos","CNH + Permissão Internacional (PID) + passaporte + cartão de crédito do condutor"],["Cadeirinha","Obrigatória para a Maju — reserve junto"],["Pedágio A1","~€17–20 até Nápoles"]],
+       warn:"Roma tem ZTL no Centro Storico. Saia direto de Termini para a via consular / GRA e não entre em zonas restritas — as multas chegam meses depois pelo cartão da locadora.",
+       tags:[["Reservar","book"],["Dirigir","car"]]},
+      {t:"12h45",cat:"Estrada",n:"Chegada a Nápoles — estacionar",addr:"Garage Cavour, Piazza Cavour, 22 — Nápoles",lat:40.8544,lng:14.2559,
+       leg:{mode:"car",min:150,dist:"225 km"},
+       desc:"A Da Michele fica em Forcella, dentro da área de tráfego restrito do centro histórico. Deixe o carro em garagem paga e faça os últimos 10 min a pé.",
+       info:[["Garagens","Garage Cavour (Piazza Cavour) · Parcheggio Buono (Via Casanova) · Garage Sanità"],["Custo","~€2–3/hora ou ~€15–20 diária"]],
+       warn:"ZTL Centro Antico de Nápoles: não entre de carro. Confirme os limites no app da prefeitura antes de dirigir para o centro.",
+       tags:[["Atenção","shield"],["Dirigir","car"]]},
+      {t:"13h00",cat:"Almoço",n:"L'Antica Pizzeria da Michele",addr:"Via Cesare Sersale, 1 — 80139 Nápoles",lat:40.8501,lng:14.2648,
+       leg:{mode:"walk",min:11,dist:"900 m"},
+       desc:"A pizzaria mais famosa de Nápoles, aberta desde 1870. Só dois sabores clássicos: marinara e margherita (com opção normale ou doppia mozzarella). Massa fina, úmida no centro — coma com garfo e faca, como os napolitanos. Preço baixíssimo para o que é.",
+       info:[["Como funciona","Não aceita reserva. Pegue a senha na porta e aguarde chamarem o número"],["Horário","Seg–Sáb ~11h–23h · domingo fechado"],["Fila","Chegar 12h15–12h30 reduz muito a espera do almoço"],["Pagamento","Leve dinheiro — cartão nem sempre funciona"]],
+       warn:"Fecha aos domingos. Se o dia 02 cair em domingo, a alternativa é Gino e Toto Sorbillo (Via dei Tribunali, 32) ou Pizzeria Starita.",
+       tags:[["Sem reserva","clock"],["Comer","food"],["Maju ❤","kid"]]},
+      {t:"14h30",cat:"Bairro",n:"Volta a pé pelo Centro Antico",addr:"Via dei Tribunali / Spaccanapoli",lat:40.8513,lng:14.2570,
+       desc:"Opcional, se sobrar fôlego: 40 min de caminhada por Via dei Tribunali e Spaccanapoli até o carro, com parada para um sfogliatella ou um babá. É a Nápoles de verdade — barulhenta, viva e cheia de presépios de rua.",
+       info:[["Doce","Sfogliatella riccia na Pasticceria Sfogliatella Mary ou na Scaturchio"]],
+       tags:[["Passeio","free"],["Comer","food"]]},
+      {t:"16h30",cat:"Hotel",n:"Chegada a Salerno — check-in",addr:"Salerno — hospedagem a confirmar",lat:40.6806,lng:14.7594,
+       leg:{mode:"car",min:60,dist:"55 km"},
+       desc:"Base dos próximos dias. Salerno é bem mais barata e prática que Amalfi ou Positano: tem porto com ferries diretos para toda a costa e estacionamento viável. Confirme se a hospedagem tem vaga de garagem — na cidade o estacionamento na rua é escasso.",
+       info:[["Trajeto","A3 Nápoles → Salerno, ~55 km, ~1h com trânsito"],["Fim de tarde","Lungomare Trieste para caminhar e jantar"]],
+       tags:[["Base","free"],["Dirigir","car"]]}
+    ]
+  },
+  {
+    id:"d8", date:"Dia 04 · Amalfi + Positano", title:"Primeiro dia oficial — Amalfi de manhã, Positano à tarde",
+    travel:"walking",
+    note:"<strong>Dia de ferry, não de carro.</strong> A estrada SS163 entre Amalfi e Positano é estreita, cheia de curvas e engarrafada no verão — de barco leva metade do tempo e a vista é melhor. Compre as passagens Travelmar/Alicost na hora ou online. <strong>Confirme o último ferry Positano → Salerno logo na chegada</strong> e organize o dia em torno dele.",
+    stops:[
+      {t:"08h30",cat:"Ferry",n:"Porto de Salerno — Molo Manfredi",addr:"Piazza della Concordia — Molo Manfredi, Salerno",lat:40.6733,lng:14.7482,
+       desc:"Terminal dos ferries Travelmar e Alicost. Chegue 20 min antes. Bilhetes na bilheteria do molo ou pelo site da Travelmar.",
+       info:[["Salerno → Amalfi","~35 min · ~€10 por adulto"],["Operadores","Travelmar (mais frequente) · Alicost"],["Dica","Sente do lado direito na ida — a costa fica toda de frente"]],
+       tags:[["Barco","boat"],["Reservar","book"]]},
+      {t:"09h15",cat:"Duomo",n:"Duomo di Sant'Andrea — Amalfi",addr:"Piazza Duomo, Amalfi",lat:40.6340,lng:14.6027,
+       leg:{mode:"boat",min:35,dist:"18 km"},
+       desc:"A escadaria monumental de 62 degraus e a fachada listrada em estilo árabe-normando são o cartão-postal da cidade. Por dentro, o Chiostro del Paradiso e a cripta com as relíquias de Santo André valem o ingresso.",
+       info:[["Ingresso","~€3 (inclui claustro, cripta e museu)"],["Horário","9h–19h45 no verão"]],
+       tags:[["Ingresso","book"],["Foto","free"]]},
+      {t:"10h30",cat:"Cidade",n:"Centro de Amalfi + Pasticceria Pansa",addr:"Piazza Duomo, 40 — Amalfi",lat:40.6337,lng:14.6026,
+       leg:{mode:"walk",min:1,dist:"50 m"},
+       desc:"Vielas cobertas, lojinhas de limoncello e cerâmica. A Pansa funciona na mesma praça desde 1830 — peça uma delizia al limone e um granita para a Maju. Depois, desça até a Marina Grande para ver o mar de perto.",
+       info:[["Extra","Museo della Carta (moinho de papel do séc. XIII), 10 min a pé subindo o vale"]],
+       tags:[["Comer","food"],["Compras","free"],["Maju ❤","kid"]]},
+      {t:"12h30",cat:"Almoço",n:"Marina Grande — Amalfi",addr:"Viale delle Regioni, 4 — Amalfi",lat:40.6327,lng:14.6047,
+       leg:{mode:"walk",min:4,dist:"300 m"},
+       desc:"Restaurante pé na areia, com peixe fresco e a scialatielli ai frutti di mare. Reserve na véspera pelo site — as mesas da primeira fila esgotam.",
+       info:[["Alternativas","Da Gemma (Via Fra Gerardo Sasso) · Lido Azzurro, também à beira-mar"]],
+       tags:[["Reservar","book"],["Comer","food"]]},
+      {t:"14h15",cat:"Ferry",n:"Ferry Amalfi → Positano",addr:"Molo di Amalfi",lat:40.6335,lng:14.6042,
+       leg:{mode:"walk",min:3,dist:"200 m"},
+       desc:"Travessia curta e cênica, passando por Praiano e pelo Fiordo di Furore visto do mar.",
+       info:[["Duração","~25 min · ~€10 por adulto"]],
+       tags:[["Barco","boat"]]},
+      {t:"14h50",cat:"Praia",n:"Spiaggia Grande — Positano",addr:"Spiaggia Grande, Positano",lat:40.6272,lng:14.4849,
+       leg:{mode:"boat",min:25,dist:"12 km"},
+       desc:"O ferry atraca direto na praia principal. Guarda-sol e espreguiçadeira custam caro (€25–40 o par); a faixa livre fica nas pontas. Pedras arredondadas, não areia — leve sapatilha para a Maju.",
+       tags:[["Praia","free"],["Maju ❤","kid"]]},
+      {t:"15h45",cat:"Igreja",n:"Chiesa di Santa Maria Assunta",addr:"Piazza Flavio Gioia, Positano",lat:40.6281,lng:14.4846,
+       leg:{mode:"walk",min:3,dist:"200 m"},
+       desc:"A cúpula de majólica amarela e verde é o símbolo de Positano. Dentro, o ícone bizantino da Madonna Nera. Entrada gratuita; há também a cripta romana escavada sob a igreja.",
+       tags:[["Gratuito","free"],["Foto","free"]]},
+      {t:"16h30",cat:"Compras",n:"Via Pasitea + Via dei Mulini",addr:"Via dei Mulini, Positano",lat:40.6288,lng:14.4838,
+       leg:{mode:"walk",min:4,dist:"250 m"},
+       desc:"A subida das lojas: linho sob medida, sandálias artesanais feitas na hora e cerâmica. Tudo em ladeira e escadaria — com criança pequena, suba devagar e desça com calma para pegar o ferry.",
+       info:[["Gelato","Casa e Bottega ou La Zagara, no caminho"]],
+       tags:[["Compras","free"],["Comer","food"]]},
+      {t:"18h00",cat:"Ferry",n:"Ferry Positano → Salerno",addr:"Molo di Positano — Spiaggia Grande",lat:40.6270,lng:14.4852,
+       leg:{mode:"walk",min:5,dist:"350 m"},
+       desc:"Volta direta a Salerno, ~70 min, com o pôr do sol sobre a costa. Compre o bilhete de volta logo cedo.",
+       warn:"CRÍTICO: no verão a última saída Positano → Salerno costuma ser entre 17h30 e 19h, e muda por temporada. Confirme o horário exato na bilheteria pela manhã. Se perder, o plano B é ônibus SITA até Amalfi/Salerno — lento e lotado.",
+       tags:[["Barco","boat"],["Atenção","shield"]]}
+    ]
+  },
+  {
+    id:"d9", date:"Dia 05 · Furore + Ravello", title:"Fiordo di Furore de manhã, Ravello à tarde",
+    travel:"driving",
+    note:"<strong>Dia de carro pela SS163</strong> — a Strada Amalfitana, uma das estradas mais bonitas (e mais estreitas) do mundo. Saia cedo: depois das 10h o trânsito trava. Quem enjoa em curva deve sentar na frente. Retorno a Salerno no fim da tarde.",
+    stops:[
+      {t:"08h30",cat:"Mirante",n:"Ponte del Fiordo di Furore",addr:"SS163, Furore",lat:40.6183,lng:14.5497,
+       desc:"O fiorde é uma fenda estreita na rocha, atravessada por uma ponte de arco a 30 m de altura. A foto clássica é da própria ponte, olhando para a praia lá embaixo. Há poucas vagas na beira da estrada — chegar cedo é a única forma.",
+       info:[["Trajeto","Salerno → Furore pela SS163, ~35 km, ~1h05"],["Estacionamento","Vagas azuis pagas ao longo da SS163, escassas"]],
+       warn:"Não pare em fila dupla na ponte: a via tem mão dupla apertada e ônibus SITA passam o tempo todo.",
+       tags:[["Foto","free"],["Dirigir","car"]]},
+      {t:"09h15",cat:"Praia",n:"Spiaggia del Fiordo",addr:"Fiordo di Furore — acesso pela escadaria",lat:40.6178,lng:14.5500,
+       leg:{mode:"walk",min:8,dist:"400 m"},
+       desc:"Descida por cerca de 200 degraus até uma praia minúscula encaixada entre paredões. Vale mais pela cena do que pelo banho — a faixa de areia é pequena e some com a maré.",
+       warn:"A praia é fechada em dias de mar agitado ou por risco de queda de pedras, e a escadaria é íngreme. Com a Maju, avalie no local — a vista da ponte já entrega o melhor do lugar.",
+       tags:[["Atenção","shield"],["Foto","free"]]},
+      {t:"11h30",cat:"Carro",n:"Subida para Ravello — estacionamento",addr:"Parcheggio Principe Amedeo, Via della Repubblica — Ravello",lat:40.6482,lng:14.6098,
+       leg:{mode:"car",min:45,dist:"20 km"},
+       desc:"Ravello fica 350 m acima do mar, subindo pelo vale do Dragone a partir de Castiglione. O centro é fechado para carros: deixe no estacionamento coberto Principe Amedeo e siga 5 min a pé até a praça.",
+       info:[["Custo","~€3/hora · diária ~€20"],["Alternativa","Parcheggio Auditorium, na entrada da cidade"]],
+       tags:[["Dirigir","car"]]},
+      {t:"12h30",cat:"Almoço",n:"Cumpà Cosimo",addr:"Via Roma, 44/46 — Ravello",lat:40.6497,lng:14.6122,
+       leg:{mode:"walk",min:5,dist:"350 m"},
+       desc:"Trattoria familiar comandada há décadas pela mesma família. O prato para pedir é o assaggio di primi — uma degustação de vários tipos de massa no mesmo prato. Porções generosas, ótimo com criança.",
+       info:[["Alternativa","Babel Ravello (leve, bom para almoço rápido) · Ristorante Figli di Papà"]],
+       tags:[["Reservar","book"],["Comer","food"]]},
+      {t:"14h00",cat:"Vila",n:"Villa Rufolo",addr:"Piazza Duomo, Ravello",lat:40.6491,lng:14.6119,
+       leg:{mode:"walk",min:2,dist:"120 m"},
+       desc:"Jardins do séc. XIII debruçados sobre o golfo — o terraço com o pinheiro e as flores é a imagem mais reproduzida de Ravello. Foi aqui que Wagner encontrou o cenário do jardim de Klingsor. No verão o palco do Ravello Festival fica montado sobre o penhasco.",
+       info:[["Ingresso","~€7 adulto · crianças pequenas gratuito"],["Horário","9h–20h no verão"]],
+       tags:[["Ingresso","book"],["Foto","free"]]},
+      {t:"15h30",cat:"Duomo",n:"Duomo di Ravello",addr:"Piazza Duomo, Ravello",lat:40.6494,lng:14.6115,
+       leg:{mode:"walk",min:1,dist:"60 m"},
+       desc:"Fachada sóbria do séc. XI, portas de bronze do séc. XII e dois púlpitos em mosaico espetaculares. Entrada na nave é gratuita; o museu na cripta é pago.",
+       tags:[["Gratuito","free"]]},
+      {t:"16h15",cat:"Vila",n:"Villa Cimbrone — Terrazza dell'Infinito",addr:"Via Santa Chiara, 26 — Ravello",lat:40.6456,lng:14.6123,
+       leg:{mode:"walk",min:12,dist:"700 m"},
+       desc:"A caminhada até lá é por uma viela de pedra em leve subida (~10–12 min). No fim, a Terrazza dell'Infinito: uma balaustrada com bustos de mármore suspensa sobre o mar, com uma das vistas mais bonitas da Itália. Vá no fim da tarde, com a luz baixa.",
+       info:[["Ingresso","~€10 adulto"],["Horário","9h até o pôr do sol"]],
+       tags:[["Ingresso","book"],["Foto","free"]]},
+      {t:"18h00",cat:"Carro",n:"Retorno a Salerno",addr:"Salerno",lat:40.6806,lng:14.7594,
+       leg:{mode:"walk",min:14,dist:"800 m"},
+       desc:"Descida por Castiglione e SS163 até Salerno, ~45 min. Jantar tranquilo no centro histórico de Salerno ou no Lungomare — muito mais barato que na costa.",
+       info:[["Trajeto","Ravello → Salerno, ~30 km, ~50 min"]],
+       tags:[["Dirigir","car"],["Base","free"]]}
+    ]
+  },
+  {
+    id:"d10", date:"Dia 06 · Capri", title:"Capri — dia inteiro de barco",
+    travel:"walking",
+    note:"<strong>Deixe o carro em Salerno.</strong> Em Capri não circulam veículos de turistas. Ferry direto Salerno → Capri existe só na alta temporada (Alicost) e sai cedo, ~2h de travessia. <strong>Compre ida e volta antecipado</strong> e confirme o horário da última saída assim que desembarcar.",
+    stops:[
+      {t:"08h00",cat:"Ferry",n:"Ferry Salerno → Capri",addr:"Molo Manfredi, Salerno",lat:40.6733,lng:14.7482,
+       desc:"Linha sazonal da Alicost (verão), ~1h50–2h, com paradas em Amalfi e Positano. Chegue 30 min antes. Se não houver saída direta no dia, o plano B é ir a Sorrento e pegar o ferry de lá.",
+       info:[["Duração","~2h · ~€30 por adulto, só ida"],["Reserva","Compre ida e volta online com dias de antecedência"]],
+       warn:"Mar agitado cancela travessias sem aviso. Tenha um plano B para o dia (Paestum ou Pompeia de carro).",
+       tags:[["Reservar","book"],["Barco","boat"]]},
+      {t:"10h00",cat:"Cidade",n:"Marina Grande — Capri",addr:"Marina Grande, Capri",lat:40.5561,lng:14.2428,
+       leg:{mode:"boat",min:115,dist:"78 km"},
+       desc:"Porto de chegada. Aqui ficam as bilheterias dos passeios de barco, o funicular para a Piazzetta e o ponto dos ônibus para Anacapri.",
+       info:[["Funicular","~€2,40 · sai a cada 15 min"],["Guarda-volumes","Depósito de bagagem no porto, se precisar"]],
+       tags:[["Barco","boat"]]},
+      {t:"10h30",cat:"Gruta",n:"Grotta Azzurra",addr:"Grotta Azzurra, Anacapri",lat:40.5608,lng:14.2054,
+       leg:{mode:"boat",min:20,dist:"5 km"},
+       desc:"Caverna marinha onde a luz que entra por baixo d'água deixa tudo azul-elétrico. O acesso é em barquinho a remo, deitado, por uma abertura de 1 m — a entrada dura poucos minutos. Impressionante, mas caro e sujeito a fila longa.",
+       info:[["Custo","~€18 (barco desde Marina Grande) + ~€15 (barco a remo + ingresso)"],["Melhor horário","Entre 10h e 13h, quando o sol está mais alto"]],
+       warn:"Fecha sempre que há ondulação — e isso acontece com frequência. Verifique no porto antes de comprar. Com criança pequena, avalie: a entrada é apertada e rápida. Alternativa: passeio de barco em volta da ilha, com os Faraglioni.",
+       tags:[["Atenção","shield"],["Maju ❤","kid"]]},
+      {t:"12h30",cat:"Praça",n:"Piazzetta di Capri (Piazza Umberto I)",addr:"Piazza Umberto I, Capri",lat:40.5510,lng:14.2427,
+       leg:{mode:"boat",min:25,dist:"6 km"},
+       desc:"O salão a céu aberto da ilha: quatro cafés, a torre do relógio e o vaivém de todo mundo. Suba de funicular desde Marina Grande. Café aqui é caro — vale mais pela cena.",
+       tags:[["Passeio","free"],["Foto","free"]]},
+      {t:"13h00",cat:"Almoço",n:"Ristorante Da Gemma",addr:"Via Madre Serafina, 6 — Capri",lat:40.5507,lng:14.2424,
+       leg:{mode:"walk",min:2,dist:"120 m"},
+       desc:"A 1 min da Piazzetta, num beco coberto. Cozinha caprese clássica: ravioli capresi, parmigiana e frituras de peixe. Reserve — a casa é pequena.",
+       info:[["Alternativas","Aurora (mais formal e cara) · Villa Verde"]],
+       tags:[["Reservar","book"],["Comer","food"]]},
+      {t:"14h30",cat:"Jardim",n:"Giardini di Augusto + Via Krupp",addr:"Via Matteotti, 2 — Capri",lat:40.5487,lng:14.2412,
+       leg:{mode:"walk",min:9,dist:"600 m"},
+       desc:"Jardins em terraços com a vista dos Faraglioni de um lado e da Via Krupp — a estrada em zigue-zague esculpida no penhasco — do outro. Caminho plano e curto desde a Piazzetta, fácil com criança.",
+       info:[["Ingresso","~€1"],["Via Krupp","Costuma estar fechada para descida; a vista de cima é o que importa"]],
+       tags:[["Ingresso","book"],["Foto","free"],["Maju ❤","kid"]]},
+      {t:"15h45",cat:"Gelato",n:"Gelato na Piazzetta",addr:"Piazza Umberto I / Via Vittorio Emanuele",lat:40.5511,lng:14.2429,
+       leg:{mode:"walk",min:9,dist:"600 m"},
+       desc:"Última volta pelas ruelas de lojas antes de descer. Buonocore Gelateria, na Via Vittorio Emanuele, faz a casquinha na hora — o cheiro toma a rua inteira.",
+       info:[["Extra se sobrar tempo","Anacapri + cadeirinha do Monte Solaro (12 min de subida, ~€14) — só cabe se o ferry de volta for tarde"]],
+       tags:[["Comer","food"],["Maju ❤","kid"]]},
+      {t:"16h45",cat:"Ferry",n:"Ferry Capri → Salerno",addr:"Marina Grande, Capri",lat:40.5561,lng:14.2428,
+       leg:{mode:"walk",min:5,dist:"350 m"},
+       desc:"Desça de funicular com folga: a fila do funicular no fim da tarde é longa. Volta ~2h até Salerno.",
+       warn:"CRÍTICO: a última saída direta Capri → Salerno no verão costuma ser no meio da tarde (por volta das 16h–17h) e varia por dia. Confirme o horário exato ao desembarcar e planeje o dia a partir dele. Perder o último barco significa dormir na ilha.",
+       tags:[["Barco","boat"],["Atenção","shield"]]}
+    ]
+  },
+  {
+    id:"d11", date:"Dia 07 · Retorno", title:"Check-out e retorno",
+    travel:"driving",
+    note:"<strong>Provisório</strong> — depende do voo de volta. Plano base: check-out em Salerno, subir pela A1 até Roma (~270 km, ~3h) e devolver o carro no aeroporto de Fiumicino. Se a devolução for na Termini, some 40–60 min para o trecho Termini → aeroporto de trem.",
+    stops:[
+      {t:"Check-out",cat:"Hotel",n:"Check-out em Salerno",addr:"Salerno — hospedagem a confirmar",lat:40.6806,lng:14.7594,
+       desc:"Abasteça o tanque antes de sair (a devolução costuma exigir tanque cheio) e confira se não ficou nada na mala do carro.",
+       info:[["Combustível","Posto na SS18 / entrada da A3, antes do pedágio"]],
+       tags:[["Base","free"]]},
+      {t:"Estrada",cat:"Estrada",n:"Salerno → Roma pela A1",addr:"A3 + A1 Autostrada del Sole",lat:41.4500,lng:13.4000,
+       desc:"Cerca de 270 km. Saia com 1h30 de folga além do tempo estimado: o trecho Nápoles–Caserta engarrafa e o retorno do carro consome tempo.",
+       info:[["Duração","~3h sem paradas"],["Pedágio","~€25 no total"]],
+       tags:[["Dirigir","car"]]},
+      {t:"Devolução",cat:"Carro",n:"Devolução do carro — Fiumicino (FCO)",addr:"Rental Car Center — Aeroporto Leonardo da Vinci",lat:41.8003,lng:12.2389,
+       leg:{mode:"car",min:180,dist:"270 km"},
+       desc:"O centro de devolução fica ao lado do Terminal 3, com shuttle gratuito. Fotografe o carro por todos os lados antes de entregar e guarde o comprovante de devolução.",
+       info:[["Chegada","3h antes do voo internacional"],["Alternativa","Devolver na Termini e ir de Leonardo Express (~€14, 32 min)"]],
+       tags:[["Transfer","plane"],["Dirigir","car"]]}
+    ]
   }
 ];
 
 const RESERVAS = {
+  confirmed:{title:"✅ Já confirmadas",items:[
+    {t:"Museus do Vaticano — 29/08 17h30 · 2 ingressos · cód. 2L2NFKIO19XTF24EO2",u:"https://www.museivaticani.va"},
+    {t:"Roscioli Salumeria con Cucina — 30/08 14h30 (almoço) · 3 pessoas · ref. BFR2CXL2",u:"https://www.salumeriaroscioli.com"},
+    {t:"Trattoria Vecchia Roma — 01/09 19h30 · 3 pessoas · nº TNkRly",u:""}
+  ]},
   urgent:{title:"🔴 Urgente — 2 a 3 semanas antes",items:[
-    {t:"Museus do Vaticano",u:"https://www.museivaticani.va"},
-    {t:"Roscioli Salumeria con Cucina",u:"https://www.salumeriaroscioli.com"},
-    {t:"Explora — Museu das Crianças (turno 10h, 31/08)",u:"https://www.mdbr.it"}
+    {t:"Explora — Museu das Crianças (turno 10h, 31/08)",u:"https://www.mdbr.it"},
+    {t:"Carro Roma Termini → devolução Fiumicino (com cadeirinha!)",u:"https://www.rentalcars.com"},
+    {t:"Ferry Salerno ⇄ Capri — dia 06 (Alicost)",u:"https://www.alicost.it"}
   ]},
   soon:{title:"🟡 1 semana antes",items:[
     {t:"Coliseu + Foro + Palatino",u:"https://www.colosseo.it"},
     {t:"Dal Bolognese (almoço sáb 31/08)",u:"https://roma.dalbolognese.it"},
     {t:"Da Enzo al 29 (jantar ter 02/09)",u:"https://www.daenzoal29.com"},
-    {t:"Galleria Borghese",u:"https://galleriaborghese.cultura.gov.it"}
+    {t:"Galleria Borghese",u:"https://galleriaborghese.cultura.gov.it"},
+    {t:"Hospedagem em Salerno (com garagem) — dias 02 a 07",u:""},
+    {t:"Ferry Salerno–Amalfi–Positano — dia 04 (Travelmar)",u:"https://www.travelmar.it"},
+    {t:"Marina Grande, Amalfi (almoço dia 04)",u:"https://www.ristorantemarinagrande.com"},
+    {t:"Cumpà Cosimo, Ravello (almoço dia 05)",u:""},
+    {t:"Da Gemma, Capri (almoço dia 06)",u:"https://www.dagemma.it"}
   ]},
   later:{title:"🟢 Alguns dias antes",items:[
     {t:"Pantheon",u:"https://www.pantheonroma.com"},
     {t:"Castel Sant'Angelo",u:"https://castelsantangelo.beniculturali.it"},
-    {t:"Trattoria Vecchia Roma (jantar seg 01/09)",u:""},
-    {t:"Trattoria Al Moro — confirmar crianças no jantar!",u:""}
+    {t:"Taverna Angelica (jantar sex 29/08, perto do Vaticano)",u:""},
+    {t:"Trattoria Al Moro — jantar sáb 30/08, confirmar crianças!",u:""},
+    {t:"Da Michele: NÃO reserva — senha na porta, fecha domingo",u:"https://www.damichele.net"},
+    {t:"Villa Rufolo + Villa Cimbrone (Ravello) — bilhete na portaria",u:"https://villarufolo.com"},
+    {t:"Permissão Internacional para Dirigir (PID) — emitir no Detran",u:""},
+    {t:"Conferir último ferry de volta: Positano→Salerno e Capri→Salerno",u:""}
   ]}
 };
 </script>
-<script>const ICONS={"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\"/>", "calendar": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "hotel": "<path d=\"M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "route": "<circle cx=\"6\" cy=\"19\" r=\"3\"/><circle cx=\"18\" cy=\"5\" r=\"3\"/><path d=\"M9 19h6a4 4 0 004-4V9\"/>", "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"/><path d=\"M7 21l3-6 2-4M11 11l4 2 2 4M9 9l2 2M10 15l-2 6\"/>", "check": "<path d=\"M20 6L9 17l-5-5\"/>", "navigation": "<path d=\"M3 11l19-9-9 19-2-8-8-2z\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4-4\"/>", "droplet": "<path d=\"M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z\"/>", "shield": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>", "utensils": "<path d=\"M3 2v7a3 3 0 003 3v10M6 2v6M9 2v6M16 2c-1.5 0-3 2-3 5s1.5 4 3 4v9\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M12 8v13M3 12h18M12 8S10 2 7 4s5 4 5 4M12 8s2-6 5-4-5 4-5 4z\"/>", "star": "<path d=\"M12 2l3 7 7 .5-5.5 4.5 1.5 7L12 17l-6.5 4 1.5-7L1.5 9.5 8.5 9z\"/>", "baby": "<path d=\"M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0\"/>", "list": "<path d=\"M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01\"/>", "map": "<path d=\"M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "camera": "<path d=\"M14.5 4l1.5 2h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3l1.5-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "wifi-off": "<path d=\"M2 8.8a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0M12 20h.01M2 2l20 20\"/>", "coffee": "<path d=\"M17 8h1a3 3 0 010 6h-1M3 8h14v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3\"/>", "plane": "<path d=\"M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7l5.1 3.4-2 4-2-1-1 1 3 2 2 3 1-1-1-2 4-2 3.4 5.1a1 1 0 001.7-.9z\"/>", "shopping": "<path d=\"M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0\"/>", "landmark": "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2L3 8h18z\"/>", "church": "<path d=\"M12 2v6M9 5h6M5 22V10l7-4 7 4v12M5 22h14M9 22v-5a3 3 0 016 0v5\"/>", "icecream": "<path d=\"M7 11a5 5 0 0110 0M7 11h10l-5 11-5-11z\"/>", "tree": "<path d=\"M12 2L7 9h3l-4 6h4l-3 5h12l-3-5h4l-4-6h3z\"/><path d=\"M12 20v2\"/>", "building": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "square": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/>", "sandwich": "<path d=\"M3 11h18l-2-4H5l-2 4zM3 11l1 5a2 2 0 002 1.5h12a2 2 0 002-1.5l1-5\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>"};
-const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane"};
-const TAG_ICON={"Reservar": "calendar", "Gratuito": "gift", "Comer": "utensils", "Maju \u2764": "baby", "Foto": "camera", "Essencial": "star", "Base": "hotel", "Inclu\u00eddo": "check", "Compras": "shopping", "Passeio": "map", "Transfer": "plane"};
+<script>const ICONS={"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\"/>", "calendar": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "hotel": "<path d=\"M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "route": "<circle cx=\"6\" cy=\"19\" r=\"3\"/><circle cx=\"18\" cy=\"5\" r=\"3\"/><path d=\"M9 19h6a4 4 0 004-4V9\"/>", "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"/><path d=\"M7 21l3-6 2-4M11 11l4 2 2 4M9 9l2 2M10 15l-2 6\"/>", "check": "<path d=\"M20 6L9 17l-5-5\"/>", "navigation": "<path d=\"M3 11l19-9-9 19-2-8-8-2z\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4-4\"/>", "droplet": "<path d=\"M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z\"/>", "shield": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>", "utensils": "<path d=\"M3 2v7a3 3 0 003 3v10M6 2v6M9 2v6M16 2c-1.5 0-3 2-3 5s1.5 4 3 4v9\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M12 8v13M3 12h18M12 8S10 2 7 4s5 4 5 4M12 8s2-6 5-4-5 4-5 4z\"/>", "star": "<path d=\"M12 2l3 7 7 .5-5.5 4.5 1.5 7L12 17l-6.5 4 1.5-7L1.5 9.5 8.5 9z\"/>", "baby": "<path d=\"M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0\"/>", "list": "<path d=\"M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01\"/>", "map": "<path d=\"M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "camera": "<path d=\"M14.5 4l1.5 2h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3l1.5-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "wifi-off": "<path d=\"M2 8.8a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0M12 20h.01M2 2l20 20\"/>", "coffee": "<path d=\"M17 8h1a3 3 0 010 6h-1M3 8h14v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3\"/>", "plane": "<path d=\"M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7l5.1 3.4-2 4-2-1-1 1 3 2 2 3 1-1-1-2 4-2 3.4 5.1a1 1 0 001.7-.9z\"/>", "shopping": "<path d=\"M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0\"/>", "landmark": "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2L3 8h18z\"/>", "church": "<path d=\"M12 2v6M9 5h6M5 22V10l7-4 7 4v12M5 22h14M9 22v-5a3 3 0 016 0v5\"/>", "icecream": "<path d=\"M7 11a5 5 0 0110 0M7 11h10l-5 11-5-11z\"/>", "tree": "<path d=\"M12 2L7 9h3l-4 6h4l-3 5h12l-3-5h4l-4-6h3z\"/><path d=\"M12 20v2\"/>", "building": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "square": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/>", "sandwich": "<path d=\"M3 11h18l-2-4H5l-2 4zM3 11l1 5a2 2 0 002 1.5h12a2 2 0 002-1.5l1-5\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "car": "<path d=\"M5 18v2M19 18v2M4 13l1.6-4.8A2 2 0 017.5 7h9a2 2 0 011.9 1.2L20 13v5H4v-5zM4 13h16\"/><circle cx=\"7.5\" cy=\"15.5\" r=\"1\"/><circle cx=\"16.5\" cy=\"15.5\" r=\"1\"/>", "boat": "<path d=\"M3 17l2.2-6h13.6L21 17M6 11V6h12v5M12 3v3M3 20c1.5 0 1.5-1.2 3-1.2s1.5 1.2 3 1.2 1.5-1.2 3-1.2 1.5 1.2 3 1.2 1.5-1.2 3-1.2\"/>", "key": "<circle cx=\"8\" cy=\"14\" r=\"4\"/><path d=\"M11 11l9-9 2 2-2 2 2 2-3 3-2-2-2 2z\"/>", "train": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"13\" rx=\"4\"/><path d=\"M5 11h14M8 16l-2.5 4M16 16l2.5 4\"/><circle cx=\"8.5\" cy=\"8\" r=\"1\"/><circle cx=\"15.5\" cy=\"8\" r=\"1\"/>"};
+const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane", "Carro": "car", "Ferry": "boat", "Praia": "droplet", "Vila": "tree", "Gruta": "droplet", "Pizza": "utensils", "Cidade": "map", "Estrada": "car", "Duomo": "church", "Jardim": "tree"};
+const TAG_ICON={"Reservar": "calendar", "Gratuito": "gift", "Comer": "utensils", "Maju \u2764": "baby", "Foto": "camera", "Essencial": "star", "Base": "hotel", "Inclu\u00eddo": "check", "Compras": "shopping", "Passeio": "map", "Transfer": "plane", "Dirigir": "car", "Barco": "boat", "Ingresso": "calendar", "Sem reserva": "clock", "Aten\u00e7\u00e3o": "shield", "Praia": "droplet", "Confirmado": "check"};
 
 function haversine(a,b){
   const R=6371000, t=Math.PI/180;
@@ -580,8 +813,8 @@ function renderReserva(){
 
 // ----- reservas -----
 function renderReservas(){
-  const map={urgent:['r','Urgente — 2 a 3 semanas antes'],soon:['y','1 semana antes'],later:['g','Alguns dias antes']};
-  const blocks = ['urgent','soon','later'].map(k=>{
+  const map={confirmed:['c','Já confirmadas'],urgent:['r','Urgente — 2 a 3 semanas antes'],soon:['y','1 semana antes'],later:['g','Alguns dias antes']};
+  const blocks = ['confirmed','urgent','soon','later'].map(k=>{
     const b=RESERVAS[k]; const [dot,lbl]=map[k];
     const items=b.items.map((it,i)=>{
       const id='rk-'+k+'-'+i;
@@ -593,7 +826,7 @@ function renderReservas(){
     return '<div class="resv-card '+k+'"><h4><span class="dot '+dot+'"></span>'+lbl+'</h4>'+items+'</div>';
   }).join('');
   return '<section class="resv" id="reservas"><div class="wrap"><h2 class="sec-title">Reservas prioritárias</h2>'+
-    '<p class="sec-lead">Marque conforme confirmar. A ordem reflete a urgência. Vaticano, Roscioli e Explora são os gargalos de agosto.</p>'+
+    '<p class="sec-lead">Vaticano, Roscioli e Trattoria Vecchia Roma já estão confirmados. O resto: marque conforme confirmar — a ordem reflete a urgência.</p>'+
     '<div class="resv-grid">'+blocks+'</div></div></section>';
 }
 
@@ -603,7 +836,7 @@ function dayMapsRoute(d){
   const pts = d.stops.map(s=>s.lat+','+s.lng);
   const dest = pts[pts.length-1];
   const wp = pts.slice(0,-1).join('|');
-  let url='https://www.google.com/maps/dir/?api=1&origin=My+Location&destination='+dest+'&travelmode=walking';
+  let url='https://www.google.com/maps/dir/?api=1&origin=My+Location&destination='+dest+'&travelmode='+(d.travel||'walking');
   if(wp) url+='&waypoints='+encodeURIComponent(wp);
   return url;
 }
@@ -629,8 +862,12 @@ function renderDays(){
         cards += '<div class="walk" data-a="'+i+'" data-b="'+(i+1)+'" data-day="'+d.id+'"></div>';
       }
     });
-    const dd = d.date.split(' ')[0];
-    return '<section class="day" id="'+d.id+'"><div class="wrap">'+
+    const dd = d.date.split(' · ')[0];
+    const blockHdr = d.block ? '<section class="blockdiv"><div class="wrap">'+
+      '<span class="bd-eyebrow">'+svgIcon('route')+'Nova etapa</span>'+
+      '<h2 class="sec-title">'+d.block+'</h2>'+
+      '<p class="sec-lead">'+(d.blockNote||'')+'</p></div></section>' : '';
+    return blockHdr + '<section class="day" id="'+d.id+'"><div class="wrap">'+
       '<div class="day-head"><span class="day-badge">'+dd+'</span>'+
       '<div class="dh-tx"><h2>'+d.title+'</h2><div class="dh-date">'+d.date+'</div></div>'+
       '<a class="day-route-btn" href="'+dayMapsRoute(d)+'" target="_blank" rel="noopener">'+svgIcon('route')+'Rota do dia inteiro</a>'+
@@ -661,6 +898,13 @@ app.innerHTML = '<div class="wrap" style="padding-top:40px">'+progressHTML()+'</
 document.querySelectorAll('.walk').forEach(w=>{
   const d=DAYS.find(x=>x.id===w.dataset.day);
   const a=d.stops[+w.dataset.a], b=d.stops[+w.dataset.b];
+  const L=b.leg;
+  if(L){
+    const ic = L.mode==='boat' ? 'boat' : (L.mode==='car' ? 'car' : (L.mode==='transit' ? 'train' : 'walk'));
+    const lbl = L.mode==='boat' ? ' de barco' : (L.mode==='car' ? ' de carro' : (L.mode==='transit' ? ' de metrô/táxi' : ' a pé'));
+    w.innerHTML='<span class="ln"></span>'+svgIcon(ic)+'<span>'+L.min+' min'+lbl+' · '+L.dist+'</span><span class="ln"></span>';
+    return;
+  }
   const info=walkInfo(a,b);
   if(info){
     w.innerHTML='<span class="ln"></span>'+svgIcon('walk')+'<span>'+info.min+' min a pé · '+info.dist+'</span><span class="ln"></span>';
