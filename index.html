@@ -111,6 +111,7 @@ html[data-theme="dark"] .card-cat{color:var(--gold)}
 .tag.boat{background:#DFEFF2;color:#2F6672} html[data-theme="dark"] .tag.boat{background:#152B30;color:#7FC2CE}
 .tag.shield{background:#FAE3E3;color:#9B3535} html[data-theme="dark"] .tag.shield{background:#381E1E;color:#E58C8C}
 .tag.clock{background:#EFEBE4;color:#6B6255} html[data-theme="dark"] .tag.clock{background:#2B2822;color:#BBB0A0}
+.tag.ok{background:#DFF3E1;color:#2C6E3F} html[data-theme="dark"] .tag.ok{background:#16301C;color:#7ED99B}
 .lp-hint{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--done);width:0;transition:none;border-radius:0 0 16px 16px}
 .walk{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--ink-soft);padding:0;grid-column:1/-1;opacity:.8}
 .walk svg{color:var(--terracotta);width:.95em;height:.95em}
@@ -155,10 +156,11 @@ html[data-theme="dark"] .btn-primary{color:#15110D}
 .resv-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
 .resv-card h4{font-family:'Fraunces',serif;font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
-.dot.r{background:#C2562E}.dot.y{background:#C9A24B}.dot.g{background:#5E6B3B}
+.dot.r{background:#C2562E}.dot.y{background:#C9A24B}.dot.g{background:#5E6B3B}.dot.c{background:#2C7A57}
 .resv-card.urgent{border-top:4px solid var(--terracotta)}
 .resv-card.soon{border-top:4px solid var(--gold)}
 .resv-card.later{border-top:4px solid var(--olive2)}
+.resv-card.confirmed{border-top:4px solid #2C7A57}
 .resv-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
 .resv-item:last-child{border-bottom:none}
 .resv-item input{width:18px;height:18px;margin-top:2px;accent-color:var(--terracotta);flex:0 0 auto;cursor:pointer}
@@ -317,8 +319,8 @@ const RESERVA = {
 
 const DAYS = [
   {
-    id:"d1", date:"29/08 · Sexta", title:"Chegada + Mercado + Centro Histórico",
-    note:"<strong>Check-in a partir das 14h.</strong> Antes de sair: mercado obrigatório para abastecer lanches do Vaticano (água, frutas para a Maju, pão e frios). Saída do hotel às 16h00.",
+    id:"d1", date:"29/08 · Sexta", title:"Chegada + Vaticano à Noite",
+    note:"<strong>Dia reorganizado por causa da reserva confirmada dos Museus do Vaticano às 17h30</strong> (a data que saiu foi 29/08, não 30/08 como no plano original — por isso o Vaticano trocou de dia com a caminhada pelo centro histórico, que agora acontece no dia 2). Check-in a partir das 14h. Antes de sair: mercado obrigatório para abastecer lanches do Vaticano. Leve roupas que cubram ombros e joelhos (exigido dentro dos Museus) e os passaportes para retirar o ingresso.",
     stops:[
       {t:"Check-in",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31 — zona Trieste",lat:41.9215,lng:12.5145,
        desc:"Próximo ao metrô (linha B, estação Libia). Deixe as malas, descanse e prepare-se para sair ao fim da tarde.",
@@ -327,54 +329,59 @@ const DAYS = [
        desc:"Abastecimento para o dia do Vaticano. ~500m a pé. Lista: água (3x 1,5L), frutas fáceis (uva, maçã, banana), barra de cereal, pão e frios, saquinhos plásticos.",
        info:[["Horário","Seg–Sáb 8h30–20h · Dom 9h–13h30 / 16h–20h"],["Backup","Carrefour Market, Viale XXI Aprile 23 — aberto 24h"]],
        tags:[["Essencial","book"]]},
-      {t:"17h00",cat:"Monumento",n:"Pantheon",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
-       desc:"Reserve online (€5/pessoa). Chegue cedo — à tarde já está menos cheio. A cúpula com o óculo encanta a Maju.",
-       info:[["Horário","9h–19h"]],
-       tags:[["Reservar","book"],["Maju ❤","kid"]]},
-      {t:"18h00",cat:"Praça",n:"Piazza Navona",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
-       desc:"A 5 min a pé do Pantheon. Praça barroca, gratuita. Artistas de rua e três fontes espetaculares. Ótima para a criança brincar enquanto vocês tomam um gelato.",
-       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
-      {t:"18h50",cat:"Doce",n:"Two Sizes — Tiramisù",addr:"Via del Governo Vecchio, 88",lat:41.8979,lng:12.4709,
-       desc:"Um dos melhores tiramisu de Roma. Experimente o de pistache. Fila anda rápido.",
-       info:[["Horário","11h–22h"]],warn:"Fechado às segundas. O dia 29/08 é sexta — ok!",
-       tags:[["Comer","food"]]},
-      {t:"19h15",cat:"Igreja",n:"Chiesa di Sant'Ignazio di Loyola",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
-       desc:"Entrada gratuita. Teto com ilusão de ótica 3D, um dos maiores truques visuais do barroco. Procure o disco dourado no chão para o efeito perfeito.",
-       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
-      {t:"19h45",cat:"Gelato",n:"Frigidarium — Gelato",addr:"Via del Governo Vecchio, 112",lat:41.8982,lng:12.4705,
-       desc:"Considerado um dos melhores gelatos de Roma. Peça coberto com chocolate quente — especialidade da casa.",
-       tags:[["Comer","food"]]},
-      {t:"20h00",cat:"Monumento",n:"Fontana di Trevi — Noturna",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
-       desc:"À noite é mágica e menos lotada. Pague €2 para descer e ver de perto. Jogue a moeda com a Maju.",
-       tags:[["Maju ❤","kid"]]},
-      {t:"20h45",cat:"Jantar",n:"Trattoria Al Moro",addr:"Vicolo delle Bollette, 13",lat:41.9006,lng:12.4828,
-       desc:"Clássico romano a 2 min da Trevi.",
-       warn:"Avaliações indicam que NÃO aceitam crianças no jantar. Confirme ao reservar! Fechado aos domingos.",
+      {t:"17h30",cat:"Museu",n:"Museus do Vaticano",addr:"00120 Cidade do Vaticano",lat:41.9065,lng:12.4536,
+       leg:{mode:"transit",min:35,dist:"~5,5 km"},
+       desc:"RESERVA CONFIRMADA — 2 ingressos adultos + reserva, código 2L2NFKIO19XTF24EO2. Entrada no fim da tarde: foque na Capela Sistina logo no início e no Museu Egípcio (a Maju vai adorar as múmias). Calcule 2h30 a 3h — em agosto os Museus abrem até mais tarde às sextas.",
+       info:[["Chegue","20 min antes, com passaporte e voucher"],["Trajeto do hotel","Metrô B (Libia) + A (Ottaviano), ~35 min, ou táxi ~20 min"],["Saída estimada","~20h00–20h30"]],
+       tags:[["Confirmado","ok"],["Maju ❤","kid"]]},
+      {t:"20h30",cat:"Jantar",n:"Taverna Angelica",addr:"Piazza A. Capponi, 6 — Borgo Pio",lat:41.9036,lng:12.4576,
+       desc:"A 6 min a pé dos Museus. Trattoria clássica do Borgo Pio, boa opção logo depois da visita — cozinha romana contemporânea, ambiente aconchegante e recebe bem crianças.",
+       info:[["Horário","12h30–15h e 19h30–23h"]],
        tags:[["Reservar","book"],["Comer","food"]]}
     ]
   },
   {
-    id:"d2", date:"30/08 · Sábado", title:"Vaticano — Dia Inteiro",
-    note:"<strong>Na mochila:</strong> água e lanches do mercado, chapéu, protetor, roupas que cubram ombros e joelhos (exigido na Basílica), passaportes para retirar ingresso.",
+    id:"d2", date:"30/08 · Sábado", title:"São Pedro + Roscioli + Centro Histórico",
+    note:"<strong>Dia mais corrido do roteiro</strong> — herdou a caminhada pelo centro histórico que era do dia 1, porque o Vaticano entrou ontem à noite. Basílica e Castel Sant'Angelo pela manhã, almoço confirmado na Roscioli às 14h30 e a virada noturna por Pantheon, Navona e Trevi. Leve água e um lanche extra para a Maju — se ela cansar à tarde, dá para pular o gelato e o Sant'Ignazio e ir direto para a Trevi e o jantar.",
     stops:[
-      {t:"09h00",cat:"Museu",n:"Museus do Vaticano",addr:"00120 Cidade do Vaticano",lat:41.9065,lng:12.4536,
-       desc:"Reserve ONLINE com muita antecedência — agosto é altíssima temporada. Foque na Capela Sistina logo na entrada e no Museu Egípcio (a Maju vai adorar as múmias). Calcule 3 a 4 horas.",
-       info:[["Fechado","Domingos (hoje é sábado — ok)"]],
-       tags:[["Reservar","book"],["Maju ❤","kid"]]},
-      {t:"12h30",cat:"Almoço",n:"Pastasciutta",addr:"Próximo ao Vaticano",lat:41.9070,lng:12.4575,
-       desc:"Restaurante acessível com boa massa italiana. Ótima pausa entre os museus e a Basílica.",
-       tags:[["Comer","food"]]},
-      {t:"14h00",cat:"Basílica",n:"Basílica de São Pedro",addr:"Piazza San Pietro",lat:41.9022,lng:12.4539,
-       desc:"Entrada gratuita. Fila pode ser longa — chegue cedo ou use o corredor vindo dos Museus. A Pietà de Michelangelo e a cúpula de Bernini são inesquecíveis.",
+      {t:"08h00",cat:"Basílica",n:"Basílica de São Pedro",addr:"Piazza San Pietro",lat:41.9022,lng:12.4539,
+       desc:"Entrada gratuita. Vá logo na abertura para evitar fila e calor — hoje a Basílica é visitada em dia separado dos Museus (visitados ontem à noite). A Pietà de Michelangelo e a cúpula de Bernini são inesquecíveis.",
        info:[["Abertura","A partir das 7h"]],
        tags:[["Gratuito","free"]]},
-      {t:"16h30",cat:"Monumento",n:"Castel Sant'Angelo",addr:"Lungotevere Castello, 50",lat:41.9031,lng:12.4663,
-       desc:"Reserve online (~€20). A vista do terraço sobre Roma ao entardecer é um dos melhores momentos da cidade. Tem café no alto com vista para São Pedro.",
+      {t:"10h00",cat:"Monumento",n:"Castel Sant'Angelo",addr:"Lungotevere Castello, 50",lat:41.9031,lng:12.4663,
+       desc:"Reserve online (~€20). A vista do terraço sobre Roma é um dos melhores momentos da cidade. Tem café no alto com vista para São Pedro.",
        info:[["Horário","9h–19h30"]],warn:"Fechado às segundas. Hoje é sábado — ok!",
        tags:[["Reservar","book"]]},
-      {t:"20h00",cat:"Jantar",n:"Roscioli Salumeria con Cucina",addr:"Via dei Giubbonari, 21",lat:41.8945,lng:12.4731,
-       desc:"A carbonara aqui é referência em Roma. Ambiente de salumeria italiana autêntica. Movimentado, mas qualidade excepcional.",
-       warn:"RESERVAR COM ANTECEDÊNCIA — é o jantar mais disputado do roteiro!",
+      {t:"12h00",cat:"Praça",n:"Campo de' Fiori",addr:"Campo de' Fiori",lat:41.8958,lng:12.4723,
+       desc:"Caminhada tranquila cruzando o Tibre até o mercado de rua mais movimentado de Roma — boa pausa para a Maju esticar as pernas antes do almoço. A 2 min a pé da Roscioli.",
+       tags:[["Passeio","free"]]},
+      {t:"14h30",cat:"Almoço",n:"Roscioli Salumeria con Cucina",addr:"Via dei Giubbonari, 21",lat:41.8945,lng:12.4731,
+       desc:"RESERVA CONFIRMADA para almoço — 3 pessoas, referência BFR2CXL2. A carbonara aqui é referência em Roma. Ambiente de salumeria italiana autêntica.",
+       info:[["Reserva","14h30 · 3 pessoas · ref. BFR2CXL2"]],
+       tags:[["Confirmado","ok"],["Comer","food"]]},
+      {t:"16h00",cat:"Monumento",n:"Pantheon",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
+       desc:"Reserve online (€5/pessoa). A cúpula com o óculo encanta a Maju.",
+       info:[["Horário","9h–19h"]],
+       tags:[["Reservar","book"],["Maju ❤","kid"]]},
+      {t:"17h00",cat:"Praça",n:"Piazza Navona",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
+       desc:"A 5 min a pé do Pantheon. Praça barroca, gratuita. Artistas de rua e três fontes espetaculares. Ótima para a criança brincar enquanto vocês tomam um gelato.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"17h50",cat:"Doce",n:"Two Sizes — Tiramisù",addr:"Via del Governo Vecchio, 88",lat:41.8979,lng:12.4709,
+       desc:"Um dos melhores tiramisu de Roma. Experimente o de pistache. Fila anda rápido.",
+       info:[["Horário","11h–22h"]],warn:"Fechado às segundas. Hoje é sábado — ok!",
+       tags:[["Comer","food"]]},
+      {t:"18h15",cat:"Igreja",n:"Chiesa di Sant'Ignazio di Loyola",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
+       desc:"Entrada gratuita. Teto com ilusão de ótica 3D, um dos maiores truques visuais do barroco. Procure o disco dourado no chão para o efeito perfeito.",
+       tags:[["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"18h45",cat:"Gelato",n:"Frigidarium — Gelato",addr:"Via del Governo Vecchio, 112",lat:41.8982,lng:12.4705,
+       desc:"Considerado um dos melhores gelatos de Roma. Peça coberto com chocolate quente — especialidade da casa.",
+       tags:[["Comer","food"]]},
+      {t:"19h15",cat:"Monumento",n:"Fontana di Trevi — Noturna",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
+       desc:"À noite é mágica e menos lotada. Pague €2 para descer e ver de perto. Jogue a moeda com a Maju.",
+       tags:[["Maju ❤","kid"]]},
+      {t:"20h00",cat:"Jantar",n:"Trattoria Al Moro",addr:"Vicolo delle Bollette, 13",lat:41.9006,lng:12.4828,
+       desc:"Clássico romano a 2 min da Trevi.",
+       warn:"Avaliações indicam que NÃO aceitam crianças no jantar. Confirme ao reservar! Fechado aos domingos.",
        tags:[["Reservar","book"],["Comer","food"]]}
     ]
   },
@@ -424,9 +431,9 @@ const DAYS = [
        desc:"O maior circo de corridas da antiguidade — imagine 250 mil pessoas. Gratuito para passear ao redor. A Maju pode correr na grama.",
        tags:[["Gratuito","free"],["Maju ❤","kid"]]},
       {t:"19h30",cat:"Jantar",n:"Trattoria Vecchia Roma",addr:"Via Ferruccio, 12",lat:41.8957,lng:12.5072,
-       desc:"Perto do Coliseu — logisticamente perfeito. Os rolos de parmesão e a cacio e pepe são destaques.",
-       info:[["Jantar","19h–23h"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
-       tags:[["Reservar","book"],["Comer","food"]]},
+       desc:"RESERVA CONFIRMADA — 3 pessoas, nº TNkRly. Perto do Coliseu — logisticamente perfeito. Os rolos de parmesão e a cacio e pepe são destaques.",
+       info:[["Reserva","19h30 · 3 pessoas · nº TNkRly"],["Horário","19h–23h"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
+       tags:[["Confirmado","ok"],["Comer","food"]]},
       {t:"20h30",cat:"Monumento",n:"Coliseu Iluminado — Noturno",addr:"Piazza del Colosseo",lat:41.8902,lng:12.4922,
        desc:"Volte para ver o Coliseu iluminado à noite — completamente diferente, ainda mais impressionante. Foto obrigatória com as luzes douradas.",
        tags:[["Foto","free"]]}
@@ -684,9 +691,12 @@ const DAYS = [
 ];
 
 const RESERVAS = {
+  confirmed:{title:"✅ Já confirmadas",items:[
+    {t:"Museus do Vaticano — 29/08 17h30 · 2 ingressos · cód. 2L2NFKIO19XTF24EO2",u:"https://www.museivaticani.va"},
+    {t:"Roscioli Salumeria con Cucina — 30/08 14h30 (almoço) · 3 pessoas · ref. BFR2CXL2",u:"https://www.salumeriaroscioli.com"},
+    {t:"Trattoria Vecchia Roma — 01/09 19h30 · 3 pessoas · nº TNkRly",u:""}
+  ]},
   urgent:{title:"🔴 Urgente — 2 a 3 semanas antes",items:[
-    {t:"Museus do Vaticano",u:"https://www.museivaticani.va"},
-    {t:"Roscioli Salumeria con Cucina",u:"https://www.salumeriaroscioli.com"},
     {t:"Explora — Museu das Crianças (turno 10h, 31/08)",u:"https://www.mdbr.it"},
     {t:"Carro Roma Termini → devolução Fiumicino (com cadeirinha!)",u:"https://www.rentalcars.com"},
     {t:"Ferry Salerno ⇄ Capri — dia 06 (Alicost)",u:"https://www.alicost.it"}
@@ -705,8 +715,8 @@ const RESERVAS = {
   later:{title:"🟢 Alguns dias antes",items:[
     {t:"Pantheon",u:"https://www.pantheonroma.com"},
     {t:"Castel Sant'Angelo",u:"https://castelsantangelo.beniculturali.it"},
-    {t:"Trattoria Vecchia Roma (jantar seg 01/09)",u:""},
-    {t:"Trattoria Al Moro — confirmar crianças no jantar!",u:""},
+    {t:"Taverna Angelica (jantar sex 29/08, perto do Vaticano)",u:""},
+    {t:"Trattoria Al Moro — jantar sáb 30/08, confirmar crianças!",u:""},
     {t:"Da Michele: NÃO reserva — senha na porta, fecha domingo",u:"https://www.damichele.net"},
     {t:"Villa Rufolo + Villa Cimbrone (Ravello) — bilhete na portaria",u:"https://villarufolo.com"},
     {t:"Permissão Internacional para Dirigir (PID) — emitir no Detran",u:""},
@@ -714,9 +724,9 @@ const RESERVAS = {
   ]}
 };
 </script>
-<script>const ICONS={"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\"/>", "calendar": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "hotel": "<path d=\"M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "route": "<circle cx=\"6\" cy=\"19\" r=\"3\"/><circle cx=\"18\" cy=\"5\" r=\"3\"/><path d=\"M9 19h6a4 4 0 004-4V9\"/>", "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"/><path d=\"M7 21l3-6 2-4M11 11l4 2 2 4M9 9l2 2M10 15l-2 6\"/>", "check": "<path d=\"M20 6L9 17l-5-5\"/>", "navigation": "<path d=\"M3 11l19-9-9 19-2-8-8-2z\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4-4\"/>", "droplet": "<path d=\"M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z\"/>", "shield": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>", "utensils": "<path d=\"M3 2v7a3 3 0 003 3v10M6 2v6M9 2v6M16 2c-1.5 0-3 2-3 5s1.5 4 3 4v9\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M12 8v13M3 12h18M12 8S10 2 7 4s5 4 5 4M12 8s2-6 5-4-5 4-5 4z\"/>", "star": "<path d=\"M12 2l3 7 7 .5-5.5 4.5 1.5 7L12 17l-6.5 4 1.5-7L1.5 9.5 8.5 9z\"/>", "baby": "<path d=\"M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0\"/>", "list": "<path d=\"M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01\"/>", "map": "<path d=\"M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "camera": "<path d=\"M14.5 4l1.5 2h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3l1.5-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "wifi-off": "<path d=\"M2 8.8a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0M12 20h.01M2 2l20 20\"/>", "coffee": "<path d=\"M17 8h1a3 3 0 010 6h-1M3 8h14v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3\"/>", "plane": "<path d=\"M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7l5.1 3.4-2 4-2-1-1 1 3 2 2 3 1-1-1-2 4-2 3.4 5.1a1 1 0 001.7-.9z\"/>", "shopping": "<path d=\"M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0\"/>", "landmark": "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2L3 8h18z\"/>", "church": "<path d=\"M12 2v6M9 5h6M5 22V10l7-4 7 4v12M5 22h14M9 22v-5a3 3 0 016 0v5\"/>", "icecream": "<path d=\"M7 11a5 5 0 0110 0M7 11h10l-5 11-5-11z\"/>", "tree": "<path d=\"M12 2L7 9h3l-4 6h4l-3 5h12l-3-5h4l-4-6h3z\"/><path d=\"M12 20v2\"/>", "building": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "square": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/>", "sandwich": "<path d=\"M3 11h18l-2-4H5l-2 4zM3 11l1 5a2 2 0 002 1.5h12a2 2 0 002-1.5l1-5\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "car": "<path d=\"M5 18v2M19 18v2M4 13l1.6-4.8A2 2 0 017.5 7h9a2 2 0 011.9 1.2L20 13v5H4v-5zM4 13h16\"/><circle cx=\"7.5\" cy=\"15.5\" r=\"1\"/><circle cx=\"16.5\" cy=\"15.5\" r=\"1\"/>", "boat": "<path d=\"M3 17l2.2-6h13.6L21 17M6 11V6h12v5M12 3v3M3 20c1.5 0 1.5-1.2 3-1.2s1.5 1.2 3 1.2 1.5-1.2 3-1.2 1.5 1.2 3 1.2 1.5-1.2 3-1.2\"/>", "key": "<circle cx=\"8\" cy=\"14\" r=\"4\"/><path d=\"M11 11l9-9 2 2-2 2 2 2-3 3-2-2-2 2z\"/>"};
+<script>const ICONS={"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\"/>", "calendar": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "hotel": "<path d=\"M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "route": "<circle cx=\"6\" cy=\"19\" r=\"3\"/><circle cx=\"18\" cy=\"5\" r=\"3\"/><path d=\"M9 19h6a4 4 0 004-4V9\"/>", "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"/><path d=\"M7 21l3-6 2-4M11 11l4 2 2 4M9 9l2 2M10 15l-2 6\"/>", "check": "<path d=\"M20 6L9 17l-5-5\"/>", "navigation": "<path d=\"M3 11l19-9-9 19-2-8-8-2z\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4-4\"/>", "droplet": "<path d=\"M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z\"/>", "shield": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>", "utensils": "<path d=\"M3 2v7a3 3 0 003 3v10M6 2v6M9 2v6M16 2c-1.5 0-3 2-3 5s1.5 4 3 4v9\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M12 8v13M3 12h18M12 8S10 2 7 4s5 4 5 4M12 8s2-6 5-4-5 4-5 4z\"/>", "star": "<path d=\"M12 2l3 7 7 .5-5.5 4.5 1.5 7L12 17l-6.5 4 1.5-7L1.5 9.5 8.5 9z\"/>", "baby": "<path d=\"M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0\"/>", "list": "<path d=\"M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01\"/>", "map": "<path d=\"M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "camera": "<path d=\"M14.5 4l1.5 2h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3l1.5-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "wifi-off": "<path d=\"M2 8.8a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0M12 20h.01M2 2l20 20\"/>", "coffee": "<path d=\"M17 8h1a3 3 0 010 6h-1M3 8h14v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3\"/>", "plane": "<path d=\"M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7l5.1 3.4-2 4-2-1-1 1 3 2 2 3 1-1-1-2 4-2 3.4 5.1a1 1 0 001.7-.9z\"/>", "shopping": "<path d=\"M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0\"/>", "landmark": "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2L3 8h18z\"/>", "church": "<path d=\"M12 2v6M9 5h6M5 22V10l7-4 7 4v12M5 22h14M9 22v-5a3 3 0 016 0v5\"/>", "icecream": "<path d=\"M7 11a5 5 0 0110 0M7 11h10l-5 11-5-11z\"/>", "tree": "<path d=\"M12 2L7 9h3l-4 6h4l-3 5h12l-3-5h4l-4-6h3z\"/><path d=\"M12 20v2\"/>", "building": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "square": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/>", "sandwich": "<path d=\"M3 11h18l-2-4H5l-2 4zM3 11l1 5a2 2 0 002 1.5h12a2 2 0 002-1.5l1-5\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "car": "<path d=\"M5 18v2M19 18v2M4 13l1.6-4.8A2 2 0 017.5 7h9a2 2 0 011.9 1.2L20 13v5H4v-5zM4 13h16\"/><circle cx=\"7.5\" cy=\"15.5\" r=\"1\"/><circle cx=\"16.5\" cy=\"15.5\" r=\"1\"/>", "boat": "<path d=\"M3 17l2.2-6h13.6L21 17M6 11V6h12v5M12 3v3M3 20c1.5 0 1.5-1.2 3-1.2s1.5 1.2 3 1.2 1.5-1.2 3-1.2 1.5 1.2 3 1.2 1.5-1.2 3-1.2\"/>", "key": "<circle cx=\"8\" cy=\"14\" r=\"4\"/><path d=\"M11 11l9-9 2 2-2 2 2 2-3 3-2-2-2 2z\"/>", "train": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"13\" rx=\"4\"/><path d=\"M5 11h14M8 16l-2.5 4M16 16l2.5 4\"/><circle cx=\"8.5\" cy=\"8\" r=\"1\"/><circle cx=\"15.5\" cy=\"8\" r=\"1\"/>"};
 const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane", "Carro": "car", "Ferry": "boat", "Praia": "droplet", "Vila": "tree", "Gruta": "droplet", "Pizza": "utensils", "Cidade": "map", "Estrada": "car", "Duomo": "church", "Jardim": "tree"};
-const TAG_ICON={"Reservar": "calendar", "Gratuito": "gift", "Comer": "utensils", "Maju \u2764": "baby", "Foto": "camera", "Essencial": "star", "Base": "hotel", "Inclu\u00eddo": "check", "Compras": "shopping", "Passeio": "map", "Transfer": "plane", "Dirigir": "car", "Barco": "boat", "Ingresso": "calendar", "Sem reserva": "clock", "Aten\u00e7\u00e3o": "shield", "Praia": "droplet"};
+const TAG_ICON={"Reservar": "calendar", "Gratuito": "gift", "Comer": "utensils", "Maju \u2764": "baby", "Foto": "camera", "Essencial": "star", "Base": "hotel", "Inclu\u00eddo": "check", "Compras": "shopping", "Passeio": "map", "Transfer": "plane", "Dirigir": "car", "Barco": "boat", "Ingresso": "calendar", "Sem reserva": "clock", "Aten\u00e7\u00e3o": "shield", "Praia": "droplet", "Confirmado": "check"};
 
 function haversine(a,b){
   const R=6371000, t=Math.PI/180;
@@ -803,8 +813,8 @@ function renderReserva(){
 
 // ----- reservas -----
 function renderReservas(){
-  const map={urgent:['r','Urgente — 2 a 3 semanas antes'],soon:['y','1 semana antes'],later:['g','Alguns dias antes']};
-  const blocks = ['urgent','soon','later'].map(k=>{
+  const map={confirmed:['c','Já confirmadas'],urgent:['r','Urgente — 2 a 3 semanas antes'],soon:['y','1 semana antes'],later:['g','Alguns dias antes']};
+  const blocks = ['confirmed','urgent','soon','later'].map(k=>{
     const b=RESERVAS[k]; const [dot,lbl]=map[k];
     const items=b.items.map((it,i)=>{
       const id='rk-'+k+'-'+i;
@@ -816,7 +826,7 @@ function renderReservas(){
     return '<div class="resv-card '+k+'"><h4><span class="dot '+dot+'"></span>'+lbl+'</h4>'+items+'</div>';
   }).join('');
   return '<section class="resv" id="reservas"><div class="wrap"><h2 class="sec-title">Reservas prioritárias</h2>'+
-    '<p class="sec-lead">Marque conforme confirmar. A ordem reflete a urgência. Vaticano, Roscioli e Explora são os gargalos de agosto.</p>'+
+    '<p class="sec-lead">Vaticano, Roscioli e Trattoria Vecchia Roma já estão confirmados. O resto: marque conforme confirmar — a ordem reflete a urgência.</p>'+
     '<div class="resv-grid">'+blocks+'</div></div></section>';
 }
 
@@ -890,8 +900,8 @@ document.querySelectorAll('.walk').forEach(w=>{
   const a=d.stops[+w.dataset.a], b=d.stops[+w.dataset.b];
   const L=b.leg;
   if(L){
-    const ic = L.mode==='boat' ? 'boat' : (L.mode==='car' ? 'car' : 'walk');
-    const lbl = L.mode==='boat' ? ' de barco' : (L.mode==='car' ? ' de carro' : ' a pé');
+    const ic = L.mode==='boat' ? 'boat' : (L.mode==='car' ? 'car' : (L.mode==='transit' ? 'train' : 'walk'));
+    const lbl = L.mode==='boat' ? ' de barco' : (L.mode==='car' ? ' de carro' : (L.mode==='transit' ? ' de metrô/táxi' : ' a pé'));
     w.innerHTML='<span class="ln"></span>'+svgIcon(ic)+'<span>'+L.min+' min'+lbl+' · '+L.dist+'</span><span class="ln"></span>';
     return;
   }
