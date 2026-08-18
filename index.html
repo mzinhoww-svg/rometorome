@@ -248,7 +248,7 @@ footer b{color:var(--gold);font-family:'Fraunces',serif}
     <h1>Roma <em>2025</em></h1>
     <p class="hero-sub">Seis dias entre fontes, basílicas e gelatos — e depois carro na Termini, pizza na Da Michele e a Costa Amalfitana com base em Salerno. Um roteiro pensado no ritmo de uma família com criança pequena, com madrugadas mágicas e pausas estratégicas.</p>
     <div class="hero-meta">
-      <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><b>29 ago — 03 set</b><span>6 dias em Roma + Costa Amalfitana</span></span></div>
+      <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><b>29 ago — 08 set</b><span>6 dias em Roma + Costa Amalfitana de carro</span></span></div>
       <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01"/></svg></span><span class="tx"><b>Mercure Roma Corso Trieste</b><span>Via Gradisca, 31</span></span></div>
       <div class="meta-pill"><span class="ic-w"><svg class="ic" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="tx"><b id="heroCount">paradas mapeadas</b><span>Toque para ver rota</span></span></div>
     </div>
@@ -268,13 +268,13 @@ footer b{color:var(--gold);font-family:'Fraunces',serif}
     <a href="#d2">30/08 <small>Vaticano</small></a>
     <a href="#d3">31/08 <small>Dia da Maju</small></a>
     <a href="#d4">01/09 <small>Roma Antiga</small></a>
-    <a href="#d5">02/09 <small>Trevi+Trastevere</small></a>
-    <a href="#d6">03/09 <small>Check-out Roma</small></a>
-    <a href="#d7">Dia 02 <small>Nápoles</small></a>
-    <a href="#d8">Dia 04 <small>Amalfi+Positano</small></a>
-    <a href="#d9">Dia 05 <small>Furore+Ravello</small></a>
-    <a href="#d10">Dia 06 <small>Capri</small></a>
-    <a href="#d11">Dia 07 <small>Retorno</small></a>
+    <a href="#d5">02/09 <small>Audiência</small></a>
+    <a href="#d6">03/09 <small>Nápoles</small></a>
+    <a href="#d7">04/09 <small>Amalfi+Positano</small></a>
+    <a href="#d8">05/09 <small>Furore+Ravello</small></a>
+    <a href="#d9">06/09 <small>Capri</small></a>
+    <a href="#d10">07/09 <small>Dia livre</small></a>
+    <a href="#d11">08/09 <small>Retorno</small></a>
   </div>
 </nav>
 
@@ -440,86 +440,63 @@ const DAYS = [
     ]
   },
   {
-    id:"d5", date:"02/09 · Terça", title:"Trevi + Compras + Trastevere",
-    note:"<strong>Outro dia de madrugada</strong> — vale muito a pena. Saída às 06h15. A Fontana di Trevi às 7h é uma das experiências mais marcantes da viagem.",
+    id:"d5", date:"02/09 · Terça", title:"Audiência Geral + Retirada do Carro",
+    note:"<strong>Dois compromissos confirmados caíram no mesmo horário</strong> — a Audiência Geral (10h, Vaticano) e a retirada do carro (10h, reserva Drivalia, Roma Termini). Priorizamos a Audiência: o carro é retirado à tarde, depois do almoço, e ninguém precisa correr. Por isso a segunda visita a Pantheon, Piazza Navona e Sant'Ignazio (que estava aqui) saiu do roteiro — vocês já visitaram os três à noite no dia 2. Saída ainda de madrugada às 06h15 para pegar a Fontana di Trevi vazia. Leve os passaportes de todos e o e-mail de confirmação da Audiência.",
     stops:[
       {t:"06h45",cat:"Monumento",n:"Fontana di Trevi — Madrugada",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
-       desc:"A experiência da viagem — a fonte quase vazia às 7h com a luz suave da manhã é absolutamente mágica. Totalmente diferente da versão lotada.",
+       desc:"A fonte quase vazia às 7h com a luz suave da manhã é absolutamente mágica. Visita rápida hoje — a Audiência Geral pede saída logo em seguida para o Vaticano.",
        warn:"Às terças o acesso ao nível inferior abre às 9h — confirme o horário exato.",
        tags:[["Foto","free"]]},
-      {t:"07h15",cat:"Café",n:"Antico Forno Roscioli",addr:"Via dei Chiavari, 34",lat:41.8954,lng:12.4730,
-       desc:"Abre às 7h30. O cornetto de pistache é lendário — vale a fila curta da manhã. Pizza al taglio com burrata também é incrível.",
-       info:[["Abre","7h30"]],
+      {t:"07h45",cat:"Audiência",n:"Fila + retirada dos ingressos",addr:"Portone di Bronzo — Praça São Pedro",lat:41.9024,lng:12.4548,
+       leg:{mode:"transit",min:20,dist:"~3 km"},
+       desc:"Retire os 3 ingressos no Portone di Bronzo (colunata direita da praça, entrando pelo lado do Palácio Apostólico) e entre na fila de segurança. Em agosto a praça enche rápido — quem chega mais cedo consegue lugar melhor.",
+       info:[["Retirada","Mesmo dia a partir das 7h30, ou véspera 8h30–13h / 15h–19h"],["Leve","Passaporte de cada um + o e-mail de confirmação"]],
+       tags:[["Confirmado","ok"]]},
+      {t:"10h00",cat:"Audiência",n:"Audiência Geral com o Papa",addr:"Praça São Pedro",lat:41.9022,lng:12.4539,
+       desc:"RESERVA CONFIRMADA — 3 ingressos, reserva nº 1771_UG_02.09/2026. O Papa passa pela praça, faz a saudação e a catequese em vários idiomas. Emocionante mesmo para quem não é praticante — a Maju vai adorar a multidão e a música.",
+       info:[["Duração","~1h30–2h, com trechos em vários idiomas"]],
+       tags:[["Confirmado","ok"],["Gratuito","free"],["Maju ❤","kid"]]},
+      {t:"12h30",cat:"Almoço",n:"All'Antico Vinaio",addr:"Piazza della Maddalena, 3",lat:41.8997,lng:12.4768,
+       desc:"A focaccia recheada mais famosa de Roma. Chegue antes do rush. Porções enormes: um sanduíche serve dois adultos. Fica a 20 min a pé da Termini — convém para seguir direto para a retirada do carro.",
        tags:[["Comer","food"]]},
-      {t:"08h30",cat:"Monumento",n:"Pantheon — Manhã",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
-       desc:"Segunda visita, agora de manhã cedo, com luz diferente e muito menos gente. Ótimo para fotos internas sem multidão.",
-       tags:[["Foto","free"]]},
-      {t:"09h30",cat:"Praça",n:"Piazza Navona — Manhã",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
-       desc:"De manhã é completamente diferente da versão noturna — quase vazia, com os bares locais abrindo. Ótima para um café sentado.",
-       tags:[["Gratuito","free"]]},
-      {t:"10h30",cat:"Igreja",n:"Igreja de Sant'Ignazio",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
-       desc:"Com luz natural o teto de trompe-l'oeil é ainda mais impressionante. Use o espelho no chão com calma.",
-       tags:[["Gratuito","free"]]},
-      {t:"11h30",cat:"Almoço",n:"All'Antico Vinaio",addr:"Piazza della Maddalena, 3",lat:41.8997,lng:12.4768,
-       desc:"A focaccia recheada mais famosa de Roma. Chegue antes do rush. Porções enormes: um sanduíche serve dois adultos.",
-       tags:[["Comer","food"]]},
-      {t:"13h00",cat:"Compras",n:"Compras no Centro",addr:"Micro Art Shop · Emporio Centrale · Gran Café Marcel",lat:41.8995,lng:12.4760,
-       desc:"Tarde para lembranças e passeio pelo centro.",
-       tags:[["Compras","free"]]},
-      {t:"15h30",cat:"Lanche",n:"La Vita è un Mozzico",addr:"Centro histórico",lat:41.8970,lng:12.4750,
-       desc:"Sanduíche estilo focaccia — ótimo lanche da tarde antes do Trastevere.",
-       tags:[["Comer","food"]]},
-      {t:"17h00",cat:"Bairro",n:"Trastevere",addr:"Rione Trastevere",lat:41.8896,lng:12.4695,
-       desc:"O bairro mais charmoso de Roma — ruas de pedra, hera nas fachadas, gatos nas escadas. Perfeito para passear sem destino. À noite fica animado com música ao vivo.",
-       tags:[["Passeio","free"]]},
-      {t:"19h30",cat:"Jantar",n:"Da Enzo al 29 (Opção 1)",addr:"Via dei Vascellari, 29",lat:41.8879,lng:12.4762,
-       desc:"Tradição romana autêntica no Trastevere. Carbonara e cacio e pepe são destaques. Fechado aos domingos — hoje é terça ✓",
-       warn:"RESERVAR. Alternativa sem reserva: Tonnarello (Via della Paglia, 1) — 4.7 com +100k avaliações, mesas ao ar livre, chegue cedo para a fila.",
-       tags:[["Reservar","book"],["Comer","food"]]}
+      {t:"14h30",cat:"Carro",n:"Retirada do carro — Roma Termini",addr:"Via Giovanni Giolitti — Stazione Termini (Drivalia)",lat:41.9003,lng:12.5045,
+       desc:"RESERVA CONFIRMADA — Drivalia, reserva IT26FLX4ahmjr. Grupo CFML (Kia EMC Sei ou similar, híbrido gasolina/GPL), 6 dias, KM ilimitado, total 148,44 EUR pago no balcão com cartão de crédito. O horário original da reserva é 10h00, mas chegando à tarde não costuma dar problema — o carro fica reservado, balcão aberto até 19h.",
+       info:[["Documentos obrigatórios","Documento de identidade + CNH válida + cartão de crédito em nome do condutor (não aceita débito comum nem pré-pago, salvo Debit Pack da Drivalia)"],["Depósito","Pré-autorização no cartão de crédito no balcão — pode pedir a senha do cartão"],["Devolução","08/09, 8h30, no mesmo balcão da Termini"]],
+       warn:"A cadeirinha da Maju NÃO aparece nos serviços inclusos do voucher (só seguro, CDW, proteção contra roubo, taxa rodoviária e sobretaxa). Ela é obrigatória por lei na Itália até 12 anos/150 cm — confirme com a Drivalia antes ou leve a própria.",
+       tags:[["Confirmado","ok"],["Dirigir","car"]]},
+      {t:"16h00",cat:"Hotel",n:"Estacionar + última noite em Roma",addr:"Hotel Mercure Roma Corso Trieste",lat:41.9215,lng:12.5145,
+       desc:"Leve o carro até perto do hotel (confirme se ele tem vaga de garagem ou indique um estacionamento próximo) e aproveitem a última noite em Roma sem pressa — amanhã tem check-out e estrada até Nápoles. Um jantar tranquilo no bairro Trieste fecha bem o dia.",
+       tags:[["Base","free"]]}
     ]
   },
   {
-    id:"d6", date:"03/09 · Quarta", title:"Check-out e Retorno",
-    note:"<strong>Check-out até 12h00.</strong> Provisório: aguardando passagens de chegada e saída para Nápoles. Se houver transfer para Nápoles, este dia muda. Por ora, guarde as malas na recepção e aproveite o bairro Parioli para um último café.",
-    stops:[
-      {t:"Check-out",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31",lat:41.9215,lng:12.5145,
-       desc:"Faça o check-out no horário combinado. Guarde as malas se o voo for à tarde.",
-       tags:[["Base","free"]]},
-      {t:"Transfer",cat:"Aeroporto",n:"Aeroporto de Fiumicino (FCO)",addr:"Leonardo da Vinci",lat:41.8003,lng:12.2389,
-       desc:"Metrô linha B (Libia) conecta à linha A (Termini → Fiumicino). Leonardo Express: Termini → Fiumicino em 32 min (~€14/pessoa). Táxi fixo hotel→aeroporto: ~€50–60 (tarifa tabelada).",
-       info:[["Trem","Leonardo Express, ~€14, 32 min"],["Táxi","~€50–60 tarifa fixa"]],
-       tags:[["Transfer","book"]]}
-    ]
-  },
-  {
-    id:"d7", date:"Dia 02 · Nápoles", title:"Roma → Nápoles de carro + Da Michele",
+    id:"d6", date:"03/09 · Quarta", title:"Check-out + Roma → Nápoles + Salerno",
     travel:"driving",
     block:"Etapa 2 — Nápoles e Costa Amalfitana",
-    blockNote:"Locação de carro em Roma, descida até Nápoles e base em Salerno para explorar a Costa Amalfitana. <strong>Datas de julho a confirmar</strong> — os dias estão numerados como no plano (02, 04, 05, 06, 07). O <strong>dia 03 segue em aberto</strong>.",
-    note:"<strong>Dia de estrada.</strong> Retirada do carro na Stazione Termini, A1 até Nápoles (~225 km) e almoço às 13h na Da Michele. À tarde, seguir para Salerno (~55 km). Leve o <strong>cartão do condutor, CNH + Permissão Internacional (PID)</strong> e a cadeirinha da Maju (obrigatória por lei na Itália até 12 anos / 150 cm — reserve junto com o carro).",
+    blockNote:"Carro retirado ontem (02/09) em Roma. Hoje começa a descida até a Costa Amalfitana, com base em Salerno. <strong>Datas confirmadas</strong> pela reserva do carro (Drivalia) e pelo voucher da Audiência Geral — não são mais provisórias.",
+    note:"<strong>Check-out até 12h00.</strong> Malas no carro e estrada até Nápoles (~225 km, ~2h30) para o almoço na Da Michele. À tarde, seguir para Salerno (~55 km). Leve o cartão do condutor, CNH + Permissão Internacional (PID) — e confirme a cadeirinha da Maju, que não veio incluída na locação (ver alerta de ontem).",
     stops:[
-      {t:"09h00",cat:"Carro",n:"Retirada do carro — Roma Termini",addr:"Via Giovanni Giolitti, 34 — Stazione Termini",lat:41.9003,lng:12.5045,
-       desc:"Balcões de locadoras (Avis, Hertz, Europcar, Maggiore, Sixt) ficam no nível da Via Giolitti, lado leste da estação. Reserve online com antecedência e confirme cadeirinha infantil, seguro e política de combustível.",
-       info:[["Documentos","CNH + Permissão Internacional (PID) + passaporte + cartão de crédito do condutor"],["Cadeirinha","Obrigatória para a Maju — reserve junto"],["Pedágio A1","~€17–20 até Nápoles"]],
-       warn:"Roma tem ZTL no Centro Storico. Saia direto de Termini para a via consular / GRA e não entre em zonas restritas — as multas chegam meses depois pelo cartão da locadora.",
-       tags:[["Reservar","book"],["Dirigir","car"]]},
-      {t:"12h45",cat:"Estrada",n:"Chegada a Nápoles — estacionar",addr:"Garage Cavour, Piazza Cavour, 22 — Nápoles",lat:40.8544,lng:14.2559,
+      {t:"Check-out",cat:"Hotel",n:"Hotel Mercure Roma Corso Trieste",addr:"Via Gradisca, 31",lat:41.9215,lng:12.5145,
+       desc:"Faça o check-out até 12h00 e guarde tudo no carro — hoje não se volta mais ao hotel.",
+       warn:"Roma tem ZTL no Centro Storico. Saia direto pela via consular / GRA rumo à A1 e não entre em zonas restritas — as multas chegam meses depois pelo cartão da locadora.",
+       tags:[["Base","free"]]},
+      {t:"14h45",cat:"Estrada",n:"Chegada a Nápoles — estacionar",addr:"Garage Cavour, Piazza Cavour, 22 — Nápoles",lat:40.8544,lng:14.2559,
        leg:{mode:"car",min:150,dist:"225 km"},
        desc:"A Da Michele fica em Forcella, dentro da área de tráfego restrito do centro histórico. Deixe o carro em garagem paga e faça os últimos 10 min a pé.",
        info:[["Garagens","Garage Cavour (Piazza Cavour) · Parcheggio Buono (Via Casanova) · Garage Sanità"],["Custo","~€2–3/hora ou ~€15–20 diária"]],
        warn:"ZTL Centro Antico de Nápoles: não entre de carro. Confirme os limites no app da prefeitura antes de dirigir para o centro.",
        tags:[["Atenção","shield"],["Dirigir","car"]]},
-      {t:"13h00",cat:"Almoço",n:"L'Antica Pizzeria da Michele",addr:"Via Cesare Sersale, 1 — 80139 Nápoles",lat:40.8501,lng:14.2648,
+      {t:"15h00",cat:"Almoço",n:"L'Antica Pizzeria da Michele",addr:"Via Cesare Sersale, 1 — 80139 Nápoles",lat:40.8501,lng:14.2648,
        leg:{mode:"walk",min:11,dist:"900 m"},
        desc:"A pizzaria mais famosa de Nápoles, aberta desde 1870. Só dois sabores clássicos: marinara e margherita (com opção normale ou doppia mozzarella). Massa fina, úmida no centro — coma com garfo e faca, como os napolitanos. Preço baixíssimo para o que é.",
-       info:[["Como funciona","Não aceita reserva. Pegue a senha na porta e aguarde chamarem o número"],["Horário","Seg–Sáb ~11h–23h · domingo fechado"],["Fila","Chegar 12h15–12h30 reduz muito a espera do almoço"],["Pagamento","Leve dinheiro — cartão nem sempre funciona"]],
-       warn:"Fecha aos domingos. Se o dia 02 cair em domingo, a alternativa é Gino e Toto Sorbillo (Via dei Tribunali, 32) ou Pizzeria Starita.",
+       info:[["Como funciona","Não aceita reserva. Pegue a senha na porta e aguarde chamarem o número"],["Horário","Seg–Sáb ~11h–23h · domingo fechado"],["Pagamento","Leve dinheiro — cartão nem sempre funciona"]],
+       warn:"Fecha aos domingos — hoje é quarta, ok. Alternativas se precisar: Gino e Toto Sorbillo (Via dei Tribunali, 32) ou Pizzeria Starita.",
        tags:[["Sem reserva","clock"],["Comer","food"],["Maju ❤","kid"]]},
-      {t:"14h30",cat:"Bairro",n:"Volta a pé pelo Centro Antico",addr:"Via dei Tribunali / Spaccanapoli",lat:40.8513,lng:14.2570,
+      {t:"16h30",cat:"Bairro",n:"Volta a pé pelo Centro Antico",addr:"Via dei Tribunali / Spaccanapoli",lat:40.8513,lng:14.2570,
        desc:"Opcional, se sobrar fôlego: 40 min de caminhada por Via dei Tribunali e Spaccanapoli até o carro, com parada para um sfogliatella ou um babá. É a Nápoles de verdade — barulhenta, viva e cheia de presépios de rua.",
        info:[["Doce","Sfogliatella riccia na Pasticceria Sfogliatella Mary ou na Scaturchio"]],
        tags:[["Passeio","free"],["Comer","food"]]},
-      {t:"16h30",cat:"Hotel",n:"Chegada a Salerno — check-in",addr:"Salerno — hospedagem a confirmar",lat:40.6806,lng:14.7594,
+      {t:"18h00",cat:"Hotel",n:"Chegada a Salerno — check-in",addr:"Salerno — hospedagem a confirmar",lat:40.6806,lng:14.7594,
        leg:{mode:"car",min:60,dist:"55 km"},
        desc:"Base dos próximos dias. Salerno é bem mais barata e prática que Amalfi ou Positano: tem porto com ferries diretos para toda a costa e estacionamento viável. Confirme se a hospedagem tem vaga de garagem — na cidade o estacionamento na rua é escasso.",
        info:[["Trajeto","A3 Nápoles → Salerno, ~55 km, ~1h com trânsito"],["Fim de tarde","Lungomare Trieste para caminhar e jantar"]],
@@ -527,7 +504,7 @@ const DAYS = [
     ]
   },
   {
-    id:"d8", date:"Dia 04 · Amalfi + Positano", title:"Primeiro dia oficial — Amalfi de manhã, Positano à tarde",
+    id:"d7", date:"04/09 · Sexta", title:"Primeiro dia oficial — Amalfi de manhã, Positano à tarde",
     travel:"walking",
     note:"<strong>Dia de ferry, não de carro.</strong> A estrada SS163 entre Amalfi e Positano é estreita, cheia de curvas e engarrafada no verão — de barco leva metade do tempo e a vista é melhor. Compre as passagens Travelmar/Alicost na hora ou online. <strong>Confirme o último ferry Positano → Salerno logo na chegada</strong> e organize o dia em torno dele.",
     stops:[
@@ -576,7 +553,7 @@ const DAYS = [
     ]
   },
   {
-    id:"d9", date:"Dia 05 · Furore + Ravello", title:"Fiordo di Furore de manhã, Ravello à tarde",
+    id:"d8", date:"05/09 · Sábado", title:"Fiordo di Furore de manhã, Ravello à tarde",
     travel:"driving",
     note:"<strong>Dia de carro pela SS163</strong> — a Strada Amalfitana, uma das estradas mais bonitas (e mais estreitas) do mundo. Saia cedo: depois das 10h o trânsito trava. Quem enjoa em curva deve sentar na frente. Retorno a Salerno no fim da tarde.",
     stops:[
@@ -622,7 +599,7 @@ const DAYS = [
     ]
   },
   {
-    id:"d10", date:"Dia 06 · Capri", title:"Capri — dia inteiro de barco",
+    id:"d9", date:"06/09 · Domingo", title:"Capri — dia inteiro de barco",
     travel:"walking",
     note:"<strong>Deixe o carro em Salerno.</strong> Em Capri não circulam veículos de turistas. Ferry direto Salerno → Capri existe só na alta temporada (Alicost) e sai cedo, ~2h de travessia. <strong>Compre ida e volta antecipado</strong> e confirme o horário da última saída assim que desembarcar.",
     stops:[
@@ -669,23 +646,39 @@ const DAYS = [
     ]
   },
   {
-    id:"d11", date:"Dia 07 · Retorno", title:"Check-out e retorno",
+    id:"d10", date:"07/09 · Segunda", title:"Dia livre — Salerno / Paestum (opcional)",
     travel:"driving",
-    note:"<strong>Provisório</strong> — depende do voo de volta. Plano base: check-out em Salerno, subir pela A1 até Roma (~270 km, ~3h) e devolver o carro no aeroporto de Fiumicino. Se a devolução for na Termini, some 40–60 min para o trecho Termini → aeroporto de trem.",
+    note:"<strong>Dia sem plano fechado</strong> — a Costa Amalfitana já está coberta (Amalfi, Positano, Furore, Ravello, Capri). Hoje é para respirar depois de cinco dias de estrada e barco. Se quiserem mais um passeio, Paestum é a sugestão mais compatível com a Maju: ruínas ao ar livre, sem escadaria.",
     stops:[
-      {t:"Check-out",cat:"Hotel",n:"Check-out em Salerno",addr:"Salerno — hospedagem a confirmar",lat:40.6806,lng:14.7594,
-       desc:"Abasteça o tanque antes de sair (a devolução costuma exigir tanque cheio) e confira se não ficou nada na mala do carro.",
+      {t:"Manhã",cat:"Bairro",n:"Salerno em ritmo lento",addr:"Lungomare Trieste, Salerno",lat:40.6733,lng:14.7550,
+       desc:"Café da manhã com calma, caminhada no Lungomare, tempo para lavar roupa ou reorganizar as malas antes do retorno de amanhã.",
+       tags:[["Passeio","free"]]},
+      {t:"Opcional",cat:"Sítio",n:"Área Archeologica di Paestum",addr:"Via Magna Grecia, 917 — Paestum",lat:40.4206,lng:15.0009,
+       leg:{mode:"car",min:40,dist:"~40 km"},
+       desc:"Se a família estiver com energia: três templos gregos dóricos entre os mais bem preservados do mundo, ~40 min de carro de Salerno. Vá cedo para fugir do calor — não há sombra nas ruínas.",
+       info:[["Horário","8h30–19h30 (varia por época)"],["Ingresso","~€12 adulto, gratuito para menores de 18"]],
+       tags:[["Ingresso","book"],["Foto","free"]]}
+    ]
+  },
+  {
+    id:"d11", date:"08/09 · Terça", title:"Retorno a Roma + Devolução do Carro",
+    travel:"driving",
+    note:"<strong>Devolução confirmada às 8h30 em Roma Termini</strong> (reserva Drivalia IT26FLX4ahmjr) — não em Fiumicino, e não no dia 07 como no plano provisório anterior. Isso pede saída de madrugada: Salerno → Roma são ~270 km / ~3h, então partam por volta das 5h00 para chegar com folga. Abasteça o tanque antes — a devolução costuma exigir tanque cheio.",
+    stops:[
+      {t:"05h00",cat:"Hotel",n:"Saída de Salerno",addr:"Salerno — hospedagem a confirmar",lat:40.6806,lng:14.7594,
+       desc:"Saída de madrugada — confira o tanque cheio antes de pegar a estrada e se não ficou nada na mala do carro.",
        info:[["Combustível","Posto na SS18 / entrada da A3, antes do pedágio"]],
        tags:[["Base","free"]]},
       {t:"Estrada",cat:"Estrada",n:"Salerno → Roma pela A1",addr:"A3 + A1 Autostrada del Sole",lat:41.4500,lng:13.4000,
-       desc:"Cerca de 270 km. Saia com 1h30 de folga além do tempo estimado: o trecho Nápoles–Caserta engarrafa e o retorno do carro consome tempo.",
-       info:[["Duração","~3h sem paradas"],["Pedágio","~€25 no total"]],
+       leg:{mode:"car",min:90,dist:"~135 km"},
+       desc:"Metade do caminho — ~270 km no total até Roma. Tráfego costuma ser leve de madrugada, mas saia com folga.",
+       info:[["Pedágio","~€25 no total"]],
        tags:[["Dirigir","car"]]},
-      {t:"Devolução",cat:"Carro",n:"Devolução do carro — Fiumicino (FCO)",addr:"Rental Car Center — Aeroporto Leonardo da Vinci",lat:41.8003,lng:12.2389,
-       leg:{mode:"car",min:180,dist:"270 km"},
-       desc:"O centro de devolução fica ao lado do Terminal 3, com shuttle gratuito. Fotografe o carro por todos os lados antes de entregar e guarde o comprovante de devolução.",
-       info:[["Chegada","3h antes do voo internacional"],["Alternativa","Devolver na Termini e ir de Leonardo Express (~€14, 32 min)"]],
-       tags:[["Transfer","plane"],["Dirigir","car"]]}
+      {t:"08h30",cat:"Carro",n:"Devolução do carro — Roma Termini",addr:"Via Giovanni Giolitti — Stazione Termini (Drivalia)",lat:41.9003,lng:12.5045,
+       leg:{mode:"car",min:90,dist:"~135 km"},
+       desc:"RESERVA CONFIRMADA — devolução às 8h30 no mesmo balcão da retirada (Drivalia, reserva IT26FLX4ahmjr). Fotografe o carro por todos os lados antes de entregar e guarde o comprovante.",
+       info:[["Balcão","Terça: 8h30–19h"],["Depois da devolução","Se o voo sair de Fiumicino, pegue o Leonardo Express ali mesmo na Termini (~€14, 32 min)"]],
+       tags:[["Confirmado","ok"],["Dirigir","car"]]}
     ]
   }
 ];
@@ -694,19 +687,20 @@ const RESERVAS = {
   confirmed:{title:"✅ Já confirmadas",items:[
     {t:"Museus do Vaticano — 29/08 17h30 · 2 ingressos · cód. 2L2NFKIO19XTF24EO2",u:"https://www.museivaticani.va"},
     {t:"Roscioli Salumeria con Cucina — 30/08 14h30 (almoço) · 3 pessoas · ref. BFR2CXL2",u:"https://www.salumeriaroscioli.com"},
-    {t:"Trattoria Vecchia Roma — 01/09 19h30 · 3 pessoas · nº TNkRly",u:""}
+    {t:"Trattoria Vecchia Roma — 01/09 19h30 · 3 pessoas · nº TNkRly",u:""},
+    {t:"Audiência Geral com o Papa — 02/09 10h00 · 3 ingressos · reserva 1771_UG_02.09/2026",u:""},
+    {t:"Carro Drivalia — retirada 02/09 14h30 Roma Termini · devolução 08/09 8h30 Roma Termini · reserva IT26FLX4ahmjr",u:""}
   ]},
   urgent:{title:"🔴 Urgente — 2 a 3 semanas antes",items:[
     {t:"Explora — Museu das Crianças (turno 10h, 31/08)",u:"https://www.mdbr.it"},
-    {t:"Carro Roma Termini → devolução Fiumicino (com cadeirinha!)",u:"https://www.rentalcars.com"},
+    {t:"Cadeirinha da Maju para o carro — NÃO veio inclusa na Drivalia, confirmar",u:""},
     {t:"Ferry Salerno ⇄ Capri — dia 06 (Alicost)",u:"https://www.alicost.it"}
   ]},
   soon:{title:"🟡 1 semana antes",items:[
     {t:"Coliseu + Foro + Palatino",u:"https://www.colosseo.it"},
     {t:"Dal Bolognese (almoço sáb 31/08)",u:"https://roma.dalbolognese.it"},
-    {t:"Da Enzo al 29 (jantar ter 02/09)",u:"https://www.daenzoal29.com"},
     {t:"Galleria Borghese",u:"https://galleriaborghese.cultura.gov.it"},
-    {t:"Hospedagem em Salerno (com garagem) — dias 02 a 07",u:""},
+    {t:"Hospedagem em Salerno (com garagem) — dias 03 a 08/09",u:""},
     {t:"Ferry Salerno–Amalfi–Positano — dia 04 (Travelmar)",u:"https://www.travelmar.it"},
     {t:"Marina Grande, Amalfi (almoço dia 04)",u:"https://www.ristorantemarinagrande.com"},
     {t:"Cumpà Cosimo, Ravello (almoço dia 05)",u:""},
@@ -725,7 +719,7 @@ const RESERVAS = {
 };
 </script>
 <script>const ICONS={"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\"/>", "calendar": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "hotel": "<path d=\"M3 21V5a2 2 0 012-2h14a2 2 0 012 2v16M3 21h18M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "route": "<circle cx=\"6\" cy=\"19\" r=\"3\"/><circle cx=\"18\" cy=\"5\" r=\"3\"/><path d=\"M9 19h6a4 4 0 004-4V9\"/>", "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"/><path d=\"M7 21l3-6 2-4M11 11l4 2 2 4M9 9l2 2M10 15l-2 6\"/>", "check": "<path d=\"M20 6L9 17l-5-5\"/>", "navigation": "<path d=\"M3 11l19-9-9 19-2-8-8-2z\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4-4\"/>", "droplet": "<path d=\"M12 2.7l5.3 5.3a7.5 7.5 0 11-10.6 0z\"/>", "shield": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>", "utensils": "<path d=\"M3 2v7a3 3 0 003 3v10M6 2v6M9 2v6M16 2c-1.5 0-3 2-3 5s1.5 4 3 4v9\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M12 8v13M3 12h18M12 8S10 2 7 4s5 4 5 4M12 8s2-6 5-4-5 4-5 4z\"/>", "star": "<path d=\"M12 2l3 7 7 .5-5.5 4.5 1.5 7L12 17l-6.5 4 1.5-7L1.5 9.5 8.5 9z\"/>", "baby": "<path d=\"M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0\"/>", "list": "<path d=\"M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01\"/>", "map": "<path d=\"M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "camera": "<path d=\"M14.5 4l1.5 2h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h3l1.5-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "wifi-off": "<path d=\"M2 8.8a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0M12 20h.01M2 2l20 20\"/>", "coffee": "<path d=\"M17 8h1a3 3 0 010 6h-1M3 8h14v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3\"/>", "plane": "<path d=\"M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7l5.1 3.4-2 4-2-1-1 1 3 2 2 3 1-1-1-2 4-2 3.4 5.1a1 1 0 001.7-.9z\"/>", "shopping": "<path d=\"M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0\"/>", "landmark": "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2L3 8h18z\"/>", "church": "<path d=\"M12 2v6M9 5h6M5 22V10l7-4 7 4v12M5 22h14M9 22v-5a3 3 0 016 0v5\"/>", "icecream": "<path d=\"M7 11a5 5 0 0110 0M7 11h10l-5 11-5-11z\"/>", "tree": "<path d=\"M12 2L7 9h3l-4 6h4l-3 5h12l-3-5h4l-4-6h3z\"/><path d=\"M12 20v2\"/>", "building": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "square": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/>", "sandwich": "<path d=\"M3 11h18l-2-4H5l-2 4zM3 11l1 5a2 2 0 002 1.5h12a2 2 0 002-1.5l1-5\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "car": "<path d=\"M5 18v2M19 18v2M4 13l1.6-4.8A2 2 0 017.5 7h9a2 2 0 011.9 1.2L20 13v5H4v-5zM4 13h16\"/><circle cx=\"7.5\" cy=\"15.5\" r=\"1\"/><circle cx=\"16.5\" cy=\"15.5\" r=\"1\"/>", "boat": "<path d=\"M3 17l2.2-6h13.6L21 17M6 11V6h12v5M12 3v3M3 20c1.5 0 1.5-1.2 3-1.2s1.5 1.2 3 1.2 1.5-1.2 3-1.2 1.5 1.2 3 1.2 1.5-1.2 3-1.2\"/>", "key": "<circle cx=\"8\" cy=\"14\" r=\"4\"/><path d=\"M11 11l9-9 2 2-2 2 2 2-3 3-2-2-2 2z\"/>", "train": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"13\" rx=\"4\"/><path d=\"M5 11h14M8 16l-2.5 4M16 16l2.5 4\"/><circle cx=\"8.5\" cy=\"8\" r=\"1\"/><circle cx=\"15.5\" cy=\"8\" r=\"1\"/>"};
-const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane", "Carro": "car", "Ferry": "boat", "Praia": "droplet", "Vila": "tree", "Gruta": "droplet", "Pizza": "utensils", "Cidade": "map", "Estrada": "car", "Duomo": "church", "Jardim": "tree"};
+const CAT_ICON={"Hotel": "hotel", "Compras": "shopping", "Monumento": "landmark", "Pra\u00e7a": "square", "Doce": "icecream", "Igreja": "church", "Gelato": "icecream", "Jantar": "utensils", "Museu": "building", "Almo\u00e7o": "utensils", "Bas\u00edlica": "church", "Parque": "tree", "Mirante": "camera", "S\u00edtio": "landmark", "Caf\u00e9": "coffee", "Lanche": "sandwich", "Bairro": "map", "Aeroporto": "plane", "Carro": "car", "Ferry": "boat", "Praia": "droplet", "Vila": "tree", "Gruta": "droplet", "Pizza": "utensils", "Cidade": "map", "Estrada": "car", "Duomo": "church", "Jardim": "tree", "Audiência": "church"};
 const TAG_ICON={"Reservar": "calendar", "Gratuito": "gift", "Comer": "utensils", "Maju \u2764": "baby", "Foto": "camera", "Essencial": "star", "Base": "hotel", "Inclu\u00eddo": "check", "Compras": "shopping", "Passeio": "map", "Transfer": "plane", "Dirigir": "car", "Barco": "boat", "Ingresso": "calendar", "Sem reserva": "clock", "Aten\u00e7\u00e3o": "shield", "Praia": "droplet", "Confirmado": "check"};
 
 function haversine(a,b){
@@ -826,7 +820,7 @@ function renderReservas(){
     return '<div class="resv-card '+k+'"><h4><span class="dot '+dot+'"></span>'+lbl+'</h4>'+items+'</div>';
   }).join('');
   return '<section class="resv" id="reservas"><div class="wrap"><h2 class="sec-title">Reservas prioritárias</h2>'+
-    '<p class="sec-lead">Vaticano, Roscioli e Trattoria Vecchia Roma já estão confirmados. O resto: marque conforme confirmar — a ordem reflete a urgência.</p>'+
+    '<p class="sec-lead">Vaticano, Roscioli, Trattoria Vecchia Roma, Audiência Geral e o carro Drivalia já estão confirmados. O resto: marque conforme confirmar — a ordem reflete a urgência.</p>'+
     '<div class="resv-grid">'+blocks+'</div></div></section>';
 }
 
