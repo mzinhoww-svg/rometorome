@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#2A211B">
 <title>Roma: Guia de Imersão Histórica e Religiosa</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('roma2026_theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-512.png">
+<link href="vendor/fonts/fonts.css" rel="stylesheet">
 <style>
 :root{
   --bg:#FAF6EF; --surface:#FFFFFF; --surface-warm:#F4ECE0;
@@ -61,9 +63,12 @@ svg.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-
 .daynav a:hover{color:var(--terracotta);border-color:var(--terracotta)}
 .daynav a.active{background:var(--terracotta);color:#fff;border-color:var(--terracotta)}
 .daynav a.disabled{opacity:.4;pointer-events:none}
+.daynav a.today{box-shadow:0 0 0 2px var(--gold)}
+.today-flag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--terracotta);padding:4px 10px;border-radius:999px;margin-left:10px;vertical-align:middle}
+.today-flag::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block}
 
 /* GENERIC SECTION */
-.sec{padding:44px 0}
+.sec{padding:44px 0;scroll-margin-top:70px}
 .sec-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,34px);letter-spacing:-.01em;margin-bottom:8px}
 .sec-lead{color:var(--ink-soft);font-size:15px;max-width:640px;margin-bottom:26px}
 
@@ -71,7 +76,7 @@ svg.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-
 .toc-grid{display:grid;gap:14px}
 @media(min-width:640px){.toc-grid{grid-template-columns:1fr 1fr}}
 .toc-day{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--shadow-sm)}
-.toc-day h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:2px}
+.toc-day h3{font-family:'Fraunces',serif;font-size:16px;margin-bottom:2px}
 .toc-day .toc-date{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta-deep);margin-bottom:10px;display:block}
 .toc-day ul{list-style:none;display:grid;gap:6px}
 .toc-day li a{font-size:13px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:6px}
@@ -110,6 +115,17 @@ details.verbete[open]{box-shadow:var(--shadow-md)}
 .verbete summary .vb-chev{flex:0 0 auto;transition:transform .2s;color:var(--ink-soft)}
 details.verbete[open] summary .vb-chev{transform:rotate(180deg)}
 .verbete-body{padding:0 20px 22px}
+.vb-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 16px}
+.short-toggle{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface-warm);color:var(--ink-soft);font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:.18s}
+.short-toggle:hover{border-color:var(--terracotta);color:var(--terracotta)}
+.short-toggle.is-active{background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+details.verbete.short-mode .vb-part{display:none}
+.verbete summary .vb-read-badge{display:none;flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--olive2);color:#fff;align-items:center;justify-content:center;font-size:12px}
+details.verbete.is-read summary .vb-read-badge{display:flex}
+.read-toggle{margin-top:22px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;border:1px dashed var(--border);background:transparent;color:var(--ink-soft);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.18s}
+.read-toggle:hover{border-color:var(--terracotta);color:var(--terracotta)}
+details.verbete.is-read .read-toggle{background:var(--surface-warm);border-style:solid;border-color:transparent;color:var(--terracotta-deep)}
+.read-progress{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink-soft);margin:-6px 0 20px}
 .vb-part{margin-top:20px}
 .vb-part h4{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:var(--terracotta-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .vb-part h4 .num{font-size:11px;font-weight:700;width:22px;height:22px;border-radius:50%;background:var(--surface-warm);color:var(--ink-soft);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
@@ -236,17 +252,18 @@ footer a{color:var(--gold);text-decoration:none}
 <section class="sec" id="mapa"><div class="wrap">
   <h2 class="sec-title">Mapa da minha imersão histórica</h2>
   <p class="sec-lead">Cada dia do roteiro em Roma (29/08 a 02/09) tem os locais com carga histórica ou religiosa real. Locais puramente logísticos (hotel, mercado, restaurantes) ficam de fora — isso aqui é sobre entender o que você vai ver, não sobre onde comer.</p>
+  <p class="read-progress" id="readProgress"></p>
   <div class="toc-grid">
     <div class="toc-day">
       <span class="toc-date">29/08 · Chegada + Vaticano</span>
-      <h4>Dia 1</h4>
+      <h3>Dia 1</h3>
       <ul>
         <li><a href="#vaticano-museus"><span class="depth mega"></span> Museus do Vaticano + Capela Sistina</a></li>
       </ul>
     </div>
     <div class="toc-day">
       <span class="toc-date">30/08 · São Pedro + Centro Histórico</span>
-      <h4>Dia 2</h4>
+      <h3>Dia 2</h3>
       <ul>
         <li><a href="#sao-pedro"><span class="depth mega"></span> Basílica de São Pedro</a></li>
         <li><a href="#castel-santangelo"><span class="depth mega"></span> Castel Sant'Angelo</a></li>
@@ -259,14 +276,14 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
     <div class="toc-day">
       <span class="toc-date">31/08 · Dia da Maju</span>
-      <h4>Dia 3</h4>
+      <h3>Dia 3</h3>
       <ul>
         <li><a href="#piazza-del-popolo"><span class="depth medio"></span> Piazza del Popolo + Villa Borghese</a></li>
       </ul>
     </div>
     <div class="toc-day">
       <span class="toc-date">01/09 · Roma Antiga</span>
-      <h4>Dia 4</h4>
+      <h3>Dia 4</h3>
       <ul>
         <li><a href="#coliseu"><span class="depth mega"></span> Coliseu</a></li>
         <li><a href="#foro-palatino"><span class="depth mega"></span> Fórum Romano + Palatino</a></li>
@@ -275,7 +292,7 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
     <div class="toc-day">
       <span class="toc-date">02/09 · Audiência Geral</span>
-      <h4>Dia 5</h4>
+      <h3>Dia 5</h3>
       <ul>
         <li><a href="#audiencia-geral"><span class="depth mega"></span> Audiência Geral com o Papa</a></li>
       </ul>
@@ -286,14 +303,14 @@ footer a{color:var(--gold);text-decoration:none}
 <section class="hday" id="hd1"><div class="wrap">
   <div class="hday-head">
     <span class="hday-badge">29/08</span>
-    <div class="hday-title">Chegada + Vaticano à Noite</div>
+    <h2 class="hday-title">Chegada + Vaticano à Noite</h2>
     <p class="hday-frame">Seu primeiro contato com Roma vai ser, literalmente, com dois mil anos de arte e poder concentrados num único edifício. Antes de entrar nos Museus do Vaticano, vale entender que você está prestes a atravessar a coleção de arte mais politicamente carregada do mundo ocidental — construída por papas que usavam a beleza como instrumento de poder tanto quanto de fé.</p>
     <div class="audio-ep">
       <div class="audio-ep-head">
-        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
-        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 1</span><div class="audio-ep-title">A máquina de propaganda do Vaticano</div></div>
+        <span class="audio-ep-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 1</span><div class="audio-ep-title" id="audio-title-1">A máquina de propaganda do Vaticano</div></div>
       </div>
-      <audio controls preload="none" src="audio/dia1-vaticano.m4a"></audio>
+      <audio aria-labelledby="audio-title-1" controls preload="none" src="audio/dia1-vaticano.m4a"></audio>
       <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
     </div>
   </div>
@@ -490,14 +507,14 @@ footer a{color:var(--gold);text-decoration:none}
 <section class="hday" id="hd2"><div class="wrap">
   <div class="hday-head">
     <span class="hday-badge">30/08</span>
-    <div class="hday-title">São Pedro + Roscioli + Centro Histórico</div>
+    <h2 class="hday-title">São Pedro + Roscioli + Centro Histórico</h2>
     <p class="hday-frame">O dia com mais quilômetros de história por metro quadrado do roteiro inteiro: da maior igreja católica do mundo a uma fonte barroca, passando por uma fortaleza que já foi túmulo de imperador. Também é o dia com mais lendas populares para destrinchar depois do Coliseu.</p>
     <div class="audio-ep">
       <div class="audio-ep-head">
-        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
-        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 2</span><div class="audio-ep-title">A Roma que os guias não contam</div></div>
+        <span class="audio-ep-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 2</span><div class="audio-ep-title" id="audio-title-2">A Roma que os guias não contam</div></div>
       </div>
-      <audio controls preload="none" src="audio/dia2-sao-pedro-centro-historico.m4a"></audio>
+      <audio aria-labelledby="audio-title-2" controls preload="none" src="audio/dia2-sao-pedro-centro-historico.m4a"></audio>
       <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
     </div>
   </div>
@@ -509,6 +526,13 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
 
       <div class="mode antes">
         <h4>🚪 Antes de entrar</h4>
@@ -572,6 +596,20 @@ footer a{color:var(--gold);text-decoration:none}
         </ol>
       </div>
 
+      <div class="mode conte">
+        <h4>💬 Conte para mim</h4>
+        <p>Comece pelo chão: muito antes da igreja, ali havia um circo romano e, ao lado, um cemitério comum, onde gente sem importância nenhuma era enterrada. A história conta que num desses túmulos foi posto um pescador da Galileia executado pelos romanos — e, dois séculos depois, já havia romanos apontando para aquele ponto exato do morro e dizendo "está aqui". Um imperador construiu sobre esse ponto uma basílica enorme, que ficou de pé por uns mil e duzentos anos, até começar a rachar. Aí um papa guerreiro decidiu que reformar era pouco: mandou derrubar tudo e recomeçar do zero, em 1506. O que veio depois foi quase um século e meio de obra passando de mão em mão — Bramante desenhou, Rafael mudou o desenho, Sangallo tocou por anos, Michelangelo voltou atrás e projetou a cúpula, morreu antes de vê-la de pé, e outros a ergueram seguindo seu modelo de madeira. Maderno esticou a nave e fez a fachada; Bernini fechou a conta com o baldaquino e com a praça de braços abertos. Nenhum deles viu o resultado inteiro — cada um trabalhou sabendo que estava construindo algo que outra pessoa terminaria. E tudo isso, os cem metros de altura, o mármore, o bronze, existe para marcar um lugar no chão que ninguém consegue provar com certeza absoluta.</p>
+      </div>
+
+      <div class="mode perguntas">
+        <h4>🤔 Perguntas para levar</h4>
+        <ul>
+          <li>O que faz um lugar ser sagrado: a certeza do que está enterrado ali, ou o fato de milhões de pessoas terem acreditado nisso por quase dois mil anos?</li>
+          <li>Como será trabalhar a vida inteira numa obra que você sabe, desde o primeiro dia, que não vai ver pronta?</li>
+          <li>Se a igreja antiga durou mais de mil anos e mesmo assim foi demolida, o que faz uma geração decidir que vale a pena destruir o que a anterior deixou?</li>
+        </ul>
+      </div>
+
     </div>
   </details>
 
@@ -582,6 +620,18 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
+
+      <div class="mode antes">
+        <h4>🚪 Antes de entrar</h4>
+        <p>Este é o edifício mais reciclado de Roma: você vai entrar num túmulo, andar dentro de uma fortaleza, atravessar apartamentos de papa e sair num terraço panorâmico — tudo no mesmo prédio redondo. Comece pela <b>rampa espiral romana</b>, de cerca de 120 metros, que é a estrutura original do mausoléu de Adriano <span class="ftag fato">FATO</span> e ainda hoje faz o visitante subir do jeito que se subia no século II. Dali o percurso vai empilhando camadas: salões medievais, celas de prisão de Estado, a Sala Paolina renascentista (Paulo III Farnese) e, no topo, o Terraço do Anjo <span class="ftag fato">FATO</span>. Vale saber de antemão o que <u>não</u> está mais ali: mármores, friso, estátuas e a quadriga dourada do topo sumiram ao longo dos séculos, a partir dos saques do início do século V — o que sobrou é o esqueleto de alvenaria, e é justamente ele que atravessou 1.800 anos. Duas coisas para procurar com atenção desde o começo: o <b>Passetto di Borgo</b>, o corredor elevado que aponta para o Vaticano, e o <b>anjo de bronze</b> no alto, que dá nome ao castelo por causa de uma visão de 590 d.C. que ninguém registrou na época <span class="ftag lenda">LENDA</span>.</p>
+      </div>
 
       <div class="vb-part">
         <h4><span class="num">1</span>De túmulo de imperador a fortaleza papal</h4>
@@ -621,6 +671,20 @@ footer a{color:var(--gold);text-decoration:none}
         <p>Suba até o Terraço do Anjo e olhe para trás, para o Passetto — o corredor elevado que sai do castelo em direção ao Vaticano. É por ali que um papa fugiu, de fato, em 1527.</p>
       </div>
 
+      <div class="mode conte">
+        <h4>💬 Conte para mim</h4>
+        <p>Um imperador mandou construir para si um túmulo redondo do outro lado do rio, coberto de mármore e coroado por uma carruagem de ouro. Cem anos depois ele já estava cheio de imperadores mortos; mil e quinhentos anos depois, não havia mais nem mármore, nem carruagem, nem ossos — só o cilindro de tijolo, forte demais para ser derrubado. E foi exatamente por ser forte demais que ele mudou de profissão: virou muralha, virou castelo, virou o cofre onde os papas guardavam ouro, arquivos e a si mesmos. Numa manhã de 1527, com Roma sendo saqueada por tropas amotinadas, um papa correu por um corredor secreto embutido numa muralha e se trancou lá dentro — e ficou meses, mais refém do que salvo, até escapar disfarçado. Nos séculos seguintes o mesmo prédio ganhou celas: um escultor famoso escapou de uma delas e escreveu sobre isso; uma jovem nobre saiu de outra para ser decapitada. Depois vieram os apartamentos decorados, os canhões, o exército, o museu. E, no alto de tudo, um anjo de bronze guarda a espada — parado no gesto de dizer que a peste acabou, num dia que talvez nunca tenha existido.</p>
+      </div>
+
+      <div class="mode perguntas">
+        <h4>🤔 Perguntas para levar</h4>
+        <ul>
+          <li>Se um mesmo prédio serviu de túmulo, fortaleza, prisão, palácio e museu, o que ele realmente "é" — e quem decide isso?</li>
+          <li>Um papa precisar de um corredor de fuga secreto até sua própria fortaleza diz o quê sobre como era ser poderoso naquela época?</li>
+          <li>Por que será que uma história que ninguém registrou na hora acabou virando o nome oficial do lugar — e o que isso ensina sobre as histórias que a gente ouve nas viagens?</li>
+        </ul>
+      </div>
+
     </div>
   </details>
 
@@ -631,6 +695,18 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
+
+      <div class="mode antes">
+        <h4>🚪 Antes de entrar</h4>
+        <p>Você vai entrar num prédio que é três coisas ao mesmo tempo: um templo romano de quase dois mil anos, uma igreja católica em funcionamento (Santa Maria ad Martyres, desde 609 d.C. <span class="ftag fato">FATO</span>) e um mausoléu nacional italiano, com Rafael e dois reis da Itália sepultados nas capelas laterais. Isso muda o jeito de visitar: é um espaço de culto ativo, com silêncio pedido, ombros cobertos e missas que interrompem a visita. A entrada é por baixo do pórtico de colunas, onde está gravada a inscrição de Agripa — leia ela antes de entrar, porque o edifício que você vai ver por dentro <em>não</em> é o de Agripa, e essa contradição é metade da graça do lugar. Lá dentro, resista ao impulso de olhar as capelas primeiro: pare no meio, olhe para cima e deixe o óculo fazer o trabalho. Se estiver chovendo, melhor ainda — a água entra, e o piso de quase 1.900 anos ainda dá conta de escoar.</p>
+      </div>
 
       <div class="vb-part">
         <h4><span class="num">1</span>Dois templos, uma inscrição — e um debate sobre quem construiu qual</h4>
@@ -664,6 +740,20 @@ footer a{color:var(--gold);text-decoration:none}
         <p>Fique embaixo do óculo e observe o feixe de luz se mover pelo interior conforme o sol passa — é o único "iluminador" do templo, exatamente como há quase 1.900 anos.</p>
       </div>
 
+      <div class="mode conte">
+        <h4>💬 Conte para mim</h4>
+        <p>Um general romano chamado Agripa construiu aqui um templo, e ele pegou fogo. Reconstruíram, e pegou fogo de novo. Aí, no século II, um imperador mandou levantar no mesmo terreno uma coisa que ninguém tinha feito antes: um prédio redondo coberto por uma cúpula gigantesca de concreto, sem um único pedaço de ferro segurando, com um buraco aberto no meio do teto de propósito. Podia ter desabado. Não desabou — e continua sendo, até hoje, a maior cúpula de concreto não armado do planeta. Mas o mais estranho é que quem mandou fazer isso não colocou o próprio nome na fachada: manteve o nome de Agripa, o dono do templo antigo que já tinha virado cinzas. Séculos depois, quando Roma estava sendo desmontada pedra por pedra para construir outras coisas, este prédio escapou por um detalhe burocrático — virou igreja, e ninguém demole uma igreja em uso. Foi o Deus cristão que salvou o templo de todos os deuses.</p>
+      </div>
+
+      <div class="mode perguntas">
+        <h4>🤔 Perguntas para levar</h4>
+        <ul>
+          <li>Por que alguém com poder absoluto escolheria deixar na fachada o nome de outra pessoa — humildade, cálculo político, ou algo que a gente já nem consegue mais entender de fora?</li>
+          <li>Se este prédio só sobreviveu porque mudou de função, quantas outras coisas que admiramos hoje existem menos por serem geniais e mais por terem dado sorte de continuar sendo úteis?</li>
+          <li>Olhando para esse buraco aberto no teto: você acha que ele está ali por um motivo prático, por um motivo religioso, ou porque quem projetou simplesmente queria que você olhasse para cima?</li>
+        </ul>
+      </div>
+
     </div>
   </details>
 
@@ -674,6 +764,18 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
+
+      <div class="mode antes">
+        <h4>🚪 Antes de entrar</h4>
+        <p>Esta é uma igreja de bairro, no meio de uma piazza pequena, a poucos minutos do Panteão — entrada gratuita, sem fila, sem bilhete, e por isso mesmo muita gente passa por ela sem saber o que tem lá dentro. Combine uma coisa com a família antes de atravessar a porta: <b>ninguém olha para cima até estar dentro da nave</b>. O efeito só funciona de uma vez, e funciona melhor quando você entra olhando para o chão e só levanta a cabeça no ponto certo. Procurem dois marcos no piso: o disco de mármore que marca o ponto de visão do teto da nave, e o ponto sob a "cúpula" <span class="ftag fato">FATO</span>. É uma igreja ativa, então pode haver missa ou silêncio pedido — e, se houver, vale esperar cinco minutos em vez de atravessar correndo. Guarde também um detalhe para conferir com os próprios olhos: nada do que parece arquitetura de pedra aqui em cima é arquitetura de pedra <span class="ftag fato">FATO</span>.</p>
+      </div>
 
       <div class="vb-part">
         <h4><span class="num">1</span>Uma igreja ligada ao colégio jesuíta</h4>
@@ -696,6 +798,20 @@ footer a{color:var(--gold);text-decoration:none}
         <p>Ache o disco de mármore no chão da nave e fique exatamente sobre ele — é o único ponto de onde a cúpula falsa parece perfeitamente real. Ande alguns passos para o lado e observe a ilusão se desfazer. E lembre: essa cúpula que você está vendo é uma reconstituição de 1823, não o trabalho original de Pozzo.</p>
       </div>
 
+      <div class="mode conte">
+        <h4>💬 Conte para mim</h4>
+        <p>Os jesuítas queriam uma igreja grandiosa para o santo que fundou a ordem deles, e uma igreja grandiosa do século XVII precisava de uma cúpula. Só que o dinheiro acabou antes da cúpula chegar. A igreja ficou ali, imponente por fora, com um buraco de ambição bem no meio do teto. Então chamaram um irmão leigo da própria ordem, um homem que era pintor e entendia de matemática e perspectiva como poucos. Ele não construiu nada: pegou uma tela enorme, calculou os ângulos e pintou uma cúpula que não existe. Depois voltou e pintou o teto inteiro da nave, abrindo o céu com colunas falsas que sobem até onde a vista se perde. E marcou no chão o lugar exato onde você precisa estar para acreditar. É o truque mais honesto que existe — ele te diz onde ficar, e mesmo assim você cai. E tem uma última reviravolta: a cúpula que você está olhando nem é a que ele pintou, porque a original queimou num incêndio e foi refeita por outro pintor, seguindo os desenhos que ele deixou. Uma ilusão reconstruída a partir das instruções de quem a inventou.</p>
+      </div>
+
+      <div class="mode perguntas">
+        <h4>🤔 Perguntas para levar</h4>
+        <ul>
+          <li>Se um espaço só funciona a partir de um único ponto de vista, ele está te enganando — ou está te ensinando onde se colocar?</li>
+          <li>Uma solução criada por falta de dinheiro acabou virando o motivo pelo qual as pessoas visitam esta igreja. Quantas coisas que a gente admira nasceram assim, de uma limitação que ninguém escolheu?</li>
+          <li>Quando uma obra é refeita por outra pessoa, seguindo o plano do autor original, ela ainda é a mesma obra? O que exatamente faz uma coisa continuar sendo "a original"?</li>
+        </ul>
+      </div>
+
     </div>
   </details>
 
@@ -706,6 +822,13 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
 
       <div class="vb-part">
         <h4><span class="num">1</span>Uma praça em formato de estádio romano — porque é um estádio romano</h4>
@@ -739,6 +862,13 @@ footer a{color:var(--gold);text-decoration:none}
     </summary>
     <div class="verbete-body">
 
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
+
       <div class="vb-part">
         <h4><span class="num">1</span>Uma fonte alimentada por um aqueduto de 2.000 anos</h4>
         <p>A água que ainda enche a Fontana di Trevi vem do Aqua Virgo, aqueduto concluído em 19 a.C. por Marco Agripa, com cerca de 20 km de extensão — um dos poucos aquedutos romanos antigos ainda parcialmente funcionais <span class="ftag fato">FATO</span>. O nome "Virgo" tem uma lenda de origem, registrada pelo próprio engenheiro romano Frontino, mas já contada por ele como "diz-se que" (fama est) — ou seja, mesmo a fonte antiga já tratava como tradição recebida, não testemunho direto: uma jovem teria indicado a nascente a soldados sedentos enviados por Agripa <span class="ftag lenda">LENDA</span>. Uma explicação alternativa, considerada por parte dos historiadores mais provável, é que o nome venha simplesmente da pureza ("virgindade") da água, sem relação com pessoa real.</p>
@@ -770,6 +900,13 @@ footer a{color:var(--gold);text-decoration:none}
     </summary>
     <div class="verbete-body">
 
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
+
       <div class="vb-part">
         <h4><span class="num">1</span>A praça sem igreja</h4>
         <p>"Campo de' Fiori" significa literalmente "campo de flores" — a origem mais aceita é prosaica: até o fim da Idade Média a área era um terreno aberto, coberto de vegetação silvestre, antes de ser urbanizada e pavimentada em 1456, sob o papa Calisto III <span class="ftag fato">FATO</span>. É tradicionalmente descrita como a única grande praça central de Roma sem igreja voltada diretamente para ela — embora haja uma igreja historicamente ligada à área (Santa Brígida, erguida ainda no fim do século XIV) que hoje dá de frente para a vizinha Piazza Farnese, dependendo de onde se traçam os limites históricos do "campo" original <span class="ftag hipotese">DEBATE</span> quanto ao quão absoluta é essa afirmação. Funciona como mercado a céu aberto desde 1869 e continua ativo diariamente até hoje. Uma versão popular liga o nome a "Flora", suposta amante de um nobre local — folclore urbano sem base documental, repetido em guias mas não aceito por historiadores <span class="ftag lenda">LENDA</span>.</p>
@@ -795,19 +932,51 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
   </details>
 
+  <div class="day-summary">
+    <h3>📔 Resumo do dia</h3>
+    <div class="ds-block">
+      <span class="ds-label">O que eu aprendi hoje</span>
+      <p>Que Roma quase nunca constrói do zero: ela recicla. Um túmulo de imperador virou fortaleza, prisão e museu; um estádio de Domiciano virou Piazza Navona sem nunca ser escavado; um templo de todos os deuses virou igreja em 609 e só por isso continua de pé; e um aqueduto de 19 a.C. ainda enche a Fontana di Trevi. Aprendi também que boa parte do que os guias contam nesses lugares — o véu do Nilo como provocação a Borromini, o bronze do Panteão virando o baldaquino, Giordano Bruno preso no Castel Sant'Angelo — não resiste a uma checagem de datas e documentos.</p>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">5 fatos que eu preciso guardar</span>
+      <ol>
+        <li>A cúpula do Panteão ainda é a maior de concreto não armado do mundo: cerca de 43,3 m de diâmetro, exatamente igual à altura interna, formando uma esfera perfeita — e o óculo nunca teve vidro, com a drenagem do piso funcionando há quase 1.900 anos.</li>
+        <li>São Pedro levou 120 anos entre a pedra fundamental de Júlio II (18 de abril de 1506) e a consagração sob Urbano VIII (18 de novembro de 1626), passando por Bramante, Rafael, Sangallo, Michelangelo, Maderno e Bernini — Michelangelo projetou a cúpula, morreu em 1564 tendo erguido só a base e nunca a viu pronta.</li>
+        <li>O bronze que Urbano VIII arrancou do pórtico do Panteão em 1625 não virou, na maior parte, o baldaquino de Bernini: menos de 2% foi para lá, e mais de 98% virou canhão para o Castel Sant'Angelo — o mito "virou arte sacra" pode ter sido cultivado para disfarçar o uso militar.</li>
+        <li>No Saque de Roma de 1527, o papa Clemente VII fugiu de verdade pelo Passetto di Borgo até o Castel Sant'Angelo — mas não foi um resgate heroico: ficou meses lá dentro, mais refém que salvo, e só escapou disfarçado para Orvieto no fim do ano.</li>
+        <li>A cúpula "de Andrea Pozzo" em Sant'Ignazio é pintura sobre tela porque faltou dinheiro para construir a cúpula real — e a tela que você vê não é a de 1685: a original queimou em 1818 e foi refeita em 1823 por Francesco Manno, a partir dos desenhos de Pozzo.</li>
+      </ol>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">As pessoas que eu conheci hoje</span>
+      <div class="ds-people">
+        <div class="ds-person"><b>Adriano</b> — o imperador que mandou erguer o próprio mausoléu redondo entre 123/134 e 139 d.C. e que manteve o nome de Agripa na fachada do Panteão em vez do seu.</div>
+        <div class="ds-person"><b>Urbano VIII (Barberini)</b> — o papa do baldaquino e da consagração de São Pedro, e também o que arrancou o bronze do Panteão, rendendo a pasquinata "o que os bárbaros não fizeram, os Barberini fizeram".</div>
+        <div class="ds-person"><b>Bernini</b> — autor do baldaquino, da colunata de 284 colunas em "braços maternos" e da Fontana dei Quattro Fiumi, terminada em 1651, antes de Borromini sequer assumir a igreja vizinha.</div>
+        <div class="ds-person"><b>Andrea Pozzo</b> — irmão leigo jesuíta, pintor e matemático, que resolveu a falta de uma cúpula pintando uma e marcou no chão o ponto exato de onde a ilusão funciona.</div>
+        <div class="ds-person"><b>Giordano Bruno</b> — filósofo queimado no Campo de' Fiori em 17 de fevereiro de 1600 por heresias teológicas, transformado em "mártir da ciência" só pela estátua anticlerical de 1889.</div>
+      </div>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">A conexão do dia</span>
+      <p>Ontem você viu Michelangelo pintando para Júlio II na Sistina; hoje viu o mesmo papa mandando demolir uma basílica de 1.200 anos em 1506 e o mesmo Michelangelo, já velho, projetando a cúpula que não viveria para ver — os dois dias são o mesmo capítulo de papas construtores usando arte como poder. E o fio que atravessa hoje é a reciclagem: pedra, bronze e traçado antigos reaproveitados em prédios novos. Guarde isso para o Dia 4: quando estiver no Coliseu e no Fórum, você vai olhar para ruínas e entender que elas não sumiram sozinhas — parte delas virou as igrejas, palácios e canhões que você já viu hoje.</p>
+    </div>
+  </div>
+
 </div></section>
 
 <section class="hday" id="hd3"><div class="wrap">
   <div class="hday-head">
     <span class="hday-badge">31/08</span>
-    <div class="hday-title">Dia da Maju</div>
+    <h2 class="hday-title">Dia da Maju</h2>
     <p class="hday-frame">Um dia mais leve, mas com uma das praças mais cenográficas de Roma e a coleção de arte particular de uma das famílias mais poderosas do Barroco — os Borghese, que colocaram seu dinheiro e seu gosto atrás de Caravaggio e Bernini antes de qualquer museu público os "descobrir".</p>
     <div class="audio-ep">
       <div class="audio-ep-head">
-        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
-        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 3</span><div class="audio-ep-title">Segredos da Piazza del Popolo e Borghese</div></div>
+        <span class="audio-ep-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 3</span><div class="audio-ep-title" id="audio-title-3">Segredos da Piazza del Popolo e Borghese</div></div>
       </div>
-      <audio controls preload="none" src="audio/dia3-piazza-del-popolo-borghese.m4a"></audio>
+      <audio aria-labelledby="audio-title-3" controls preload="none" src="audio/dia3-piazza-del-popolo-borghese.m4a"></audio>
       <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
     </div>
   </div>
@@ -819,6 +988,13 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
 
       <div class="vb-part">
         <h4><span class="num">1</span>O que você está vendo</h4>
@@ -862,19 +1038,50 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
   </details>
 
+  <div class="day-summary">
+    <h3>📔 Resumo do dia</h3>
+    <div class="ds-block">
+      <span class="ds-label">O que eu aprendi hoje</span>
+      <p>Que uma praça pode ser uma obra de arquitetura pensada como cenário: a Piazza del Popolo era a "porta de Roma" para quem chegava do norte pela Via Flaminia, e cada papa que passou por ali quis deixar sua marca no portão, no obelisco e nas igrejas. E que, subindo o Pincio, uma família — os Borghese — construiu uma vila propositalmente para exibir arte, apostando em Caravaggio e Bernini antes de qualquer museu público. Num único lugar, dá para ver Caravaggios ainda pendurados na capela para a qual foram pintados, e não numa parede de museu.</p>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">5 fatos que eu preciso guardar</span>
+      <ol>
+        <li>O obelisco do centro da praça foi erguido no Egito por Seti I por volta de 1300 a.C., concluído por Ramessés II, e Augusto o trouxe para Roma por volta de 10 a.C. — ele ficou primeiro no Circo Máximo.</li>
+        <li>As duas igrejas "gêmeas" da entrada sul não são iguais: uma tem cúpula oval e a outra circular — um truque de cenografia barroca de Carlo Rainaldi para lotes de tamanhos diferentes.</li>
+        <li>A Capela Cerasi, em Santa Maria del Popolo, guarda duas telas de Caravaggio de 1601 (a <em>Crucificação de São Pedro</em> e a <em>Conversão de São Paulo</em>) uma de frente para a outra, com uma <em>Assunção da Virgem</em> de Annibale Carracci no altar entre elas.</li>
+        <li>A origem do nome "Popolo" não é caso fechado: a lenda dos corvos e das cinzas de Nero é a versão dos guias, mas estudos filológicos defendem que vem de "Sancta Maria Populi Romani" — populus como povo, não como choupo.</li>
+        <li>A Villa Borghese só virou parque público em 1901, quando o Estado italiano comprou a propriedade da família — até então era a vila particular dos Borghese.</li>
+      </ol>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">As pessoas que eu conheci hoje</span>
+      <div class="ds-people">
+        <div class="ds-person"><b>Cardeal Scipione Borghese</b> — sobrinho do papa Paulo V e mecenas precoce de Caravaggio e Bernini; começou a vila em 1605 já pensando nela como lugar de exibir sua coleção.</div>
+        <div class="ds-person"><b>Caravaggio</b> — o pintor das diagonais violentas, cujas telas de 1601 continuam na capela para a qual foram feitas.</div>
+        <div class="ds-person"><b>Giuseppe Valadier</b> — o arquiteto neoclássico que deu à praça o desenho oval que você vê hoje, já no século XIX.</div>
+        <div class="ds-person"><b>Sisto V e Domenico Fontana</b> — o papa e o arquiteto que desenterraram o obelisco em 1587 e o reergueram no centro da praça.</div>
+      </div>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">A conexão do dia</span>
+      <p>Nos dias anteriores você viu papas usando a arte para construir instituições — capelas, basílicas, palácios que pertencem à Igreja. Hoje é a versão privada da mesma história: os Borghese, uma família papal, gastando o mesmo tipo de dinheiro e prestígio para montar uma coleção particular. E os nomes se repetem: Bernini, que você encontra no Vaticano e em São Pedro, aparece de novo aqui — na fachada interna da Porta del Popolo, na Capela Chigi e como escultor apadrinhado por Scipione. É o mesmo círculo pequeno de artistas atendendo a papas e a sobrinhos de papas ao mesmo tempo.</p>
+    </div>
+  </div>
+
 </div></section>
 
 <section class="hday" id="hd4"><div class="wrap">
   <div class="hday-head">
     <span class="hday-badge">01/09</span>
-    <div class="hday-title">Roma Antiga — Coliseu</div>
+    <h2 class="hday-title">Roma Antiga — Coliseu</h2>
     <p class="hday-frame">O dia mais denso do roteiro em história antiga: mil anos de mito de fundação, política imperial e entretenimento de massa, tudo dentro de uma caminhada de meia hora. É também o dia em que mais lendas populares precisam ser destrinchadas — Roma Antiga é, de longe, a era mais mitificada de toda a viagem.</p>
     <div class="audio-ep">
       <div class="audio-ep-head">
-        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
-        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 4</span><div class="audio-ep-title">Como a Igreja salvou o Coliseu</div></div>
+        <span class="audio-ep-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 4</span><div class="audio-ep-title" id="audio-title-4">Como a Igreja salvou o Coliseu</div></div>
       </div>
-      <audio controls preload="none" src="audio/dia4-roma-antiga.m4a"></audio>
+      <audio aria-labelledby="audio-title-4" controls preload="none" src="audio/dia4-roma-antiga.m4a"></audio>
       <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
     </div>
   </div>
@@ -886,6 +1093,13 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
 
       <div class="mode antes">
         <h4>🚪 Antes de entrar</h4>
@@ -952,6 +1166,20 @@ footer a{color:var(--gold);text-decoration:none}
         </ol>
       </div>
 
+      <div class="mode conte">
+        <h4>💬 Conte para mim</h4>
+        <p>Imagine um imperador recém-chegado ao poder, precisando provar que não é o monstro que veio antes dele. Nero havia tomado um pedaço enorme do centro de Roma para fazer um palácio particular, com direito a lago artificial no meio da cidade. Vespasiano manda aterrar o lago e, exatamente ali, construir a maior casa de espetáculos do mundo — de graça, do povo, com setenta e seis portas numeradas para que sessenta mil pessoas entrassem e saíssem depressa, cada uma no lugar que sua classe social permitia. Ele morre antes de ver a obra pronta; o filho, Tito, inaugura com cem dias seguidos de jogos. Séculos depois, quando os combates acabam e Roma encolhe, o prédio vira pedreira: gente carregando o travertino embora, pedaço por pedaço, para construir outras igrejas e palácios. O que salvou o que sobrou foi uma decisão inesperada — em pleno século XVIII, um papa plantou uma cruz no meio da arena e declarou aquele chão sagrado, e ninguém mais ousou levar pedra de um lugar consagrado. Por isso o Coliseu que você tem à frente é, ao mesmo tempo, um terço de um estádio romano e um monumento cristão bem mais jovem do que parece.</p>
+      </div>
+
+      <div class="mode perguntas">
+        <h4>🤔 Perguntas para levar</h4>
+        <ul>
+          <li>Se você fosse imperador e quisesse ser amado depressa, construiria um lugar de diversão gratuita para o povo — ou outra coisa? O que isso diz sobre política, ontem e hoje?</li>
+          <li>Sessenta mil pessoas se divertiam assistindo alguém morrer. O que faz uma multidão inteira achar normal aquilo que, sozinha, cada pessoa talvez achasse insuportável?</li>
+          <li>Este prédio só sobreviveu porque virou sagrado por engano — a partir de uma história que talvez não tenha acontecido aqui. Uma lembrança equivocada que preserva algo real: isso é um problema, ou é assim que a história funciona?</li>
+        </ul>
+      </div>
+
     </div>
   </details>
 
@@ -962,6 +1190,18 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
+
+      <div class="mode antes">
+        <h4>🚪 Antes de entrar</h4>
+        <p>Prepare-se para uma coisa que confunde quase todo visitante: aqui não há um monumento único para "ver", e sim dois lugares diferentes colados um no outro. Embaixo, no vale, o <b>Fórum Romano</b> — a praça que foi por mais de mil anos o centro político, religioso e comercial de Roma, com o Senado (a Cúria), templos, tribunais e a Via Sacra por onde passavam os desfiles de triunfo <span class="ftag fato">FATO</span>. Em cima, a colina do <b>Palatino</b> — onde a lenda situa a fundação da cidade por Rômulo <span class="ftag lenda">LENDA</span> e onde, mais tarde, os imperadores construíram seus palácios <span class="ftag fato">FATO</span>. Dois avisos práticos. Primeiro: quase tudo o que você vai ver está em ruína e fora de escala — colunas soltas, plataformas sem edifício em cima, tijolo onde havia mármore; vale escolher três ou quatro coisas para olhar de verdade (Arco de Tito, Cúria, Templo de Vesta, Basílica de Maxêncio) em vez de tentar identificar tudo. Segundo: repare no <em>nível do chão</em>. O Fórum ficou soterrado por séculos de sedimento e virou pasto de gado — o "Campo Vaccino" — até ser escavado a partir do século XIX <span class="ftag fato">FATO</span>. Você está caminhando vários metros abaixo da Roma moderna, e parte do que parece "antigo intacto" é, na verdade, reconstituição do início do século XX <span class="ftag hipotese">DEBATE</span> quanto a como ler essas reconstruções. É pouca sombra e muito chão irregular: chapéu, água e sapato fechado fazem diferença.</p>
+      </div>
 
       <div class="vb-part">
         <h4><span class="num">1</span>De pântano a centro do mundo</h4>
@@ -1019,6 +1259,20 @@ footer a{color:var(--gold);text-decoration:none}
         </ol>
       </div>
 
+      <div class="mode conte">
+        <h4>💬 Conte para mim</h4>
+        <p>Este lugar começou como um pântano — água parada entre colinas, terreno ruim, bom para nada. Alguém decidiu drenar aquilo e transformar o brejo em praça, e a praça foi virando o centro do mundo conhecido: era ali que se julgava, se votava, se rezava, se comprava e se comemorava vitória, com os generais desfilando pela Via Sacra e os prisioneiros atrás. Por mais de mil anos, o que acontecia neste vale decidia o destino de gente que morava a milhares de quilômetros dali, em terras que nunca veriam Roma. E aí o império do Ocidente caiu, e ninguém varreu mais a praça. A terra foi subindo, cobrindo templo por templo, até que o centro do mundo estava vários metros embaixo do chão — e por séculos as pessoas pastoreavam vacas exatamente em cima do Senado romano, sem pensar duas vezes. Só no século XIX começaram a cavar de volta e reencontrar tudo isso, camada por camada. Lá em cima, na colina, a história é ainda mais estranha: é onde a lenda diz que dois irmãos criados por uma loba fundaram a cidade, e onde os arqueólogos de fato encontraram cabanas de barro e madeira do século VIII a.C. — bem do período em que o mito situa a fundação. Não prova que Rômulo existiu. Mas prova que alguém morava ali, naquela hora, no lugar exato onde os romanos sempre juraram que tudo começou. Depois vieram os imperadores, que escolheram morar nessa mesma colina de propósito, para dormir em cima do mito. As casas deles eram tão grandes que o nome da colina virou nome da coisa: Palatium, palazzo, palace, palácio. Você usa essa palavra até hoje — e ela nasceu aqui.</p>
+      </div>
+
+      <div class="mode perguntas">
+        <h4>🤔 Perguntas para levar</h4>
+        <ul>
+          <li>Se uma cidade inteira pode ser esquecida a ponto de virar pasto de gado, o que faz um lugar ser lembrado — as pedras que sobram, ou as histórias que continuam sendo contadas sobre elas?</li>
+          <li>Os imperadores escolheram morar exatamente onde a lenda dizia que Roma tinha começado. Por que será que quem tem poder quer tanto morar perto de uma história de origem — e isso ainda acontece hoje?</li>
+          <li>Quando a arqueologia acha algo que combina com o mito, mas não o comprova, o que é mais interessante: descobrir se a lenda era verdade, ou entender por que tanta gente precisou acreditar nela por tanto tempo?</li>
+        </ul>
+      </div>
+
     </div>
   </details>
 
@@ -1029,6 +1283,13 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
 
       <div class="vb-part">
         <h4><span class="num">1</span>O maior espaço de espetáculos da Roma Antiga</h4>
@@ -1059,19 +1320,51 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
   </details>
 
+  <div class="day-summary">
+    <h3>📔 Resumo do dia</h3>
+    <div class="ds-block">
+      <span class="ds-label">O que eu aprendi hoje</span>
+      <p>Que Roma Antiga é a era mais mitificada da viagem — e que quase tudo o que "todo mundo sabe" sobre ela precisa de um asterisco. O Coliseu não foi construído para matar cristãos: era entretenimento de massa como ferramenta política, erguido de propósito sobre o lago privado que Nero havia tomado do povo. O Fórum, que decidia o destino de gente a milhares de quilômetros dali, ficou soterrado a ponto de virar pasto de gado. E o Circo Máximo, o maior de todos, é hoje só um vale gramado.</p>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">5 fatos que eu preciso guardar</span>
+      <ol>
+        <li>O Coliseu se chamava Amphitheatrum Flavium; o apelido "Coliseu" só aparece registrado por volta do século VIII, provavelmente por causa da estátua colossal de Nero que ficava por perto.</li>
+        <li>O que salvou o Coliseu da espoliação foi Bento XIV, que em 1750 plantou uma cruz na arena e consagrou o lugar — um local sagrado deixou de servir como pedreira.</li>
+        <li>A Cúria, sede do Senado romano, sobreviveu quase intacta porque virou a igreja de Santo Adriano em 630 d.C., pelo papa Honório I.</li>
+        <li>"Palácio" vem de Palatium: os imperadores concentraram suas residências no Palatino, e o nome da colina virou o nome da coisa — palazzo, palace, palácio.</li>
+        <li>O Circo Máximo era muito maior que o Coliseu (pista de 540-620 metros, estimativas de 150 mil pessoas para cima) e era o entretenimento de massa mais popular de Roma muito antes de o Coliseu existir.</li>
+      </ol>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">As pessoas que eu conheci hoje</span>
+      <div class="ds-people">
+        <div class="ds-person"><b>Vespasiano</b> — o imperador que aterrou o lago particular de Nero e mandou construir ali a maior casa de espetáculos do mundo; morreu sem ver a obra pronta.</div>
+        <div class="ds-person"><b>Tito</b> — o filho que inaugurou o Coliseu em 80 d.C. com cem dias de jogos, e cujo arco no Fórum mostra a Menorá saqueada de Jerusalém.</div>
+        <div class="ds-person"><b>Bento XIV</b> — o papa do século XVIII que consagrou a arena aos mártires e, sem querer, preservou o monumento.</div>
+        <div class="ds-person"><b>Rômulo</b> — o fundador lendário do Palatino, cuja cabana a arqueologia até encontrou (do século VIII a.C.), sem nunca provar que ele existiu.</div>
+        <div class="ds-person"><b>Giacomo Boni</b> — o arqueólogo que escavou o Fórum e reergueu colunas e estátuas da Casa das Vestais: boa parte do que parece "antigo intacto" é reconstituição dele.</div>
+      </div>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">A conexão do dia</span>
+      <p>O padrão mais forte de hoje é este: virar cristão salvou o prédio. A Cúria só chegou inteira até nós porque virou igreja em 630, e o Coliseu só parou de ser desmontado quando um papa cravou uma cruz na arena — o mesmo mecanismo que preserva monumentos antigos por toda Roma. E há um fio que amarra os dias entre si: o travertino arrancado do Coliseu foi reaproveitado até em parte da Basílica de São Pedro, ou seja, a Roma dos papas que você viu nos primeiros dias foi literalmente construída com as pedras da Roma que você visitou hoje.</p>
+    </div>
+  </div>
+
 </div></section>
 
 <section class="hday" id="hd5"><div class="wrap">
   <div class="hday-head">
     <span class="hday-badge">02/09</span>
-    <div class="hday-title">Audiência Geral + Retirada do Carro</div>
+    <h2 class="hday-title">Audiência Geral + Retirada do Carro</h2>
     <p class="hday-frame">Este é o único dia do roteiro em que você não vai visitar um monumento — vai participar de uma instituição viva. A Audiência Geral não é uma missa nem uma visita a ruína: é um encontro semanal que existe, no formato atual, há pouco mais de 60 anos, e que continua acontecendo, quarta a quarta, seja qual for o papa do momento.</p>
     <div class="audio-ep">
       <div class="audio-ep-head">
-        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
-        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 5</span><div class="audio-ep-title">Verdades sobre a Audiência Geral no Vaticano</div></div>
+        <span class="audio-ep-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 5</span><div class="audio-ep-title" id="audio-title-5">Verdades sobre a Audiência Geral no Vaticano</div></div>
       </div>
-      <audio controls preload="none" src="audio/dia5-audiencia-geral.m4a"></audio>
+      <audio aria-labelledby="audio-title-5" controls preload="none" src="audio/dia5-audiencia-geral.m4a"></audio>
       <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
     </div>
   </div>
@@ -1083,6 +1376,13 @@ footer a{color:var(--gold);text-decoration:none}
       <span class="vb-chev">▾</span>
     </summary>
     <div class="verbete-body">
+
+      <div class="ftag-legend">
+        <span class="ftag fato">FATO</span> documentado (registro, contrato, carta, estudo técnico)
+        <span class="ftag tradicao">TRADIÇÃO</span> relato antigo (Vasari, Condivi) amplamente aceito, mas não documento primário
+        <span class="ftag lenda">LENDA</span> mito popular sem base — ou já desmentido
+        <span class="ftag hipotese">DEBATE</span> interpretação de historiadores, sem consenso fechado
+      </div>
 
       <div class="mode antes">
         <h4>🚪 Antes de entrar</h4>
@@ -1166,6 +1466,37 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
   </details>
 
+  <div class="day-summary">
+    <h3>📔 Resumo do dia</h3>
+    <div class="ds-block">
+      <span class="ds-label">O que eu aprendi hoje</span>
+      <p>Que a Audiência Geral não é uma missa nem uma visita a um monumento: é uma catequese pública semanal, com leitura bíblica, resumos em várias línguas, saudação a grupos de peregrinos e bênção final. E que ela é o item mais <em>jovem</em> de todo o roteiro — o formato atual tem pouco mais de 60 anos, não séculos. Hoje foi o único dia em que a instituição papal apareceu funcionando ao vivo, e não musealizada.</p>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">5 fatos que eu preciso guardar</span>
+      <ol>
+        <li>As audiências gerais semanais nasceram em abril de 1939, com Pio XII, como catequese para casais recém-casados — e foram interrompidas em 1943 pela guerra.</li>
+        <li>Em 13 de julho de 1963, Paulo VI fez a audiência com saudações e traduções em francês, espanhol, alemão e inglês — o formato multilíngue que virou padrão até hoje.</li>
+        <li>A Audiência Geral é sempre gratuita: o ingresso se retira na Prefeitura da Casa Pontifícia ou por instituições credenciadas — se alguém cobra, é golpe.</li>
+        <li>A Sala Paulo VI, de Pier Luigi Nervi, foi inaugurada em 30 de junho de 1971, com uma abóbada parabólica de concreto sem nenhuma coluna interna.</li>
+        <li>A sequência quase nunca parou desde 1963 — a exceção foi 2020, quando a pandemia suspendeu as audiências presenciais e Francisco falou sem público, da Biblioteca Apostólica.</li>
+      </ol>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">As pessoas que eu conheci hoje</span>
+      <div class="ds-people">
+        <div class="ds-person"><b>Pio XII</b> — o papa que, em 1939, começou o encontro semanal, então dirigido só a casais recém-casados.</div>
+        <div class="ds-person"><b>Paulo VI</b> — quem consolidou em 1963 o formato multilíngue que você viu funcionando hoje, e que dá nome à sala.</div>
+        <div class="ds-person"><b>Pier Luigi Nervi</b> — o engenheiro italiano que projetou a "Aula Nervi", com sua cobertura curva de concreto sem colunas.</div>
+        <div class="ds-person"><b>Pericle Fazzini</b> — o escultor de <em>A Ressurreição</em>, o bronze de Cristo emergindo de uma explosão, dentro da Sala Paulo VI.</div>
+      </div>
+    </div>
+    <div class="ds-block">
+      <span class="ds-label">A conexão do dia</span>
+      <p>No Dia 1 você viu a instituição papal em tinta e mármore — a Sistina, os aposentos de Rafael, papas encomendando arte para durar séculos; no Dia 2, em pedra, na basílica erguida sobre o túmulo de Pedro. Hoje você viu a mesma instituição sem pedra nenhuma: só um homem falando, gente de dezenas de países ouvindo, e a coisa se repetindo toda quarta-feira. É o contraste que fecha a viagem — tudo o que você visitou foi construído para provar permanência, e a prova mais forte dela acabou sendo um encontro de uma manhã, que não deixa nenhum monumento para trás e simplesmente acontece de novo na semana seguinte.</p>
+    </div>
+  </div>
+
 </div></section>
 
 <section class="sec" id="fecho"><div class="wrap">
@@ -1174,10 +1505,10 @@ footer a{color:var(--gold);text-decoration:none}
 
   <div class="audio-ep" style="max-width:100%;margin-bottom:30px">
     <div class="audio-ep-head">
-      <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
-      <div class="audio-ep-tx"><span class="audio-ep-label">Ouça o fechamento · Episódio 6</span><div class="audio-ep-title">A verdade por trás das lendas romanas</div></div>
+      <span class="audio-ep-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+      <div class="audio-ep-tx"><span class="audio-ep-label">Ouça o fechamento · Episódio 6</span><div class="audio-ep-title" id="audio-title-6">A verdade por trás das lendas romanas</div></div>
     </div>
-    <audio controls preload="none" src="audio/dia6-fechamento.m4a"></audio>
+    <audio aria-labelledby="audio-title-6" controls preload="none" src="audio/dia6-fechamento.m4a"></audio>
     <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
   </div>
 
@@ -1335,17 +1666,80 @@ function applyTheme(t){
   document.documentElement.setAttribute('data-theme', t);
   const btn=document.getElementById('themeBtn');
   if(btn) btn.textContent = t==='dark' ? '☀️' : '🌙';
-  try{localStorage.setItem('roma2025_theme', t);}catch(e){}
+  try{localStorage.setItem('roma2026_theme', t);}catch(e){}
 }
 (function initTheme(){
   let t=null;
-  try{t=localStorage.getItem('roma2025_theme');}catch(e){}
+  try{t=localStorage.getItem('roma2026_theme');}catch(e){}
   if(!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light';
   applyTheme(t);
 })();
 document.getElementById('themeBtn').addEventListener('click',()=>{
   const cur=document.documentElement.getAttribute('data-theme');
   applyTheme(cur==='dark'?'light':'dark');
+});
+
+(function markToday(){
+  const now=new Date();
+  const todayStr=String(now.getDate()).padStart(2,'0')+'/'+String(now.getMonth()+1).padStart(2,'0');
+  const badges=[...document.querySelectorAll('.hday-badge')];
+  const badge=badges.find(b=>b.textContent.trim()===todayStr);
+  if(!badge) return;
+  const section=badge.closest('section.hday');
+  if(section){
+    const navLink=document.querySelector('.daynav a[href="#'+section.id+'"]');
+    if(navLink) navLink.classList.add('today');
+  }
+  if(!badge.parentElement.querySelector('.today-flag')) badge.insertAdjacentHTML('afterend','<span class="today-flag">Hoje</span>');
+})();
+
+// ===== marcar verbete como lido =====
+const READ_KEY='roma2026_read_v1';
+let READ={};
+try{ READ=JSON.parse(localStorage.getItem(READ_KEY))||{}; }catch(e){}
+function saveRead(){ try{localStorage.setItem(READ_KEY, JSON.stringify(READ));}catch(e){} }
+function updateReadUI(id){
+  const details=document.getElementById(id);
+  if(!details) return;
+  const isRead=!!READ[id];
+  details.classList.toggle('is-read', isRead);
+  const btn=details.querySelector('.read-toggle');
+  if(btn) btn.textContent = isRead ? '✓ Marcado como lido' : 'Marcar como lido';
+}
+function updateReadProgress(){
+  const total=document.querySelectorAll('details.verbete').length;
+  const done=Object.values(READ).filter(Boolean).length;
+  const el=document.getElementById('readProgress');
+  if(el) el.textContent = done+' de '+total+' verbetes lidos';
+}
+document.querySelectorAll('details.verbete').forEach(d=>{
+  const chev=d.querySelector('summary .vb-chev');
+  if(chev) chev.insertAdjacentHTML('beforebegin','<span class="vb-read-badge" aria-hidden="true">✓</span>');
+  const body=d.querySelector('.verbete-body');
+  if(body.querySelector('.mode')){
+    body.insertAdjacentHTML('afterbegin','<div class="vb-toolbar"><button type="button" class="short-toggle" data-id="'+d.id+'">📖 Só o resumo curto</button></div>');
+  }
+  body.insertAdjacentHTML('beforeend','<button type="button" class="read-toggle" data-id="'+d.id+'">Marcar como lido</button>');
+  updateReadUI(d.id);
+});
+updateReadProgress();
+document.addEventListener('click',e=>{
+  const readBtn=e.target.closest('.read-toggle');
+  if(readBtn){
+    const id=readBtn.dataset.id;
+    READ[id]=!READ[id];
+    saveRead();
+    updateReadUI(id);
+    updateReadProgress();
+    return;
+  }
+  const shortBtn=e.target.closest('.short-toggle');
+  if(shortBtn){
+    const details=shortBtn.closest('details.verbete');
+    const isShort=details.classList.toggle('short-mode');
+    shortBtn.classList.toggle('is-active', isShort);
+    shortBtn.textContent = isShort ? '📚 Ver o verbete inteiro' : '📖 Só o resumo curto';
+  }
 });
 
 const navLinks=[...document.querySelectorAll('.daynav a[href^="#"]')];
@@ -1356,5 +1750,6 @@ window.addEventListener('scroll',()=>{
   navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
 },{passive:true});
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});}</script>
 </body>
 </html>
