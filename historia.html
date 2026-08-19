@@ -150,6 +150,37 @@ html[data-theme="dark"] .mode.conte{background:#3A241B}
 /* PLACEHOLDER */
 .soon{background:var(--surface-warm);border:1px dashed var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;color:var(--ink-soft);font-size:14px}
 
+/* CLOSING: TIMELINE */
+.fecho-block{margin-bottom:44px}
+.fecho-block h3{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(19px,3vw,24px);margin-bottom:6px;display:flex;align-items:center;gap:9px}
+.fecho-block .fecho-sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px;max-width:620px}
+.timeline{position:relative;padding-left:24px;border-left:2px solid var(--border)}
+.tl-item{position:relative;padding-bottom:18px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-29.5px;top:3px;width:11px;height:11px;border-radius:50%;background:var(--terracotta);border:2px solid var(--bg)}
+.tl-item .tl-date{font-weight:700;font-size:12.5px;color:var(--terracotta-deep);display:block;margin-bottom:2px}
+.tl-item p{font-size:14px;color:var(--ink)}
+
+/* CLOSING: PEOPLE / SYMBOLS GRID */
+.card-grid{display:grid;gap:10px}
+@media(min-width:640px){.card-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.card-grid.symbols{grid-template-columns:1fr 1fr 1fr}}
+.p-card,.s-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow-sm)}
+.p-card b,.s-card b{color:var(--terracotta-deep);font-size:13.5px;display:block;margin-bottom:2px}
+.p-card span,.s-card span{font-size:13px;color:var(--ink-soft)}
+
+/* CLOSING: QUICK REFERENCE TABLE */
+.qref-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+table.qref{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface)}
+table.qref th{background:var(--surface-warm);text-align:left;padding:10px 12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+table.qref td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+table.qref td:first-child{font-weight:700;color:var(--terracotta-deep);white-space:nowrap}
+
+/* CLOSING: PLANE SUMMARY */
+.plane-box{background:linear-gradient(160deg,var(--surface-warm),var(--surface));border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px;box-shadow:var(--shadow-md)}
+.plane-box p{font-size:14.5px;margin-bottom:12px}
+.plane-box p:last-child{margin-bottom:0}
+
 footer{background:#15110D;color:rgba(250,246,239,.7);padding:36px 0;text-align:center;font-size:13px}
 footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
 footer b{color:var(--gold);font-family:'Fraunces',serif}
@@ -181,11 +212,11 @@ footer a{color:var(--gold);text-decoration:none}
   <div class="daynav-inner">
     <a href="#mapa">Mapa</a>
     <a href="#hd1" class="active">29/08</a>
-    <a href="#hd2" class="disabled">30/08 <small></small></a>
-    <a href="#hd3" class="disabled">31/08</a>
-    <a href="#hd4" class="disabled">01/09</a>
-    <a href="#hd5" class="disabled">02/09</a>
-    <a href="#fecho" class="disabled">Fechamento</a>
+    <a href="#hd2">30/08</a>
+    <a href="#hd3">31/08</a>
+    <a href="#hd4">01/09</a>
+    <a href="#hd5">02/09</a>
+    <a href="#fecho">Fechamento</a>
   </div>
 </nav>
 
@@ -204,30 +235,38 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
     <div class="toc-day">
       <span class="toc-date">30/08 · São Pedro + Centro Histórico</span>
-      <h4>Dia 2 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <h4>Dia 2</h4>
       <ul>
-        <li><span style="color:var(--ink-soft);font-size:13px">Basílica de São Pedro · Castel Sant'Angelo · Campo de' Fiori · Pantheon · Piazza Navona · Sant'Ignazio · Trevi</span></li>
+        <li><a href="#sao-pedro"><span class="depth mega"></span> Basílica de São Pedro</a></li>
+        <li><a href="#castel-santangelo"><span class="depth mega"></span> Castel Sant'Angelo</a></li>
+        <li><a href="#panteao"><span class="depth mega"></span> Panteão</a></li>
+        <li><a href="#sant-ignazio"><span class="depth mega"></span> Igreja de Sant'Ignazio</a></li>
+        <li><a href="#piazza-navona"><span class="depth medio"></span> Piazza Navona</a></li>
+        <li><a href="#trevi"><span class="depth medio"></span> Fontana di Trevi</a></li>
+        <li><a href="#campo-de-fiori"><span class="depth medio"></span> Campo de' Fiori</a></li>
       </ul>
     </div>
     <div class="toc-day">
       <span class="toc-date">31/08 · Dia da Maju</span>
-      <h4>Dia 3 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <h4>Dia 3</h4>
       <ul>
-        <li><span style="color:var(--ink-soft);font-size:13px">Piazza del Popolo · Villa Borghese</span></li>
+        <li><a href="#piazza-del-popolo"><span class="depth medio"></span> Piazza del Popolo + Villa Borghese</a></li>
       </ul>
     </div>
     <div class="toc-day">
       <span class="toc-date">01/09 · Roma Antiga</span>
-      <h4>Dia 4 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <h4>Dia 4</h4>
       <ul>
-        <li><span style="color:var(--ink-soft);font-size:13px">Coliseu · Fórum Romano + Palatino · Circo Máximo</span></li>
+        <li><a href="#coliseu"><span class="depth mega"></span> Coliseu</a></li>
+        <li><a href="#foro-palatino"><span class="depth mega"></span> Fórum Romano + Palatino</a></li>
+        <li><a href="#circo-massimo"><span class="depth medio"></span> Circo Máximo</a></li>
       </ul>
     </div>
     <div class="toc-day">
       <span class="toc-date">02/09 · Audiência Geral</span>
-      <h4>Dia 5 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <h4>Dia 5</h4>
       <ul>
-        <li><span style="color:var(--ink-soft);font-size:13px">Audiência Geral com o Papa — a instituição papal viva</span></li>
+        <li><a href="#audiencia-geral"><span class="depth mega"></span> Audiência Geral com o Papa</a></li>
       </ul>
     </div>
   </div>
@@ -429,10 +468,802 @@ footer a{color:var(--gold);text-decoration:none}
 
 </div></section>
 
+<section class="hday" id="hd2"><div class="wrap">
+  <div class="hday-head">
+    <span class="hday-badge">30/08</span>
+    <div class="hday-title">São Pedro + Roscioli + Centro Histórico</div>
+    <p class="hday-frame">O dia com mais quilômetros de história por metro quadrado do roteiro inteiro: da maior igreja católica do mundo a uma fonte barroca, passando por uma fortaleza que já foi túmulo de imperador. Também é o dia com mais lendas populares para destrinchar depois do Coliseu.</p>
+  </div>
+
+  <details class="verbete" id="sao-pedro">
+    <summary>
+      <span class="vb-ic">⛪</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Basílica de São Pedro</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="mode antes">
+        <h4>🚪 Antes de entrar</h4>
+        <p>Debaixo do altar-mor está, muito provavelmente, o ponto mais controverso de todo o roteiro do ponto de vista histórico — não pela arte, mas pela pergunta "isso é mesmo o túmulo de São Pedro?". A Igreja diz que sim, oficialmente, desde 1968. Parte da comunidade acadêmica que participou das próprias escavações discorda. As duas coisas são verdadeiras ao mesmo tempo: é fato que a Igreja fez essa identificação oficial; não é fato fechado que ela esteja cientificamente correta.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>A basílica que veio antes</h4>
+        <p>Uma primeira grande basílica foi erguida por ordem do imperador Constantino no local — as fontes variam um pouco sobre a década exata de início (algumas dizem 315, outras "entre 326 e 333") <span class="ftag hipotese">DEBATE</span> quanto à data precisa. Ficou de pé por cerca de 1.200 anos, entrando em deterioração visível já no século XV. O local escolhido ficava junto ao Circo de Nero, palco de perseguições a cristãos no reinado de Nero — isso é confirmado por escavações modernas <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>O túmulo de Pedro: fato, tradição e um debate real</h4>
+        <p>A crença de que Pedro foi martirizado e sepultado exatamente ali remonta a um testemunho do fim do século II (o presbítero romano Caio, citado por Eusébio de Cesareia), que dizia poder mostrar "os troféus dos apóstolos" no Vaticano <span class="ftag tradicao">TRADIÇÃO</span> — testemunho literário antigo, não prova arqueológica de autoria.</p>
+        <p>Em 1939, escavações acidentais sob o altar-mor revelaram uma necrópole romana dos séculos I-II e uma pequena estrutura funerária ("Trófeo de Caio"), junto a um muro com grafites de peregrinos <span class="ftag fato">FATO</span>. Em 1953 encontraram-se ossos num nicho próximo; em 1968, Paulo VI anunciou que os restos de Pedro haviam sido identificados. Essa identificação, feita principalmente pela epigrafista Margherita Guarducci, é contestada por parte da própria comunidade que participou da escavação — o antropólogo V. Correnti concluiu que os ossos pertenciam a pelo menos três indivíduos diferentes, incluindo uma mulher idosa, e Antonio Ferrua, codiretor original das escavações, acusou publicamente Guarducci de suprimir evidências contrárias <span class="ftag hipotese">DEBATE</span> historiográfico real, não resolvido por consenso. O que é seguro dizer: há, sim, um monumento funerário do século II venerado desde a Antiguidade como o de Pedro, e a Igreja afirma oficialmente desde 1968 ter identificado seus ossos ali — mas essa atribuição específica é questão de tradição/fé reforçada por interpretação controversa, não certeza científica fechada.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>Por que Júlio II decidiu demolir tudo</h4>
+        <p>Em 18 de abril de 1506, o papa Júlio II lançou a pedra fundamental da nova basílica, contratando Bramante <span class="ftag fato">FATO</span>. A intenção inicial era só reparar a estrutura antiga; ele decidiu demolir e reconstruir em escala sem precedentes — em parte para abrigar seu próprio mausoléu monumental (projetado por Michelangelo), em parte para reafirmar o prestígio do papado renascentista. O peso relativo de vaidade pessoal vs. necessidade estrutural genuína (o edifício antigo estava mesmo em ruína avançada) segue sendo discutido pela historiografia — não há resposta única sobre a motivação real <span class="ftag hipotese">DEBATE</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>Cem anos, seis arquitetos</h4>
+        <p>Bramante (1506-1514) projetou a planta em cruz grega com cúpula inspirada no Panteão. Rafael (1514-1520) mudou para cruz latina. Antonio da Sangallo, o Jovem, dividiu a direção com Peruzzi a partir de 1520 e se tornou arquiteto-chefe único de 1536 até sua morte em 1546 — um papel maior do que costuma aparecer nos relatos populares, que às vezes o reduzem a "colaborador". Michelangelo assumiu em 1546, retomou a cruz grega de Bramante e projetou a grande cúpula, mas morreu em 1564 tendo construído só a base — nunca a viu pronta. Giacomo della Porta e Domenico Fontana ergueram a cúpula entre 1585 e 1590, seguindo de perto (não com fidelidade absoluta) o modelo em madeira de Michelangelo. Carlo Maderno (a partir de 1603) alongou a nave para cruz latina definitiva e projetou a fachada — criticada até hoje por parte da crítica arquitetônica por "esconder" a cúpula de quem está na praça <span class="ftag hipotese">DEBATE</span> estético ainda repetido. Bernini, a partir da década de 1620, fez o baldaquino e a praça <span class="ftag fato">FATO</span> quanto à sucessão.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">5</span>A cúpula: Panteão + Florença</h4>
+        <p>A historiografia aponta duas influências centrais para a cúpula de Michelangelo: o Panteão romano e a cúpula de Brunelleschi na Catedral de Florença (concluída em 1436), que por sua vez já bebia do Panteão <span class="ftag fato">FATO</span>. Michelangelo adotou forma ligeiramente ogival, não hemisfério perfeito — como em Florença, isso reduz o empuxo lateral sobre a estrutura. Altura e diâmetro exatos variam um pouco conforme a fonte consultada (cerca de 136 m de altura, 42 m de diâmetro interno são os números mais repetidos, mas sem confirmação numa fonte primária vaticana citável) <span class="ftag hipotese">DEBATE</span> quanto à precisão exata.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">6</span>A Pietà: quase uma década antes de tudo isso</h4>
+        <p>Contratada em 26 de agosto de 1498, encomendada pelo cardeal francês Jean Bilhères de Lagraulas para seu próprio monumento funerário — Michelangelo tinha 23 anos. Esculpida em 1498-1499, quase dez anos antes da decisão de Júlio II de demolir a basílica antiga <span class="ftag fato">FATO</span>. Originalmente estava na Capela de Santa Petronilla, junto à basílica constantiniana; foi instalada em sua capela atual em 1749.</p>
+        <p>Em 21 de maio de 1972, o geólogo húngaro Laszlo Toth — que se dizia Jesus Cristo — atacou a escultura com um martelo, cerca de 15 golpes, arrancando o braço de Maria e lascando o rosto. Não foi processado por insanidade; foi internado e depois deportado para a Austrália. A obra ficou cerca de 10 meses em restauro e, desde então, é protegida por vidro à prova de bala <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">7</span>Bernini: o baldaquino e a lenda do bronze roubado</h4>
+        <p>O grande baldaquino de bronze sobre o altar-mor foi erguido sob o papa Urbano VIII (família Barberini) <span class="ftag fato">FATO</span>. Isso deu origem à frase satírica "Quod non fecerunt barbari, fecerunt Barberini" ("o que os bárbaros não fizeram, os Barberini fizeram") — uma pasquinata razoavelmente bem atribuída a Carlo Castelli, embaixador do Duque de Mantua em Roma, com origem rastreável a um boletim de notícias de 1625, logo depois de Urbano VIII remover o bronze do pórtico do Panteão. Mas a ideia popular de que o baldaquino "é" essencialmente feito daquele bronze saqueado é, segundo pesquisa documental sobre os registros de pagamento da época, majoritariamente mito: menos de 2% do bronze do Panteão teria ido para o baldaquino, com a esmagadora maioria convertida em canhões para o Castel Sant'Angelo <span class="ftag lenda">LENDA</span> parcial — o núcleo histórico (bronze do Panteão foi removido sob os Barberini) é real, só a ligação direta e majoritária com o baldaquino é que não se sustenta.</p>
+        <p>A colunata elíptica da Praça de São Pedro tem 284 colunas em quatro fileiras e 140 estátuas no topo <span class="ftag fato">FATO</span>. Bernini teria descrito a colunata como os "braços maternos" da Igreja, abrindo-se para acolher fiéis — frase de intenção de autor amplamente citada por fontes especializadas, embora dependa de registro secundário, não de manifesto autógrafo <span class="ftag tradicao">TRADIÇÃO</span> interpretativa bem documentada.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">8</span>Cem e vinte anos de obra — e o que isso realmente significa</h4>
+        <p>A consagração solene ocorreu em 18 de novembro de 1626, sob Urbano VIII — exatamente 120 anos após a pedra fundamental de Júlio II <span class="ftag fato">FATO</span>. Mas "120 anos de obra" simplifica: a estrutura arquitetônica bruta já estava praticamente pronta cerca de dez anos antes (fachada de Maderno concluída por volta de 1612-1614), e o interior — baldaquino, decoração, depois a própria praça — continuou sendo elaborado por décadas depois de 1626, até os anos 1660.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">9</span>"Maior igreja do mundo" — depende de como você mede</h4>
+        <p>São Pedro é, com razoável consenso, a maior igreja católica do mundo por área de piso interno (cerca de 15.160 m²) e tem cerca de 187 m de comprimento total. Mas o título de "maior igreja do mundo" em termos absolutos não é indiscutível: desde a conclusão da Basílica de Nossa Senhora da Paz em Yamoussoukro, na Costa do Marfim, o Guinness World Records passou a listá-la como maior por área externa total, embora sua área interna útil seja menor que a de São Pedro <span class="ftag hipotese">DEBATE</span> — o "título" depende do critério de medição escolhido.</p>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <ol>
+          <li>Na primeira capela à direita da entrada, veja a Pietà atrás do vidro à prova de bala — repare como Maria parece jovem demais para ser mãe de um Cristo adulto, uma escolha deliberada de Michelangelo, não erro de proporção.</li>
+          <li>Olhe para cima, para o baldaquino de Bernini — as colunas retorcidas (salomônicas) imitam as colunas da basílica constantiniana original, uma citação visual do que existia ali antes.</li>
+          <li>Da praça, tente enxergar a cúpula por trás da fachada — é o próprio efeito "escondido" que gera debate arquitetônico até hoje.</li>
+        </ol>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="castel-santangelo">
+    <summary>
+      <span class="vb-ic">🏰</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Castel Sant'Angelo</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>De túmulo de imperador a fortaleza papal</h4>
+        <p>O monumento foi erguido entre 123/134 e 139 d.C. por ordem do imperador Adriano, como mausoléu dinástico para si e seus sucessores — o último imperador ali sepultado foi Caracala, em 217 d.C. <span class="ftag fato">FATO</span>. A autoria do projeto arquitetônico é incerta: é comumente atribuída a um arquiteto de nome "Demetriano", mas as fontes antigas confundem esse nome com o de "Decrianus", associado a outro feito (mover o Colosso de Nero) — não está claro se são a mesma pessoa <span class="ftag hipotese">DEBATE</span>. A ideia de que o próprio Adriano colaborou pessoalmente no projeto do Panteão, às vezes citada de passagem em textos sobre ele, vem sobretudo da Historia Augusta, fonte antiga de confiabilidade histórica discutida — trate como tradição, não fato assentado <span class="ftag tradicao">TRADIÇÃO</span>.</p>
+        <p>Da decoração original — revestimento de mármore, friso, estátuas, a quadriga dourada no topo — quase nada sobreviveu: foi saqueada já a partir da invasão visigótica de 410 d.C., e material de espólio foi reaproveitado em construções posteriores ao longo dos séculos, possivelmente incluindo a nova Basílica de São Pedro <span class="ftag hipotese">DEBATE</span> quanto à atribuição exata dessa reutilização. O que sobrevive é essencialmente o núcleo cilíndrico de alvenaria e a rampa espiral interna original, de cerca de 120 metros, ainda percorrida por visitantes hoje <span class="ftag fato">FATO</span>. Em 401 d.C., o imperador Honório incorporou o mausoléu às Muralhas Aurelianas, iniciando sua conversão em fortaleza defensiva — processo que os papas consolidaram a partir do século XIV.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>A lenda do nome: o Arcanjo Miguel</h4>
+        <p>A história tradicional conta que em 590 d.C., durante uma peste, o papa Gregório Magno teria visto o Arcanjo Miguel sobre o mausoléu, embainhando a espada — sinal do fim da epidemia. Daí viria o nome "Sant'Angelo" e a estátua do arcanjo no topo <span class="ftag lenda">LENDA</span> hagiográfica. Não há atestação do episódio na época (século VI); a versão detalhada da lenda só aparece registrada em relatos de viajantes do século XV — quase 900 anos depois do suposto evento, um intervalo típico de lendas que se cristalizam por devoção popular, não por registro histórico contemporâneo. As estátuas do anjo que existem hoje — a de mármore de Raffaello da Montelupo (1536) e a de bronze atual de Peter Anton von Verschaffelt (1752) — são materializações tardias de uma tradição já consolidada, não evidência do evento em si.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>O Passetto di Borgo: o corredor de fuga papal</h4>
+        <p>Um embrião do corredor remonta ao papa Leão IV, que entre 848-852 d.C. construiu a muralha fortificada ao redor do Vaticano. O "Passetto" como passagem coberta é atribuído ao papa Nicolau III, por volta de 1277 — mas há genuína divergência entre fontes especializadas sobre quem de fato o concluiu como corredor fechado: algumas atribuem isso a Bonifácio IX, no século XIV, outras a construções em camadas ao longo de séculos, reformadas por papas como Nicolau V, Sisto IV e Alexandre VI <span class="ftag hipotese">DEBATE</span> genuíno, sem consenso de autoria única.</p>
+        <p>O uso mais famoso é bem documentado: durante o Saque de Roma em 1527, o papa Clemente VII fugiu pelo Passetto até o castelo, onde negociou uma capitulação com pesado resgate — mas não foi uma rendição limpa e rápida: ele permaneceu essencialmente detido no castelo por meses, escapando disfarçado para Orvieto só no fim de 1527 <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>Prisão papal: quem passou por ali (e quem não passou)</h4>
+        <p>O castelo funcionou por séculos como prisão de Estado pontifício. Benvenuto Cellini, escultor e ourives, foi preso por acusações de roubo e descreveu sua fuga espetacular em sua própria autobiografia <span class="ftag fato">FATO</span>, fonte primária. Beatrice Cenci, jovem nobre romana, foi decapitada em 1599 por participar do assassinato do pai abusivo — caso que virou lenda popular. O retrato dela tradicionalmente atribuído a Guido Reni é uma atribuição contestada por parte da crítica: não há evidência de que Reni estivesse em Roma antes de 1601, depois da execução dela, o que enfraquece a história de que ele a teria pintado do natural na prisão pouco antes da morte — atribuições alternativas incluem Elisabetta Sirani e Ginevra Cantofoli <span class="ftag hipotese">DEBATE</span>. Cagliostro, o ocultista do século XVIII, também esteve preso ali antes de ser transferido para a fortaleza de San Leo, onde morreu.</p>
+        <p><b>Quem não esteve preso ali, ao contrário do que diz muito material turístico:</b> Giordano Bruno. A associação popular do filósofo ao Castel Sant'Angelo é comum em guias e sites de turismo, mas as fontes historiográficas do processo indicam que ele foi mantido nas prisões do Palazzo do Santo Ofício, junto ao Vaticano, por cerca de sete anos (1593-1600), antes de ser executado no Campo de' Fiori <span class="ftag lenda">LENDA</span> — um bom lembrete de que nem toda associação repetida por guias turísticos é historicamente sólida.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">5</span>Tosca: ficção, não história</h4>
+        <p>O terceiro ato da ópera <em>Tosca</em> (1900), de Puccini, se passa no terraço do castelo — é lá que Cavaradossi é fuzilado e Floria Tosca se joga das ameias. É referência ficcional e artística, sem relação com eventos históricos reais do local, mas contribuiu enormemente para a fama popular do monumento.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">6</span>De fortaleza a museu</h4>
+        <p>Desativado como instalação militar em 1901, hoje abriga o Museo Nazionale di Castel Sant'Angelo — rampa espiral romana original, salões medievais, celas de prisão históricas, apartamentos papais renascentistas (com destaque para a Sala Paolina, sob Paulo III Farnese) e o Terraço do Anjo no topo <span class="ftag fato">FATO</span>. Recebeu mais de 1,2 milhão de visitantes em 2016. Em conexão com o Jubileu de 2025, foi construída e inaugurada uma nova praça pedonal com túnel sob a Piazza Pia, ligando a área do castelo à Via della Conciliazione e à Praça de São Pedro — projeto já concluído e em uso, não mais em planejamento.</p>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <p>Suba até o Terraço do Anjo e olhe para trás, para o Passetto — o corredor elevado que sai do castelo em direção ao Vaticano. É por ali que um papa fugiu, de fato, em 1527.</p>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="panteao">
+    <summary>
+      <span class="vb-ic">🏛️</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Panteão</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>Dois templos, uma inscrição — e um debate sobre quem construiu qual</h4>
+        <p>O Panteão original foi construído por Marco Agripa entre 27-25 a.C. — mas tinha planta retangular, com o pórtico voltado para o sul, nada parecido com o edifício redondo de hoje. Foi destruído por incêndios sucessivos (80 d.C. e, segundo uma única fonte tardia do século V, novamente em 110 d.C.) <span class="ftag fato">FATO</span> quanto à existência do templo original; a datação exata do segundo incêndio depende de um cronista escrevendo 400 anos depois do evento. A rotunda que existe hoje é uma reconstrução total erguida sobre o mesmo terreno — por séculos essa reconstrução foi atribuída inteiramente a Adriano (r. 117-138 d.C.), mas análises mais recentes dos carimbos de tijolo da estrutura (um estudo de 2007 revisando dados de 1959) sugerem que a maior parte da obra pode ter começado sob Trajano, cabendo a Adriano principalmente concluí-la e dedicá-la — não há consenso fechado entre os dois estudos, e a data exata de conclusão (entre 125 e 128 d.C.) também não é cravada <span class="ftag hipotese">DEBATE</span> acadêmico genuíno e ainda aberto.</p>
+        <p>O que não muda: Adriano manteve a inscrição original de Agripa na fachada ("M·AGRIPPA·L·F·COS·TERTIVM·FECIT"), sem gravar seu próprio nome de forma proeminente — isso é fato epigráfico visível até hoje <span class="ftag fato">FATO</span>. Já o motivo exato é debate: a explicação mais repetida vem da Historia Augusta (fonte antiga de confiabilidade discutida), que diz que Adriano tinha o hábito de atribuir os edifícios que reconstruía aos patronos originais; leituras acadêmicas mais recentes sugerem que também era um gesto político calculado de reivindicar continuidade com Augusto — nenhuma fonte antiga declara a motivação real de forma explícita <span class="ftag hipotese">DEBATE</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>A maior cúpula de concreto não-armado do mundo</h4>
+        <p>A cúpula ainda hoje detém esse recorde, com diâmetro interno de cerca de 43,3 metros — exatamente igual à altura interna do edifício, formando uma esfera perfeita inscrita <span class="ftag fato">FATO</span>. A técnica construtiva graduou a densidade do concreto conforme a altura (travertino pesado na base, tufo intermediário, pedra-pomes leve no topo), reduzindo o peso da cúpula — a cifra exata dessa redução (às vezes citada como "30%") circula amplamente em sites de turismo sem uma fonte de engenharia estrutural clara por trás, então trate o princípio como fato e o número exato com reserva <span class="ftag hipotese">DEBATE</span>. O óculo central não tem e nunca teve vidro — é aberto ao céu; quando chove, a água escoa por orifícios de drenagem no piso original, ainda funcionais quase dois mil anos depois.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>Por que sobreviveu quando quase tudo mais foi destruído</h4>
+        <p>Em 609 d.C., sob o papa Bonifácio IV, com autorização do imperador bizantino Foca, o templo foi consagrado como igreja cristã — Santa Maria ad Martyres <span class="ftag fato">FATO</span>. Essa conversão é apontada como fator crucial para a sobrevivência do edifício: muitos templos romanos foram demolidos ou espoliados ao longo dos séculos, mas um edifício em uso litúrgico ativo escapou desse destino — um padrão que se repete em outros monumentos de Roma (como a Cúria do Fórum, também salva por virar igreja).</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>Quem está enterrado ali</h4>
+        <p>O pintor Rafael está sepultado no Panteão, com um epitáfio famoso composto pelo cardeal Pietro Bembo. Também estão ali os primeiros reis da Itália unificada, Vittorio Emanuele II e Umberto I <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">5</span>"O que os bárbaros não fizeram, os Barberini fizeram"</h4>
+        <p>Em 1625, o papa Urbano VIII (família Barberini) mandou remover o revestimento de bronze que cobria as vigas do teto do pórtico do Panteão — isso é fato bem documentado por registros de pagamento da época <span class="ftag fato">FATO</span>. A frase satírica que ficou famosa por causa disso, "quod non fecerunt barbari, fecerunt Barberini" ("o que os bárbaros não fizeram, os Barberini fizeram"), é uma pasquinata — crítica política anônima afixada em Roma — razoavelmente bem atribuída a Carlo Castelli, embaixador do Duque de Mântua, com origem rastreável a um boletim de notícias da própria época (não invenção posterior) <span class="ftag hipotese">DEBATE</span> quanto à autoria exata, mas a datação contemporânea é bem sustentada.</p>
+        <p>O destino popularmente mais repetido para esse bronze — "virou o baldaquino de Bernini em São Pedro" — é, segundo pesquisa documental mais recente sobre os registros de pagamento da época, majoritariamente um mito: menos de 2% do bronze extraído teria ido para o baldaquino; a esmagadora maioria (mais de 98%) foi transformada em canhões para o Castel Sant'Angelo <span class="ftag lenda">LENDA</span> parcial — a narrativa "virou arte sacra" pode até ter sido cultivada deliberadamente pela própria corte papal, para desviar atenção do uso militar, politicamente mais delicado que embelezar a basílica.</p>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <p>Fique embaixo do óculo e observe o feixe de luz se mover pelo interior conforme o sol passa — é o único "iluminador" do templo, exatamente como há quase 1.900 anos.</p>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="sant-ignazio">
+    <summary>
+      <span class="vb-ic">🎨</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Igreja de Sant'Ignazio</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>Uma igreja ligada ao colégio jesuíta</h4>
+        <p>Dedicada a Santo Inácio de Loyola, fundador da Companhia de Jesus, canonizado em 1622 junto com Francisco Xavier — a construção começou em 1626, financiada principalmente pelo cardeal Ludovico Ludovisi, sobrinho do papa Gregório XV, como igreja anexa ao Collegio Romano, a grande escola jesuíta de Roma <span class="ftag fato">FATO</span>. A fachada é obra do próprio arquiteto-matemático jesuíta Orazio Grassi, que presidiu uma comissão de projeto em 1626 — a atribuição da fachada ao escultor Alessandro Algardi, que às vezes aparece em material turístico, é uma confusão recorrente: Algardi trabalhou em estuques do interior, não na fachada <span class="ftag lenda">LENDA</span> parcial (erro de atribuição comum).</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>A cúpula que nunca existiu — e a que você vê não é a original</h4>
+        <p>A cúpula real planejada para a igreja nunca foi construída, por falta de recursos suficientes <span class="ftag fato">FATO</span>. A explicação financeira é a mais sustentada por fontes acadêmicas; já a história de que padres dominicanos vizinhos (do convento de Santa Maria sopra Minerva) teriam se oposto por medo de perder luz/vista é uma explicação bem mais fraca em termos documentais — típica de lenda de guia turístico repetida sem citação de documento de época, não uma hipótese com peso equivalente à financeira <span class="ftag lenda">LENDA</span>.</p>
+        <p>A solução foi o irmão leigo jesuíta Andrea Pozzo pintar, por volta de 1685, uma cúpula falsa em perspectiva ilusionística sobre uma grande tela montada em armação de madeira — não um afresco, já que a estrutura não permitia erguer alvenaria <span class="ftag fato">FATO</span>. Mas há um detalhe que quase nenhum guia turístico menciona: a tela original de Pozzo foi destruída num incêndio em 1818 (o catafalco do funeral de Isabel de Bragança pegou fogo) e foi refeita quase inteiramente em 1823 pelo pintor Francesco Manno, com base nos desenhos deixados por Pozzo, com restauros posteriores ao longo do século XX. O que você vê hoje é, portanto, essa reconstituição de 1823 — não a tela original intocada de 1685 <span class="ftag fato">FATO</span>, um ponto que a maioria do material turístico simplesmente omite.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>O teto da nave e o disco no chão</h4>
+        <p>O afresco verdadeiro da nave central — a "Glória de Santo Inácio" — foi pintado por Pozzo entre 1691 e 1694 (um projeto distinto e posterior ao da cúpula falsa) <span class="ftag fato">FATO</span>. Usa a mesma técnica de perspectiva ilusionística para simular colunas e arquitetura que parecem prolongar o espaço real da igreja verticalmente até o infinito, com Santo Inácio sendo recebido no céu, cercado por alegorias dos quatro continentes então conhecidos — símbolo da expansão missionária jesuíta pelo mundo. Um disco de mármore no chão marca o ponto exato de onde a ilusão de perspectiva cônica funciona corretamente; ao se afastar dele, o efeito se distorce visivelmente <span class="ftag fato">FATO</span> quanto ao mecanismo, embora a distância exata em que isso acontece varie conforme a fonte.</p>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <p>Ache o disco de mármore no chão da nave e fique exatamente sobre ele — é o único ponto de onde a cúpula falsa parece perfeitamente real. Ande alguns passos para o lado e observe a ilusão se desfazer. E lembre: essa cúpula que você está vendo é uma reconstituição de 1823, não o trabalho original de Pozzo.</p>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="piazza-navona">
+    <summary>
+      <span class="vb-ic">⛲</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento médio</span><h3>Piazza Navona</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>Uma praça em formato de estádio romano — porque é um estádio romano</h4>
+        <p>A praça ocupa exatamente o traçado do Estádio de Domiciano, construído por volta de 80-86 d.C. para competições atléticas ao estilo grego (não corridas de carros, que eram no Circo Máximo) — o único estádio permanente de alvenaria de Roma, com dimensões aproximadas de 275 x 106 metros (medidas que variam um pouco conforme a fonte) <span class="ftag fato">FATO</span>. Construtores medievais e renascentistas aproveitaram as estruturas curvas do estádio como fundação para novos edifícios em vez de escavar do zero — por isso a arena central nunca foi ocupada e se preservou como praça pública, reproduzindo quase exatamente o formato oval-alongado original.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>A Fontana dei Quattro Fiumi de Bernini</h4>
+        <p>Encomendada pelo papa Inocêncio X e construída entre 1648 e 1651 (inaugurada em 12 de junho de 1651), com um obelisco egípcio trazido do Circo de Majêncio na Via Ápia sobre uma rocha perfurada <span class="ftag fato">FATO</span>. As quatro figuras representam quatro rios — Nilo (África), Ganges (Ásia), Danúbio (Europa), Rio da Prata (América) — os quatro continentes então conhecidos, simbolizando a autoridade papal se estendendo pelo mundo. O véu sobre o rosto do Nilo é geralmente explicado como referência ao fato de que, em 1651, a nascente do rio ainda era desconhecida dos europeus — leitura predominante na história da arte, embora parte da historiografia também discuta uma segunda camada simbólico-religiosa (o "não ver" como alusão a terras ainda não cristianizadas) <span class="ftag hipotese">DEBATE</span> quanto ao peso relativo das duas leituras.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>A lenda do véu — e por que é impossível cronologicamente</h4>
+        <p>Circula a história de que Bernini teria esculpido o Nilo com o rosto coberto para "não precisar ver" a fachada de Borromini na igreja vizinha de Sant'Agnese in Agone, e que o Rio da Prata ergue a mão como se temesse a fachada desabar <span class="ftag lenda">LENDA</span> — refutada pela própria cronologia: a fonte estava pronta em 1651; a construção da igreja só começou em 1652; e Borromini só assumiu o projeto em 1653, dois anos depois de a fonte estar concluída. É materialmente impossível que Bernini tenha esculpido um gesto de protesto contra uma fachada que ainda não existia nem tinha sido decidida.</p>
+        <p>A rivalidade profissional entre Bernini e Borromini é real — competiram por comissões papais e tinham temperamentos e estilos antagônicos <span class="ftag fato">FATO</span> — mas o tom "épico" com que essa rivalidade costuma ser contada hoje foi em boa parte amplificado por biógrafos da época com viés declarado a favor de Bernini (sobretudo Filippo Baldinucci) <span class="ftag hipotese">DEBATE</span> quanto à intensidade real do conflito.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>Mercado e o "lago" de verão</h4>
+        <p>A praça abrigou um mercado de frutas, verduras, peixe e carne desde cerca de 1477-1478 (a data exata varia entre fontes), sendo por séculos o principal mercado de abastecimento de Roma — transferido para o Campo de' Fiori apenas em 1869 <span class="ftag fato">FATO</span>. Entre 1652 e meados/fins da década de 1860 (fontes divergem sobre o ano exato de encerramento, entre 1865 e 1867), existiu a tradição do "Lago di Piazza Navona": nos fins de semana de agosto, os ralos das fontes eram bloqueados de propósito, alagando o piso côncavo da praça para refrescar a população no calor do verão, com carruagens circulando pela água como gôndolas <span class="ftag hipotese">DEBATE</span> quanto à data exata de encerramento — mas a prática em si é bem documentada.</p>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="trevi">
+    <summary>
+      <span class="vb-ic">⛲</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento médio</span><h3>Fontana di Trevi</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>Uma fonte alimentada por um aqueduto de 2.000 anos</h4>
+        <p>A água que ainda enche a Fontana di Trevi vem do Aqua Virgo, aqueduto concluído em 19 a.C. por Marco Agripa, com cerca de 20 km de extensão — um dos poucos aquedutos romanos antigos ainda parcialmente funcionais <span class="ftag fato">FATO</span>. O nome "Virgo" tem uma lenda de origem, registrada pelo próprio engenheiro romano Frontino, mas já contada por ele como "diz-se que" (fama est) — ou seja, mesmo a fonte antiga já tratava como tradição recebida, não testemunho direto: uma jovem teria indicado a nascente a soldados sedentos enviados por Agripa <span class="ftag lenda">LENDA</span>. Uma explicação alternativa, considerada por parte dos historiadores mais provável, é que o nome venha simplesmente da pureza ("virgindade") da água, sem relação com pessoa real.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>A fonte de hoje: um projeto de 30 anos</h4>
+        <p>A fonte atual foi projetada por Nicola Salvi, com obras iniciadas por volta de 1732 sob o papa Clemente XII. Salvi morreu em 1751, antes de ver a obra concluída; foi finalizada em 1762 sob Clemente XIII <span class="ftag fato">FATO</span>. No nicho central está Oceano — não Netuno, confusão comum —, esculpido por Pietro Bracci a partir de desenho de Giovanni Battista Maini, conduzido por dois cavalos marinhos guiados por tritões: um agitado, outro manso, numa leitura simbólica repassada por guias e parte da crítica de arte como representação do mar calmo e do mar tempestuoso <span class="ftag hipotese">DEBATE</span> quanto a essa leitura ser interpretação consolidada posteriormente ou intenção declarada do próprio Salvi.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>A moeda por cima do ombro: tradição mais recente do que parece</h4>
+        <p>O gesto de jogar a moeda de costas para a fonte, com a mão direita por cima do ombro esquerdo, é hoje tratado como "tradição milenar" — mas a cronologia exata de consolidação desse ritual específico é incerta. É bem documentado que o filme americano <em>Three Coins in the Fountain</em> (1954) ajudou a popularizar internacionalmente esse costume, mas atribuir a ele a criação do ritual é uma simplificação sem lastro acadêmico robusto — o hábito de jogar moedas em fontes romanas para sorte é mais antigo e difuso <span class="ftag hipotese">DEBATE</span> quanto à origem exata. Desde 2001, o dinheiro recolhido é destinado à Caritas Roma, entidade de caridade católica — o valor arrecadado varia bastante ano a ano (estimativas apontam a casa de um milhão de euros anuais), e já houve atritos documentados entre prefeitura e Igreja sobre a gestão desses recursos <span class="ftag fato">FATO</span> quanto ao destino atual, com números financeiros exatos tratados como estimativas variáveis, não cifra fixa.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>La Dolce Vita</h4>
+        <p>Em <em>La Dolce Vita</em>, de Federico Fellini (1960), a atriz sueca Anita Ekberg entra na água da fonte à noite, convidando o personagem de Marcello Mastroianni a segui-la — uma das cenas mais reproduzidas do cinema europeu, que ajudou a projetar a Trevi como ícone turístico internacional na segunda metade do século XX <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="campo-de-fiori">
+    <summary>
+      <span class="vb-ic">🔥</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento médio</span><h3>Campo de' Fiori</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>A praça sem igreja</h4>
+        <p>"Campo de' Fiori" significa literalmente "campo de flores" — a origem mais aceita é prosaica: até o fim da Idade Média a área era um terreno aberto, coberto de vegetação silvestre, antes de ser urbanizada e pavimentada em 1456, sob o papa Calisto III <span class="ftag fato">FATO</span>. É tradicionalmente descrita como a única grande praça central de Roma sem igreja voltada diretamente para ela — embora haja uma igreja historicamente ligada à área (Santa Brígida, erguida ainda no fim do século XIV) que hoje dá de frente para a vizinha Piazza Farnese, dependendo de onde se traçam os limites históricos do "campo" original <span class="ftag hipotese">DEBATE</span> quanto ao quão absoluta é essa afirmação. Funciona como mercado a céu aberto desde 1869 e continua ativo diariamente até hoje. Uma versão popular liga o nome a "Flora", suposta amante de um nobre local — folclore urbano sem base documental, repetido em guias mas não aceito por historiadores <span class="ftag lenda">LENDA</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>Local de execuções públicas</h4>
+        <p>Antes e paralelamente ao uso comercial, a praça serviu na Idade Média e no Renascimento como local de execuções públicas ordenadas pelas autoridades papais, incluindo mortes na fogueira em casos de heresia <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>Giordano Bruno: o processo, e o mito que veio depois</h4>
+        <p>Giordano Bruno, ex-frade dominicano nascido em Nola (Reino de Nápoles), foi preso pela Inquisição em Veneza em 1592 e transferido para Roma, onde ficou detido nas prisões do Santo Ofício por cerca de sete anos <span class="ftag fato">FATO</span>. Foi julgado por múltiplas acusações de heresia — negação da Trindade, da divindade de Cristo, da Transubstanciação — sob condução do cardeal Roberto Belarmino; recusou-se a recantar e foi queimado vivo ali em 17 de fevereiro de 1600.</p>
+        <p>Há debate historiográfico real (não resolvido) sobre o peso relativo de cada acusação no processo: a leitura tradicional diz que ele não foi condenado primariamente por defender a pluralidade de mundos habitados, mas por heresias teológicas centrais; uma pesquisa mais recente que reanalisou os depoimentos do processo argumenta que a crença em muitos mundos foi, na verdade, a acusação mais recorrente nos registros — treze menções em dez depoimentos, por seis testemunhas <span class="ftag hipotese">DEBATE</span> genuinamente em aberto, não consenso fechado em nenhuma das duas direções. O que é consenso mais sólido: Bruno não foi condenado "por defender que a Terra gira em torno do Sol", e não era um cientista no sentido moderno — era um filósofo hermético-cosmológico cujas ideias sobre o universo infinito se misturavam a especulação teológica e mística.</p>
+        <p>A narrativa de Bruno como "mártir da ciência", executado por antecipar Galileu, é uma construção do século XIX, ligada ao movimento anticlerical e ao positivismo científico da época — simplifica um processo que foi fundamentalmente teológico, não uma disputa "ciência vs. religião" no sentido popular <span class="ftag lenda">LENDA</span> consolidada, ainda muito repetida por guias turísticos.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>A estátua de 1889: um ato político, não um memorial neutro</h4>
+        <p>O monumento a Bruno foi esculpido por Ettore Ferrari e inaugurado em 9 de junho de 1889, no local tradicional de sua execução <span class="ftag fato">FATO</span>. A inauguração foi deliberadamente política: ocorreu num contexto de tensão entre o recém-unificado Reino da Itália e a Santa Sé, que não reconhecia o novo Estado. O evento reuniu figuras do movimento anticlerical, liberal e maçônico — o político Giovanni Bovio discursou cercado por cerca de cem estandartes maçônicos, e o próprio escultor Ferrari era maçom de alto grau. O papa Leão XIII protestou publicamente contra a estátua, que reagia à encíclica dele, <em>Humanum Genus</em> (1884), condenando a maçonaria <span class="ftag fato">FATO</span>. Historiadores concordam que a estátua reinterpretou Bruno retroativamente como ícone do livre-pensamento contra o obscurantismo religioso — um uso político-simbólico do século XIX, quase 300 anos depois do julgamento original, refletindo as disputas Igreja-Estado da Itália recém-unificada, não a disputa teológica de 1600 <span class="ftag hipotese">DEBATE</span> quanto à leitura, mas amplamente aceita.</p>
+      </div>
+
+    </div>
+  </details>
+
+</div></section>
+
+<section class="hday" id="hd3"><div class="wrap">
+  <div class="hday-head">
+    <span class="hday-badge">31/08</span>
+    <div class="hday-title">Dia da Maju</div>
+    <p class="hday-frame">Um dia mais leve, mas com uma das praças mais cenográficas de Roma e a coleção de arte particular de uma das famílias mais poderosas do Barroco — os Borghese, que colocaram seu dinheiro e seu gosto atrás de Caravaggio e Bernini antes de qualquer museu público os "descobrir".</p>
+  </div>
+
+  <details class="verbete" id="piazza-del-popolo">
+    <summary>
+      <span class="vb-ic">⛲</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento médio</span><h3>Piazza del Popolo + Villa Borghese</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>O que você está vendo</h4>
+        <p>Uma praça oval neoclássica com um obelisco egípcio de 3.300 anos no centro, ladeada por duas igrejas quase-gêmeas, e — a poucos passos, subindo o Pincio — o parque e a coleção de arte particular de uma das grandes famílias papais do Barroco, os Borghese.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>Por que era a "porta de Roma"</h4>
+        <p>A praça marca o fim da Via Flaminia, a estrada romana que ligava a cidade ao norte da Itália — a Porta del Popolo (antiga Porta Flaminia), na Muralha Aureliana, era historicamente o ponto por onde quase todo viajante vindo do norte via Roma pela primeira vez, antes da era das ferrovias <span class="ftag fato">FATO</span>. O portão recebeu um reparo estrutural de emergência sob Sisto IV (c. 1475–1480) e, depois, reconstruções cerimoniais mais elaboradas sob Pio IV (fachada externa, 1562–1565) e Alexandre VII (fachada interna de Bernini, 1655, para a chegada da rainha Cristina da Suécia) — três intervenções de escalas bem diferentes, não uma sequência equivalente <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>O obelisco e a praça de hoje</h4>
+        <p>O Obelisco Flaminio foi erguido no Egito por ordem de Seti I por volta de 1300 a.C. e concluído por seu filho Ramessés II; o imperador Augusto o trouxe a Roma por volta de 10 a.C., instalando-o originalmente no Circo Máximo <span class="ftag fato">FATO</span>. Depois de séculos soterrado, foi redescoberto em 1587 e reerguido na praça sob o papa Sisto V, com execução do arquiteto Domenico Fontana — a data exata da reereção varia entre as fontes (algumas indicam março, outras setembro de 1589), então trate isso como uma data ainda em disputa <span class="ftag hipotese">DEBATE</span>. A configuração atual da praça — incluindo as fontes com leões egiptizantes na base do obelisco — é obra do arquiteto neoclássico Giuseppe Valadier, num projeto executado nas primeiras décadas do século XIX, com data de conclusão que também varia conforme a fonte (entre 1822 e 1834) <span class="ftag hipotese">DEBATE</span>.</p>
+        <p>As duas igrejas que parecem gêmeas na entrada sul, Santa Maria in Montesanto e Santa Maria dei Miracoli, foram projetadas por Carlo Rainaldi (com revisão de Bernini e conclusão de Carlo Fontana) — parecem idênticas de longe, mas uma tem cúpula oval e a outra circular, uma solução de cenografia urbana barroca para lotes de tamanhos diferentes <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>Nome da praça: fato, lenda e um debate real</h4>
+        <p>A origem do nome "Popolo" não é um caso fechado. A versão mais repetida em guias turísticos liga o nome a uma lenda medieval: que ali existia um bosque assombrado por corvos demoníacos, sobre o local onde as cinzas do imperador Nero teriam sido enterradas — e que uma capela foi erguida em 1099, sob o papa Pascoal II, para exorcizar esse fantasma <span class="ftag lenda">LENDA</span> — sem base histórica verificável, mas é a origem de "populus" como choupo/nogueira que os guias costumam citar. Já estudos filológicos mais recentes (associados ao linguista Tullio De Mauro) defendem o oposto: que o nome vem de "Sancta Maria Populi Romani", a igreja erguida ali em 1099 com recursos do povo romano — ou seja, "populus" = povo, não árvore <span class="ftag hipotese">DEBATE</span>. As duas leituras concorrem entre si; nenhuma é consenso fechado.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">5</span>Caravaggio e Rafael, em contexto original</h4>
+        <p>Dentro da Igreja de Santa Maria del Popolo, a Capela Cerasi guarda duas telas de Caravaggio de 1601 — <em>Crucificação de São Pedro</em> e <em>Conversão de São Paulo</em> — de frente uma para a outra, com a <em>Assunção da Virgem</em> de Annibale Carracci no altar entre elas <span class="ftag fato">FATO</span>. É um dos poucos lugares em Roma para ver Caravaggios originais no contexto devocional para o qual foram pintados, em vez de numa parede de museu. (Uma anedota antiga, contada pelo biógrafo Giovanni Baglione, diz que Caravaggio teve versões anteriores rejeitadas pelo cliente — mas Baglione era rival declarado de Caravaggio, que chegou a processá-lo por difamação, então trate essa história com reserva <span class="ftag tradicao">TRADIÇÃO</span>.) Na mesma igreja, a Capela Chigi foi projetada por Rafael por volta de 1513, com cúpula em mosaico e conclusão só finalizada muito depois, com intervenções de Bernini <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">6</span>Villa Borghese: a "vila-museu"</h4>
+        <p>Concebida pelo cardeal Scipione Borghese, sobrinho do papa Paulo V, a partir de 1605 — mecenas precoce de Caravaggio e Bernini, ele pensou a vila não só como residência de recreio, mas como espaço propositalmente construído para exibir sua coleção de arte <span class="ftag fato">FATO</span>. A construção do edifício principal (hoje Galleria Borghese) começou sob o arquiteto Flaminio Ponzio por volta de 1609–1613 e foi concluída por Giovanni Vasanzio após a morte de Ponzio — não em 1633, que é apenas o ano da morte do próprio Scipione, frequentemente confundido com a data de conclusão da obra <span class="ftag hipotese">DEBATE</span> (quanto à data exata). Em 1901, o Estado italiano comprou a vila da família Borghese, transformando-a no parque público que é hoje <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <ol>
+          <li>Compare as duas cúpulas das igrejas "gêmeas" na entrada da praça — uma é oval, a outra é redonda. De longe parecem idênticas.</li>
+          <li>Na Capela Cerasi, repare que as duas telas de Caravaggio "conversam" entre si: São Pedro sendo crucificado de cabeça para baixo, de frente para Paulo caindo do cavalo — ambos em movimento diagonal violento, típico do estilo dramático do pintor.</li>
+        </ol>
+      </div>
+
+    </div>
+  </details>
+
+</div></section>
+
+<section class="hday" id="hd4"><div class="wrap">
+  <div class="hday-head">
+    <span class="hday-badge">01/09</span>
+    <div class="hday-title">Roma Antiga — Coliseu</div>
+    <p class="hday-frame">O dia mais denso do roteiro em história antiga: mil anos de mito de fundação, política imperial e entretenimento de massa, tudo dentro de uma caminhada de meia hora. É também o dia em que mais lendas populares precisam ser destrinchadas — Roma Antiga é, de longe, a era mais mitificada de toda a viagem.</p>
+  </div>
+
+  <details class="verbete" id="coliseu">
+    <summary>
+      <span class="vb-ic">🏛️</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Coliseu</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="mode antes">
+        <h4>🚪 Antes de entrar</h4>
+        <p>A primeira coisa a largar na porta: a ideia de que este era, sobretudo, um lugar de martírio cristão. Foi inaugurado quase duas décadas depois da perseguição de Nero (64 d.C.), para um propósito bem mais prosaico — entretenimento de massa como ferramenta de poder político. A ligação do próprio Coliseu como palco de martírio cristão em massa só foi consolidada por um ato devocional do papa Bento XIV, em pleno século XVIII — a camada religiosa que hoje é tão associada ao lugar (a cruz no centro, a Via-Sacra do papa) é real, mas chegou 1.700 anos depois da inauguração.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>Construção e cronologia</h4>
+        <p>Encomendado pelo imperador Vespasiano, fundador da dinastia Flávia, com obras iniciadas por volta de 70-72 d.C. — financiadas em parte pelo espólio da conquista de Jerusalém (70 d.C.), hipótese reforçada por uma inscrição dedicatória reconstituída pelo epigrafista Géza Alföldy em 1995 (a partir dos furos de fixação de letras de bronze num bloco reaproveitado — uma inferência filológica amplamente aceita, não uma leitura direta de texto preservado) <span class="ftag hipotese">DEBATE</span> quanto ao grau de certeza. Vespasiano morreu em 79 d.C. sem ver a obra concluída; foi inaugurado por seu filho Tito em 80 d.C., com 100 dias de jogos, e ampliado por Domiciano, a quem se atribui o hipogeu <span class="ftag fato">FATO</span>. O nome "Coliseu" não é antigo — na época chamava-se Amphitheatrum Flavium; o apelido, provavelmente por associação com a estátua colossal de Nero que ficava próxima, já aparece registrado desde cerca do século VIII (Venerável Beda).</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>Por que ali: o lago de Nero</h4>
+        <p>O anfiteatro foi construído sobre o terreno onde antes havia um lago artificial da Domus Aurea, o palácio megalômano de Nero erguido após o incêndio de 64 d.C. <span class="ftag fato">FATO</span>. A leitura de que isso foi propaganda deliberada dos Flávios — devolvendo "ao povo" um terreno que Nero privatizara — é consenso entre historiadores modernos, reforçada por um poema contemporâneo de Marcial contrastando as "monstruosidades da Casa Dourada" com o novo anfiteatro público. Mas é uma inferência interpretativa a partir de fontes favoráveis aos Flávios, não uma confissão documental de plano de marketing <span class="ftag hipotese">DEBATE</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>Capacidade e como o público circulava</h4>
+        <p>A capacidade é sempre citada como estimativa, nunca como número fechado — as fontes variam entre 50 mil e 80 mil espectadores, sem consenso definitivo <span class="ftag hipotese">DEBATE</span>. O sistema de acesso, por outro lado, é bem documentado: 76 entradas numeradas para o público comum, mais 4 de honra para o imperador e autoridades, cada uma levando a um setor específico indicado no ingresso (uma placa de argila ou osso); os corredores internos de acesso rápido eram os vomitoria, e os assentos eram estritamente estratificados por classe social, dos senadores embaixo até os mais pobres no topo <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>O que realmente acontecia na arena</h4>
+        <p>Combates de gladiadores (munera): os combatentes vinham de origens variadas — escravos, prisioneiros de guerra, criminosos condenados, mas também homens livres voluntários que assinavam contrato com um treinador-empresário; a proporção exata de voluntários é debatida e varia por período e região, não há um número fechado válido para todo o Império <span class="ftag hipotese">DEBATE</span>. Caçadas de animais exóticos (venationes) também eram atração central — as próprias fontes antigas divergem sobre a escala: Suetônio fala de 5.000 animais mortos num único dia da inauguração, Dião Cássio fala de 9.000 ao longo dos 100 dias inteiros, um bom exemplo de como até fontes contemporâneas discordavam em números <span class="ftag fato">FATO</span> (quanto à divergência em si). Execuções públicas também aconteciam ali, às vezes em encenações mitológicas teatralizadas.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">5</span>O hipogeu — e as batalhas navais que talvez nunca tenham acontecido ali</h4>
+        <p>O hipogeu é a estrutura subterrânea de dois níveis sob a arena — túneis, jaulas, camarins, e elevadores manuais que erguiam animais e cenografia direto para a arena. Não fazia parte do projeto original de 80 d.C.: foi acrescentado sob Domiciano, entre cerca de 81 e 96 d.C. <span class="ftag fato">FATO</span>. É por isso que fontes antigas descrevem a arena sendo alagada para naumaquias (batalhas navais encenadas) nos primeiros anos — mas parte da historiografia moderna trata esses relatos com cautela: as dificuldades de engenharia (impermeabilização, volume de água necessário) tornam duvidoso que batalhas navais completas tenham realmente ocorrido dentro do próprio Coliseu, sugerindo encenações reduzidas ou até outro local <span class="ftag hipotese">DEBATE</span> — não é fato consolidado como às vezes é apresentado.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">6</span>Mártires cristãos: o ponto mais mal-entendido de toda Roma Antiga</h4>
+        <p>Este é o mito mais difundido sobre o Coliseu, e merece cuidado extra. É fato que perseguições romanas a cristãos existiram (sob Nero, após o incêndio de 64 d.C.; sob Diocleciano, início do século IV) e que há relatos de mártires mortos publicamente em espetáculos romanos <span class="ftag fato">FATO</span>. Mas a associação específica e maciça do Coliseu como <em>o</em> palco do martírio cristão em massa não tem evidência arqueológica ou documental direta que a sustente — nenhuma fonte romana contemporânea, nenhuma ata de martírio inequívoca aponta especificamente para este anfiteatro, em contraste com outros locais de execução em Roma, como o Circo de Nero, próximo ao atual Vaticano <span class="ftag hipotese">DEBATE</span> historiográfico real e em aberto.</p>
+        <p>O marco que consolidou essa associação na cultura popular é conhecido e tardio: em 1750, e formalizado por volta de 1756, o papa Bento XIV dedicou oficialmente o Coliseu à memória da Paixão de Cristo e dos mártires cristãos, erguendo uma cruz na arena e instalando as estações da Via-Sacra ao redor do monumento <span class="ftag tradicao">TRADIÇÃO</span> — um ato de devoção do século XVIII, não uma descoberta arqueológica. Ele teve, de quebra, o efeito prático de frear a espoliação de pedra do monumento, já que um local consagrado deixou de ser visto como simples pedreira.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">7</span>A Via-Sacra papal até hoje</h4>
+        <p>Depois da dedicação de Bento XIV, a prática de rezar as estações da Via-Sacra ali se manteve por cerca de um século, interrompida em meio às tensões entre o Estado Pontifício e o Reino da Itália recém-unificado <span class="ftag fato">FATO</span>. O papa João XXIII a restabeleceu em 1959, e em 1964 Paulo VI presidiu a Via Crucis ali com transmissão ao vivo pela Eurovisão, transformando-a no evento global de grande visibilidade que continua até hoje, na noite de Sexta-feira Santa <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">8</span>Declínio, pedreira e o que resta hoje</h4>
+        <p>Os combates de gladiadores foram progressivamente abolidos entre o fim do século IV e o século V, associados ao avanço do cristianismo como religião oficial; as caçadas de animais persistiram um pouco mais — o último evento registrado é geralmente datado de 523 d.C., sob domínio ostrogodo <span class="ftag fato">FATO</span>. Terremotos causaram danos progressivos, com eventos destrutivos por volta de meados do século V (442 e depois 508 d.C.) e o grande terremoto de 1349, que derrubou parte do anel externo sul. Do período medieval em diante, sobretudo no Renascimento, o Coliseu foi sistematicamente usado como pedreira — travertino de lá foi reaproveitado até em parte da Basílica de São Pedro. Estima-se (sem metodologia exata) que reste hoje cerca de um terço da estrutura original <span class="ftag hipotese">DEBATE</span> quanto à precisão do número. O piso de madeira original da arena provavelmente desapareceu na Antiguidade tardia ou na Idade Média — o que de fato começou no início do século XIX foi a escavação arqueológica do hipogeu que ele cobria, não o desaparecimento do piso em si, dois eventos que é fácil confundir.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">★</span>Fato vs. tradição — o resumo rápido</h4>
+        <ul>
+          <li>"O Coliseu foi construído para perseguir cristãos" — <span class="ftag lenda">LENDA</span>. Foi inaugurado em 80 d.C., décadas antes das grandes perseguições.</li>
+          <li>"Milhares de cristãos morreram especificamente ali" — <span class="ftag hipotese">DEBATE</span> historiográfico real, sem evidência direta que comprove o Coliseu como local específico.</li>
+          <li>"Houve batalhas navais completas dentro do Coliseu" — <span class="ftag hipotese">DEBATE</span>, questionado por razões de engenharia.</li>
+          <li>"A cruz na arena é de origem antiga" — <span class="ftag lenda">LENDA</span> parcial. É do século XVIII (Bento XIV), não da Antiguidade.</li>
+        </ul>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <ol>
+          <li>Olhe para o hipogeu exposto (a "cave" sob a arena) — os alçapões e túneis que você vê são de uma ampliação posterior à inauguração, não do projeto original de Tito.</li>
+          <li>Repare no lado voltado para o Celio: a fachada "quebrada" e irregular ali é o resultado direto do terremoto de 1349, não erosão gradual.</li>
+          <li>Ache a cruz no centro da arena — ela marca uma decisão religiosa do século XVIII, não um monumento da era romana.</li>
+        </ol>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="foro-palatino">
+    <summary>
+      <span class="vb-ic">🏺</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Fórum Romano + Palatino</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>De pântano a centro do mundo</h4>
+        <p>O vale entre as colinas Capitolina, Palatina e Esquilina era originalmente um pântano sazonalmente alagado pelo Tibre. A drenagem foi possibilitada pela Cloaca Máxima — a tradição atribui sua origem aos reis etruscos do século VI a.C., mas boa parte da estrutura visível hoje é de reconstruções republicanas e imperiais posteriores, e a datação/autoria exata da fase mais antiga não é comprovável arqueologicamente com precisão <span class="ftag hipotese">DEBATE</span>. A partir daí, o Fórum evoluiu por mais de mil anos de praça de mercado a centro político (Senado, tribunais), religioso (templos) e cerimonial (Via Sacra, rota de triunfos militares) <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>Templo de Saturno — o tesouro da República</h4>
+        <p>Erguido originalmente entre 501–497 a.C. (datação da tradição analística, como a de Tito Lívio, não confirmação arqueológica direta da fundação mais antiga <span class="ftag hipotese">DEBATE</span>), reconstruído no século IV a.C. e restaurado em 42 a.C. Funcionava como o Aerarium — o tesouro público da República, guardado sob o pódio e administrado pelos questores sob controle do Senado; ali também ficavam os arquivos do Estado <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>Arco de Tito e a Menorá</h4>
+        <p>Erguido por volta de 81 d.C., encomendado por Domiciano em homenagem póstuma ao irmão Tito (recém-divinizado), com dedicação formal do Senado e do povo romano — comemora a conquista e destruição de Jerusalém em 70 d.C. <span class="ftag fato">FATO</span>. Um dos relevos mostra soldados romanos carregando em procissão a Menorá saqueada do Segundo Templo — é a última representação visual conhecida do objeto original, cujo destino físico posterior é desconhecido (fundido? guardado em Roma? levado a Constantinopla por Belisário?) <span class="ftag hipotese">DEBATE</span> em aberto. Em 1949, esse relevo foi a base direta do desenho escolhido para o emblema oficial do Estado de Israel — isso, sim, é fato documentado pelo comitê que fez a escolha.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>A Cúria: sede do Senado que sobreviveu por virar igreja</h4>
+        <p>A Cúria Júlia, encomendada por Júlio César em 44 a.C. e concluída por Augusto em 29 a.C., era a sede física das reuniões do Senado romano <span class="ftag fato">FATO</span>. O edifício que se vê hoje é majoritariamente da reconstrução de Diocleciano, no fim do século III d.C., não a estrutura original de César/Augusto — um detalhe que costuma se perder em relatos populares. Sobreviveu relativamente intacta justamente porque foi convertida em igreja (Santo Adriano) em 630 d.C. pelo papa Honório I: é um dos poucos casos em que "virar igreja" salvou um edifício pagão da demolição/espoliação.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">5</span>O Templo de Vesta e as Vestais</h4>
+        <p>O templo circular e a Casa das Vestais datam em suas origens do século VI a.C.; o complexo residencial foi reconstruído por Nero após o incêndio de 64 d.C. As Vestais eram sacerdotisas escolhidas ainda meninas, com 30 anos de serviço obrigatório e voto de castidade, cuidando do fogo perpétuo que — segundo a crença romana da época — era necessário para a própria sobrevivência simbólica da cidade <span class="ftag fato">FATO</span> (quanto à prática) / a "necessidade existencial" é a cosmovisão romana, não um fato objetivo. A punição por quebra do voto era o soterramento vivo — mas isso ocorreu raramente ao longo de mais de mil anos do culto, cerca de dez casos documentados, incluindo o de Cornélia sob Domiciano, por volta de 90 d.C. <span class="ftag fato">FATO</span>. A origem do colégio é atribuída pela tradição literária a Numa Pompílio, segundo rei de Roma <span class="ftag tradicao">TRADIÇÃO</span> — relato lendário, não fato arqueológico verificável para datas tão remotas. O culto foi extinto por volta de 391–394 d.C., sob decreto de Teodósio I. Vale notar: boa parte do que se vê hoje na Casa das Vestais — colunas reerguidas, estátuas recolocadas — é reconstituição didática do início do século XX (obra de Giacomo Boni), não o estado de ruína original das escavações <span class="ftag hipotese">DEBATE</span> quanto a como ler essa reconstrução.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">6</span>Basílica de Maxêncio e Constantino</h4>
+        <p>O maior edifício do Fórum — cerca de 100 x 65 metros. Construção iniciada pelo imperador Maxêncio em 308 d.C. e concluída por Constantino por volta de 312–313 d.C., após sua vitória na Ponte Mílvia. Apesar do nome, não tinha função religiosa: como as demais basílicas romanas, servia como tribunal e câmara administrativa <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">7</span>Palatino: o mito de Rômulo e Remo, e o que a arqueologia realmente encontrou</h4>
+        <p>Segundo a lenda transmitida por Tito Lívio, Dionísio de Halicarnasso e Plutarco — escrita centenas de anos depois dos supostos eventos —, os gêmeos Rômulo e Remo teriam sido amamentados por uma loba numa gruta na base do Palatino (o Lupercal); Rômulo teria depois fundado Roma ali em 753 a.C. <span class="ftag lenda">LENDA</span> fundacional, não relato histórico verificável. A chamada "Casa de Rômulo", uma cabana ritualmente refeita por séculos, era tida por essa tradição como a morada relíquia do fundador.</p>
+        <p>O que a arqueologia realmente encontrou: escavações no Palatino, sobretudo as de Andrea Carandini desde os anos 1980, revelaram vestígios genuínos de cabanas de vara e taipa do século VIII a.C. — exatamente o período em que a lenda situa a fundação, e no mesmo setor onde a tradição colocava a Casa de Rômulo <span class="ftag fato">FATO</span> quanto à existência das cabanas. Isso comprova ocupação humana real naquele período — mas não prova a existência histórica de Rômulo, nem que aquela cabana específica pertencesse a um fundador individual. As interpretações mais específicas de Carandini (identificar uma vala como "muralha romúlea", ligar diretamente as cabanas a um "palácio" fundacional) são vistas por parte da comunidade arqueológica como leitura excessivamente literal do mito projetada sobre dados materiais ambíguos <span class="ftag hipotese">DEBATE</span> — um dos debates mais citados da arqueologia romana recente.</p>
+        <p>A própria Loba Capitolina (hoje nos Museus Capitolinos, ícone visual do mito) tem sua data contestada: tradicionalmente vista como bronze etrusco do século V a.C., uma análise técnica de 2006 propôs origem medieval (séculos XI-XII), com os gêmeos adicionados só no século XV — datação por radiocarbono anunciada em 2012 (não simultânea à proposta técnica de 2006) reforçou essa leitura medieval, mas outros especialistas continuam contestando o resultado <span class="ftag hipotese">DEBATE</span> sem consenso definitivo.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">8</span>Por que "palácio" vem daqui</h4>
+        <p>A partir de Augusto, que fixou residência no Palatino por associação simbólica com o mito fundador, sucessivos imperadores expandiram complexos residenciais ali — sob Domiciano, o grande Palácio Flávio, com a Domus Flavia (ala pública/cerimonial) e a Domus Augustana (ala residencial privada) <span class="ftag fato">FATO</span>. A concentração de residências imperiais na colina fez com que "Palatium" passasse a significar, por metonímia, "residência imperial" — de onde vêm palace, palazzo, palais e palácio. A origem última da palavra "Palatium" em si é incerta — uma hipótese liga à raiz "estaca/cercado", outra à deusa pastoril Pales <span class="ftag hipotese">DEBATE</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">9</span>De "Campo Vaccino" a sítio arqueológico</h4>
+        <p>Com a queda do Império do Ocidente, o Fórum foi progressivamente coberto por sedimentos e entulho, perdendo sua função monumental — na Idade Média, já soterrado vários metros, virou literalmente pasto de gado, apelidado "Campo Vaccino" até o século XIX <span class="ftag fato">FATO</span>. A redescoberta começou com escavações pontuais no início do século XIX, mas o trabalho sistemático ficou associado sobretudo a Giacomo Boni, entre o fim do XIX e início do XX, e depois também ao regime fascista, que promoveu grandes escavações na área nas décadas de 1920-30 com motivação ideológica de exaltação da romanidade — escavações hoje criticadas por historiadores da arqueologia por terem priorizado a "limpeza" visual em detrimento de estratos medievais, removidos com pouco registro científico <span class="ftag hipotese">DEBATE</span> ainda discutido por especialistas.</p>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <ol>
+          <li>No Arco de Tito, procure o relevo com a Menorá sendo carregada — é a última imagem conhecida do objeto original do Templo de Jerusalém, e virou símbolo oficial de Israel em 1949.</li>
+          <li>No Palatino, ache o ponto onde ficam as cabanas reconstituídas do século VIII a.C. — é o achado arqueológico real por trás do mito de Rômulo, ainda que não prove o mito em si.</li>
+          <li>Repare no nível do chão do Fórum em relação às ruas modernas ao redor — a diferença de altura é literalmente a camada de séculos de sedimento que precisou ser escavada para revelar tudo isso.</li>
+        </ol>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="verbete" id="circo-massimo">
+    <summary>
+      <span class="vb-ic">🏇</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento médio</span><h3>Circo Máximo</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>O maior espaço de espetáculos da Roma Antiga</h4>
+        <p>Situado no vale entre o Aventino e o Palatino, foi usado para corridas de carros (bigas e quadrigas) desde uma época arcaica muito antiga — mas a data exata e o "ato fundador" específico, tradicionalmente atribuído ao quinto rei de Roma, Tarquínio Prisco, no século VI a.C., é tradição literária, não fato arqueológico comprovável <span class="ftag tradicao">TRADIÇÃO</span>. Ao longo dos séculos passou de estrutura de madeira e terra a edificação parcialmente em pedra, com expansões sob Júlio César, Augusto, Trajano e, na fase de maior capacidade, Constantino no século IV d.C.</p>
+        <p>Uma lenda distinta e anterior, preservada por Tito Lívio, liga o vale ao episódio do "Rapto das Sabinas": Rômulo teria promovido um festival ali como estratagema para atrair os vizinhos sabinos e raptar suas mulheres — episódio da mitologia fundadora, não registro histórico, e cronologicamente separado da tradição sobre Tarquínio Prisco (o festival de Rômulo é anterior a qualquer estrutura construída) <span class="ftag lenda">LENDA</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>Capacidade: um dos maiores debates numéricos de Roma Antiga</h4>
+        <p>As estimativas variam muito — de cerca de 150 mil (consenso acadêmico moderno mais citado, referente à fase final) a números bem mais altos. A cifra mais alta, entre 300 e 485 mil lugares, não vem de sites turísticos modernos como às vezes se pensa: vem de documentos administrativos romanos antigos genuínos, os Regionary Catalogues (séc. IV d.C.) — o debate real é sobre como interpretar esse número antigo (lugares sentados? "pés corridos" equivalentes? contagem retórica exagerada?) <span class="ftag hipotese">DEBATE</span> historiográfico genuíno, não resolvido. Era maior que o Coliseu porque tinha formato de pista longa e estreita (cerca de 540-620 metros, a medida exata varia por fase construtiva), com arquibancadas ao longo de todo o percurso, em vez de um anfiteatro fechado ao redor de uma arena central.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>Declínio e por que resta tão pouco hoje</h4>
+        <p>Foi usado por séculos, com a última corrida de bigas tradicionalmente datada de 549 d.C. — data baseada num único registro tardio (jogos oferecidos pelo rei ostrogodo Totila), não uma medição arqueológica <span class="ftag tradicao">TRADIÇÃO</span> quanto à precisão exata. O declínio combina a decadência geral do Império do Ocidente, a concorrência de outros espaços como o Coliseu, e inundações recorrentes do Tibre, que soterraram progressivamente a estrutura. Como o Coliseu, foi usado como pedreira ao longo da Idade Média — por isso hoje resta muito pouco visível da estrutura original, sobretudo alicerces parcialmente enterrados <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>Uso atual</h4>
+        <p>Hoje é um grande parque público aberto, usado tanto para lazer cotidiano quanto como palco para shows e grandes eventos — inclusive celebrações esportivas de clubes de futebol romanos, aproveitando a vasta extensão original da pista <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <p>Fique de pé numa das extremidades do vale e tente visualizar 150 mil pessoas (ou mais) gritando ao mesmo tempo, torcendo por quatro equipes de corrida com cores próprias (as "facções" do circo — verde, azul, branca, vermelha) — foi, por séculos, o entretenimento de massa mais popular de Roma, muito antes do Coliseu existir.</p>
+      </div>
+
+    </div>
+  </details>
+
+</div></section>
+
+<section class="hday" id="hd5"><div class="wrap">
+  <div class="hday-head">
+    <span class="hday-badge">02/09</span>
+    <div class="hday-title">Audiência Geral + Retirada do Carro</div>
+    <p class="hday-frame">Este é o único dia do roteiro em que você não vai visitar um monumento — vai participar de uma instituição viva. A Audiência Geral não é uma missa nem uma visita a ruína: é um encontro semanal que existe, no formato atual, há pouco mais de 60 anos, e que continua acontecendo, quarta a quarta, seja qual for o papa do momento.</p>
+  </div>
+
+  <details class="verbete" id="audiencia-geral">
+    <summary>
+      <span class="vb-ic">🕊️</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Audiência Geral com o Papa</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+
+      <div class="mode antes">
+        <h4>🚪 Antes de entrar</h4>
+        <p>Vocês já têm o ingresso confirmado (gratuito — Audiência Geral nunca é vendida, se alguém te cobrar por "ingresso", é golpe) e vão pegar fila cedo. Vale saber, antes de entrar, que isso <em>não é uma missa</em>: não tem comunhão, não é uma celebração litúrgica formal. É uma catequese pública — o papa fala, alguém traduz trechos em várias línguas, ele cumprimenta grupos de peregrinos por nacionalidade, e no fim dá a bênção apostólica. Dependendo do calor e da época, ela pode acontecer ao ar livre na Praça de São Pedro ou dentro da Sala Paulo VI — vocês vão descobrir qual das duas na hora.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">1</span>O que é, de fato, uma Audiência Geral</h4>
+        <p>É o encontro público semanal do papa com fiéis e peregrinos, normalmente às quartas-feiras, quando ele está em Roma. Não é missa: a estrutura é leitura bíblica breve, catequese do papa (geralmente parte de um ciclo temático longo), resumos da catequese lidos em várias línguas, saudações a grupos de peregrinos presentes por nacionalidade/idioma, e bênção apostólica final com o Pai-Nosso <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">2</span>Por que isso importa</h4>
+        <p>Diferente de tudo mais no roteiro, isso não é um edifício antigo que sobreviveu — é um formato institucional relativamente recente (menos de um século) que se tornou, ainda assim, um dos rituais mais reconhecíveis da Igreja Católica moderna. Estar ali é ver a instituição papal funcionando ao vivo, não musealizada.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">3</span>As origens: de Pio XII a Paulo VI</h4>
+        <p>As audiências gerais semanais nasceram em abril de 1939, no início do pontificado de Pio XII, inicialmente como catequese dirigida a casais recém-casados — foram interrompidas em 1943 pela guerra e ocupação de Roma <span class="ftag fato">FATO</span>. Quem exatamente restabeleceu o encontro semanal aberto a todos os fiéis no pós-guerra é uma questão em aberto nas fontes consultadas: é comumente atribuído a Pio XII (ligado ao Jubileu de 1950), mas há reconstruções históricas concorrentes que atribuem essa universalização a João XXIII, já em 1958-59, recebendo grupos inicialmente em Castel Gandolfo <span class="ftag hipotese">DEBATE</span> — trate a ligação direta com o Jubileu de 1950 como não confirmada. O que é sólido: em 13 de julho de 1963, Paulo VI realizou a audiência com saudações e traduções simultâneas em francês, espanhol, alemão e inglês — o formato multilíngue que se tornou padrão até hoje <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">4</span>A Sala Paulo VI: a arquitetura de Nervi</h4>
+        <p>Projetada pelo engenheiro italiano Pier Luigi Nervi, foi concebida por volta de 1963–64, mas a obra civil só começou de fato no fim de 1966 (por dificuldades de espaço no terreno vaticano) e foi inaugurada em 30 de junho de 1971, coincidindo com a primeira Audiência Geral realizada ali <span class="ftag fato">FATO</span>. É construída em concreto armado, com uma cobertura em abóbada parabólica de dupla curvatura sem colunas internas — solução estrutural que permite um vão livre enorme — e é popularmente apelidada de "Aula Nervi". A capacidade sentada mais citada é de 6.300 lugares, mas há fontes (inclusive oficiais/turísticas) que falam em até 10-12 mil pessoas em ocasiões de maior lotação — a cifra exata varia bastante entre fontes <span class="ftag hipotese">DEBATE</span>.</p>
+        <p>Existe uma leitura simbólica marginal, de tom conspiratório, de que o formato do prédio (visto de certos ângulos aéreos) lembraria uma cabeça de cobra, e que a escultura de bronze no interior — <em>A Ressurreição</em>, de Pericle Fazzini, mostrando Cristo emergindo de uma explosão nuclear — teria significado oculto. Fontes de arquitetura e de apologética católica atribuem o formato a razões práticas de aproveitamento do terreno disponível, não a simbolismo oculto <span class="ftag lenda">LENDA</span> — é uma leitura de nicho, não uma interpretação séria disputada por historiadores.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">5</span>Praça de São Pedro ou Sala Paulo VI — onde vai ser a sua?</h4>
+        <p>Na primavera, verão e parte do outono, a audiência costuma acontecer ao ar livre na Praça de São Pedro, por causa do número esperado de visitantes; no inverno, chuva ou frio, ela se transfere para a Sala Paulo VI <span class="ftag fato">FATO</span>. Há também mudanças pontuais por calor extremo — em 13 de agosto de 2025, por exemplo, a audiência do papa Leão XIV foi transferida para dentro da Sala Paulo VI por causa do calor. Em setembro, o clima de Roma costuma favorecer a Praça, mas não é garantido — vocês só vão saber com certeza no dia.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">6</span>Audiência Geral x Audiência Privada</h4>
+        <p>A Audiência Geral é o evento massivo, aberto a qualquer pessoa, sempre gratuito — o ingresso se retira na Prefeitura da Casa Pontifícia ou por instituições credenciadas (paróquias, colégios pontifícios), nunca comprado. A Audiência Privada ou Especial é reservada, por convite, a grupos pequenos, chefes de Estado ou autoridades, permitindo interação mais próxima — não está disponível ao público em geral <span class="ftag fato">FATO</span>.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">7</span>Continuidade — e as vezes em que parou</h4>
+        <p>O formato consolidado por Paulo VI em 1963 seguiu, com ajustes, sob todos os papas desde então — João Paulo II, por exemplo, desenvolveu ciclos temáticos longos e famosos, como a "Teologia do Corpo" <span class="ftag fato">FATO</span>. Mas não foi uma continuidade perfeitamente ininterrupta: durante a pandemia de Covid-19, em 2020, as audiências públicas presenciais foram suspensas por meses, com o papa Francisco realizando audiências sem público, transmitidas de dentro da Biblioteca Apostólica <span class="ftag fato">FATO</span>. Cada papa também ajusta o formato à sua maneira — a duração e o enfoque dos ciclos temáticos variam bastante de pontificado a pontificado.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">8</span>Uma tradição antiga, mas não a mesma coisa</h4>
+        <p>Encontros de papas com peregrinos, embaixadores e fiéis existem desde muito antes do século XX — o cerimonial de audiências e consistórios papais tem raízes medievais e renascentistas, incluindo o antigo costume de peregrinos se ajoelharem e beijarem a pantufa papal (prática hoje abandonada) <span class="ftag tradicao">TRADIÇÃO</span>. Mas é importante não confundir isso com a Audiência Geral moderna: aquele cerimonial antigo era de audiências privadas/de corte pontifícia, esporádicas e sem formato fixo — não uma linha evolutiva direta e contínua até a catequese semanal multilíngue que existe hoje.</p>
+      </div>
+
+      <div class="vb-part">
+        <h4><span class="num">★</span>Fato vs. tradição — o resumo rápido</h4>
+        <ul>
+          <li>"A Audiência Geral existe desde sempre" — <span class="ftag lenda">LENDA</span> parcial. O formato atual tem menos de 65 anos (desde 1963).</li>
+          <li>"Foi Pio XII quem retomou as audiências abertas a todos no pós-guerra" — <span class="ftag hipotese">DEBATE</span>, atribuição incerta entre Pio XII e João XXIII.</li>
+          <li>"A primeira audiência multilíngue de Paulo VI foi em 13/07/1963" — <span class="ftag fato">FATO</span> bem documentado.</li>
+          <li>"O formato da Sala Paulo VI tem simbolismo oculto" — <span class="ftag lenda">LENDA</span>. Explicação arquitetônica é prática, não simbólica.</li>
+        </ul>
+      </div>
+
+      <div class="mode aqui">
+        <h4>👁️ Estou aqui — olhe para isso</h4>
+        <ol>
+          <li>Repare nas bandeiras e cartazes espalhados pela multidão — são grupos de peregrinos organizados por país/paróquia, e o papa cumprimenta nominalmente vários desses grupos durante a audiência.</li>
+          <li>Se a audiência for na Sala Paulo VI, note a cobertura curva sem nenhuma coluna interna sustentando o teto — é uma proeza estrutural de engenharia de concreto dos anos 1960/70, não só uma escolha estética.</li>
+          <li>Preste atenção em quantos idiomas diferentes você ouve sendo usados na mesma manhã — é o formato multilíngue que Paulo VI criou em 1963 funcionando exatamente como foi desenhado.</li>
+        </ol>
+      </div>
+
+      <div class="mode conte">
+        <h4>💬 Conte para mim</h4>
+        <p>Em 1939, um papa começou a receber casais recém-casados, uma vez por semana, só para conversar sobre fé antes de eles começarem a vida juntos. A guerra interrompeu isso. Décadas depois, outro papa decidiu que esse encontro não devia ser só para noivos — devia ser para qualquer pessoa que quisesse vir, de qualquer país, falando qualquer língua. Ele passou a receber a todos juntos, uma vez por semana, com alguém traduzindo suas palavras em tempo real para que ninguém ficasse de fora. Isso foi em 1963. Sessenta e tantos anos depois, todas as quartas-feiras, ainda acontece — trocou de papa várias vezes, trocou de local dependendo do clima, mas nunca parou de acontecer, exceto quando o mundo inteiro parou, em 2020.</p>
+      </div>
+
+      <div class="mode perguntas">
+        <h4>🤔 Perguntas para levar</h4>
+        <ul>
+          <li>Por que será que a Igreja escolheu manter esse encontro semanal mesmo sem ser uma obrigação litúrgica?</li>
+          <li>O que muda em ouvir alguém falar ao vivo, mesmo que numa língua que você não entende sem tradução?</li>
+          <li>Quantas outras instituições do mundo têm um ritual público, semanal e ininterrupto (quase) há mais de 60 anos?</li>
+        </ul>
+      </div>
+
+    </div>
+  </details>
+
+</div></section>
+
 <section class="sec" id="fecho"><div class="wrap">
-  <h2 class="sec-title">Seções de fechamento</h2>
-  <p class="sec-lead">Depois que todos os dias estiverem completos: linha do tempo de Roma, linha do tempo do cristianismo em Roma, os 20 personagens que você vai encontrar, os 20 símbolos católicos para reconhecer, um guia rápido de consulta e o resumo para ler no avião.</p>
-  <div class="soon">Chega depois dos 5 dias estarem prontos.</div>
+  <h2 class="sec-title">Fechamento</h2>
+  <p class="sec-lead">Tudo que você viu nos 5 dias, amarrado em seis formatos diferentes — para revisar antes da viagem, consultar durante, ou ler no avião de volta.</p>
+
+  <div class="fecho-block">
+    <h3>🕰️ Linha do tempo de Roma</h3>
+    <p class="fecho-sub">Da fundação lendária ao papado de hoje — só os pontos que você realmente vai encontrar pelo caminho.</p>
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-date">753 a.C. (lenda)</span><p>Fundação lendária de Roma por Rômulo — não é fato arqueológico, mas há cabanas reais do século VIII a.C. no Palatino, exatamente onde a lenda situa o evento.</p></div>
+      <div class="tl-item"><span class="tl-date">509 a.C.</span><p>Fim da monarquia romana, início da República.</p></div>
+      <div class="tl-item"><span class="tl-date">27 a.C.</span><p>Augusto se torna o primeiro imperador — início do Império Romano.</p></div>
+      <div class="tl-item"><span class="tl-date">19 a.C.</span><p>Agripa conclui o Aqua Virgo, o aqueduto que ainda alimenta a Fontana di Trevi hoje.</p></div>
+      <div class="tl-item"><span class="tl-date">64 d.C.</span><p>Grande incêndio de Roma sob Nero — início das perseguições a cristãos na cidade.</p></div>
+      <div class="tl-item"><span class="tl-date">70 d.C.</span><p>Destruição do Templo de Jerusalém — o espólio, incluindo a Menorá, é celebrado no Arco de Tito.</p></div>
+      <div class="tl-item"><span class="tl-date">80 d.C.</span><p>Inauguração do Coliseu por Tito, com 100 dias de jogos.</p></div>
+      <div class="tl-item"><span class="tl-date">c. 126-128 d.C.</span><p>Reconstrução do Panteão — tradicionalmente atribuída a Adriano, embora um debate acadêmico recente sugira que Trajano pode ter iniciado a obra.</p></div>
+      <div class="tl-item"><span class="tl-date">313 d.C.</span><p>Edito de Milão — liberdade de culto para os cristãos no Império Romano.</p></div>
+      <div class="tl-item"><span class="tl-date">c. 326-333 d.C.</span><p>Construção da primeira Basílica de São Pedro, sob Constantino.</p></div>
+      <div class="tl-item"><span class="tl-date">410 d.C.</span><p>Saque visigótico de Roma — início da perda da decoração original de monumentos como o Mausoléu de Adriano.</p></div>
+      <div class="tl-item"><span class="tl-date">476 d.C.</span><p>Fim do Império Romano do Ocidente.</p></div>
+      <div class="tl-item"><span class="tl-date">609 d.C.</span><p>O Panteão é consagrado como igreja cristã — fator decisivo para sua sobrevivência intacta.</p></div>
+      <div class="tl-item"><span class="tl-date">1417</span><p>Fim do Grande Cisma do Ocidente, com a eleição de Martinho V — o papado sai fragilizado e passa a investir pesado em arte para reconstruir prestígio.</p></div>
+      <div class="tl-item"><span class="tl-date">1471-1484</span><p>Papado de Sisto IV — constrói a Capela Sistina e doa os bronzes de Latrão ao povo de Roma.</p></div>
+      <div class="tl-item"><span class="tl-date">1506</span><p>Júlio II lança a pedra fundamental da nova Basílica de São Pedro e funda a coleção de estátuas do Vaticano.</p></div>
+      <div class="tl-item"><span class="tl-date">1508-1512</span><p>Michelangelo pinta o teto da Capela Sistina.</p></div>
+      <div class="tl-item"><span class="tl-date">1527</span><p>Saque de Roma — Clemente VII foge pelo Passetto di Borgo até o Castel Sant'Angelo.</p></div>
+      <div class="tl-item"><span class="tl-date">1536-1541</span><p>Michelangelo pinta o Juízo Final.</p></div>
+      <div class="tl-item"><span class="tl-date">1600</span><p>Giordano Bruno é queimado vivo no Campo de' Fiori.</p></div>
+      <div class="tl-item"><span class="tl-date">1626</span><p>Consagração solene da nova Basílica de São Pedro, 120 anos depois da pedra fundamental.</p></div>
+      <div class="tl-item"><span class="tl-date">1651-1762</span><p>Roma barroca: Fontana dei Quattro Fiumi (Bernini, 1651) e Fontana di Trevi (Salvi, 1762).</p></div>
+      <div class="tl-item"><span class="tl-date">1870</span><p>Roma se torna capital da Itália unificada — fim do poder temporal dos Estados Pontifícios.</p></div>
+      <div class="tl-item"><span class="tl-date">1929</span><p>Tratado de Latrão cria o Estado da Cidade do Vaticano como o conhecemos hoje.</p></div>
+      <div class="tl-item"><span class="tl-date">1962-1965</span><p>Concílio Vaticano II.</p></div>
+      <div class="tl-item"><span class="tl-date">2025</span><p>Eleição do papa Leão XIV, no quarto escrutínio do conclave.</p></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>⛪ Linha do tempo do cristianismo em Roma</h3>
+    <p class="fecho-sub">O mesmo período, mas visto pela lente específica da Igreja.</p>
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-date">c. 64 d.C. (tradição)</span><p>Tradição sobre o martírio de Pedro em Roma, sob Nero — testemunho mais antigo é de fim do século II, não contemporâneo ao evento.</p></div>
+      <div class="tl-item"><span class="tl-date">313 d.C.</span><p>Edito de Milão encerra as perseguições oficiais.</p></div>
+      <div class="tl-item"><span class="tl-date">c. 326-333 d.C.</span><p>Primeira Basílica de São Pedro, erguida sobre o local venerado como o túmulo do apóstolo.</p></div>
+      <div class="tl-item"><span class="tl-date">590 d.C.</span><p>Papado de Gregório Magno — origem da lenda do Arcanjo Miguel sobre o Castel Sant'Angelo.</p></div>
+      <div class="tl-item"><span class="tl-date">609 d.C.</span><p>Panteão vira igreja: Santa Maria ad Martyres.</p></div>
+      <div class="tl-item"><span class="tl-date">1378-1417</span><p>Grande Cisma do Ocidente — chegou a haver dois ou três papas rivais simultâneos.</p></div>
+      <div class="tl-item"><span class="tl-date">1503-1513</span><p>Júlio II, o "papa guerreiro" — funde arte e poder militar como estratégia de reconstrução do prestígio papal.</p></div>
+      <div class="tl-item"><span class="tl-date">1517</span><p>Lutero afixa as 95 teses — início da Reforma Protestante.</p></div>
+      <div class="tl-item"><span class="tl-date">1527</span><p>Saque de Roma — trauma que molda o tom sombrio do Juízo Final de Michelangelo, pintado poucos anos depois.</p></div>
+      <div class="tl-item"><span class="tl-date">1545-1563</span><p>Concílio de Trento — início da Contrarreforma, sob Paulo III.</p></div>
+      <div class="tl-item"><span class="tl-date">1600</span><p>Execução de Giordano Bruno por heresia — processo majoritariamente teológico, não sobre heliocentrismo.</p></div>
+      <div class="tl-item"><span class="tl-date">1870</span><p>Fim dos Estados Pontifícios — o papa se declara "prisioneiro no Vaticano".</p></div>
+      <div class="tl-item"><span class="tl-date">1929</span><p>Tratado de Latrão resolve a "questão romana": nasce o Estado do Vaticano.</p></div>
+      <div class="tl-item"><span class="tl-date">1958-1963</span><p>João XXIII amplia as audiências papais para todos os fiéis; Paulo VI consolida o formato multilíngue moderno em 1963.</p></div>
+      <div class="tl-item"><span class="tl-date">1962-1965</span><p>Concílio Vaticano II reforma a liturgia e a relação da Igreja com o mundo moderno.</p></div>
+      <div class="tl-item"><span class="tl-date">2013</span><p>Eleição do papa Francisco — primeiro jesuíta e primeiro latino-americano no cargo.</p></div>
+      <div class="tl-item"><span class="tl-date">2025</span><p>Eleição do papa Leão XIV — primeiro papa nascido nos Estados Unidos.</p></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>👤 20 personagens para conhecer antes de ir</h3>
+    <p class="fecho-sub">Aparecem e reaparecem em quase todos os dias do roteiro — vale reconhecer os nomes de cara.</p>
+    <div class="card-grid">
+      <div class="p-card"><b>Rômulo e Remo</b><span>Fundadores lendários de Roma — mito, não fato histórico comprovado.</span></div>
+      <div class="p-card"><b>Augusto</b><span>Primeiro imperador romano; sob ele, Agripa constrói o primeiro Panteão e o Aqua Virgo.</span></div>
+      <div class="p-card"><b>Nero</b><span>Imperador do grande incêndio de 64 d.C. e das primeiras perseguições a cristãos.</span></div>
+      <div class="p-card"><b>São Pedro</b><span>Apóstolo cuja tradição de martírio e sepultamento em Roma fundamenta toda a autoridade papal.</span></div>
+      <div class="p-card"><b>Constantino</b><span>Primeiro imperador cristão; ergue a basílica original de São Pedro.</span></div>
+      <div class="p-card"><b>Adriano</b><span>Reconstrói o Panteão e ergue seu próprio mausoléu — hoje o Castel Sant'Angelo.</span></div>
+      <div class="p-card"><b>Vespasiano e Tito</b><span>Imperadores flávios que constroem e inauguram o Coliseu.</span></div>
+      <div class="p-card"><b>Sisto IV</b><span>Constrói a Capela Sistina; dá início à ideia de coleção pública papal.</span></div>
+      <div class="p-card"><b>Júlio II</b><span>O "papa guerreiro" — encomenda o teto da Sistina e a nova Basílica de São Pedro.</span></div>
+      <div class="p-card"><b>Michelangelo</b><span>Pinta o teto e o Juízo Final da Sistina; projeta a cúpula de São Pedro.</span></div>
+      <div class="p-card"><b>Rafael</b><span>Pinta a Escola de Atenas nas Salas do Vaticano ao mesmo tempo que Michelangelo pinta a Sistina.</span></div>
+      <div class="p-card"><b>Bramante</b><span>Primeiro arquiteto da nova São Pedro; projeta o Pátio do Belvedere.</span></div>
+      <div class="p-card"><b>Clemente VII</b><span>Papa durante o Saque de Roma de 1527; encomenda o Juízo Final.</span></div>
+      <div class="p-card"><b>Paulo III</b><span>Vê o Juízo Final concluído; convoca o Concílio de Trento.</span></div>
+      <div class="p-card"><b>Urbano VIII (Barberini)</b><span>Manda remover o bronze do Panteão; encomenda o baldaquino de Bernini.</span></div>
+      <div class="p-card"><b>Bernini</b><span>Escultor-arquiteto do Barroco romano — baldaquino, Praça de São Pedro, Fontana dei Quattro Fiumi.</span></div>
+      <div class="p-card"><b>Borromini</b><span>Rival de Bernini; projeta a fachada de Sant'Agnese in Agone, na Piazza Navona.</span></div>
+      <div class="p-card"><b>Giordano Bruno</b><span>Filósofo executado por heresia no Campo de' Fiori em 1600.</span></div>
+      <div class="p-card"><b>Santo Inácio de Loyola</b><span>Fundador dos jesuítas; a igreja de Sant'Ignazio celebra sua canonização.</span></div>
+      <div class="p-card"><b>Papa Leão XIV</b><span>Eleito em 2025 — quem preside a Audiência Geral que você vai visitar.</span></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>✚ 20 símbolos católicos para reconhecer</h3>
+    <p class="fecho-sub">Vão aparecer em fachadas, tetos, brasões e cerimônias — reconhecer facilita entender o que está olhando.</p>
+    <div class="card-grid symbols">
+      <div class="s-card"><b>Chaves cruzadas de São Pedro</b><span>Autoridade apostólica entregue por Cristo a Pedro.</span></div>
+      <div class="s-card"><b>Tiara papal (tríplice coroa)</b><span>Antigo símbolo da autoridade papal, hoje pouco usado na prática.</span></div>
+      <div class="s-card"><b>Báculo pastoral</b><span>Cajado em forma de cruz — o papa/bispo como "pastor" do rebanho.</span></div>
+      <div class="s-card"><b>Cordeiro Pascal</b><span>Cristo como sacrifício — recorrente em arte religiosa por toda Roma.</span></div>
+      <div class="s-card"><b>Pomba</b><span>Representa o Espírito Santo.</span></div>
+      <div class="s-card"><b>Alfa e Ômega</b><span>Cristo como início e fim de tudo.</span></div>
+      <div class="s-card"><b>INRI</b><span>Inscrição latina sobre a cruz de Cristo — "Jesus Nazareno, Rei dos Judeus".</span></div>
+      <div class="s-card"><b>IHS</b><span>Monograma do nome de Jesus — símbolo jesuíta, no alto da fachada de Sant'Ignazio.</span></div>
+      <div class="s-card"><b>Colunas salomônicas</b><span>Colunas retorcidas do baldaquino de Bernini, citando a basílica constantiniana antiga.</span></div>
+      <div class="s-card"><b>Fumata branca/negra</b><span>Sinal de conclave: preta é "sem papa eleito", branca é "temos papa".</span></div>
+      <div class="s-card"><b>Menorá</b><span>Candelabro judaico de sete braços — no relevo do Arco de Tito.</span></div>
+      <div class="s-card"><b>Brasão della Rovere (carvalho)</b><span>Família de Sisto IV e Júlio II — aparece em toda parte que eles construíram.</span></div>
+      <div class="s-card"><b>Brasão Barberini (abelhas)</b><span>Família de Urbano VIII — no baldaquino de São Pedro e em toda Roma barroca.</span></div>
+      <div class="s-card"><b>Brasão Farnese (lírios)</b><span>Família de Paulo III — presente no Castel Sant'Angelo e outros edifícios papais.</span></div>
+      <div class="s-card"><b>Anel do Pescador</b><span>Anel papal, referência a Pedro como "pescador de homens".</span></div>
+      <div class="s-card"><b>Anjo com espada</b><span>No topo do Castel Sant'Angelo — o Arcanjo Miguel da lenda de Gregório Magno.</span></div>
+      <div class="s-card"><b>Ignudi</b><span>Os jovens nus decorativos do teto da Sistina — função simbólica ainda debatida.</span></div>
+      <div class="s-card"><b>Sibilas e profetas</b><span>No teto da Sistina — profecia pagã e judaica lado a lado, anunciando a vinda de Cristo.</span></div>
+      <div class="s-card"><b>Loba Capitolina</b><span>Símbolo secular de Roma (não católico), ligado ao mito de Rômulo e Remo.</span></div>
+      <div class="s-card"><b>Cruz das estações da Via-Sacra</b><span>No Coliseu — tradição papal instituída no século XVIII, não da Antiguidade.</span></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>📋 Guia rápido de consulta</h3>
+    <p class="fecho-sub">Uma linha por lugar — quando foi feito, por quem, e o que não deixar de olhar.</p>
+    <div class="qref-wrap">
+      <table class="qref">
+        <tr><th>Local</th><th>Quando</th><th>Quem</th><th>Não perca</th></tr>
+        <tr><td>Museus do Vaticano + Sistina</td><td>1471-1541</td><td>Sisto IV / Júlio II / Michelangelo</td><td>Criação de Adão; autorretrato no Juízo Final</td></tr>
+        <tr><td>Basílica de São Pedro</td><td>1506-1626</td><td>Bramante → Bernini</td><td>Pietà; baldaquino; cúpula</td></tr>
+        <tr><td>Castel Sant'Angelo</td><td>123-139 d.C.</td><td>Adriano</td><td>Passetto di Borgo; Terraço do Anjo</td></tr>
+        <tr><td>Panteão</td><td>c. 126-128 d.C.</td><td>Adriano (ou Trajano)</td><td>Óculo; túmulo de Rafael</td></tr>
+        <tr><td>Sant'Ignazio</td><td>1626-1823</td><td>Grassi / Pozzo / Manno</td><td>Disco de mármore no chão</td></tr>
+        <tr><td>Piazza Navona</td><td>1651</td><td>Bernini / Borromini</td><td>Fonte dos Quatro Rios</td></tr>
+        <tr><td>Fontana di Trevi</td><td>1732-1762</td><td>Nicola Salvi</td><td>Oceano; a moeda por cima do ombro</td></tr>
+        <tr><td>Campo de' Fiori</td><td>séc. XV em diante</td><td>—</td><td>Estátua de Giordano Bruno</td></tr>
+        <tr><td>Piazza del Popolo</td><td>1589 / 1820s</td><td>Fontana / Valadier</td><td>Obelisco; Caravaggios in situ</td></tr>
+        <tr><td>Coliseu</td><td>70-80 d.C.</td><td>Vespasiano / Tito</td><td>Hipogeu; cruz da Via-Sacra</td></tr>
+        <tr><td>Fórum + Palatino</td><td>séc. VI a.C. em diante</td><td>vários</td><td>Arco de Tito; cabanas do séc. VIII a.C.</td></tr>
+        <tr><td>Circo Máximo</td><td>séc. VI a.C.-549 d.C.</td><td>—</td><td>A escala do vale, de pé no meio dele</td></tr>
+        <tr><td>Audiência Geral</td><td>1963-hoje</td><td>Paulo VI (formato atual)</td><td>Saudações multilíngues; bênção final</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>✈️ Resumo para ler no avião</h3>
+    <div class="plane-box">
+      <p>Você passou cinco dias atravessando uma cidade onde papas guerreiros financiavam Michelangelo com o mesmo orçamento que pagava exércitos, onde um filósofo foi queimado vivo por dizer que o universo era infinito, e onde uma capela pequena continua, até hoje, elegendo o líder de mais de um bilhão de pessoas.</p>
+      <p>O fio que conecta quase tudo que você viu: papas usando arte como instrumento de poder e fé ao mesmo tempo, quase sempre em resposta a alguma crise — a fragilidade depois do Grande Cisma, o trauma do Saque de Roma, a ameaça da Reforma Protestante. Nada disso foi decoração gratuita; era estratégia política e devoção genuína, as duas coisas juntas, quase sempre inseparáveis.</p>
+      <p>E o fio que conecta as lendas que você aprendeu a desmontar: quase toda "certeza" popular sobre Roma — Michelangelo deitado, cristãos aos montes no Coliseu, Bernini insultando Borromini com uma estátua — nasceu de uma boa história se sobrepondo, com o tempo, a uma história real mais complicada e mais interessante. A separação entre fato, tradição e lenda não é para tirar a magia do lugar. É, se você prestar atenção, o que torna Roma ainda mais impressionante: o que sobrou depois de tirar os mitos continua sendo mais do que suficiente.</p>
+    </div>
+  </div>
+
 </div></section>
 
 </main>

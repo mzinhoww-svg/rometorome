@@ -104,6 +104,9 @@ html[data-theme="dark"] .card-cat{color:var(--gold)}
 .card .card-addr .ic{width:.9em;height:.9em;opacity:.7;flex:0 0 auto}
 .card .card-addr span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card .card-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.hist-link{font-size:10.5px;font-weight:700;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:7px}
+.hist-link:hover{text-decoration:underline}
+.hist-link .ic{width:.85em;height:.85em}
 .tag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:999px;background:var(--surface-warm);color:var(--ink-soft);display:inline-flex;align-items:center;gap:4px}
 .tag .ic{width:.85em;height:.85em}
 .tag.book{background:#FBE8E0;color:#9E3F1E} html[data-theme="dark"] .tag.book{background:#3A241B;color:#F0915E}
@@ -340,7 +343,7 @@ const DAYS = [
        desc:"Abastecimento para o dia do Vaticano. ~500m a pé. Lista: água (3x 1,5L), frutas fáceis (uva, maçã, banana), barra de cereal, pão e frios, saquinhos plásticos.",
        info:[["Horário","Seg–Sáb 8h30–20h · Dom 9h–13h30 / 16h–20h"],["Backup","Carrefour Market, Viale XXI Aprile 23 — aberto 24h"]],
        tags:[["Essencial","book"]]},
-      {t:"17h30",cat:"Museu",n:"Museus do Vaticano",addr:"00120 Cidade do Vaticano",lat:41.9065,lng:12.4536,
+      {t:"17h30",cat:"Museu",n:"Museus do Vaticano",addr:"00120 Cidade do Vaticano",lat:41.9065,lng:12.4536,hist:"vaticano-museus",
        leg:{mode:"transit",min:35,dist:"~5,5 km"},
        desc:"RESERVA CONFIRMADA — 2 ingressos adultos + reserva, código 2L2NFKIO19XTF24EO2. Entrada no fim da tarde: foque na Capela Sistina logo no início e no Museu Egípcio (a Maju vai adorar as múmias). Calcule 2h30 a 3h — em agosto os Museus abrem até mais tarde às sextas.",
        info:[["Chegue","20 min antes, com passaporte e voucher"],["Trajeto do hotel","Metrô B (Libia) + A (Ottaviano), ~35 min, ou táxi ~20 min"],["Saída estimada","~20h00–20h30"]],
@@ -355,39 +358,39 @@ const DAYS = [
     id:"d2", date:"30/08 · Sábado", title:"São Pedro + Roscioli + Centro Histórico",
     note:"<strong>Dia mais corrido do roteiro</strong> — herdou a caminhada pelo centro histórico que era do dia 1, porque o Vaticano entrou ontem à noite. Basílica e Castel Sant'Angelo pela manhã, almoço confirmado na Roscioli às 14h30 e a virada noturna por Pantheon, Navona e Trevi. Leve água e um lanche extra para a Maju — se ela cansar à tarde, dá para pular o gelato e o Sant'Ignazio e ir direto para a Trevi e o jantar.",
     stops:[
-      {t:"08h00",cat:"Basílica",n:"Basílica de São Pedro",addr:"Piazza San Pietro",lat:41.9022,lng:12.4539,
+      {t:"08h00",cat:"Basílica",n:"Basílica de São Pedro",addr:"Piazza San Pietro",lat:41.9022,lng:12.4539,hist:"sao-pedro",
        desc:"Entrada gratuita. Vá logo na abertura para evitar fila e calor — hoje a Basílica é visitada em dia separado dos Museus (visitados ontem à noite). A Pietà de Michelangelo e a cúpula de Bernini são inesquecíveis.",
        info:[["Abertura","A partir das 7h"]],
        tags:[["Gratuito","free"]]},
-      {t:"10h00",cat:"Monumento",n:"Castel Sant'Angelo",addr:"Lungotevere Castello, 50",lat:41.9031,lng:12.4663,
+      {t:"10h00",cat:"Monumento",n:"Castel Sant'Angelo",addr:"Lungotevere Castello, 50",lat:41.9031,lng:12.4663,hist:"castel-santangelo",
        desc:"Reserve online (~€20). A vista do terraço sobre Roma é um dos melhores momentos da cidade. Tem café no alto com vista para São Pedro.",
        info:[["Horário","9h–19h30"]],warn:"Fechado às segundas. Hoje é sábado — ok!",
        tags:[["Reservar","book"]]},
-      {t:"12h00",cat:"Praça",n:"Campo de' Fiori",addr:"Campo de' Fiori",lat:41.8958,lng:12.4723,
+      {t:"12h00",cat:"Praça",n:"Campo de' Fiori",addr:"Campo de' Fiori",lat:41.8958,lng:12.4723,hist:"campo-de-fiori",
        desc:"Caminhada tranquila cruzando o Tibre até o mercado de rua mais movimentado de Roma — boa pausa para a Maju esticar as pernas antes do almoço. A 2 min a pé da Roscioli.",
        tags:[["Passeio","free"]]},
       {t:"14h30",cat:"Almoço",n:"Roscioli Salumeria con Cucina",addr:"Via dei Giubbonari, 21",lat:41.8945,lng:12.4731,
        desc:"RESERVA CONFIRMADA para almoço — 3 pessoas, referência BFR2CXL2. A carbonara aqui é referência em Roma. Ambiente de salumeria italiana autêntica.",
        info:[["Reserva","14h30 · 3 pessoas · ref. BFR2CXL2"]],
        tags:[["Confirmado","ok"],["Comer","food"]]},
-      {t:"16h00",cat:"Monumento",n:"Pantheon",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,
+      {t:"16h00",cat:"Monumento",n:"Pantheon",addr:"Piazza della Rotonda",lat:41.8986,lng:12.4769,hist:"panteao",
        desc:"Reserve online (€5/pessoa). A cúpula com o óculo encanta a Maju.",
        info:[["Horário","9h–19h"]],
        tags:[["Reservar","book"],["Maju ❤","kid"]]},
-      {t:"17h00",cat:"Praça",n:"Piazza Navona",addr:"Piazza Navona",lat:41.8992,lng:12.4731,
+      {t:"17h00",cat:"Praça",n:"Piazza Navona",addr:"Piazza Navona",lat:41.8992,lng:12.4731,hist:"piazza-navona",
        desc:"A 5 min a pé do Pantheon. Praça barroca, gratuita. Artistas de rua e três fontes espetaculares. Ótima para a criança brincar enquanto vocês tomam um gelato.",
        tags:[["Gratuito","free"],["Maju ❤","kid"]]},
       {t:"17h50",cat:"Doce",n:"Two Sizes — Tiramisù",addr:"Via del Governo Vecchio, 88",lat:41.8979,lng:12.4709,
        desc:"Um dos melhores tiramisu de Roma. Experimente o de pistache. Fila anda rápido.",
        info:[["Horário","11h–22h"]],warn:"Fechado às segundas. Hoje é sábado — ok!",
        tags:[["Comer","food"]]},
-      {t:"18h15",cat:"Igreja",n:"Chiesa di Sant'Ignazio di Loyola",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,
+      {t:"18h15",cat:"Igreja",n:"Chiesa di Sant'Ignazio di Loyola",addr:"Piazza S. Ignazio",lat:41.8990,lng:12.4799,hist:"sant-ignazio",
        desc:"Entrada gratuita. Teto com ilusão de ótica 3D, um dos maiores truques visuais do barroco. Procure o disco dourado no chão para o efeito perfeito.",
        tags:[["Gratuito","free"],["Maju ❤","kid"]]},
       {t:"18h45",cat:"Gelato",n:"Frigidarium — Gelato",addr:"Via del Governo Vecchio, 112",lat:41.8982,lng:12.4705,
        desc:"Considerado um dos melhores gelatos de Roma. Peça coberto com chocolate quente — especialidade da casa.",
        tags:[["Comer","food"]]},
-      {t:"19h15",cat:"Monumento",n:"Fontana di Trevi — Noturna",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
+      {t:"19h15",cat:"Monumento",n:"Fontana di Trevi — Noturna",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,hist:"trevi",
        desc:"À noite é mágica e menos lotada. Pague €2 para descer e ver de perto. Jogue a moeda com a Maju.",
        tags:[["Maju ❤","kid"]]},
       {t:"20h00",cat:"Jantar",n:"Trattoria Al Moro",addr:"Vicolo delle Bollette, 13",lat:41.9006,lng:12.4828,
@@ -408,10 +411,10 @@ const DAYS = [
        desc:"Clássico romano com vista para a Piazza del Popolo — um dos endereços mais charmosos de Roma. Peça a tagliatelle al ragù.",
        info:[["Almoço","12h45–15h"]],
        tags:[["Reservar","book"],["Comer","food"]]},
-      {t:"14h00",cat:"Parque",n:"Villa Borghese",addr:"Villa Borghese",lat:41.9142,lng:12.4922,
+      {t:"14h00",cat:"Parque",n:"Villa Borghese",addr:"Villa Borghese",lat:41.9142,lng:12.4922,hist:"piazza-del-popolo",
        desc:"Parque enorme e arborizado — perfeito para crianças. Alugue bicicleta ou carrinho de pedal (locação dentro do parque). A Maju pode correr à vontade.",
        tags:[["Gratuito","free"],["Maju ❤","kid"]]},
-      {t:"16h00",cat:"Praça",n:"Piazza del Popolo",addr:"Piazza del Popolo",lat:41.9107,lng:12.4763,
+      {t:"16h00",cat:"Praça",n:"Piazza del Popolo",addr:"Piazza del Popolo",lat:41.9107,lng:12.4763,hist:"piazza-del-popolo",
        desc:"Praça grandiosa e aberta, com dois obeliscos e fontes. A vista das duas igrejas gêmeas na entrada é clássica.",
        tags:[["Gratuito","free"]]},
       {t:"18h00",cat:"Gelato",n:"La Romana",addr:"Centro / zona norte",lat:41.9095,lng:12.4960,
@@ -427,25 +430,25 @@ const DAYS = [
        desc:"A melhor foto do Coliseu de Roma — jardim elevado com vista lateral, quase deserto às 7h. Luz dourada de manhã cedo é perfeita para fotos em família.",
        info:[["Abre","7h (verifique no local)"]],
        tags:[["Foto","free"],["Gratuito","free"]]},
-      {t:"09h00",cat:"Monumento",n:"Coliseu",addr:"Piazza del Colosseo, 1",lat:41.8902,lng:12.4922,
+      {t:"09h00",cat:"Monumento",n:"Coliseu",addr:"Piazza del Colosseo, 1",lat:41.8902,lng:12.4922,hist:"coliseu",
        desc:"Agosto tem fila enorme às 9h — ingresso reservado online é obrigatório. A Maju vai adorar o tamanho impressionante. Calcule 1h30 a 2h.",
        info:[["Aberto","8h30–16h30"]],
        tags:[["Reservar","book"],["Maju ❤","kid"]]},
-      {t:"10h45",cat:"Sítio",n:"Foro Romano + Palatino",addr:"Via della Salara Vecchia",lat:41.8925,lng:12.4853,
+      {t:"10h45",cat:"Sítio",n:"Foro Romano + Palatino",addr:"Via della Salara Vecchia",lat:41.8925,lng:12.4853,hist:"foro-palatino",
        desc:"Incluso no mesmo ingresso do Coliseu. Use o app gratuito do Colosseo para 'ver' como era. Para criança pequena, 45–60 min já é ótimo. O Palatino tem vista linda sobre o Foro.",
        tags:[["Incluído","free"]]},
       {t:"13h00",cat:"Almoço",n:"Supplizio",addr:"Via dei Banchi Vecchi, 143",lat:41.8987,lng:12.4682,
        desc:"Para experimentar o supplì romano — bolinha de arroz frita com recheio. Peça o Cacio e Pepe e o clássico de tomate.",
        info:[["Horário","12h–15h30 e 17h–21h30"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
        tags:[["Comer","food"]]},
-      {t:"15h00",cat:"Sítio",n:"Circo Máximo",addr:"Via dei Cerchi",lat:41.8861,lng:12.4853,
+      {t:"15h00",cat:"Sítio",n:"Circo Máximo",addr:"Via dei Cerchi",lat:41.8861,lng:12.4853,hist:"circo-massimo",
        desc:"O maior circo de corridas da antiguidade — imagine 250 mil pessoas. Gratuito para passear ao redor. A Maju pode correr na grama.",
        tags:[["Gratuito","free"],["Maju ❤","kid"]]},
       {t:"19h30",cat:"Jantar",n:"Trattoria Vecchia Roma",addr:"Via Ferruccio, 12",lat:41.8957,lng:12.5072,
        desc:"RESERVA CONFIRMADA — 3 pessoas, nº TNkRly. Perto do Coliseu — logisticamente perfeito. Os rolos de parmesão e a cacio e pepe são destaques.",
        info:[["Reserva","19h30 · 3 pessoas · nº TNkRly"],["Horário","19h–23h"]],warn:"Fechado aos domingos (hoje é segunda — ok).",
        tags:[["Confirmado","ok"],["Comer","food"]]},
-      {t:"20h30",cat:"Monumento",n:"Coliseu Iluminado — Noturno",addr:"Piazza del Colosseo",lat:41.8902,lng:12.4922,
+      {t:"20h30",cat:"Monumento",n:"Coliseu Iluminado — Noturno",addr:"Piazza del Colosseo",lat:41.8902,lng:12.4922,hist:"coliseu",
        desc:"Volte para ver o Coliseu iluminado à noite — completamente diferente, ainda mais impressionante. Foto obrigatória com as luzes douradas.",
        tags:[["Foto","free"]]}
     ]
@@ -454,7 +457,7 @@ const DAYS = [
     id:"d5", date:"02/09 · Terça", title:"Audiência Geral + Retirada do Carro",
     note:"<strong>Dois compromissos confirmados caíram no mesmo horário</strong> — a Audiência Geral (10h, Vaticano) e a retirada do carro (10h, reserva Drivalia, Roma Termini). Priorizamos a Audiência: o carro é retirado à tarde, depois do almoço, e ninguém precisa correr. Por isso a segunda visita a Pantheon, Piazza Navona e Sant'Ignazio (que estava aqui) saiu do roteiro — vocês já visitaram os três à noite no dia 2. Saída ainda de madrugada às 06h15 para pegar a Fontana di Trevi vazia. Leve os passaportes de todos e o e-mail de confirmação da Audiência.",
     stops:[
-      {t:"06h45",cat:"Monumento",n:"Fontana di Trevi — Madrugada",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,
+      {t:"06h45",cat:"Monumento",n:"Fontana di Trevi — Madrugada",addr:"Piazza di Trevi",lat:41.9009,lng:12.4833,hist:"trevi",
        desc:"A fonte quase vazia às 7h com a luz suave da manhã é absolutamente mágica. Visita rápida hoje — a Audiência Geral pede saída logo em seguida para o Vaticano.",
        warn:"Às terças o acesso ao nível inferior abre às 9h — confirme o horário exato.",
        tags:[["Foto","free"]]},
@@ -463,7 +466,7 @@ const DAYS = [
        desc:"Retire os 3 ingressos no Portone di Bronzo (colunata direita da praça, entrando pelo lado do Palácio Apostólico) e entre na fila de segurança. Em agosto a praça enche rápido — quem chega mais cedo consegue lugar melhor.",
        info:[["Retirada","Mesmo dia a partir das 7h30, ou véspera 8h30–13h / 15h–19h"],["Leve","Passaporte de cada um + o e-mail de confirmação"]],
        tags:[["Confirmado","ok"]]},
-      {t:"10h00",cat:"Audiência",n:"Audiência Geral com o Papa",addr:"Praça São Pedro",lat:41.9022,lng:12.4539,
+      {t:"10h00",cat:"Audiência",n:"Audiência Geral com o Papa",addr:"Praça São Pedro",lat:41.9022,lng:12.4539,hist:"audiencia-geral",
        desc:"RESERVA CONFIRMADA — 3 ingressos, reserva nº 1771_UG_02.09/2026. O Papa passa pela praça, faz a saudação e a catequese em vários idiomas. Emocionante mesmo para quem não é praticante — a Maju vai adorar a multidão e a música.",
        info:[["Duração","~1h30–2h, com trechos em vários idiomas"]],
        tags:[["Confirmado","ok"],["Gratuito","free"],["Maju ❤","kid"]]},
@@ -860,6 +863,7 @@ function renderDays(){
       const doneCls = STATE.done[k] ? ' done':'';
       const tags=(s.tags||[]).map(([tx,cl])=>'<span class="tag '+cl+'">'+svgIcon(TAG_ICON[tx]||'star')+tx+'</span>').join('');
       const ci = CAT_ICON[s.cat]||'pin';
+      const histLink = s.hist ? '<a class="hist-link" href="historia.html#'+s.hist+'" target="_blank" rel="noopener">'+svgIcon('landmark')+'Contexto histórico →</a>' : '';
       cards += '<div class="stop">'+
         '<article class="card'+doneCls+'" tabindex="0" role="button" data-day="'+d.id+'" data-idx="'+i+'" aria-label="Abrir '+s.n+'">'+
         '<span class="card-check">'+svgIcon('check')+'</span>'+
@@ -867,6 +871,7 @@ function renderDays(){
         '<h3>'+s.n+'</h3>'+
         '<div class="card-addr">'+svgIcon('pin')+'<span>'+s.addr+'</span></div>'+
         '<div class="card-tags">'+tags+'</div>'+
+        histLink+
         '<span class="lp-hint" data-lp="'+k+'"></span>'+
         '</article></div>';
       // walk segment to next
@@ -959,6 +964,7 @@ function openModal(day,idx){
       '<a class="btn btn-primary" href="'+gmRoute(s.lat,s.lng)+'" target="_blank" rel="noopener">'+svgIcon('navigation')+'Traçar rota até aqui</a>'+
       '<a class="btn btn-ghost" href="'+gmSearch(s.lat,s.lng)+'" target="_blank" rel="noopener">'+svgIcon('search')+'Abrir no Maps</a>'+
     '</div>'+
+    (s.hist ? '<a class="btn btn-ghost" style="margin-bottom:10px" href="historia.html#'+s.hist+'" target="_blank" rel="noopener">'+svgIcon('landmark')+'Ver contexto histórico</a>' : '')+
     '<button class="btn btn-done'+(isDone?' is-done':'')+'" id="modalDone">'+svgIcon('check')+(isDone?'Visitado':'Marcar como visitado')+'</button>';
 
   overlay.classList.add('open'); document.body.style.overflow='hidden';
