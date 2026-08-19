@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2A211B">
+<title>Roma: Guia de Imersão Histórica e Religiosa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF6EF; --surface:#FFFFFF; --surface-warm:#F4ECE0;
+  --ink:#2A211B; --ink-soft:#6B5D4F;
+  --terracotta:#C2562E; --terracotta-deep:#9E3F1E;
+  --olive:#6B7A3B; --olive2:#5E6B3B; --gold:#C9A24B;
+  --border:#E6DBC9;
+  --shadow-sm:0 1px 3px rgba(42,33,27,.08);
+  --shadow-md:0 8px 28px rgba(42,33,27,.14);
+  --shadow-lg:0 24px 64px rgba(42,33,27,.22);
+  --radius:14px; --radius-lg:22px; --maxw:880px;
+  --purple:#5B4B8A; --purple-soft:#EDE8F5;
+}
+html[data-theme="dark"]{
+  --bg:#15110D; --surface:#1F1813; --surface-warm:#2A2018;
+  --ink:#F3EBDD; --ink-soft:#B8A892;
+  --terracotta:#E0743F; --terracotta-deep:#F0915E;
+  --gold:#D9B45E; --border:#352A20;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.4);
+  --shadow-md:0 8px 28px rgba(0,0,0,.5);
+  --shadow-lg:0 24px 64px rgba(0,0,0,.6);
+  --purple:#B4A4E8; --purple-soft:#241F36;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+svg.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;vertical-align:-.12em}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:56px 0 44px;
+  background:radial-gradient(ellipse 80% 60% at 80% -10%, rgba(201,162,75,.28), transparent 60%),radial-gradient(ellipse 70% 50% at 0% 110%, rgba(91,75,138,.28), transparent 55%),linear-gradient(160deg,#2A211B 0%,#3A2A1E 55%,#4A2B17 100%);color:#FAF6EF}
+.hero .wrap{position:relative;z-index:2}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px}
+.back-link{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:rgba(250,246,239,.85);text-decoration:none;border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.06);transition:.18s}
+.back-link:hover{background:rgba(255,255,255,.14)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold);border:1px solid rgba(201,162,75,.4);padding:6px 14px;border-radius:999px;background:rgba(201,162,75,.08)}
+.theme-toggle{flex:0 0 auto;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#FAF6EF;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:.2s}
+.theme-toggle:hover{background:rgba(255,255,255,.16)}
+.hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(34px,7vw,58px);line-height:1.03;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{margin-top:16px;font-size:clamp(15px,2.2vw,18px);color:rgba(250,246,239,.82);max-width:600px}
+.hero-badges{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.hb{font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(250,246,239,.9)}
+
+/* NAV */
+.daynav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.daynav-inner{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;max-width:var(--maxw);margin:0 auto;scrollbar-width:none}
+.daynav-inner::-webkit-scrollbar{display:none}
+.daynav a{flex:0 0 auto;text-decoration:none;color:var(--ink-soft);font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;border:1px solid var(--border);white-space:nowrap;transition:.18s;background:var(--surface)}
+.daynav a:hover{color:var(--terracotta);border-color:var(--terracotta)}
+.daynav a.active{background:var(--terracotta);color:#fff;border-color:var(--terracotta)}
+.daynav a.disabled{opacity:.4;pointer-events:none}
+
+/* GENERIC SECTION */
+.sec{padding:44px 0}
+.sec-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,34px);letter-spacing:-.01em;margin-bottom:8px}
+.sec-lead{color:var(--ink-soft);font-size:15px;max-width:640px;margin-bottom:26px}
+
+/* TOC — MAPA DA IMERSÃO */
+.toc-grid{display:grid;gap:14px}
+@media(min-width:640px){.toc-grid{grid-template-columns:1fr 1fr}}
+.toc-day{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--shadow-sm)}
+.toc-day h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:2px}
+.toc-day .toc-date{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta-deep);margin-bottom:10px;display:block}
+.toc-day ul{list-style:none;display:grid;gap:6px}
+.toc-day li a{font-size:13px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:6px}
+.toc-day li a:hover{color:var(--terracotta)}
+.toc-day li a .depth{width:6px;height:6px;border-radius:50%;flex:0 0 auto}
+.toc-day li a .depth.mega{background:var(--terracotta)}
+.toc-day li a .depth.medio{background:var(--gold)}
+
+/* DAY WRAPPER */
+section.hday{padding:36px 0 8px;scroll-margin-top:70px}
+.hday-head{margin-bottom:18px}
+.hday-badge{font-family:'Fraunces',serif;font-weight:900;font-size:32px;line-height:1;color:var(--terracotta)}
+.hday-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(20px,3.6vw,26px);margin-top:4px}
+.hday-frame{margin-top:10px;font-size:14px;color:var(--ink-soft);max-width:640px}
+
+/* VERBETE (entry) */
+details.verbete{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:16px;box-shadow:var(--shadow-sm);overflow:hidden;scroll-margin-top:70px}
+details.verbete[open]{box-shadow:var(--shadow-md)}
+.verbete summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;gap:12px;-webkit-tap-highlight-color:transparent}
+.verbete summary::-webkit-details-marker{display:none}
+.verbete summary .vb-ic{font-size:22px;flex:0 0 auto}
+.verbete summary .vb-tx{flex:1}
+.verbete summary .vb-depth{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta-deep)}
+.verbete summary h3{font-family:'Fraunces',serif;font-weight:700;font-size:19px;margin-top:2px}
+.verbete summary .vb-chev{flex:0 0 auto;transition:transform .2s;color:var(--ink-soft)}
+details.verbete[open] summary .vb-chev{transform:rotate(180deg)}
+.verbete-body{padding:0 20px 22px}
+.vb-part{margin-top:20px}
+.vb-part h4{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:var(--terracotta-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.vb-part h4 .num{font-size:11px;font-weight:700;width:22px;height:22px;border-radius:50%;background:var(--surface-warm);color:var(--ink-soft);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.vb-part p{font-size:14.5px;color:var(--ink);margin-bottom:9px}
+.vb-part p:last-child{margin-bottom:0}
+.vb-part ul{margin:8px 0 8px 18px;font-size:14.5px}
+.vb-part li{margin-bottom:5px}
+
+/* FACT TAGS */
+.ftag{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:999px;margin:0 2px}
+.ftag.fato{background:#E8F0E0;color:#5E6B3B} html[data-theme="dark"] .ftag.fato{background:#26301C;color:#A9BE6F}
+.ftag.tradicao{background:var(--purple-soft);color:var(--purple)}
+.ftag.lenda{background:#FBE8E0;color:#9E3F1E} html[data-theme="dark"] .ftag.lenda{background:#3A241B;color:#F0915E}
+.ftag.hipotese{background:#EFEBE4;color:#6B6255} html[data-theme="dark"] .ftag.hipotese{background:#2B2822;color:#BBB0A0}
+.ftag-legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px;padding:12px 14px;background:var(--surface-warm);border-radius:12px;font-size:12px;color:var(--ink-soft)}
+
+/* MODE BOXES */
+.mode{border-radius:14px;padding:16px 18px;margin-top:20px}
+.mode h4{font-family:'Fraunces',serif;font-weight:700;font-size:15px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.mode p,.mode li{font-size:14px}
+.mode.antes{background:var(--surface-warm);border-left:4px solid var(--gold)}
+.mode.antes h4{color:var(--terracotta-deep)}
+.mode.aqui{background:var(--purple-soft);border-left:4px solid var(--purple)}
+.mode.aqui h4{color:var(--purple)}
+.mode.aqui ol{margin-left:18px}
+.mode.aqui li{margin-bottom:6px}
+.mode.conte{background:#FBE8E0;border-left:4px solid var(--terracotta)}
+html[data-theme="dark"] .mode.conte{background:#3A241B}
+.mode.conte h4{color:var(--terracotta-deep)}
+.mode.conte p{font-style:italic}
+.mode.perguntas{background:var(--surface);border:1px dashed var(--border)}
+.mode.perguntas h4{color:var(--ink)}
+.mode.perguntas ul{margin-left:18px}
+.mode.perguntas li{margin-bottom:6px;font-style:italic}
+
+/* DAY SUMMARY */
+.day-summary{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin:20px 0 8px;box-shadow:var(--shadow-sm)}
+.day-summary h3{font-family:'Fraunces',serif;font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.ds-block{margin-bottom:16px}
+.ds-block:last-child{margin-bottom:0}
+.ds-block .ds-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta-deep);margin-bottom:8px;display:block}
+.ds-block p{font-size:14px}
+.ds-block ol,.ds-block ul{margin-left:18px;font-size:14px}
+.ds-block li{margin-bottom:5px}
+.ds-people{display:grid;gap:8px}
+.ds-person{font-size:13px}
+.ds-person b{color:var(--terracotta-deep)}
+
+/* PLACEHOLDER */
+.soon{background:var(--surface-warm);border:1px dashed var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;color:var(--ink-soft);font-size:14px}
+
+footer{background:#15110D;color:rgba(250,246,239,.7);padding:36px 0;text-align:center;font-size:13px}
+footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
+footer b{color:var(--gold);font-family:'Fraunces',serif}
+footer a{color:var(--gold);text-decoration:none}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <a class="back-link" href="index.html">← Voltar ao roteiro</a>
+      <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema">🌙</button>
+    </div>
+    <span class="hero-eyebrow">Companheiro do roteiro · não é logística</span>
+    <h1>Entenda <em>Roma</em> enquanto caminha por ela</h1>
+    <p class="hero-sub">Um guia de imersão histórica e religiosa para os dias em Roma — Roma Antiga, os primeiros cristãos, o papado, o Renascimento e a Igreja de hoje, tudo no mesmo espaço que você vai atravessar a pé.</p>
+    <div class="hero-badges">
+      <span class="hb">📜 Fato vs. tradição sempre separados</span>
+      <span class="hb">⛪ Prioridade: Igreja Católica</span>
+      <span class="hb">🗺️ Organizado pelos seus dias reais</span>
+    </div>
+  </div>
+</header>
+
+<nav class="daynav" id="daynav">
+  <div class="daynav-inner">
+    <a href="#mapa">Mapa</a>
+    <a href="#hd1" class="active">29/08</a>
+    <a href="#hd2" class="disabled">30/08 <small></small></a>
+    <a href="#hd3" class="disabled">31/08</a>
+    <a href="#hd4" class="disabled">01/09</a>
+    <a href="#hd5" class="disabled">02/09</a>
+    <a href="#fecho" class="disabled">Fechamento</a>
+  </div>
+</nav>
+
+<main id="app">
+
+<section class="sec" id="mapa"><div class="wrap">
+  <h2 class="sec-title">Mapa da minha imersão histórica</h2>
+  <p class="sec-lead">Cada dia do roteiro em Roma (29/08 a 02/09) tem os locais com carga histórica ou religiosa real. Locais puramente logísticos (hotel, mercado, restaurantes) ficam de fora — isso aqui é sobre entender o que você vai ver, não sobre onde comer.</p>
+  <div class="toc-grid">
+    <div class="toc-day">
+      <span class="toc-date">29/08 · Chegada + Vaticano</span>
+      <h4>Dia 1</h4>
+      <ul>
+        <li><a href="#vaticano-museus"><span class="depth mega"></span> Museus do Vaticano + Capela Sistina</a></li>
+      </ul>
+    </div>
+    <div class="toc-day">
+      <span class="toc-date">30/08 · São Pedro + Centro Histórico</span>
+      <h4>Dia 2 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <ul>
+        <li><span style="color:var(--ink-soft);font-size:13px">Basílica de São Pedro · Castel Sant'Angelo · Campo de' Fiori · Pantheon · Piazza Navona · Sant'Ignazio · Trevi</span></li>
+      </ul>
+    </div>
+    <div class="toc-day">
+      <span class="toc-date">31/08 · Dia da Maju</span>
+      <h4>Dia 3 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <ul>
+        <li><span style="color:var(--ink-soft);font-size:13px">Piazza del Popolo · Villa Borghese</span></li>
+      </ul>
+    </div>
+    <div class="toc-day">
+      <span class="toc-date">01/09 · Roma Antiga</span>
+      <h4>Dia 4 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <ul>
+        <li><span style="color:var(--ink-soft);font-size:13px">Coliseu · Fórum Romano + Palatino · Circo Máximo</span></li>
+      </ul>
+    </div>
+    <div class="toc-day">
+      <span class="toc-date">02/09 · Audiência Geral</span>
+      <h4>Dia 5 <span class="ftag hipotese" style="font-weight:600">em breve</span></h4>
+      <ul>
+        <li><span style="color:var(--ink-soft);font-size:13px">Audiência Geral com o Papa — a instituição papal viva</span></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="hday" id="hd1"><div class="wrap">
+  <div class="hday-head">
+    <span class="hday-badge">29/08</span>
+    <div class="hday-title">Chegada + Vaticano à Noite</div>
+    <p class="hday-frame">Seu primeiro contato com Roma vai ser, literalmente, com dois mil anos de arte e poder concentrados num único edifício. Antes de entrar nos Museus do Vaticano, vale entender que você está prestes a atravessar a coleção de arte mais politicamente carregada do mundo ocidental — construída por papas que usavam a beleza como instrumento de poder tanto quanto de fé.</p>
+  </div>
+
+  <details class="verbete" id="vaticano-museus" open>
+    <summary>
+      <span class="vb-ic">⛪</span>
+      <span class="vb-tx"><span class="vb-depth">Tratamento completo</span><h3>Museus do Vaticano + Capela Sistina</h3></span>
+      <span class="vb-chev">▾</span>
+    </summary>
+    <div class="verbete-body">
+      <p class="soon">Conteúdo em pesquisa — a pesquisa histórica multi-fonte para este verbete está rodando em background. Assim que estiver pronta e verificada, as 15 seções completas (o que estou vendo, contexto histórico, papas, arte, arquitetura, fato vs. tradição, "antes de entrar", "estou aqui" e as demais) entram aqui.</p>
+    </div>
+  </details>
+
+</div></section>
+
+<section class="sec" id="fecho"><div class="wrap">
+  <h2 class="sec-title">Seções de fechamento</h2>
+  <p class="sec-lead">Depois que todos os dias estiverem completos: linha do tempo de Roma, linha do tempo do cristianismo em Roma, os 20 personagens que você vai encontrar, os 20 símbolos católicos para reconhecer, um guia rápido de consulta e o resumo para ler no avião.</p>
+  <div class="soon">Chega depois dos 5 dias estarem prontos.</div>
+</div></section>
+
+</main>
+
+<footer><div class="wrap"><b>Guia de Imersão Histórica — Roma</b><span>Complementar ao roteiro · <a href="index.html">ver o roteiro de viagem →</a></span></div></footer>
+
+<script>
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  const btn=document.getElementById('themeBtn');
+  if(btn) btn.textContent = t==='dark' ? '☀️' : '🌙';
+  try{localStorage.setItem('roma2025_theme', t);}catch(e){}
+}
+(function initTheme(){
+  let t=null;
+  try{t=localStorage.getItem('roma2025_theme');}catch(e){}
+  if(!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light';
+  applyTheme(t);
+})();
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  applyTheme(cur==='dark'?'light':'dark');
+});
+
+const navLinks=[...document.querySelectorAll('.daynav a[href^="#"]')];
+const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{
+  let cur=sections[0]&&sections[0].id;
+  for(const sec of sections){ if(sec.getBoundingClientRect().top<=120) cur=sec.id; }
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+</script>
+</body>
+</html>

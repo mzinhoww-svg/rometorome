@@ -47,6 +47,9 @@ svg.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold);border:1px solid rgba(201,162,75,.4);padding:6px 14px;border-radius:999px;background:rgba(201,162,75,.08)}
 .theme-toggle{flex:0 0 auto;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#FAF6EF;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:.2s}
 .theme-toggle:hover{background:rgba(255,255,255,.16)}
+.hero-top-actions{display:flex;align-items:center;gap:10px}
+.history-link{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.4);padding:9px 14px;border-radius:12px;background:rgba(201,162,75,.08);transition:.18s;white-space:nowrap}
+.history-link:hover{background:rgba(201,162,75,.18)}
 .hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px,8vw,82px);line-height:.98;letter-spacing:-.02em}
 .hero h1 em{font-style:italic;color:var(--gold)}
 .hero-sub{margin-top:18px;font-size:clamp(16px,2.4vw,20px);color:rgba(250,246,239,.82);max-width:560px}
@@ -243,7 +246,10 @@ footer b{color:var(--gold);font-family:'Fraunces',serif}
   <div class="wrap">
     <div class="hero-top">
       <span class="hero-eyebrow"><svg class="ic" viewBox="0 0 24 24"><path d="M9 12h.01M15 12h.01M10 16c.5.5 1.2 1 2 1s1.5-.5 2-1M12 2a5 5 0 00-5 5v1a5 5 0 0010 0V7a5 5 0 00-5-5zM5 12a7 7 0 0014 0"/></svg> Viagem em família · Maju 3 anos</span>
-      <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
+      <div class="hero-top-actions">
+        <a class="history-link" href="historia.html"><svg class="ic" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4H6.5A2.5 2.5 0 004 6.5v13z"/></svg> Guia Histórico</a>
+        <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
+      </div>
     </div>
     <h1>Roma <em>2025</em></h1>
     <p class="hero-sub">Seis dias entre fontes, basílicas e gelatos — e depois carro na Termini, pizza na Da Michele e a Costa Amalfitana com base em Salerno. Um roteiro pensado no ritmo de uma família com criança pequena, com madrugadas mágicas e pausas estratégicas.</p>
