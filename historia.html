@@ -87,6 +87,17 @@ section.hday{padding:36px 0 8px;scroll-margin-top:70px}
 .hday-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(20px,3.6vw,26px);margin-top:4px}
 .hday-frame{margin-top:10px;font-size:14px;color:var(--ink-soft);max-width:640px}
 
+/* AUDIO PLAYER */
+.audio-ep{margin-top:18px;background:linear-gradient(160deg,var(--surface-warm),var(--surface));border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow-sm);max-width:640px}
+.audio-ep-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.audio-ep-ic{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center}
+.audio-ep-ic svg{width:18px;height:18px}
+.audio-ep-tx{min-width:0}
+.audio-ep-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta-deep)}
+.audio-ep-title{font-family:'Fraunces',serif;font-weight:700;font-size:15px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.audio-ep audio{width:100%;height:36px;display:block}
+.audio-ep-note{font-size:11px;color:var(--ink-soft);margin-top:8px}
+
 /* VERBETE (entry) */
 details.verbete{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:16px;box-shadow:var(--shadow-sm);overflow:hidden;scroll-margin-top:70px}
 details.verbete[open]{box-shadow:var(--shadow-md)}
@@ -277,6 +288,14 @@ footer a{color:var(--gold);text-decoration:none}
     <span class="hday-badge">29/08</span>
     <div class="hday-title">Chegada + Vaticano à Noite</div>
     <p class="hday-frame">Seu primeiro contato com Roma vai ser, literalmente, com dois mil anos de arte e poder concentrados num único edifício. Antes de entrar nos Museus do Vaticano, vale entender que você está prestes a atravessar a coleção de arte mais politicamente carregada do mundo ocidental — construída por papas que usavam a beleza como instrumento de poder tanto quanto de fé.</p>
+    <div class="audio-ep">
+      <div class="audio-ep-head">
+        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 1</span><div class="audio-ep-title">A máquina de propaganda do Vaticano</div></div>
+      </div>
+      <audio controls preload="none" src="audio/dia1-vaticano.m4a"></audio>
+      <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
+    </div>
   </div>
 
   <details class="verbete" id="vaticano-museus" open>
@@ -473,6 +492,14 @@ footer a{color:var(--gold);text-decoration:none}
     <span class="hday-badge">30/08</span>
     <div class="hday-title">São Pedro + Roscioli + Centro Histórico</div>
     <p class="hday-frame">O dia com mais quilômetros de história por metro quadrado do roteiro inteiro: da maior igreja católica do mundo a uma fonte barroca, passando por uma fortaleza que já foi túmulo de imperador. Também é o dia com mais lendas populares para destrinchar depois do Coliseu.</p>
+    <div class="audio-ep">
+      <div class="audio-ep-head">
+        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 2</span><div class="audio-ep-title">A Roma que os guias não contam</div></div>
+      </div>
+      <audio controls preload="none" src="audio/dia2-sao-pedro-centro-historico.m4a"></audio>
+      <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
+    </div>
   </div>
 
   <details class="verbete" id="sao-pedro">
@@ -775,6 +802,14 @@ footer a{color:var(--gold);text-decoration:none}
     <span class="hday-badge">31/08</span>
     <div class="hday-title">Dia da Maju</div>
     <p class="hday-frame">Um dia mais leve, mas com uma das praças mais cenográficas de Roma e a coleção de arte particular de uma das famílias mais poderosas do Barroco — os Borghese, que colocaram seu dinheiro e seu gosto atrás de Caravaggio e Bernini antes de qualquer museu público os "descobrir".</p>
+    <div class="audio-ep">
+      <div class="audio-ep-head">
+        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 3</span><div class="audio-ep-title">Segredos da Piazza del Popolo e Borghese</div></div>
+      </div>
+      <audio controls preload="none" src="audio/dia3-piazza-del-popolo-borghese.m4a"></audio>
+      <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
+    </div>
   </div>
 
   <details class="verbete" id="piazza-del-popolo">
@@ -834,6 +869,14 @@ footer a{color:var(--gold);text-decoration:none}
     <span class="hday-badge">01/09</span>
     <div class="hday-title">Roma Antiga — Coliseu</div>
     <p class="hday-frame">O dia mais denso do roteiro em história antiga: mil anos de mito de fundação, política imperial e entretenimento de massa, tudo dentro de uma caminhada de meia hora. É também o dia em que mais lendas populares precisam ser destrinchadas — Roma Antiga é, de longe, a era mais mitificada de toda a viagem.</p>
+    <div class="audio-ep">
+      <div class="audio-ep-head">
+        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 4</span><div class="audio-ep-title">Como a Igreja salvou o Coliseu</div></div>
+      </div>
+      <audio controls preload="none" src="audio/dia4-roma-antiga.m4a"></audio>
+      <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
+    </div>
   </div>
 
   <details class="verbete" id="coliseu">
@@ -1023,6 +1066,14 @@ footer a{color:var(--gold);text-decoration:none}
     <span class="hday-badge">02/09</span>
     <div class="hday-title">Audiência Geral + Retirada do Carro</div>
     <p class="hday-frame">Este é o único dia do roteiro em que você não vai visitar um monumento — vai participar de uma instituição viva. A Audiência Geral não é uma missa nem uma visita a ruína: é um encontro semanal que existe, no formato atual, há pouco mais de 60 anos, e que continua acontecendo, quarta a quarta, seja qual for o papa do momento.</p>
+    <div class="audio-ep">
+      <div class="audio-ep-head">
+        <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+        <div class="audio-ep-tx"><span class="audio-ep-label">Ouça este dia · Episódio 5</span><div class="audio-ep-title">Verdades sobre a Audiência Geral no Vaticano</div></div>
+      </div>
+      <audio controls preload="none" src="audio/dia5-audiencia-geral.m4a"></audio>
+      <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
+    </div>
   </div>
 
   <details class="verbete" id="audiencia-geral">
@@ -1120,6 +1171,15 @@ footer a{color:var(--gold);text-decoration:none}
 <section class="sec" id="fecho"><div class="wrap">
   <h2 class="sec-title">Fechamento</h2>
   <p class="sec-lead">Tudo que você viu nos 5 dias, amarrado em seis formatos diferentes — para revisar antes da viagem, consultar durante, ou ler no avião de volta.</p>
+
+  <div class="audio-ep" style="max-width:100%;margin-bottom:30px">
+    <div class="audio-ep-head">
+      <span class="audio-ep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0118 0v3"/><path d="M21 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2v1z"/><path d="M3 15a2 2 0 002 2h1v-5H5a2 2 0 00-2 2v1z"/></svg></span>
+      <div class="audio-ep-tx"><span class="audio-ep-label">Ouça o fechamento · Episódio 6</span><div class="audio-ep-title">A verdade por trás das lendas romanas</div></div>
+    </div>
+    <audio controls preload="none" src="audio/dia6-fechamento.m4a"></audio>
+    <p class="audio-ep-note">Gerado com NotebookLM a partir deste guia — dois narradores de IA discutindo o conteúdo. Pode conter pequenas imprecisões; o texto acima é a fonte de referência.</p>
+  </div>
 
   <div class="fecho-block">
     <h3>🕰️ Linha do tempo de Roma</h3>
