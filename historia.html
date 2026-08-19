@@ -150,6 +150,37 @@ html[data-theme="dark"] .mode.conte{background:#3A241B}
 /* PLACEHOLDER */
 .soon{background:var(--surface-warm);border:1px dashed var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;color:var(--ink-soft);font-size:14px}
 
+/* CLOSING: TIMELINE */
+.fecho-block{margin-bottom:44px}
+.fecho-block h3{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(19px,3vw,24px);margin-bottom:6px;display:flex;align-items:center;gap:9px}
+.fecho-block .fecho-sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px;max-width:620px}
+.timeline{position:relative;padding-left:24px;border-left:2px solid var(--border)}
+.tl-item{position:relative;padding-bottom:18px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-29.5px;top:3px;width:11px;height:11px;border-radius:50%;background:var(--terracotta);border:2px solid var(--bg)}
+.tl-item .tl-date{font-weight:700;font-size:12.5px;color:var(--terracotta-deep);display:block;margin-bottom:2px}
+.tl-item p{font-size:14px;color:var(--ink)}
+
+/* CLOSING: PEOPLE / SYMBOLS GRID */
+.card-grid{display:grid;gap:10px}
+@media(min-width:640px){.card-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.card-grid.symbols{grid-template-columns:1fr 1fr 1fr}}
+.p-card,.s-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow-sm)}
+.p-card b,.s-card b{color:var(--terracotta-deep);font-size:13.5px;display:block;margin-bottom:2px}
+.p-card span,.s-card span{font-size:13px;color:var(--ink-soft)}
+
+/* CLOSING: QUICK REFERENCE TABLE */
+.qref-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+table.qref{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface)}
+table.qref th{background:var(--surface-warm);text-align:left;padding:10px 12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+table.qref td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+table.qref td:first-child{font-weight:700;color:var(--terracotta-deep);white-space:nowrap}
+
+/* CLOSING: PLANE SUMMARY */
+.plane-box{background:linear-gradient(160deg,var(--surface-warm),var(--surface));border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px;box-shadow:var(--shadow-md)}
+.plane-box p{font-size:14.5px;margin-bottom:12px}
+.plane-box p:last-child{margin-bottom:0}
+
 footer{background:#15110D;color:rgba(250,246,239,.7);padding:36px 0;text-align:center;font-size:13px}
 footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
 footer b{color:var(--gold);font-family:'Fraunces',serif}
@@ -185,7 +216,7 @@ footer a{color:var(--gold);text-decoration:none}
     <a href="#hd3">31/08</a>
     <a href="#hd4">01/09</a>
     <a href="#hd5">02/09</a>
-    <a href="#fecho" class="disabled">Fechamento</a>
+    <a href="#fecho">Fechamento</a>
   </div>
 </nav>
 
@@ -1087,9 +1118,152 @@ footer a{color:var(--gold);text-decoration:none}
 </div></section>
 
 <section class="sec" id="fecho"><div class="wrap">
-  <h2 class="sec-title">Seções de fechamento</h2>
-  <p class="sec-lead">Depois que todos os dias estiverem completos: linha do tempo de Roma, linha do tempo do cristianismo em Roma, os 20 personagens que você vai encontrar, os 20 símbolos católicos para reconhecer, um guia rápido de consulta e o resumo para ler no avião.</p>
-  <div class="soon">Chega depois dos 5 dias estarem prontos.</div>
+  <h2 class="sec-title">Fechamento</h2>
+  <p class="sec-lead">Tudo que você viu nos 5 dias, amarrado em seis formatos diferentes — para revisar antes da viagem, consultar durante, ou ler no avião de volta.</p>
+
+  <div class="fecho-block">
+    <h3>🕰️ Linha do tempo de Roma</h3>
+    <p class="fecho-sub">Da fundação lendária ao papado de hoje — só os pontos que você realmente vai encontrar pelo caminho.</p>
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-date">753 a.C. (lenda)</span><p>Fundação lendária de Roma por Rômulo — não é fato arqueológico, mas há cabanas reais do século VIII a.C. no Palatino, exatamente onde a lenda situa o evento.</p></div>
+      <div class="tl-item"><span class="tl-date">509 a.C.</span><p>Fim da monarquia romana, início da República.</p></div>
+      <div class="tl-item"><span class="tl-date">27 a.C.</span><p>Augusto se torna o primeiro imperador — início do Império Romano.</p></div>
+      <div class="tl-item"><span class="tl-date">19 a.C.</span><p>Agripa conclui o Aqua Virgo, o aqueduto que ainda alimenta a Fontana di Trevi hoje.</p></div>
+      <div class="tl-item"><span class="tl-date">64 d.C.</span><p>Grande incêndio de Roma sob Nero — início das perseguições a cristãos na cidade.</p></div>
+      <div class="tl-item"><span class="tl-date">70 d.C.</span><p>Destruição do Templo de Jerusalém — o espólio, incluindo a Menorá, é celebrado no Arco de Tito.</p></div>
+      <div class="tl-item"><span class="tl-date">80 d.C.</span><p>Inauguração do Coliseu por Tito, com 100 dias de jogos.</p></div>
+      <div class="tl-item"><span class="tl-date">c. 126-128 d.C.</span><p>Reconstrução do Panteão — tradicionalmente atribuída a Adriano, embora um debate acadêmico recente sugira que Trajano pode ter iniciado a obra.</p></div>
+      <div class="tl-item"><span class="tl-date">313 d.C.</span><p>Edito de Milão — liberdade de culto para os cristãos no Império Romano.</p></div>
+      <div class="tl-item"><span class="tl-date">c. 326-333 d.C.</span><p>Construção da primeira Basílica de São Pedro, sob Constantino.</p></div>
+      <div class="tl-item"><span class="tl-date">410 d.C.</span><p>Saque visigótico de Roma — início da perda da decoração original de monumentos como o Mausoléu de Adriano.</p></div>
+      <div class="tl-item"><span class="tl-date">476 d.C.</span><p>Fim do Império Romano do Ocidente.</p></div>
+      <div class="tl-item"><span class="tl-date">609 d.C.</span><p>O Panteão é consagrado como igreja cristã — fator decisivo para sua sobrevivência intacta.</p></div>
+      <div class="tl-item"><span class="tl-date">1417</span><p>Fim do Grande Cisma do Ocidente, com a eleição de Martinho V — o papado sai fragilizado e passa a investir pesado em arte para reconstruir prestígio.</p></div>
+      <div class="tl-item"><span class="tl-date">1471-1484</span><p>Papado de Sisto IV — constrói a Capela Sistina e doa os bronzes de Latrão ao povo de Roma.</p></div>
+      <div class="tl-item"><span class="tl-date">1506</span><p>Júlio II lança a pedra fundamental da nova Basílica de São Pedro e funda a coleção de estátuas do Vaticano.</p></div>
+      <div class="tl-item"><span class="tl-date">1508-1512</span><p>Michelangelo pinta o teto da Capela Sistina.</p></div>
+      <div class="tl-item"><span class="tl-date">1527</span><p>Saque de Roma — Clemente VII foge pelo Passetto di Borgo até o Castel Sant'Angelo.</p></div>
+      <div class="tl-item"><span class="tl-date">1536-1541</span><p>Michelangelo pinta o Juízo Final.</p></div>
+      <div class="tl-item"><span class="tl-date">1600</span><p>Giordano Bruno é queimado vivo no Campo de' Fiori.</p></div>
+      <div class="tl-item"><span class="tl-date">1626</span><p>Consagração solene da nova Basílica de São Pedro, 120 anos depois da pedra fundamental.</p></div>
+      <div class="tl-item"><span class="tl-date">1651-1762</span><p>Roma barroca: Fontana dei Quattro Fiumi (Bernini, 1651) e Fontana di Trevi (Salvi, 1762).</p></div>
+      <div class="tl-item"><span class="tl-date">1870</span><p>Roma se torna capital da Itália unificada — fim do poder temporal dos Estados Pontifícios.</p></div>
+      <div class="tl-item"><span class="tl-date">1929</span><p>Tratado de Latrão cria o Estado da Cidade do Vaticano como o conhecemos hoje.</p></div>
+      <div class="tl-item"><span class="tl-date">1962-1965</span><p>Concílio Vaticano II.</p></div>
+      <div class="tl-item"><span class="tl-date">2025</span><p>Eleição do papa Leão XIV, no quarto escrutínio do conclave.</p></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>⛪ Linha do tempo do cristianismo em Roma</h3>
+    <p class="fecho-sub">O mesmo período, mas visto pela lente específica da Igreja.</p>
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-date">c. 64 d.C. (tradição)</span><p>Tradição sobre o martírio de Pedro em Roma, sob Nero — testemunho mais antigo é de fim do século II, não contemporâneo ao evento.</p></div>
+      <div class="tl-item"><span class="tl-date">313 d.C.</span><p>Edito de Milão encerra as perseguições oficiais.</p></div>
+      <div class="tl-item"><span class="tl-date">c. 326-333 d.C.</span><p>Primeira Basílica de São Pedro, erguida sobre o local venerado como o túmulo do apóstolo.</p></div>
+      <div class="tl-item"><span class="tl-date">590 d.C.</span><p>Papado de Gregório Magno — origem da lenda do Arcanjo Miguel sobre o Castel Sant'Angelo.</p></div>
+      <div class="tl-item"><span class="tl-date">609 d.C.</span><p>Panteão vira igreja: Santa Maria ad Martyres.</p></div>
+      <div class="tl-item"><span class="tl-date">1378-1417</span><p>Grande Cisma do Ocidente — chegou a haver dois ou três papas rivais simultâneos.</p></div>
+      <div class="tl-item"><span class="tl-date">1503-1513</span><p>Júlio II, o "papa guerreiro" — funde arte e poder militar como estratégia de reconstrução do prestígio papal.</p></div>
+      <div class="tl-item"><span class="tl-date">1517</span><p>Lutero afixa as 95 teses — início da Reforma Protestante.</p></div>
+      <div class="tl-item"><span class="tl-date">1527</span><p>Saque de Roma — trauma que molda o tom sombrio do Juízo Final de Michelangelo, pintado poucos anos depois.</p></div>
+      <div class="tl-item"><span class="tl-date">1545-1563</span><p>Concílio de Trento — início da Contrarreforma, sob Paulo III.</p></div>
+      <div class="tl-item"><span class="tl-date">1600</span><p>Execução de Giordano Bruno por heresia — processo majoritariamente teológico, não sobre heliocentrismo.</p></div>
+      <div class="tl-item"><span class="tl-date">1870</span><p>Fim dos Estados Pontifícios — o papa se declara "prisioneiro no Vaticano".</p></div>
+      <div class="tl-item"><span class="tl-date">1929</span><p>Tratado de Latrão resolve a "questão romana": nasce o Estado do Vaticano.</p></div>
+      <div class="tl-item"><span class="tl-date">1958-1963</span><p>João XXIII amplia as audiências papais para todos os fiéis; Paulo VI consolida o formato multilíngue moderno em 1963.</p></div>
+      <div class="tl-item"><span class="tl-date">1962-1965</span><p>Concílio Vaticano II reforma a liturgia e a relação da Igreja com o mundo moderno.</p></div>
+      <div class="tl-item"><span class="tl-date">2013</span><p>Eleição do papa Francisco — primeiro jesuíta e primeiro latino-americano no cargo.</p></div>
+      <div class="tl-item"><span class="tl-date">2025</span><p>Eleição do papa Leão XIV — primeiro papa nascido nos Estados Unidos.</p></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>👤 20 personagens para conhecer antes de ir</h3>
+    <p class="fecho-sub">Aparecem e reaparecem em quase todos os dias do roteiro — vale reconhecer os nomes de cara.</p>
+    <div class="card-grid">
+      <div class="p-card"><b>Rômulo e Remo</b><span>Fundadores lendários de Roma — mito, não fato histórico comprovado.</span></div>
+      <div class="p-card"><b>Augusto</b><span>Primeiro imperador romano; sob ele, Agripa constrói o primeiro Panteão e o Aqua Virgo.</span></div>
+      <div class="p-card"><b>Nero</b><span>Imperador do grande incêndio de 64 d.C. e das primeiras perseguições a cristãos.</span></div>
+      <div class="p-card"><b>São Pedro</b><span>Apóstolo cuja tradição de martírio e sepultamento em Roma fundamenta toda a autoridade papal.</span></div>
+      <div class="p-card"><b>Constantino</b><span>Primeiro imperador cristão; ergue a basílica original de São Pedro.</span></div>
+      <div class="p-card"><b>Adriano</b><span>Reconstrói o Panteão e ergue seu próprio mausoléu — hoje o Castel Sant'Angelo.</span></div>
+      <div class="p-card"><b>Vespasiano e Tito</b><span>Imperadores flávios que constroem e inauguram o Coliseu.</span></div>
+      <div class="p-card"><b>Sisto IV</b><span>Constrói a Capela Sistina; dá início à ideia de coleção pública papal.</span></div>
+      <div class="p-card"><b>Júlio II</b><span>O "papa guerreiro" — encomenda o teto da Sistina e a nova Basílica de São Pedro.</span></div>
+      <div class="p-card"><b>Michelangelo</b><span>Pinta o teto e o Juízo Final da Sistina; projeta a cúpula de São Pedro.</span></div>
+      <div class="p-card"><b>Rafael</b><span>Pinta a Escola de Atenas nas Salas do Vaticano ao mesmo tempo que Michelangelo pinta a Sistina.</span></div>
+      <div class="p-card"><b>Bramante</b><span>Primeiro arquiteto da nova São Pedro; projeta o Pátio do Belvedere.</span></div>
+      <div class="p-card"><b>Clemente VII</b><span>Papa durante o Saque de Roma de 1527; encomenda o Juízo Final.</span></div>
+      <div class="p-card"><b>Paulo III</b><span>Vê o Juízo Final concluído; convoca o Concílio de Trento.</span></div>
+      <div class="p-card"><b>Urbano VIII (Barberini)</b><span>Manda remover o bronze do Panteão; encomenda o baldaquino de Bernini.</span></div>
+      <div class="p-card"><b>Bernini</b><span>Escultor-arquiteto do Barroco romano — baldaquino, Praça de São Pedro, Fontana dei Quattro Fiumi.</span></div>
+      <div class="p-card"><b>Borromini</b><span>Rival de Bernini; projeta a fachada de Sant'Agnese in Agone, na Piazza Navona.</span></div>
+      <div class="p-card"><b>Giordano Bruno</b><span>Filósofo executado por heresia no Campo de' Fiori em 1600.</span></div>
+      <div class="p-card"><b>Santo Inácio de Loyola</b><span>Fundador dos jesuítas; a igreja de Sant'Ignazio celebra sua canonização.</span></div>
+      <div class="p-card"><b>Papa Leão XIV</b><span>Eleito em 2025 — quem preside a Audiência Geral que você vai visitar.</span></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>✚ 20 símbolos católicos para reconhecer</h3>
+    <p class="fecho-sub">Vão aparecer em fachadas, tetos, brasões e cerimônias — reconhecer facilita entender o que está olhando.</p>
+    <div class="card-grid symbols">
+      <div class="s-card"><b>Chaves cruzadas de São Pedro</b><span>Autoridade apostólica entregue por Cristo a Pedro.</span></div>
+      <div class="s-card"><b>Tiara papal (tríplice coroa)</b><span>Antigo símbolo da autoridade papal, hoje pouco usado na prática.</span></div>
+      <div class="s-card"><b>Báculo pastoral</b><span>Cajado em forma de cruz — o papa/bispo como "pastor" do rebanho.</span></div>
+      <div class="s-card"><b>Cordeiro Pascal</b><span>Cristo como sacrifício — recorrente em arte religiosa por toda Roma.</span></div>
+      <div class="s-card"><b>Pomba</b><span>Representa o Espírito Santo.</span></div>
+      <div class="s-card"><b>Alfa e Ômega</b><span>Cristo como início e fim de tudo.</span></div>
+      <div class="s-card"><b>INRI</b><span>Inscrição latina sobre a cruz de Cristo — "Jesus Nazareno, Rei dos Judeus".</span></div>
+      <div class="s-card"><b>IHS</b><span>Monograma do nome de Jesus — símbolo jesuíta, no alto da fachada de Sant'Ignazio.</span></div>
+      <div class="s-card"><b>Colunas salomônicas</b><span>Colunas retorcidas do baldaquino de Bernini, citando a basílica constantiniana antiga.</span></div>
+      <div class="s-card"><b>Fumata branca/negra</b><span>Sinal de conclave: preta é "sem papa eleito", branca é "temos papa".</span></div>
+      <div class="s-card"><b>Menorá</b><span>Candelabro judaico de sete braços — no relevo do Arco de Tito.</span></div>
+      <div class="s-card"><b>Brasão della Rovere (carvalho)</b><span>Família de Sisto IV e Júlio II — aparece em toda parte que eles construíram.</span></div>
+      <div class="s-card"><b>Brasão Barberini (abelhas)</b><span>Família de Urbano VIII — no baldaquino de São Pedro e em toda Roma barroca.</span></div>
+      <div class="s-card"><b>Brasão Farnese (lírios)</b><span>Família de Paulo III — presente no Castel Sant'Angelo e outros edifícios papais.</span></div>
+      <div class="s-card"><b>Anel do Pescador</b><span>Anel papal, referência a Pedro como "pescador de homens".</span></div>
+      <div class="s-card"><b>Anjo com espada</b><span>No topo do Castel Sant'Angelo — o Arcanjo Miguel da lenda de Gregório Magno.</span></div>
+      <div class="s-card"><b>Ignudi</b><span>Os jovens nus decorativos do teto da Sistina — função simbólica ainda debatida.</span></div>
+      <div class="s-card"><b>Sibilas e profetas</b><span>No teto da Sistina — profecia pagã e judaica lado a lado, anunciando a vinda de Cristo.</span></div>
+      <div class="s-card"><b>Loba Capitolina</b><span>Símbolo secular de Roma (não católico), ligado ao mito de Rômulo e Remo.</span></div>
+      <div class="s-card"><b>Cruz das estações da Via-Sacra</b><span>No Coliseu — tradição papal instituída no século XVIII, não da Antiguidade.</span></div>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>📋 Guia rápido de consulta</h3>
+    <p class="fecho-sub">Uma linha por lugar — quando foi feito, por quem, e o que não deixar de olhar.</p>
+    <div class="qref-wrap">
+      <table class="qref">
+        <tr><th>Local</th><th>Quando</th><th>Quem</th><th>Não perca</th></tr>
+        <tr><td>Museus do Vaticano + Sistina</td><td>1471-1541</td><td>Sisto IV / Júlio II / Michelangelo</td><td>Criação de Adão; autorretrato no Juízo Final</td></tr>
+        <tr><td>Basílica de São Pedro</td><td>1506-1626</td><td>Bramante → Bernini</td><td>Pietà; baldaquino; cúpula</td></tr>
+        <tr><td>Castel Sant'Angelo</td><td>123-139 d.C.</td><td>Adriano</td><td>Passetto di Borgo; Terraço do Anjo</td></tr>
+        <tr><td>Panteão</td><td>c. 126-128 d.C.</td><td>Adriano (ou Trajano)</td><td>Óculo; túmulo de Rafael</td></tr>
+        <tr><td>Sant'Ignazio</td><td>1626-1823</td><td>Grassi / Pozzo / Manno</td><td>Disco de mármore no chão</td></tr>
+        <tr><td>Piazza Navona</td><td>1651</td><td>Bernini / Borromini</td><td>Fonte dos Quatro Rios</td></tr>
+        <tr><td>Fontana di Trevi</td><td>1732-1762</td><td>Nicola Salvi</td><td>Oceano; a moeda por cima do ombro</td></tr>
+        <tr><td>Campo de' Fiori</td><td>séc. XV em diante</td><td>—</td><td>Estátua de Giordano Bruno</td></tr>
+        <tr><td>Piazza del Popolo</td><td>1589 / 1820s</td><td>Fontana / Valadier</td><td>Obelisco; Caravaggios in situ</td></tr>
+        <tr><td>Coliseu</td><td>70-80 d.C.</td><td>Vespasiano / Tito</td><td>Hipogeu; cruz da Via-Sacra</td></tr>
+        <tr><td>Fórum + Palatino</td><td>séc. VI a.C. em diante</td><td>vários</td><td>Arco de Tito; cabanas do séc. VIII a.C.</td></tr>
+        <tr><td>Circo Máximo</td><td>séc. VI a.C.-549 d.C.</td><td>—</td><td>A escala do vale, de pé no meio dele</td></tr>
+        <tr><td>Audiência Geral</td><td>1963-hoje</td><td>Paulo VI (formato atual)</td><td>Saudações multilíngues; bênção final</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="fecho-block">
+    <h3>✈️ Resumo para ler no avião</h3>
+    <div class="plane-box">
+      <p>Você passou cinco dias atravessando uma cidade onde papas guerreiros financiavam Michelangelo com o mesmo orçamento que pagava exércitos, onde um filósofo foi queimado vivo por dizer que o universo era infinito, e onde uma capela pequena continua, até hoje, elegendo o líder de mais de um bilhão de pessoas.</p>
+      <p>O fio que conecta quase tudo que você viu: papas usando arte como instrumento de poder e fé ao mesmo tempo, quase sempre em resposta a alguma crise — a fragilidade depois do Grande Cisma, o trauma do Saque de Roma, a ameaça da Reforma Protestante. Nada disso foi decoração gratuita; era estratégia política e devoção genuína, as duas coisas juntas, quase sempre inseparáveis.</p>
+      <p>E o fio que conecta as lendas que você aprendeu a desmontar: quase toda "certeza" popular sobre Roma — Michelangelo deitado, cristãos aos montes no Coliseu, Bernini insultando Borromini com uma estátua — nasceu de uma boa história se sobrepondo, com o tempo, a uma história real mais complicada e mais interessante. A separação entre fato, tradição e lenda não é para tirar a magia do lugar. É, se você prestar atenção, o que torna Roma ainda mais impressionante: o que sobrou depois de tirar os mitos continua sendo mais do que suficiente.</p>
+    </div>
+  </div>
+
 </div></section>
 
 </main>
